@@ -24,9 +24,6 @@ MANDIR=$(MANTREE)/man3
 QCB=${OPENSWANSRCDIR}/lib/libwhack/qcbor
 SRCS=whackwrite.c aliascomp.c plutoopts.c
 
-SRCS+=UsefulBuf.c qcbor_encode.c qcbor_decode.c qcbor_err_to_str.c
-SRCS+=ieee754.c
-
 OBJS=${SRCS:.c=.o}
 
 MANSRCDIR=${OPENSWANSRCDIR}/lib/libopenswan
