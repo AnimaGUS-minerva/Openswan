@@ -26,7 +26,6 @@ Could not change to directory 'bob/ocspcerts': No such file or directory
 Could not change to directory 'bob/crls': 2 No such file or directory
 | base debugging = control+controlmore
 Debugging changed from none to control+controlmore
-| * processed 0 messages from cryptographic helpers
 |
 | *received whack message
 000 using kernel interface: noklips
