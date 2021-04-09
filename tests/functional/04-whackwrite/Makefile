@@ -18,6 +18,8 @@ include ${OPENSWANSRCDIR}/Makefile.inc
 
 READWRITE=${OBJDIRTOP}/programs/readwriteconf/readwriteconf
 OUTPUTS=../OUTPUTS
+export READWRITE
+export OUTPUTS
 SAMPLEDIR=../01-confread
 SAMPLE2DIR=../../unit/libpluto/samples
 
@@ -26,12 +28,12 @@ TEST4ARGS=--rootdir=${SAMPLE2DIR}/dooku  --config ${SAMPLE2DIR}/dooku.conf  --wh
 
 # note may fail if core dumps are not named "core"
 
+
 check:
 	@mkdir -p ${OUTPUTS}
 	@./writetest dooku  ${SAMPLEDIR}/dooku.conf ${SAMPLEDIR}/dooku "dooku--cassidy-net dooku--ipv6"
 	@./writetest parker  ${SAMPLE2DIR}/parker.conf ${SAMPLE2DIR}/parker "parker1--jj0"
 	@./writetest parker2 ${SAMPLE2DIR}/parker.conf ${SAMPLE2DIR}/parker "ikev2:parker--jj"
-	@./writetest acppeer1 ${SAMPLE2DIR}/acppeers.conf ${SAMPLE2DIR}/acppeers "peerA--peerB"
 
 update:
 	# dooku
@@ -46,9 +48,6 @@ update:
 	cp ${OUTPUTS}/parker2load.out   parker2load.txt
 	cp ${OUTPUTS}/parker2record.out parker2record.txt
 
-	# acppeers1
-	cp ${OUTPUTS}/acppeer1load.out    acppeer1load.txt
-	cp ${OUTPUTS}/acppeer1record.out  acppeer1record.txt
 
 
 
