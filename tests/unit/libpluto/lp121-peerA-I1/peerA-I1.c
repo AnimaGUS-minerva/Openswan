@@ -24,13 +24,13 @@ static void init_fake_secrets(void)
 {
     prompt_pass_t pass;
     memset(&pass, 0, sizeof(pass));
-    osw_init_ipsecdir_str("../samples/davecert");
+    osw_init_ipsecdir_str(SAMPLEDIR "davecert");
 
     rnd_offset = 13;
 
     osw_load_preshared_secrets(&pluto_secrets
 			       , TRUE
-			       , "../samples/davecert.secrets"
+			       , SAMPLEDIR "davecert.secrets"
 			       , &pass, NULL);
 }
 #include "../lp02-parentI1/parentI1_main.c"
