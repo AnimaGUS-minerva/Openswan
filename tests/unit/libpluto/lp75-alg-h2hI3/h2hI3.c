@@ -61,6 +61,10 @@ static void init_fake_secrets(void)
 static void init_loaded(void)
 {   /* nothing */ }
 
+static void init_local_interface(void) {
+    init_parker_interface(TRUE);
+}
+
 #include "../lp13-parentI3/parentI3_main.c"
 
  /*

@@ -45,6 +45,10 @@ void recv_pcap_packet2(u_char *user
 
 }
 
+static void init_local_interface(void) {
+    init_parker_interface(TRUE);
+}
+
 static void init_fake_secrets(void)
 {
     osw_load_preshared_secrets(&pluto_secrets

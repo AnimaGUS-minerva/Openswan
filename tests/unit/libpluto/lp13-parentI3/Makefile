@@ -25,10 +25,14 @@ include ../../libpluto/lp13-objectlist.make
 OUTPUTS=OUTPUT
 
 READWRITE=${OBJDIRTOP}/programs/readwriteconf/readwriteconf
-SAMPLEDIR?=../samples
+SAMPLEDIR?=../samples/
 EXTRAFLAGS+=-DSAMPLEDIR=\"${SAMPLEDIR}\"
 FILTERS=sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/whack-processing.sed -f ${TESTUTILS}/certsize.sed -f ${TESTUTILS}/sanity.sed
 include Makefile.testcase
+
+ifeq (${WHACKFILE},)
+WHACKFILE=${OUTPUTS}/ikev2client.record.${ARCH}
+endif
 
 EF_DISABLE_BANNER=1
 export EF_DISABLE_BANNER

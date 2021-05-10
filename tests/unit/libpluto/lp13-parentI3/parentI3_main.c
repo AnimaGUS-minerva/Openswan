@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     init_crypto();
     load_oswcrypto();
     init_fake_vendorid();
-    init_parker_interface(TRUE);
+    init_local_interface();
     init_seam_kernelalgs();
     init_fake_secrets();
     enable_debugging();
