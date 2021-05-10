@@ -315,10 +315,35 @@ RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 64,64; inter
 | emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
 | V_ID  af ca d7 13  68 a1 f1 c9  6b 86 96 fc  77 57 01 00
 | emitting length of ISAKMP Vendor ID Payload: 20
-| emitting length of ISAKMP Message: 300
-sending 300 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.213.238.7:500 (using #1)
+| out_vendorid(): sending [RFC 3947]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  4a 13 1c 81  07 03 58 45  5c 57 28 f2  0e 95 45 2f
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [draft-ietf-ipsec-nat-t-ike-03]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  7d 94 19 a6  53 10 ca 6f  2c 17 9d 92  15 52 9d 56
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [draft-ietf-ipsec-nat-t-ike-02_n]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  90 cb 80 91  3e bb 69 6e  08 63 81 b5  ec 42 7b 1f
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [draft-ietf-ipsec-nat-t-ike-02]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  cd 60 46 43  35 df 21 f8  7c fd b2 fc  68 b6 a4 48
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [draft-ietf-ipsec-nat-t-ike-00]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  44 85 15 2d  18 b6 bb cd  0b e8 a8 46  95 79 dd cc
+| emitting length of ISAKMP Vendor ID Payload: 20
+| emitting length of ISAKMP Message: 400
+sending 400 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.213.238.7:500 (using #1)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
-|   01 10 02 00  00 00 00 00  00 00 01 2c  0d 00 00 ec
+|   01 10 02 00  00 00 00 00  00 00 01 90  0d 00 00 ec
 |   00 00 00 01  00 00 00 01  00 00 00 e0  00 01 00 06
 |   03 00 00 24  00 01 00 00  80 0b 00 01  80 0c 0e 10
 |   80 03 00 03  80 01 00 07  80 0e 00 80  80 02 00 04
@@ -334,8 +359,14 @@ sending 300 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.2
 |   80 04 00 0f  00 00 00 24  05 01 00 00  80 0b 00 01
 |   80 0c 0e 10  80 03 00 03  80 01 00 07  80 0e 00 80
 |   80 02 00 02  80 04 00 0f  0d 00 00 10  4f 45 70 6c
-|   75 74 6f 75  6e 69 74 30  00 00 00 14  af ca d7 13
-|   68 a1 f1 c9  6b 86 96 fc  77 57 01 00
+|   75 74 6f 75  6e 69 74 30  0d 00 00 14  af ca d7 13
+|   68 a1 f1 c9  6b 86 96 fc  77 57 01 00  0d 00 00 14
+|   4a 13 1c 81  07 03 58 45  5c 57 28 f2  0e 95 45 2f
+|   0d 00 00 14  7d 94 19 a6  53 10 ca 6f  2c 17 9d 92
+|   15 52 9d 56  0d 00 00 14  90 cb 80 91  3e bb 69 6e
+|   08 63 81 b5  ec 42 7b 1f  0d 00 00 14  cd 60 46 43
+|   35 df 21 f8  7c fd b2 fc  68 b6 a4 48  00 00 00 14
+|   44 85 15 2d  18 b6 bb cd  0b e8 a8 46  95 79 dd cc
 RC=105 STATE_MAIN_I1: initiate
 0: input from parentN1.pcap
 |   =========== input from pcap file parentN1.pcap ========
@@ -361,7 +392,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 | v1 peer and cookies match on #1, provided msgid 00000000 vs 00000000
 | v1 state object #1 found, in STATE_MAIN_I1
 ./parentM3 received Vendor ID payload [Dead Peer Detection]
-./parentM3 received Vendor ID payload [RFC 3947] meth=115, but port floating is off
+./parentM3 received Vendor ID payload [RFC 3947] method set to=115
 | EI starts with: aes_cbc(12)_128-hmac_sha2_256_128(12)_256-prfsha2_256(5)-MODP2048(14), aes_cbc(12)_128-hmac_sha1_96(2)_160-prfsha2_256(5)-MODP2048(14), aes_cbc(12)_128-hmac_sha2_256_128(12)_256-prfsha2_256(5)-MODP1536(5), aes_cbc(12)_128-hmac_sha1_96(2)_160-prfsha2_256(5)-MODP1536(5), aes_cbc(12)_128-hmac_sha2_256_128(12)_256-prfsha2_256(5)-MODP3072(15), aes_cbc(12)_128-hmac_sha1_96(2)_160-prfsha2_256(5)-MODP3072(15)
 | found algorithm: aes_cbc(12)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14)
 | not including aes_gcm_8(18)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
@@ -434,6 +465,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |         type: 2(OAKLEY_HASH_ALGORITHM) val: 2(OAKLEY_SHA1)
 |         type: 4(OAKLEY_GROUP_DESCRIPTION) val: 15(OAKLEY_GROUP_MODP3072)
 | selected proposal 0 encr=aes_cbc[128] integ=hmac_sha2_256_128 prf=prf-hmac-sha2-256 modp=OAKLEY_GROUP_MODP2048
+./parentM3 enabling possible NAT-traversal with method RFC 3947 (NAT-Traversal)
 | complete state transition with STF_SUSPEND
 | main inR1_outI2: calculated ke+nonce, sending I2
 | removing state object #1
@@ -510,6 +542,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 | emitting length of ISAKMP Message: 380
 | complete state transition with STF_OK
 ./parentM3 transition from state STATE_MAIN_I1 to state STATE_MAIN_I2
+| NAT-T connection has wrong interface definition 0.0.0.0:500 vs 192.168.1.1:500
 | sending reply packet to 132.213.238.7:500 (from port 500)
 sending 380 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 132.213.238.7:500 (using #1)
 |   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
@@ -712,8 +745,11 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | emitting length of ISAKMP Message: 332
 | complete state transition with STF_OK
 ./parentM3 transition from state STATE_MAIN_I2 to state STATE_MAIN_I3
-| sending reply packet to 132.213.238.7:500 (from port 500)
-sending 332 bytes for STATE_MAIN_I2 through eth0:500 [93.184.216.34:55044] to 132.213.238.7:500 (using #1)
+| NAT-T: floating to port 4500
+| NAT-T connection has wrong interface definition 192.168.1.1:4500 vs 192.168.1.1:500
+| NAT-T: using interface eth0:4500
+| sending reply packet to 132.213.238.7:4500 (from port 4500)
+sending 332 bytes for STATE_MAIN_I2 through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #1)
 |   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
 |   05 10 02 01  00 00 00 00  00 00 01 4c  a7 8f 70 19
 |   92 e2 f9 56  9a 8b 57 a6  63 2d 10 a8  7e 45 6f d7
@@ -738,7 +774,7 @@ sending 332 bytes for STATE_MAIN_I2 through eth0:500 [93.184.216.34:55044] to 13
 ./parentM3 STATE_MAIN_I3: sent MI3, expecting MR3
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
-RC=0 #1: "t4901":500 IKEv1.0 STATE_MAIN_I3 (sent MI3, expecting MR3); none in -1s; lastdpd=-1s(seq in:0 out:0); idle; import:admin initiate
+RC=0 #1: "t4901":4500 IKEv1.0 STATE_MAIN_I3 (sent MI3, expecting MR3); none in -1s; lastdpd=-1s(seq in:0 out:0); idle; import:admin initiate
 ./parentM3 deleting connection
 | pass 0: considering CHILD SAs to delete
 ./parentM3 deleting state #1 (STATE_MAIN_I3)

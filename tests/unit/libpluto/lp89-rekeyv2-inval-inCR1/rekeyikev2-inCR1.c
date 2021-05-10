@@ -94,6 +94,10 @@ void recv_pcap_I3_rekey(u_char *user
     run_continuation(crypto_req);
 }
 
+static void init_local_interface(void) {
+    init_parker_interface(TRUE);
+}
+
 #define PCAP_INPUT_COUNT 3
 recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
     recv_pcap_packet,

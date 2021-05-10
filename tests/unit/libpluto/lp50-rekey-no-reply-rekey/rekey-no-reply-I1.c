@@ -16,6 +16,10 @@ static void init_fake_secrets(void)
 			       , NULL, NULL);
 }
 
+static void init_local_interface(void) {
+    init_parker_interface(TRUE);
+}
+
 static void init_loaded(void)
 {   /* nothing */ }
 

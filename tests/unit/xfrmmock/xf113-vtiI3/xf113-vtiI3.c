@@ -12,6 +12,7 @@
 #include "seam_finish.c"
 #include "seam_ikev1_crypto.c"
 #include "seam_ikev2_sendI1.c"
+#include "seam_host_parker.c"
 
 static void init_loaded(void)
 {
@@ -19,6 +20,11 @@ static void init_loaded(void)
     xfrm_init_base_algorithms();
 
     passert(esp_aalg[IKEv2_AUTH_HMAC_SHA2_256_128].kernel_alg_info != NULL);
+}
+
+static void init_local_interface(void)
+{
+    init_parker_interface(TRUE);
 }
 
 #define TESTNAME "xf113-vtiI3"
