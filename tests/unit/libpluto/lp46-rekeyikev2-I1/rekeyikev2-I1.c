@@ -18,6 +18,10 @@ static void init_fake_secrets(void)
 static void init_loaded(void)
 {   /* nothing */ }
 
+static void init_local_interface(void) {
+    init_parker_interface(TRUE);
+}
+
 #define TESTNAME "rekeyikev2"
 #define AFTER_CONN rekeyit
 
