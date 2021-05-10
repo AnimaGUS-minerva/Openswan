@@ -1,0 +1,4 @@
+This test case is an IKEv2 initiator on I3.
+The client peerA will use it's certificate to authenticate.
+This is the final reply, at which point the initiator will do erouting.
+
