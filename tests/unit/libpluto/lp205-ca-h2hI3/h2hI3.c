@@ -62,6 +62,10 @@ static void init_fake_secrets(void)
     load_authcerts("CA cert", "../samples/davecert/cacerts", AUTH_CA);
 }
 
+static void init_local_interface(void) {
+    init_parker_interface(TRUE);
+}
+
 static void init_loaded(void)
 {   /* nothing */ }
 
