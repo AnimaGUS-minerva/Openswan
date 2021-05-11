@@ -1,0 +1,16 @@
+This test case is an IKEv2 responder -- it uses a certificate with a wildcard
+right= policy that accepts any ID that is properly validated.
+This is identical to lp122-peerB-R1, except that it is peerC, rather than peerB.
+
+This is a critical test of peerA's ability to negotiate identical policies
+with two peers.
+
+
+
+
+
+
+
+
+
+
