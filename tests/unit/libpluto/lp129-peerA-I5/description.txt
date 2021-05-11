@@ -1,0 +1,9 @@
+This test case is an IKEv2 initiator.
+It is called "I5", but it is really the second peer I3 state, after peerA-I3.
+
+The client peerA will use it's certificate to authenticate.
+The response from lp128-R2 should have this initiator attempt to eroute both
+policies to ::/0, and may show the vtinum challenge.
+
+
+

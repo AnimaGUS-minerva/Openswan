@@ -1,0 +1,21 @@
+# -*- makefile -*-
+CONNNAME=peerA--peerB
+CONNNAME_EXTRA=peerA--peerC
+ENDNAME=acppeers
+TESTNAME=peerA-I5
+PCAPOUTPUT=${TESTNAME}.pcap
+UNITTEST1ARGS=-r ${WHACKFILE} ${CONNNAME} OUTPUT/${PCAPOUTPUT} peerB-R1.pcap peerB-R2.pcap peerC-R1.pcap peerC-R2.pcap
+
+EXTRAOBJS+=${OBJDIRTOP}/programs/pluto/x509keys.o
+
+pcapupdate:
+	cp ../lp122-peerB-R1/OUTPUT/peerB-R1.pcap .
+	cp ../lp124-peerB-R2/OUTPUT/peerB-R2.pcap .
+	cp ../lp126-peerC-R1/OUTPUT/peerC-R1.pcap .
+	cp ../lp128-peerC-R2/OUTPUT/peerC-R2.pcap .
+
+
+
+
+
+
