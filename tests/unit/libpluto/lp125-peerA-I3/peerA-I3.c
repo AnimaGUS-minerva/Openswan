@@ -52,12 +52,41 @@ static void init_loaded(void) {
 }
 
 #define PCAP_INPUT_COUNT 2
+#define AFTER_CONN key_peerC
 
 #include "seam_parentI2.c"
 recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
     recv_pcap_packet,
     recv_pcap_packet,
 };
+
+void key_peerC()
+{
+    struct state *st = NULL;
+    struct pcr_kenonce *kn = &crypto_req->pcr_d.kn;
+    struct connection *c2;
+
+    fprintf(stderr, "now keying to peerC\n");
+    show_states_status();
+
+    timer_list();
+
+    c2 = con_by_name("peerA--peerC", TRUE);
+    st = sendI1(c2, DBG_CONTROL, TRUE);
+
+    run_continuation(crypto_req);
+    send_packet_close();
+}
+
+ /*
+ * Local Variables:
+ * c-style: pluto
+ * c-basic-offset: 4
+ * compile-command: "make check"
+ * End:
+ */
+
+
 #include "../lp13-parentI3/parentI3_main.c"
 
  /*
