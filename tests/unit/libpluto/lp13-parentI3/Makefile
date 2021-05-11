@@ -55,7 +55,7 @@ OUTPUT/${TESTNAME}_1.txt:	${WHACKFILE} ${TESTNAME} output1.txt
 
 ${WHACKFILE}:
 	@mkdir -p OUTPUT
-	${READWRITE} --rootdir=${SAMPLEDIR}/${ENDNAME} --config ${SAMPLEDIR}/${ENDNAME}.conf --whackout=${WHACKFILE} ${CONNNAME}
+	${READWRITE} --rootdir=${SAMPLEDIR}/${ENDNAME} --config ${SAMPLEDIR}/${ENDNAME}.conf --whackout=${WHACKFILE} ${CONNNAME} ${CONNNAME_EXTRA}
 
 update: update1
 update1:
