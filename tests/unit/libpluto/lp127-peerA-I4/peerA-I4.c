@@ -8,7 +8,7 @@
 #include "seam_rsasig.c"
 #include "seam_finish.c"
 
-#define TESTNAME "peerA-I3"
+#define TESTNAME "peerA-I4"
 
 static void init_local_interface(void)
 {
