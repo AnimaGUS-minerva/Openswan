@@ -35,6 +35,25 @@
 ./peerA-I3 adding connection: "peerA--peerB"
 | ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| Added new connection peerA--peerC with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+./peerA-I3   loading certificate from daveCert.pem
+./peerA-I3   loaded host cert file '../samples/davecert/certs/daveCert.pem' (CERT bytes)
+| certificate is valid
+| counting wild cards for C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org is 0
+| counting wild cards for %fromcert is 0
+| orient peerA--peerC checking against if: eth0 (AF_INET6:fe80::8054:3eff:fe9a:d3f4:500)
+|     orient matched on IP
+|   orient peerA--peerC finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
+| find_host_pair: looking for me=fe80::8054:3eff:fe9a:d3f4:500 %address him=fe80::ec68:7cff:fe0c:1c1c:500 exact-match
+| find_host_pair: comparing to me=fe80::8054:3eff:fe9a:d3f4:500 %address him=fe80::ec68:7cff:fe0c:9aa4:500
+| find_host_pair: concluded with <none>
+| connect_to_host_pair: fe80::8054:3eff:fe9a:d3f4:500 %address fe80::ec68:7cff:fe0c:1c1c:500 -> hp:none
+| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=%fromcert (exact)
+|                   comparing to me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=%fromcert (peerA--peerB)
+|   concluded with peerA--peerB
+./peerA-I3 adding connection: "peerA--peerC"
+| ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:1c1c[%fromcert]===::/0
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
 RC=0 "peerA--peerB": ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0; unrouted; eroute owner: #0
 RC=0 "peerA--peerB":     myip=unset; hisip=unset; mycert=daveCert.pem;
@@ -51,7 +70,7 @@ RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 |
 | List of X.509 End Certificates:
 |
-| NOW, count: 1
+| NOW, count: 2
 |        subject: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
 |        issuer:  'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 |        serial:   04
@@ -958,7 +977,7 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |
 | List of X.509 End Certificates:
 |
-| NOW, count: 1
+| NOW, count: 2
 |        subject: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
 |        issuer:  'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 |        serial:   04
@@ -1014,8 +1033,93 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 ./peerA-I3 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+now keying to peerC
 RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+| find_phase1_state: no SA found for conn 'peerA--peerC'
+| creating state object #3 at Z
+| orient peerA--peerC checking against if: eth0 (AF_INET6:fe80::8054:3eff:fe9a:d3f4:500)
+|     orient matched on IP
+|   orient peerA--peerC finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
+| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| RCOOKIE:  00 00 00 00  00 00 00 00
+| state hash entry 4
+| inserting state object #3 bucket: 4
+./peerA-I3 initiating v2 parent SA
+./peerA-I3 STATE_PARENT_I1: initiate
+| __alg_info_ike_add() ealg=12(128) aalg=12(0) prfalg_id=5 modp_id=14, cnt=1
+| __alg_info_ike_add() ealg=18(128) aalg=12(0) prfalg_id=5 modp_id=14, cnt=2
+| __alg_info_ike_add() ealg=12(128) aalg=2(0) prfalg_id=5 modp_id=14, cnt=3
+| __alg_info_ike_add() ealg=18(128) aalg=2(0) prfalg_id=5 modp_id=14, cnt=4
+| __alg_info_ike_add() ealg=12(128) aalg=12(0) prfalg_id=5 modp_id=5, cnt=5
+| __alg_info_ike_add() ealg=18(128) aalg=12(0) prfalg_id=5 modp_id=5, cnt=6
+| __alg_info_ike_add() ealg=12(128) aalg=2(0) prfalg_id=5 modp_id=5, cnt=7
+| __alg_info_ike_add() ealg=18(128) aalg=2(0) prfalg_id=5 modp_id=5, cnt=8
+| __alg_info_ike_add() ealg=12(128) aalg=12(0) prfalg_id=5 modp_id=15, cnt=9
+| __alg_info_ike_add() ealg=18(128) aalg=12(0) prfalg_id=5 modp_id=15, cnt=10
+| __alg_info_ike_add() ealg=12(128) aalg=2(0) prfalg_id=5 modp_id=15, cnt=11
+| __alg_info_ike_add() ealg=18(128) aalg=2(0) prfalg_id=5 modp_id=15, cnt=12
+| found algorithm: aes_cbc(12)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14)
+| not including aes_gcm_8(18)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP2048(14)
+| not including aes_gcm_8(18)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP2048(14) in policy, as algorithm missing(enc:0,integ:20,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP1536(5)
+| not including aes_gcm_8(18)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP1536(5) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP1536(5)
+| not including aes_gcm_8(18)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP1536(5) in policy, as algorithm missing(enc:0,integ:20,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP3072(15)
+| not including aes_gcm_8(18)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP3072(15) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP3072(15)
+| not including aes_gcm_8(18)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP3072(15) in policy, as algorithm missing(enc:0,integ:20,prf:1,group:1)
+sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3eff:fe9a:d3f4:500] to fe80::ec68:7cff:fe0c:1c1c:500 (using #3)
+|   8d 0e 0f 10  11 12 13 14  00 00 00 00  00 00 00 00
+|   21 20 22 08  00 00 00 00  00 00 02 8c  22 00 01 0c
+|   02 00 00 2c  01 01 00 04  03 00 00 0c  01 00 00 0c
+|   80 0e 00 80  03 00 00 08  02 00 00 05  03 00 00 08
+|   03 00 00 0c  00 00 00 08  04 00 00 0e  02 00 00 2c
+|   02 01 00 04  03 00 00 0c  01 00 00 0c  80 0e 00 80
+|   03 00 00 08  02 00 00 05  03 00 00 08  03 00 00 02
+|   00 00 00 08  04 00 00 0e  02 00 00 2c  03 01 00 04
+|   03 00 00 0c  01 00 00 0c  80 0e 00 80  03 00 00 08
+|   02 00 00 05  03 00 00 08  03 00 00 0c  00 00 00 08
+|   04 00 00 05  02 00 00 2c  04 01 00 04  03 00 00 0c
+|   01 00 00 0c  80 0e 00 80  03 00 00 08  02 00 00 05
+|   03 00 00 08  03 00 00 02  00 00 00 08  04 00 00 05
+|   02 00 00 2c  05 01 00 04  03 00 00 0c  01 00 00 0c
+|   80 0e 00 80  03 00 00 08  02 00 00 05  03 00 00 08
+|   03 00 00 0c  00 00 00 08  04 00 00 0f  00 00 00 2c
+|   06 01 00 04  03 00 00 0c  01 00 00 0c  80 0e 00 80
+|   03 00 00 08  02 00 00 05  03 00 00 08  03 00 00 02
+|   00 00 00 08  04 00 00 0f  28 00 01 08  00 0e 00 00
+|   d3 c7 05 7a  35 52 a3 62  71 ba 2a 7e  35 a2 02 14
+|   b9 fc b0 91  07 64 22 f3  43 c8 ec d4  8e 0c db 21
+|   b2 75 7a d5  36 ac 75 9b  96 31 3f 10  ab 2c d7 26
+|   7a aa eb 3a  b8 19 22 d0  32 39 98 1a  2a 81 2d 80
+|   32 86 32 0a  6f 1b e5 48  1f 90 82 58  4b 69 18 6c
+|   33 c3 c6 6e  49 a5 ce ee  83 c7 c7 57  c1 cb ff 22
+|   4b 6b c4 91  6f 77 ae 19  c7 fc 93 b4  70 0d db b9
+|   39 1b 0a 05  53 6b c9 4f  16 e6 86 7b  5f b0 ba 55
+|   76 6b c9 7b  b3 b8 34 0f  25 86 20 fe  85 68 89 cf
+|   ae d7 ba ab  b4 f9 39 ba  b7 84 0f 77  35 c6 16 4e
+|   4e 9e 56 22  18 3a 33 38  99 9f 92 e5  99 03 bd 5c
+|   f8 85 a7 fe  46 47 63 f9  6a 84 20 fe  dc 2d 6c c4
+|   cf e0 d1 a5  63 c8 7e 61  3e ff d6 e1  af 92 f1 dc
+|   d1 ab 54 7e  4f 67 ec 81  f5 fe c2 27  93 36 54 24
+|   1a 55 6b 37  0a 90 06 86  8c c5 3b bd  8f 8a c1 f4
+|   5c c5 33 9a  88 d9 b5 dd  f2 0a 4d 1c  f5 d4 81 b7
+|   29 00 00 14  8d 0e 0f 10  11 12 13 14  15 16 17 18
+|   19 1a 1b 1c  29 00 00 1c  00 00 40 04  71 c6 1d 0c
+|   a0 a6 22 3b  41 5a 37 ec  dc 7c 2f 46  44 8c 79 25
+|   2b 00 00 1c  00 00 40 05  27 c4 1c 9b  7c 35 81 19
+|   4a 7f 9d 6f  91 f9 b1 cd  ab 9c 43 ca  00 00 00 10
+|   4f 45 ab ab  ab ab ab ab  ab ab ab ab
+| #3 complete v2 state transition with STF_OK
+./peerA-I3 transition from state STATE_IKEv2_START to state STATE_PARENT_I1
+| v2_state_transition: st is #3; pst is #0; transition_st is #0
+./peerA-I3 STATE_PARENT_I1: sent v2I1, expected v2R1 (msgid: 00000000/4294967295)
+RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #3: "peerA--peerC":500 IKEv2.0 STATE_PARENT_I1 (sent v2I1, expected v2R1); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=1,recv=-1; msgid=0; idle; import:admin initiate
 ./peerA-I3 deleting connection
 | pass 0: considering CHILD SAs to delete
 ./peerA-I3 deleting state #2 (STATE_CHILD_C1_KEYED)
@@ -1110,6 +1214,20 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 |   ef 61 43 7e  20 c8 ff cc  28 2e 1d 57  52 43 96 41
 |   6e 9b c6 4f  a4 76 d0 19  40 89 83 b8  41 72 a0 8e
 | freeing state object #1
+./peerA-I3 leak: saved first packet, item size: X
+./peerA-I3 leak: reply packet for ikev2_parent_outI1_tail, item size: X
+./peerA-I3 leak: sa in main_outI1, item size: X
+./peerA-I3 leak: initiator nonce, item size: X
+./peerA-I3 leak: long term secret, item size: X
+./peerA-I3 leak: saved gi value, item size: X
+./peerA-I3 leak: ikev2_outI1 KE, item size: X
+./peerA-I3 leak: db2_expand->attrs, item size: X
+./peerA-I3 leak: db_context->trans (expand), item size: X
+./peerA-I3 leak: db_context->conj (expand), item size: X
+./peerA-I3 leak: alg_info_ike, item size: X
+./peerA-I3 leak: db_context, item size: X
+./peerA-I3 leak: v2 policy database, item size: X
+./peerA-I3 leak: struct state in new_state(), item size: X
 ./peerA-I3 leak: skeyseed_t1, item size: X
 ./peerA-I3 leak: responder keys, item size: X
 ./peerA-I3 leak: initiator keys, item size: X
@@ -1156,6 +1274,13 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-I3 leak: generalName, item size: X
 ./peerA-I3 leak: x509cert, item size: X
 ./peerA-I3 leak: CA cert, item size: X
+./peerA-I3 leak: host_pair, item size: X
+./peerA-I3 leak: host ip, item size: X
+./peerA-I3 leak: ca string, item size: X
+./peerA-I3 leak: host ip, item size: X
+./peerA-I3 leak: ca string, item size: X
+./peerA-I3 leak: keep id name, item size: X
+./peerA-I3 leak: connection name, item size: X
 ./peerA-I3 leak: rfc3110 format of public key [created], item size: X
 ./peerA-I3 leak: issuer dn, item size: X
 ./peerA-I3 leak: keep id name, item size: X
@@ -1167,6 +1292,18 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-I3 leak: keep id name, item size: X
 ./peerA-I3 leak: pubkey entry, item size: X
 ./peerA-I3 leak: pubkey, item size: X
+./peerA-I3 leak: certificate filename, item size: X
+./peerA-I3 leak: struct connection, item size: X
+./peerA-I3 leak: keep id name, item size: X
+./peerA-I3 leak: ID host_pair, item size: X
+./peerA-I3 leak: issuer, item size: X
+./peerA-I3 leak: rfc3110 format of public key [created], item size: X
+./peerA-I3 leak: issuer dn, item size: X
+./peerA-I3 leak: keep id name, item size: X
+./peerA-I3 leak: pubkey, item size: X
+./peerA-I3 leak: generalName, item size: X
+./peerA-I3 leak: x509cert, item size: X
+./peerA-I3 leak: host cert, item size: X
 ./peerA-I3 leak: certificate filename, item size: X
 ./peerA-I3 leak: 2 * id list, item size: X
 ./peerA-I3 leak: rfc3110 format of public key [created], item size: X
