@@ -565,7 +565,7 @@ const struct kernel_ops netkey_kernel_ops = {
      * if netlink  specific changes are needed.
      */
     remove_orphaned_holds: pfkey_remove_orphaned_holds,
-    overlap_supported: FALSE,
+    overlap_supported: TRUE,
     sha2_truncbug_support: TRUE,
     scan_shunts: netlink_scan_bare_shunts,
 };
