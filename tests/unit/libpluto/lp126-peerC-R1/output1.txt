@@ -45,7 +45,7 @@ RC=0 "peerC--peerA":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; r
 RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
 |   =========== input from pcap file peerA-I3.pcap ========
 | *received 652 bytes from fe80::8054:3eff:fe9a:d3f4:500 on eth0 (port=500)
-|   8d 0e 0f 10  11 12 13 14  00 00 00 00  00 00 00 00
+|   8e 0f 10 11  12 13 14 15  00 00 00 00  00 00 00 00
 |   21 20 22 08  00 00 00 00  00 00 02 8c  22 00 01 0c
 |   02 00 00 2c  01 01 00 04  03 00 00 0c  01 00 00 0c
 |   80 0e 00 80  03 00 00 08  02 00 00 05  03 00 00 08
@@ -64,36 +64,36 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 |   06 01 00 04  03 00 00 0c  01 00 00 0c  80 0e 00 80
 |   03 00 00 08  02 00 00 05  03 00 00 08  03 00 00 02
 |   00 00 00 08  04 00 00 0f  28 00 01 08  00 0e 00 00
-|   d3 c7 05 7a  35 52 a3 62  71 ba 2a 7e  35 a2 02 14
-|   b9 fc b0 91  07 64 22 f3  43 c8 ec d4  8e 0c db 21
-|   b2 75 7a d5  36 ac 75 9b  96 31 3f 10  ab 2c d7 26
-|   7a aa eb 3a  b8 19 22 d0  32 39 98 1a  2a 81 2d 80
-|   32 86 32 0a  6f 1b e5 48  1f 90 82 58  4b 69 18 6c
-|   33 c3 c6 6e  49 a5 ce ee  83 c7 c7 57  c1 cb ff 22
-|   4b 6b c4 91  6f 77 ae 19  c7 fc 93 b4  70 0d db b9
-|   39 1b 0a 05  53 6b c9 4f  16 e6 86 7b  5f b0 ba 55
-|   76 6b c9 7b  b3 b8 34 0f  25 86 20 fe  85 68 89 cf
-|   ae d7 ba ab  b4 f9 39 ba  b7 84 0f 77  35 c6 16 4e
-|   4e 9e 56 22  18 3a 33 38  99 9f 92 e5  99 03 bd 5c
-|   f8 85 a7 fe  46 47 63 f9  6a 84 20 fe  dc 2d 6c c4
-|   cf e0 d1 a5  63 c8 7e 61  3e ff d6 e1  af 92 f1 dc
-|   d1 ab 54 7e  4f 67 ec 81  f5 fe c2 27  93 36 54 24
-|   1a 55 6b 37  0a 90 06 86  8c c5 3b bd  8f 8a c1 f4
-|   5c c5 33 9a  88 d9 b5 dd  f2 0a 4d 1c  f5 d4 81 b7
-|   29 00 00 14  8d 0e 0f 10  11 12 13 14  15 16 17 18
-|   19 1a 1b 1c  29 00 00 1c  00 00 40 04  71 c6 1d 0c
-|   a0 a6 22 3b  41 5a 37 ec  dc 7c 2f 46  44 8c 79 25
-|   2b 00 00 1c  00 00 40 05  27 c4 1c 9b  7c 35 81 19
-|   4a 7f 9d 6f  91 f9 b1 cd  ab 9c 43 ca  00 00 00 10
+|   e2 4e 52 36  77 a2 f8 b9  c3 55 8a f7  f7 97 e2 1d
+|   07 ce 99 9f  03 be 50 ab  93 a9 3c d0  f4 95 37 7c
+|   e1 24 bf dc  cf 8a a8 4a  93 d0 4e 48  f7 f2 64 48
+|   c3 72 1f fe  79 c5 d0 c1  10 b9 c2 b2  d9 74 05 ed
+|   41 ec af 10  9a ff d3 5a  c3 7f cb 26  f6 b0 af 6a
+|   5f b8 2f 15  09 75 50 7b  46 5f cc 47  d6 1d 35 a8
+|   a4 65 65 ea  5f 39 2f ed  93 fc 62 82  64 42 0a c5
+|   23 bc 24 e3  4b ff 7a 0a  f9 de dd b5  32 ac 94 aa
+|   d4 a5 fd 14  3d 43 ef c2  a5 bd a8 8d  05 b6 cd bb
+|   a4 05 e8 1e  84 e0 6b d5  b1 e0 9e 5b  7d 37 3d 47
+|   29 1e 1d e5  a6 09 26 92  02 ae 48 b5  ee d3 79 1a
+|   f5 ee 74 a5  88 a8 c4 23  8c cb 91 3e  15 d4 6b dc
+|   60 7e 20 41  00 ea 7a df  41 5c 50 a0  54 86 67 6d
+|   07 86 f2 0f  80 15 3c 8b  83 09 10 aa  57 ac b8 23
+|   a9 af c6 6e  c2 55 4b de  a3 28 92 e8  9c c3 d8 28
+|   76 32 55 44  ef 2a f5 c5  cb e7 51 dc  c1 a8 ac 25
+|   29 00 00 14  8e 0f 10 11  12 13 14 15  16 17 18 19
+|   1a 1b 1c 1d  29 00 00 1c  00 00 40 04  a9 b1 c4 eb
+|   dc ae 47 80  b9 e8 7f 6e  ea e3 7a 5d  77 ac 36 7c
+|   2b 00 00 1c  00 00 40 05  75 c7 67 21  f8 6f 04 ab
+|   95 09 0c 6c  b2 03 85 45  0e fe 74 76  00 00 00 10
 |   4f 45 ab ab  ab ab ab ab  ab ab ab ab
 |  processing version=2.0 packet with exchange type=ISAKMP_v2_SA_INIT (34), msgid: 00000000
 | I am the IKE SA Responder
 | I am this exchange's Responder
-| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| ICOOKIE:  8e 0f 10 11  12 13 14 15
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | v2 state object not found
-| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| ICOOKIE:  8e 0f 10 11  12 13 14 15
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | v2 state object not found
@@ -118,7 +118,7 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 | orient peerC--peerA checking against if: eth0 (AF_INET6:fe80::ec68:7cff:fe0c:1c1c:500)
 |     orient matched on IP
 |   orient peerC--peerA finished with: 1 [fe80::ec68:7cff:fe0c:1c1c]
-| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| ICOOKIE:  8e 0f 10 11  12 13 14 15
 | RCOOKIE:  78 5b 90 fe  dd d1 18 2d
 | state hash entry 6
 | inserting state object #1 bucket: 6
@@ -127,27 +127,27 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 | processor 'responder-V2_init' returned STF_SUSPEND (2)
 | #1 complete v2 state transition with STF_SUSPEND
 | ikev2 parent inI1outR1: calculated ke+nonce, sending R1
-| nat chunk  8d 0e 0f 10  11 12 13 14  00 00 00 00  00 00 00 00
+| nat chunk  8e 0f 10 11  12 13 14 15  00 00 00 00  00 00 00 00
 |   fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
 |   01 f4
 | processing v2N_NAT_DETECTION_SOURCE_IP
-| received nat-t hash  71 c6 1d 0c  a0 a6 22 3b  41 5a 37 ec  dc 7c 2f 46
-|   44 8c 79 25
-| calculated nat-t  h  71 c6 1d 0c  a0 a6 22 3b  41 5a 37 ec  dc 7c 2f 46
-|   44 8c 79 25
+| received nat-t hash  a9 b1 c4 eb  dc ae 47 80  b9 e8 7f 6e  ea e3 7a 5d
+|   77 ac 36 7c
+| calculated nat-t  h  a9 b1 c4 eb  dc ae 47 80  b9 e8 7f 6e  ea e3 7a 5d
+|   77 ac 36 7c
 | nat-t payloads for v2N_NAT_DETECTION_SOURCE_IP match: no NAT
-| nat chunk  8d 0e 0f 10  11 12 13 14  00 00 00 00  00 00 00 00
+| nat chunk  8e 0f 10 11  12 13 14 15  00 00 00 00  00 00 00 00
 |   fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 1c 1c
 |   01 f4
 | processing v2N_NAT_DETECTION_DESTINATION_IP
-| received nat-t hash  27 c4 1c 9b  7c 35 81 19  4a 7f 9d 6f  91 f9 b1 cd
-|   ab 9c 43 ca
-| calculated nat-t  h  27 c4 1c 9b  7c 35 81 19  4a 7f 9d 6f  91 f9 b1 cd
-|   ab 9c 43 ca
+| received nat-t hash  75 c7 67 21  f8 6f 04 ab  95 09 0c 6c  b2 03 85 45
+|   0e fe 74 76
+| calculated nat-t  h  75 c7 67 21  f8 6f 04 ab  95 09 0c 6c  b2 03 85 45
+|   0e fe 74 76
 | nat-t payloads for v2N_NAT_DETECTION_DESTINATION_IP match: no NAT
 | **emit ISAKMP Message:
 |    initiator cookie:
-|   8d 0e 0f 10  11 12 13 14
+|   8e 0f 10 11  12 13 14 15
 |    responder cookie:
 |   78 5b 90 fe  dd d1 18 2d
 |    ISAKMP version: IKEv2 version 2.0 (rfc4306/rfc5996)
@@ -245,22 +245,22 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 | emitting length of IKEv2 Proposal Substructure Payload: 44
 | emitting length of IKEv2 Security Association Payload: 48
 | DH public value received:
-|   d3 c7 05 7a  35 52 a3 62  71 ba 2a 7e  35 a2 02 14
-|   b9 fc b0 91  07 64 22 f3  43 c8 ec d4  8e 0c db 21
-|   b2 75 7a d5  36 ac 75 9b  96 31 3f 10  ab 2c d7 26
-|   7a aa eb 3a  b8 19 22 d0  32 39 98 1a  2a 81 2d 80
-|   32 86 32 0a  6f 1b e5 48  1f 90 82 58  4b 69 18 6c
-|   33 c3 c6 6e  49 a5 ce ee  83 c7 c7 57  c1 cb ff 22
-|   4b 6b c4 91  6f 77 ae 19  c7 fc 93 b4  70 0d db b9
-|   39 1b 0a 05  53 6b c9 4f  16 e6 86 7b  5f b0 ba 55
-|   76 6b c9 7b  b3 b8 34 0f  25 86 20 fe  85 68 89 cf
-|   ae d7 ba ab  b4 f9 39 ba  b7 84 0f 77  35 c6 16 4e
-|   4e 9e 56 22  18 3a 33 38  99 9f 92 e5  99 03 bd 5c
-|   f8 85 a7 fe  46 47 63 f9  6a 84 20 fe  dc 2d 6c c4
-|   cf e0 d1 a5  63 c8 7e 61  3e ff d6 e1  af 92 f1 dc
-|   d1 ab 54 7e  4f 67 ec 81  f5 fe c2 27  93 36 54 24
-|   1a 55 6b 37  0a 90 06 86  8c c5 3b bd  8f 8a c1 f4
-|   5c c5 33 9a  88 d9 b5 dd  f2 0a 4d 1c  f5 d4 81 b7
+|   e2 4e 52 36  77 a2 f8 b9  c3 55 8a f7  f7 97 e2 1d
+|   07 ce 99 9f  03 be 50 ab  93 a9 3c d0  f4 95 37 7c
+|   e1 24 bf dc  cf 8a a8 4a  93 d0 4e 48  f7 f2 64 48
+|   c3 72 1f fe  79 c5 d0 c1  10 b9 c2 b2  d9 74 05 ed
+|   41 ec af 10  9a ff d3 5a  c3 7f cb 26  f6 b0 af 6a
+|   5f b8 2f 15  09 75 50 7b  46 5f cc 47  d6 1d 35 a8
+|   a4 65 65 ea  5f 39 2f ed  93 fc 62 82  64 42 0a c5
+|   23 bc 24 e3  4b ff 7a 0a  f9 de dd b5  32 ac 94 aa
+|   d4 a5 fd 14  3d 43 ef c2  a5 bd a8 8d  05 b6 cd bb
+|   a4 05 e8 1e  84 e0 6b d5  b1 e0 9e 5b  7d 37 3d 47
+|   29 1e 1d e5  a6 09 26 92  02 ae 48 b5  ee d3 79 1a
+|   f5 ee 74 a5  88 a8 c4 23  8c cb 91 3e  15 d4 6b dc
+|   60 7e 20 41  00 ea 7a df  41 5c 50 a0  54 86 67 6d
+|   07 86 f2 0f  80 15 3c 8b  83 09 10 aa  57 ac b8 23
+|   a9 af c6 6e  c2 55 4b de  a3 28 92 e8  9c c3 d8 28
+|   76 32 55 44  ef 2a f5 c5  cb e7 51 dc  c1 a8 ac 25
 |    next-payload: ISAKMP_NEXT_v2KE [@28=0x22]
 | ***emit IKEv2 Key Exchange Payload:
 |    critical bit: none
@@ -289,7 +289,7 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 | emitting 16 raw bytes of IKEv2 nonce into IKEv2 Nonce Payload
 | IKEv2 nonce  20 98 9d 37  a8 14 a6 4d  8f f0 7c 08  d3 20 e9 e3
 | emitting length of IKEv2 Nonce Payload: 20
-| nat chunk  8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
+| nat chunk  8e 0f 10 11  12 13 14 15  78 5b 90 fe  dd d1 18 2d
 |   fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 1c 1c
 |   01 f4
 | Adding a v2N Payload
@@ -300,10 +300,10 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 |    SPI size: 0
 |    Notify Message Type: v2N_NAT_DETECTION_SOURCE_IP
 | emitting 20 raw bytes of Notify data into IKEv2 Notify Payload
-| Notify data  70 4e ce eb  87 be dc 6e  72 f2 02 8d  47 76 17 ca
-|   ca 11 e6 f5
+| Notify data  02 45 3e b3  43 09 ca 69  48 50 f3 91  c6 0b 19 f2
+|   75 61 9f 6a
 | emitting length of IKEv2 Notify Payload: 28
-| nat chunk  8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
+| nat chunk  8e 0f 10 11  12 13 14 15  78 5b 90 fe  dd d1 18 2d
 |   fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
 |   01 f4
 | Adding a v2N Payload
@@ -314,8 +314,8 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 |    SPI size: 0
 |    Notify Message Type: v2N_NAT_DETECTION_DESTINATION_IP
 | emitting 20 raw bytes of Notify data into IKEv2 Notify Payload
-| Notify data  54 b7 34 30  9a 69 ed db  c7 ba 43 77  83 8e 3c b6
-|   fc e1 04 cf
+| Notify data  d8 f2 ca 67  9e ce 33 2e  f1 c9 29 d4  5e 56 6a 08
+|   72 b9 7a 20
 | emitting length of IKEv2 Notify Payload: 28
 | Thinking about sending a certificate request (CERTREQ)
 |   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
@@ -334,7 +334,7 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 ./peerC-R1 STATE_PARENT_R1: received v2I1, sent v2R1 (msgid: 00000000/00000000)
 | sending reply packet to fe80::8054:3eff:fe9a:d3f4:500 (from port 500)
 sending 432 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:1c1c:500] to fe80::8054:3eff:fe9a:d3f4:500 (using #1)
-|   8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
+|   8e 0f 10 11  12 13 14 15  78 5b 90 fe  dd d1 18 2d
 |   21 20 22 20  00 00 00 00  00 00 01 b0  22 00 00 30
 |   00 00 00 2c  01 01 00 04  03 00 00 0c  01 00 00 0c
 |   80 0e 00 80  03 00 00 08  03 00 00 0c  03 00 00 08
@@ -357,14 +357,14 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:1
 |   32 8e e8 b3  fe d3 8b f4  7b 50 34 13  33 7a 93 ea
 |   e9 3c 0e 8b  29 00 00 14  20 98 9d 37  a8 14 a6 4d
 |   8f f0 7c 08  d3 20 e9 e3  29 00 00 1c  00 00 40 04
-|   70 4e ce eb  87 be dc 6e  72 f2 02 8d  47 76 17 ca
-|   ca 11 e6 f5  2b 00 00 1c  00 00 40 05  54 b7 34 30
-|   9a 69 ed db  c7 ba 43 77  83 8e 3c b6  fc e1 04 cf
+|   02 45 3e b3  43 09 ca 69  48 50 f3 91  c6 0b 19 f2
+|   75 61 9f 6a  2b 00 00 1c  00 00 40 05  d8 f2 ca 67
+|   9e ce 33 2e  f1 c9 29 d4  5e 56 6a 08  72 b9 7a 20
 |   00 00 00 10  4f 45 ab ab  ab ab ab ab  ab ab ab ab
 ./peerC-R1 deleting state #1 (STATE_PARENT_R1)
 | considering request to delete IKE parent state
 | removing state object #1
-| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| ICOOKIE:  8e 0f 10 11  12 13 14 15
 | RCOOKIE:  78 5b 90 fe  dd d1 18 2d
 | state hash entry 6
 | freeing state object #1
