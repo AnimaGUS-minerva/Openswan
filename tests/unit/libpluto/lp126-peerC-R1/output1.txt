@@ -1,0 +1,403 @@
+./peerC-R1 ike_alg_register_enc(): Activating OAKLEY_AES_CBC: Ok (ret=0)
+./peerC-R1 ike_alg_register_hash(): Activating OAKLEY_SHA2_512: Ok (ret=0)
+./peerC-R1 ike_alg_register_prf(): Activating prf-hmac-sha2-512: Ok (ret=0)
+./peerC-R1 ike_alg_register_hash(): Activating OAKLEY_SHA2_256: Ok (ret=0)
+./peerC-R1 ike_alg_register_prf(): Activating prf-hmac-sha2-256: Ok (ret=0)
+./peerC-R1 ike_alg_register_hash(): Activating OAKLEY_SHA1: Ok (ret=0)
+./peerC-R1 ike_alg_register_prf(): Activating prf-hmac-sha1: Ok (ret=0)
+./peerC-R1 ike_alg_register_hash(): Activating OAKLEY_MD5: Ok (ret=0)
+./peerC-R1 ike_alg_register_prf(): Activating prf-hmac-md5: Ok (ret=0)
+./peerC-R1 adjusting ipsec.d to ../samples/bob
+./peerC-R1 loading secrets from "../samples/bob.secrets"
+./peerC-R1   loaded private key file '../samples/bob/private/bobKey.pem' (CERT bytes)
+./peerC-R1 loaded private key for keyid: PPK_RSA:AwEAAbXtb/A339 C44A 54EA F8CD A71A 5BC3 31B6 80CE 210B CBFE
+./peerC-R1 registered kernel encr algorithm aes_cbc [12, 128<=key<=512]
+./peerC-R1 registered kernel encr algorithm 3des [3, 192<=key<=192]
+./peerC-R1 registered kernel integ algorithm hmac_sha1_96 [2, 160<=key<=160]
+./peerC-R1 registered kernel integ algorithm hmac_md5_96 [1, 128<=key<=128]
+./peerC-R1 registered kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
+./peerC-R1 registered kernel integ algorithm hmac_sha2_512_256 [14, 256<=key<=256]
+| processing whack message of size: A
+| Added new connection peerC--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
+./peerC-R1   loading certificate from bobCert.pem
+./peerC-R1   loaded host cert file '../samples/bob/certs/bobCert.pem' (CERT bytes)
+| certificate is valid
+| counting wild cards for C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org is 0
+| based upon ID_wildcard policy, the connection is a template.
+| orient peerC--peerA checking against if: eth0 (AF_INET6:fe80::ec68:7cff:fe0c:1c1c:500)
+|     orient matched on IP
+|   orient peerC--peerA finished with: 1 [fe80::ec68:7cff:fe0c:1c1c]
+| find_host_pair: looking for me=fe80::ec68:7cff:fe0c:1c1c:500 %address him=fe80::8054:3eff:fe9a:d3f4:500 exact-match
+| find_host_pair: concluded with <none>
+| connect_to_host_pair: fe80::ec68:7cff:fe0c:1c1c:500 %address fe80::8054:3eff:fe9a:d3f4:500 -> hp:none
+| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org him=<any> (exact)
+|   concluded with <none>
+./peerC-R1 adding connection: "peerC--peerA"
+| ::/0===fe80::ec68:7cff:fe0c:1c1c[C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org]...fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   orient peerC--peerA finished with: 1 [fe80::ec68:7cff:fe0c:1c1c]
+RC=0 "peerC--peerA": ::/0===fe80::ec68:7cff:fe0c:1c1c[C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org]...fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0; unrouted; eroute owner: #0
+RC=0 "peerC--peerA":     myip=unset; hisip=unset; mycert=bobCert.pem;
+RC=0 "peerC--peerA":   CAs: 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'...'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+RC=0 "peerC--peerA":   keys: 1:A339 C44A 54EA F8CD A71A 5BC3 31B6 80CE 210B CBFE 2:none...
+RC=0 "peerC--peerA":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
+RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
+|   =========== input from pcap file peerA-I3.pcap ========
+| *received 652 bytes from fe80::8054:3eff:fe9a:d3f4:500 on eth0 (port=500)
+|   8d 0e 0f 10  11 12 13 14  00 00 00 00  00 00 00 00
+|   21 20 22 08  00 00 00 00  00 00 02 8c  22 00 01 0c
+|   02 00 00 2c  01 01 00 04  03 00 00 0c  01 00 00 0c
+|   80 0e 00 80  03 00 00 08  02 00 00 05  03 00 00 08
+|   03 00 00 0c  00 00 00 08  04 00 00 0e  02 00 00 2c
+|   02 01 00 04  03 00 00 0c  01 00 00 0c  80 0e 00 80
+|   03 00 00 08  02 00 00 05  03 00 00 08  03 00 00 02
+|   00 00 00 08  04 00 00 0e  02 00 00 2c  03 01 00 04
+|   03 00 00 0c  01 00 00 0c  80 0e 00 80  03 00 00 08
+|   02 00 00 05  03 00 00 08  03 00 00 0c  00 00 00 08
+|   04 00 00 05  02 00 00 2c  04 01 00 04  03 00 00 0c
+|   01 00 00 0c  80 0e 00 80  03 00 00 08  02 00 00 05
+|   03 00 00 08  03 00 00 02  00 00 00 08  04 00 00 05
+|   02 00 00 2c  05 01 00 04  03 00 00 0c  01 00 00 0c
+|   80 0e 00 80  03 00 00 08  02 00 00 05  03 00 00 08
+|   03 00 00 0c  00 00 00 08  04 00 00 0f  00 00 00 2c
+|   06 01 00 04  03 00 00 0c  01 00 00 0c  80 0e 00 80
+|   03 00 00 08  02 00 00 05  03 00 00 08  03 00 00 02
+|   00 00 00 08  04 00 00 0f  28 00 01 08  00 0e 00 00
+|   d3 c7 05 7a  35 52 a3 62  71 ba 2a 7e  35 a2 02 14
+|   b9 fc b0 91  07 64 22 f3  43 c8 ec d4  8e 0c db 21
+|   b2 75 7a d5  36 ac 75 9b  96 31 3f 10  ab 2c d7 26
+|   7a aa eb 3a  b8 19 22 d0  32 39 98 1a  2a 81 2d 80
+|   32 86 32 0a  6f 1b e5 48  1f 90 82 58  4b 69 18 6c
+|   33 c3 c6 6e  49 a5 ce ee  83 c7 c7 57  c1 cb ff 22
+|   4b 6b c4 91  6f 77 ae 19  c7 fc 93 b4  70 0d db b9
+|   39 1b 0a 05  53 6b c9 4f  16 e6 86 7b  5f b0 ba 55
+|   76 6b c9 7b  b3 b8 34 0f  25 86 20 fe  85 68 89 cf
+|   ae d7 ba ab  b4 f9 39 ba  b7 84 0f 77  35 c6 16 4e
+|   4e 9e 56 22  18 3a 33 38  99 9f 92 e5  99 03 bd 5c
+|   f8 85 a7 fe  46 47 63 f9  6a 84 20 fe  dc 2d 6c c4
+|   cf e0 d1 a5  63 c8 7e 61  3e ff d6 e1  af 92 f1 dc
+|   d1 ab 54 7e  4f 67 ec 81  f5 fe c2 27  93 36 54 24
+|   1a 55 6b 37  0a 90 06 86  8c c5 3b bd  8f 8a c1 f4
+|   5c c5 33 9a  88 d9 b5 dd  f2 0a 4d 1c  f5 d4 81 b7
+|   29 00 00 14  8d 0e 0f 10  11 12 13 14  15 16 17 18
+|   19 1a 1b 1c  29 00 00 1c  00 00 40 04  71 c6 1d 0c
+|   a0 a6 22 3b  41 5a 37 ec  dc 7c 2f 46  44 8c 79 25
+|   2b 00 00 1c  00 00 40 05  27 c4 1c 9b  7c 35 81 19
+|   4a 7f 9d 6f  91 f9 b1 cd  ab 9c 43 ca  00 00 00 10
+|   4f 45 ab ab  ab ab ab ab  ab ab ab ab
+|  processing version=2.0 packet with exchange type=ISAKMP_v2_SA_INIT (34), msgid: 00000000
+| I am the IKE SA Responder
+| I am this exchange's Responder
+| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| RCOOKIE:  00 00 00 00  00 00 00 00
+| state hash entry 4
+| v2 state object not found
+| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| RCOOKIE:  00 00 00 00  00 00 00 00
+| state hash entry 4
+| v2 state object not found
+| considering state entry: 0
+|   reject: received request, needs response message
+| considering state entry: 1
+|   reject: received request, needs response message
+| considering state entry: 2
+|   reject: received request, needs response message
+| considering state entry: 3
+| now proceed with state specific processing using state #3 responder-V2_init
+| find_host_connection2 called from ikev2parent_inI1outR1, me=fe80::ec68:7cff:fe0c:1c1c:500 him=fe80::8054:3eff:fe9a:d3f4:500 policy=IKEv2ALLOW/-
+| find_host_pair: looking for me=fe80::ec68:7cff:fe0c:1c1c:500 %address him=fe80::8054:3eff:fe9a:d3f4:500 any-match
+| find_host_pair: comparing to me=fe80::ec68:7cff:fe0c:1c1c:500 %address him=fe80::8054:3eff:fe9a:d3f4:500
+| find_host_pair: concluded with peerC--peerA
+| found_host_pair_conn (find_host_connection2): fe80::ec68:7cff:fe0c:1c1c:500 %address/fe80::8054:3eff:fe9a:d3f4:500 -> hp:peerC--peerA
+| searching for connection with policy = IKEv2ALLOW/-
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK (peerC--peerA)
+| find_host_connection2 returns peerC--peerA (ike=none/none)
+./peerC-R1 tentatively considering connection: peerC--peerA
+| creating state object #1 at Z
+| orient peerC--peerA checking against if: eth0 (AF_INET6:fe80::ec68:7cff:fe0c:1c1c:500)
+|     orient matched on IP
+|   orient peerC--peerA finished with: 1 [fe80::ec68:7cff:fe0c:1c1c]
+| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| RCOOKIE:  78 5b 90 fe  dd d1 18 2d
+| state hash entry 6
+| inserting state object #1 bucket: 6
+| will not send/process a dcookie
+| received a notify..
+| processor 'responder-V2_init' returned STF_SUSPEND (2)
+| #1 complete v2 state transition with STF_SUSPEND
+| ikev2 parent inI1outR1: calculated ke+nonce, sending R1
+| nat chunk  8d 0e 0f 10  11 12 13 14  00 00 00 00  00 00 00 00
+|   fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
+|   01 f4
+| processing v2N_NAT_DETECTION_SOURCE_IP
+| received nat-t hash  71 c6 1d 0c  a0 a6 22 3b  41 5a 37 ec  dc 7c 2f 46
+|   44 8c 79 25
+| calculated nat-t  h  71 c6 1d 0c  a0 a6 22 3b  41 5a 37 ec  dc 7c 2f 46
+|   44 8c 79 25
+| nat-t payloads for v2N_NAT_DETECTION_SOURCE_IP match: no NAT
+| nat chunk  8d 0e 0f 10  11 12 13 14  00 00 00 00  00 00 00 00
+|   fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 1c 1c
+|   01 f4
+| processing v2N_NAT_DETECTION_DESTINATION_IP
+| received nat-t hash  27 c4 1c 9b  7c 35 81 19  4a 7f 9d 6f  91 f9 b1 cd
+|   ab 9c 43 ca
+| calculated nat-t  h  27 c4 1c 9b  7c 35 81 19  4a 7f 9d 6f  91 f9 b1 cd
+|   ab 9c 43 ca
+| nat-t payloads for v2N_NAT_DETECTION_DESTINATION_IP match: no NAT
+| **emit ISAKMP Message:
+|    initiator cookie:
+|   8d 0e 0f 10  11 12 13 14
+|    responder cookie:
+|   78 5b 90 fe  dd d1 18 2d
+|    ISAKMP version: IKEv2 version 2.0 (rfc4306/rfc5996)
+|    exchange type: ISAKMP_v2_SA_INIT
+|    flags: ISAKMP_FLAG_RESPONSE
+|    message ID:  00 00 00 00
+| ***emit IKEv2 Security Association Payload:
+|    critical bit: none
+| __alg_info_ike_add() ealg=12(128) aalg=12(0) prfalg_id=5 modp_id=14, cnt=1
+| __alg_info_ike_add() ealg=18(128) aalg=12(0) prfalg_id=5 modp_id=14, cnt=2
+| __alg_info_ike_add() ealg=12(128) aalg=2(0) prfalg_id=5 modp_id=14, cnt=3
+| __alg_info_ike_add() ealg=18(128) aalg=2(0) prfalg_id=5 modp_id=14, cnt=4
+| __alg_info_ike_add() ealg=12(128) aalg=12(0) prfalg_id=5 modp_id=5, cnt=5
+| __alg_info_ike_add() ealg=18(128) aalg=12(0) prfalg_id=5 modp_id=5, cnt=6
+| __alg_info_ike_add() ealg=12(128) aalg=2(0) prfalg_id=5 modp_id=5, cnt=7
+| __alg_info_ike_add() ealg=18(128) aalg=2(0) prfalg_id=5 modp_id=5, cnt=8
+| __alg_info_ike_add() ealg=12(128) aalg=12(0) prfalg_id=5 modp_id=15, cnt=9
+| __alg_info_ike_add() ealg=18(128) aalg=12(0) prfalg_id=5 modp_id=15, cnt=10
+| __alg_info_ike_add() ealg=12(128) aalg=2(0) prfalg_id=5 modp_id=15, cnt=11
+| __alg_info_ike_add() ealg=18(128) aalg=2(0) prfalg_id=5 modp_id=15, cnt=12
+| found algorithm: aes_cbc(12)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14)
+| not including aes_gcm_8(18)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP2048(14)
+| not including aes_gcm_8(18)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP2048(14) in policy, as algorithm missing(enc:0,integ:20,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP1536(5)
+| not including aes_gcm_8(18)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP1536(5) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP1536(5)
+| not including aes_gcm_8(18)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP1536(5) in policy, as algorithm missing(enc:0,integ:20,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP3072(15)
+| not including aes_gcm_8(18)_128-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP3072(15) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
+| found algorithm: aes_cbc(12)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP3072(15)
+| not including aes_gcm_8(18)_128-hmac_sha1_96(2)-prfsha2_256(5)-MODP3072(15) in policy, as algorithm missing(enc:0,integ:20,prf:1,group:1)
+| ****parse IKEv2 Proposal Substructure Payload:
+|    length: 44
+|    prop #: 1
+|    proto ID: 1
+|    spi size: 0
+|    # transforms: 4
+| *****parse IKEv2 Transform Substructure Payload:
+|    length: 12
+|    transform type: 1
+|    transform ID: 12
+| ******parse IKEv2 Attribute Substructure Payload:
+|    af+type: KEY_LENGTH
+|    length/value: 128
+| collect encr: 12<=1 integ: 0<=0 prf: 0<=0 dh: 0<=0
+| *****parse IKEv2 Transform Substructure Payload:
+|    length: 8
+|    transform type: 2
+|    transform ID: 5
+| collect encr: 12<=1 integ: 0<=0 prf: 5<=1 dh: 0<=0
+| *****parse IKEv2 Transform Substructure Payload:
+|    length: 8
+|    transform type: 3
+|    transform ID: 12
+| collect encr: 12<=1 integ: 12<=1 prf: 5<=1 dh: 0<=0
+| *****parse IKEv2 Transform Substructure Payload:
+|    length: 8
+|    transform type: 4
+|    transform ID: 14
+| collect encr: 12<=1 integ: 12<=1 prf: 5<=1 dh: 14<=1
+| encr: 0<=1 integ: 0<=1 prf: 0<=1 dh: 0<=1
+| selected proposal 1 encr=aes_cbc[128] integ=hmac_sha2_256_128 prf=prf-hmac-sha2-256 modp=OAKLEY_GROUP_MODP2048
+| ****parse IKEv2 Proposal Substructure Payload:
+|    length: 44
+|    prop #: 2
+|    proto ID: 1
+|    spi size: 0
+|    # transforms: 4
+| ****emit IKEv2 Proposal Substructure Payload:
+|    prop #: 1
+|    proto ID: 1
+|    spi size: 0
+|    # transforms: 4
+| *****emit IKEv2 Transform Substructure Payload:
+|    transform type: 1
+|    transform ID: 12
+| ******emit IKEv2 Attribute Substructure Payload:
+|    af+type: KEY_LENGTH
+|    length/value: 128
+|     [128 is 128??]
+| emitting length of IKEv2 Transform Substructure Payload: 12
+| *****emit IKEv2 Transform Substructure Payload:
+|    transform type: 3
+|    transform ID: 12
+| emitting length of IKEv2 Transform Substructure Payload: 8
+| *****emit IKEv2 Transform Substructure Payload:
+|    transform type: 2
+|    transform ID: 5
+| emitting length of IKEv2 Transform Substructure Payload: 8
+| *****emit IKEv2 Transform Substructure Payload:
+|    transform type: 4
+|    transform ID: 14
+| emitting length of IKEv2 Transform Substructure Payload: 8
+| emitting length of IKEv2 Proposal Substructure Payload: 44
+| emitting length of IKEv2 Security Association Payload: 48
+| DH public value received:
+|   d3 c7 05 7a  35 52 a3 62  71 ba 2a 7e  35 a2 02 14
+|   b9 fc b0 91  07 64 22 f3  43 c8 ec d4  8e 0c db 21
+|   b2 75 7a d5  36 ac 75 9b  96 31 3f 10  ab 2c d7 26
+|   7a aa eb 3a  b8 19 22 d0  32 39 98 1a  2a 81 2d 80
+|   32 86 32 0a  6f 1b e5 48  1f 90 82 58  4b 69 18 6c
+|   33 c3 c6 6e  49 a5 ce ee  83 c7 c7 57  c1 cb ff 22
+|   4b 6b c4 91  6f 77 ae 19  c7 fc 93 b4  70 0d db b9
+|   39 1b 0a 05  53 6b c9 4f  16 e6 86 7b  5f b0 ba 55
+|   76 6b c9 7b  b3 b8 34 0f  25 86 20 fe  85 68 89 cf
+|   ae d7 ba ab  b4 f9 39 ba  b7 84 0f 77  35 c6 16 4e
+|   4e 9e 56 22  18 3a 33 38  99 9f 92 e5  99 03 bd 5c
+|   f8 85 a7 fe  46 47 63 f9  6a 84 20 fe  dc 2d 6c c4
+|   cf e0 d1 a5  63 c8 7e 61  3e ff d6 e1  af 92 f1 dc
+|   d1 ab 54 7e  4f 67 ec 81  f5 fe c2 27  93 36 54 24
+|   1a 55 6b 37  0a 90 06 86  8c c5 3b bd  8f 8a c1 f4
+|   5c c5 33 9a  88 d9 b5 dd  f2 0a 4d 1c  f5 d4 81 b7
+|    next-payload: ISAKMP_NEXT_v2KE [@28=0x22]
+| ***emit IKEv2 Key Exchange Payload:
+|    critical bit: none
+|    transform type: 14
+| emitting 256 raw bytes of ikev2 g^x into IKEv2 Key Exchange Payload
+| ikev2 g^x  bd 48 18 9c  9e 03 70 f2  55 ce 45 22  9f c7 c9 48
+|   43 a3 e2 64  b5 5d 43 38  c8 fe f1 d3  06 43 f0 0a
+|   e8 6d 61 8c  60 78 d9 98  d3 1b 3b 5e  f5 a6 e8 2f
+|   ef 56 ac b4  33 bd 1e 62  b2 3e 0b 17  af 6c b8 31
+|   08 d7 19 5a  7b c4 54 c2  13 47 98 c2  cc d2 16 29
+|   75 6c 03 fb  1e 9c 9d 21  0c a1 e6 c2  f3 f2 49 2c
+|   f6 06 73 c1  96 1e ce 58  81 01 1c cb  16 dc f9 fc
+|   c7 93 08 75  58 16 57 71  69 96 66 b7  a9 81 7f f7
+|   37 4d 7c 41  38 62 a6 39  00 81 ca 3d  1d fc f7 b5
+|   08 38 d4 34  70 22 6c 21  d2 5b 20 a1  d2 ba 2a d1
+|   89 f3 20 79  ce ac 1e c2  ec 7d ae 76  94 40 39 a0
+|   3d a6 6a 81  e2 92 09 be  18 4f a0 1e  5c ed ea 7c
+|   7d 7b 3a 21  3e 15 0d 53  5d 17 6a be  1b c5 70 ab
+|   34 47 bc 09  14 7c aa 91  9c 8f 81 dc  1e f9 87 cd
+|   6a ec fa f3  a5 9e 37 bc  ac 3d fd e1  32 8e e8 b3
+|   fe d3 8b f4  7b 50 34 13  33 7a 93 ea  e9 3c 0e 8b
+| emitting length of IKEv2 Key Exchange Payload: 264
+|    next-payload: ISAKMP_NEXT_v2Ni [@76=0x28]
+| ***emit IKEv2 Nonce Payload:
+|    critical bit: none
+| emitting 16 raw bytes of IKEv2 nonce into IKEv2 Nonce Payload
+| IKEv2 nonce  20 98 9d 37  a8 14 a6 4d  8f f0 7c 08  d3 20 e9 e3
+| emitting length of IKEv2 Nonce Payload: 20
+| nat chunk  8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
+|   fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 1c 1c
+|   01 f4
+| Adding a v2N Payload
+|    next-payload: ISAKMP_NEXT_v2N [@340=0x29]
+| ***emit IKEv2 Notify Payload:
+|    critical bit: none
+|    Protocol ID: PROTO_RESERVED
+|    SPI size: 0
+|    Notify Message Type: v2N_NAT_DETECTION_SOURCE_IP
+| emitting 20 raw bytes of Notify data into IKEv2 Notify Payload
+| Notify data  70 4e ce eb  87 be dc 6e  72 f2 02 8d  47 76 17 ca
+|   ca 11 e6 f5
+| emitting length of IKEv2 Notify Payload: 28
+| nat chunk  8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
+|   fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
+|   01 f4
+| Adding a v2N Payload
+|    next-payload: ISAKMP_NEXT_v2N [@360=0x29]
+| ***emit IKEv2 Notify Payload:
+|    critical bit: none
+|    Protocol ID: PROTO_RESERVED
+|    SPI size: 0
+|    Notify Message Type: v2N_NAT_DETECTION_DESTINATION_IP
+| emitting 20 raw bytes of Notify data into IKEv2 Notify Payload
+| Notify data  54 b7 34 30  9a 69 ed db  c7 ba 43 77  83 8e 3c b6
+|   fc e1 04 cf
+| emitting length of IKEv2 Notify Payload: 28
+| Thinking about sending a certificate request (CERTREQ)
+|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   my next payload will not be a certificate request
+| I did not send a certificate request (CERTREQ) because
+|   no CA certs available for validation
+|    next-payload: ISAKMP_NEXT_v2V [@388=0x2b]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 12 raw bytes of Vendor ID into ISAKMP Vendor ID Payload
+| Vendor ID  4f 45 ab ab  ab ab ab ab  ab ab ab ab
+| emitting length of ISAKMP Vendor ID Payload: 16
+| emitting length of ISAKMP Message: 432
+| #1 complete v2 state transition with STF_OK
+./peerC-R1 transition from state STATE_IKEv2_START to state STATE_PARENT_R1
+| v2_state_transition: st is #1; pst is #0; transition_st is #1
+./peerC-R1 STATE_PARENT_R1: received v2I1, sent v2R1 (msgid: 00000000/00000000)
+| sending reply packet to fe80::8054:3eff:fe9a:d3f4:500 (from port 500)
+sending 432 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:1c1c:500] to fe80::8054:3eff:fe9a:d3f4:500 (using #1)
+|   8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
+|   21 20 22 20  00 00 00 00  00 00 01 b0  22 00 00 30
+|   00 00 00 2c  01 01 00 04  03 00 00 0c  01 00 00 0c
+|   80 0e 00 80  03 00 00 08  03 00 00 0c  03 00 00 08
+|   02 00 00 05  00 00 00 08  04 00 00 0e  28 00 01 08
+|   00 0e 00 00  bd 48 18 9c  9e 03 70 f2  55 ce 45 22
+|   9f c7 c9 48  43 a3 e2 64  b5 5d 43 38  c8 fe f1 d3
+|   06 43 f0 0a  e8 6d 61 8c  60 78 d9 98  d3 1b 3b 5e
+|   f5 a6 e8 2f  ef 56 ac b4  33 bd 1e 62  b2 3e 0b 17
+|   af 6c b8 31  08 d7 19 5a  7b c4 54 c2  13 47 98 c2
+|   cc d2 16 29  75 6c 03 fb  1e 9c 9d 21  0c a1 e6 c2
+|   f3 f2 49 2c  f6 06 73 c1  96 1e ce 58  81 01 1c cb
+|   16 dc f9 fc  c7 93 08 75  58 16 57 71  69 96 66 b7
+|   a9 81 7f f7  37 4d 7c 41  38 62 a6 39  00 81 ca 3d
+|   1d fc f7 b5  08 38 d4 34  70 22 6c 21  d2 5b 20 a1
+|   d2 ba 2a d1  89 f3 20 79  ce ac 1e c2  ec 7d ae 76
+|   94 40 39 a0  3d a6 6a 81  e2 92 09 be  18 4f a0 1e
+|   5c ed ea 7c  7d 7b 3a 21  3e 15 0d 53  5d 17 6a be
+|   1b c5 70 ab  34 47 bc 09  14 7c aa 91  9c 8f 81 dc
+|   1e f9 87 cd  6a ec fa f3  a5 9e 37 bc  ac 3d fd e1
+|   32 8e e8 b3  fe d3 8b f4  7b 50 34 13  33 7a 93 ea
+|   e9 3c 0e 8b  29 00 00 14  20 98 9d 37  a8 14 a6 4d
+|   8f f0 7c 08  d3 20 e9 e3  29 00 00 1c  00 00 40 04
+|   70 4e ce eb  87 be dc 6e  72 f2 02 8d  47 76 17 ca
+|   ca 11 e6 f5  2b 00 00 1c  00 00 40 05  54 b7 34 30
+|   9a 69 ed db  c7 ba 43 77  83 8e 3c b6  fc e1 04 cf
+|   00 00 00 10  4f 45 ab ab  ab ab ab ab  ab ab ab ab
+./peerC-R1 deleting state #1 (STATE_PARENT_R1)
+| considering request to delete IKE parent state
+| removing state object #1
+| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| RCOOKIE:  78 5b 90 fe  dd d1 18 2d
+| state hash entry 6
+| freeing state object #1
+./peerC-R1 deleting connection
+| pass 0: considering CHILD SAs to delete
+| pass 1: considering PARENT SAs to delete
+./peerC-R1 leak: alg_info_ike, item size: X
+./peerC-R1 leak: ikev2_inI1outR1 KE, item size: X
+./peerC-R1 leak: msg_digest, item size: X
+./peerC-R1 leak: rfc3110 format of public key [created], item size: X
+./peerC-R1 leak: issuer dn, item size: X
+./peerC-R1 leak: keep id name, item size: X
+./peerC-R1 leak: pubkey entry, item size: X
+./peerC-R1 leak: issuer, item size: X
+./peerC-R1 leak: pubkey, item size: X
+./peerC-R1 leak: rfc3110 format of public key [created], item size: X
+./peerC-R1 leak: issuer dn, item size: X
+./peerC-R1 leak: keep id name, item size: X
+./peerC-R1 leak: pubkey entry, item size: X
+./peerC-R1 leak: pubkey, item size: X
+./peerC-R1 leak: certificate filename, item size: X
+./peerC-R1 leak: 2 * id list, item size: X
+./peerC-R1 leak: rfc3110 format of public key [created], item size: X
+./peerC-R1 leak: pubkey, item size: X
+./peerC-R1 leak: secret, item size: X
+./peerC-R1 leak: 4 * hasher name, item size: X
+./peerC-R1 leak: 10 * group description, item size: X
+./peerC-R1 leak: policies path, item size: X
+./peerC-R1 leak: ocspcerts path, item size: X
+./peerC-R1 leak: aacerts path, item size: X
+./peerC-R1 leak: certs path, item size: X
+./peerC-R1 leak: private path, item size: X
+./peerC-R1 leak: crls path, item size: X
+./peerC-R1 leak: cacert path, item size: X
+./peerC-R1 leak: acert path, item size: X
+./peerC-R1 leak detective found Z leaks, total size X

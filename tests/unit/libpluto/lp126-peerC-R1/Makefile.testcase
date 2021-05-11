@@ -1,0 +1,13 @@
+# -*- makefile -*-
+CONNNAME=peerC--peerA
+ENDNAME=acppeers
+UNITTEST1ARGS=${WHACKFILE} ${CONNNAME} peerA-I3.pcap OUTPUT/${TESTNAME}.pcap
+
+TESTNAME=peerC-R1
+
+PCAPDEPENDENCIES = ../lp125-peerA-I3/OUTPUT/peerA-I3.pcap
+include ../Makefile.pcapupdate
+
+pcapupdate: ${PCAPDEPENDENCIES}
+	cp ../lp125-peerA-I3/OUTPUT/peerA-I3.pcap .
+
