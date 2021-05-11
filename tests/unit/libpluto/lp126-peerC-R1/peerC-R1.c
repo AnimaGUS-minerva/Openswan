@@ -23,6 +23,8 @@ static void init_fake_secrets(void)
 			       , TRUE
 			       , SAMPLEDIR "bob.secrets"
 			       , &pass, NULL);
+
+    rnd_offset = 4;
 }
 #include "../lp08-parentR1/parentR1_main.c"
 

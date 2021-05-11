@@ -1,0 +1,4 @@
+peerA-I4
+*.o
+OUTPUT
+.gdb1init

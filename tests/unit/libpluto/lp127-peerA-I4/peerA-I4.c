@@ -51,14 +51,8 @@ static void init_loaded(void) {
     list_authcerts("CA", AUTH_CA, 1);
 }
 
-#define PCAP_INPUT_COUNT 2
-#define AFTER_CONN key_peerC
-
+#define PCAP_INPUT_COUNT 3
 #include "seam_parentI2.c"
-recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
-    recv_pcap_packet,
-    recv_pcap_packet,
-};
 
 void key_peerC()
 {
@@ -80,14 +74,18 @@ void key_peerC()
     send_packet_close();
 }
 
- /*
- * Local Variables:
- * c-style: pluto
- * c-basic-offset: 4
- * compile-command: "make check"
- * End:
- */
+void recv_pcap_packet_and_init(u_char *user
+                               , const struct pcap_pkthdr *h
+                               , const u_char *bytes) {
+    recv_pcap_packet(user, h, bytes);
+    key_peerC();
+}
 
+recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
+    recv_pcap_packet,
+    recv_pcap_packet_and_init,
+    recv_pcap_packet,
+};
 
 #include "../lp13-parentI3/parentI3_main.c"
 
