@@ -1,0 +1,6 @@
+This test case is an IKEv2 initiator.
+It is called "I4", but it is really the second peer I2 state, after I3.
+
+The client peerA will use it's certificate to authenticate.
+
+
