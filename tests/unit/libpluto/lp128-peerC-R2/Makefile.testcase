@@ -1,0 +1,21 @@
+# -*- makefile -*-
+CONNNAME=peerC--peerA
+ENDNAME=acppeers
+
+TESTNAME=peerC-R2
+EXTRAOBJS+=${OBJDIRTOP}/programs/pluto/x509keys.o
+UNITTEST1ARGS=${WHACKFILE} ${CONNNAME} OUTPUT/${TESTNAME}.pcap peerA-I3.pcap peerA-I4.pcap
+
+PCAPDEPENDENCIES = ../lp125-peerA-I3/OUTPUT/peerA-I3.pcap
+PCAPDEPENDENCIES +=../lp127-peerA-I4/OUTPUT/peerA-I4.pcap
+include ../Makefile.pcapupdate
+
+pcapupdate: ${PCAPDEPENDENCIES}
+	cp ../lp125-peerA-I3/OUTPUT/peerA-I3.pcap .
+	cp ../lp127-peerA-I4/OUTPUT/peerA-I4.pcap .
+
+# Local Variables:
+# gdb-command: ""
+# End Variables:
+#
+
