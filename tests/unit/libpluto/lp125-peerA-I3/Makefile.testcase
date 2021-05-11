@@ -1,5 +1,6 @@
 # -*- makefile -*-
 CONNNAME=peerA--peerB
+CONNNAME_EXTRA=peerA--peerC
 ENDNAME=acppeers
 TESTNAME=peerA-I3
 PCAPOUTPUT=${TESTNAME}.pcap
