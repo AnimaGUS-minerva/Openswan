@@ -356,8 +356,10 @@ extern size_t format_end(char *buf, size_t buf_len
     , bool is_left, lset_t policy);
 
 struct whack_message;	/* forward declaration of tag whack_msg */
+enum initiate_type;
 extern void add_connection(const struct whack_message *wm);
-extern void initiate_connection(const char *name
+extern void initiate_connection(enum initiate_type it
+                                , const char *name
 				, int whackfd
 				, lset_t moredebug
 				, enum crypto_importance importance);

@@ -5,7 +5,8 @@
 void connection_check_phase2(void) {}
 
 /* initiate.c SEAM */
-void initiate_connection(const char *name, int whackfd
+void initiate_connection(enum initiate_type it
+                         , const char *name, int whackfd
 			 , lset_t moredebug
 			 , enum crypto_importance importance) {
   DBG_log("initiating conn %s\n", name);
