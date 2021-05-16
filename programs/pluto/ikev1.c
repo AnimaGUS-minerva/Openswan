@@ -777,7 +777,7 @@ informational(struct msg_digest *md)
 		tmp_c->IPhost_pair->him.addr = tmp_c->spd.that.host_addr;
 
 		/*Initiating connection to the redirected peer*/
-		initiate_connection(tmp_name, tmp_whack_sock, 0, pcim_demand_crypto);
+		initiate_connection(INITIATE_NOW, tmp_name, tmp_whack_sock, 0, pcim_demand_crypto);
 		return STF_IGNORE;
            }
 	   loglog(RC_LOG_SERIOUS, "received and ignored informational message with ISAKMP_N_CISCO_LOAD_BALANCE for unestablished state.");

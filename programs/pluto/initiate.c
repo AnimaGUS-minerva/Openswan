@@ -88,6 +88,7 @@
 struct initiate_stuff {
     int    whackfd;
     lset_t moredebug;
+    enum initiate_type it;
     enum crypto_importance importance;
 };
 
@@ -155,6 +156,18 @@ initiate_a_connection(struct connection *c
 	    free_sa(phase2_sa);
 	}
 
+        struct state *old_parent_state =
+            find_phase1_state(c
+                              , ISAKMP_SA_ESTABLISHED_STATES);
+
+        if(is->it == INITIATE_IF_DOWN && old_parent_state != NULL) {
+            whack_log(RC_NOALGO, "parent state #%lu already up, not starting new state"
+                      , old_parent_state->st_serialno);
+            reset_cur_connection();
+            close_any(is->whackfd);
+            return 0;
+        }
+
 	{
 	    whackfd = dup(whackfd);
 	    ipsecdoi_initiate(whackfd, NULL, NULL, c, c->policy, 1
@@ -170,7 +183,8 @@ initiate_a_connection(struct connection *c
 }
 
 void
-initiate_connection(const char *name, int whackfd
+initiate_connection(enum initiate_type it
+                    , const char *name, int whackfd
 		    , lset_t moredebug
 		    , enum crypto_importance importance)
 {
@@ -181,6 +195,7 @@ initiate_connection(const char *name, int whackfd
     is.whackfd   = whackfd;
     is.moredebug = moredebug;
     is.importance= importance;
+    is.it        = it;
 
     if (c != NULL)
     {
@@ -285,7 +300,7 @@ restart_connections_by_peer(struct connection *c)
     d = c->IPhost_pair->connections;
     for (; d != NULL; d = d->IPhp_next) {
         if (compare_end_addr_names(&c->spd.that, &d->spd.that)) {
-            initiate_connection(d->name, NULL_FD, 0, pcim_demand_crypto);
+            initiate_connection(INITIATE_NOW, d->name, NULL_FD, 0, pcim_demand_crypto);
         }
     }
 }
@@ -1641,7 +1656,7 @@ static void connection_check_ddns1(struct connection *c)
      */
     update_host_pairs(c);
     c->proposal_index = 0;
-    initiate_connection(c->name, NULL_FD, 0, pcim_demand_crypto);
+    initiate_connection(INITIATE_NOW, c->name, NULL_FD, 0, pcim_demand_crypto);
 
     /* no host pairs,  no more to do */
     if (c->IPhost_pair == NULL)
@@ -1664,7 +1679,7 @@ static void connection_check_ddns1(struct connection *c)
 	if (c == d)
 	    continue;
 	if (compare_end_addr_names(&c->spd.that, &d->spd.that))
-	    initiate_connection(d->name, NULL_FD, 0, pcim_demand_crypto);
+	    initiate_connection(INITIATE_NOW, d->name, NULL_FD, 0, pcim_demand_crypto);
     }
 }
 
