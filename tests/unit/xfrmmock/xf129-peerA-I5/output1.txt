@@ -18,7 +18,7 @@
 ./peerA-I5   loaded private key file '../../libpluto/samples/davecert/private/daveKey.pem' (CERT bytes)
 ./peerA-I5 loaded private key for keyid: PPK_RSA:AwEAAeOoT/75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535
 | processing whack message of size: A
-| Added new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| Added new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 ./peerA-I5   loading certificate from daveCert.pem
 ./peerA-I5   loaded host cert file '../../libpluto/samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
@@ -34,8 +34,8 @@
 |   concluded with <none>
 ./peerA-I5 adding connection: "peerA--peerB"
 | ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0
-| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-| Added new connection peerA--peerC with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| Added new connection peerA--peerC with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 ./peerA-I5   loading certificate from daveCert.pem
 ./peerA-I5   loaded host cert file '../../libpluto/samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
@@ -53,14 +53,14 @@
 |   concluded with peerA--peerB
 ./peerA-I5 adding connection: "peerA--peerC"
 | ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:1c1c[%fromcert]===::/0
-| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
 RC=0 "peerA--peerB": ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0; unrouted; eroute owner: #0
 RC=0 "peerA--peerB":     myip=unset; hisip=unset; mycert=daveCert.pem;
 RC=0 "peerA--peerB":   CAs: 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'...'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 RC=0 "peerA--peerB":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "peerA--peerB":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
-RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_PERMANENT
+RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_PERMANENT
 | Changed path to directory '../../libpluto/samples/davecert/cacerts'
 ./peerA-I5   loaded CA cert file 'rootCA.pem' (CERT bytes)
 |   authcert inserted
@@ -260,11 +260,11 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 |   61 76 65 40  6f 70 65 6e  73 77 61 6e  2e 6f 72 67
 | emitting length of IKEv2 Identification Payload: 84
 | IKEv2 thinking whether to send my certificate:
-|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |  sendcert: CERT_ALWAYSSEND and I did not get a certificate request
 |  so send cert.
 | Thinking about sending a certificate request (CERTREQ)
-|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   my next payload will be a certificate request
 |    next-payload: ISAKMP_NEXT_v2CERT [@0=0x25]
 | *****emit IKEv2 Certificate Payload:
@@ -1300,11 +1300,11 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 |   61 76 65 40  6f 70 65 6e  73 77 61 6e  2e 6f 72 67
 | emitting length of IKEv2 Identification Payload: 84
 | IKEv2 thinking whether to send my certificate:
-|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |  sendcert: CERT_ALWAYSSEND and I did not get a certificate request
 |  so send cert.
 | Thinking about sending a certificate request (CERTREQ)
-|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   my next payload will be a certificate request
 |    next-payload: ISAKMP_NEXT_v2CERT [@0=0x25]
 | *****emit IKEv2 Certificate Payload:
@@ -2063,6 +2063,53 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |   endport: 65535
 |   ip low: ::
 |   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+| state #4: install_ipsec_sa() for inbound and outbound
+| route owner of "peerA--peerC" unrouted: "peerA--peerB" erouted; eroute owner: "peerA--peerB" erouted
+| could_route called for peerA--peerC (kind=CK_PERMANENT)
+writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:1c1c
+0000: b4 01 00 00  10 00 05 00  00 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
+0050: ec 68 7c ff  fe 0c 1c 1c  12 34 56 78  32 00 00 00
+0060: fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
+0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+00e0: 05 40 00 00  0a 00 01 20  20 00 00 00  00 00 00 00
+00f0: 6c 00 14 00  73 68 61 32  35 36 00 00  00 00 00 00
+0130: 00 00 00 00  00 01 00 00  80 00 00 00  ef 51 14 eb
+0140: 32 97 d2 7b  8c e3 8d 5a  86 d6 4b 13  b3 e6 01 a1
+0150: 4a df fb f3  73 c5 19 73  53 f5 d0 99  58 00 02 00
+0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
+01a0: 80 00 00 00  9a dc 4e 58  9f e4 de f9  fd ed 4a 87
+01b0: 0e fc fa 5f
+writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
+0000: b4 01 00 00  1a 00 05 00  00 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
+0050: 80 54 3e ff  fe 9a d3 f4  34 56 78 12  32 00 00 00
+0060: fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 1c 1c
+0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+00e0: 05 40 00 00  0a 00 01 20  20 00 00 00  00 00 00 00
+00f0: 6c 00 14 00  73 68 61 32  35 36 00 00  00 00 00 00
+0130: 00 00 00 00  00 01 00 00  80 00 00 00  f6 cf 54 70
+0140: f8 ca 13 c3  2f c9 e8 52  c1 6c df ad  e6 8a 1d 37
+0150: 79 26 92 db  62 43 1f 25  98 71 58 93  58 00 02 00
+0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
+01a0: 80 00 00 00  16 0a 64 ad  fc fe b1 56  90 19 a2 15
+01b0: 65 74 65 41
+writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
+0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0060: ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+00a0: 00 00 00 00  00 00 00 00  00 85 00 00  00 00 00 00
+00b0: 00 00 00 00  00 00 00 00  44 00 05 00  fe 80 00 00
+00c0: 00 00 00 00  80 54 3e ff  fe 9a d3 f4  00 00 00 00
+00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
+00e0: ec 68 7c ff  fe 0c 1c 1c  05 40 00 00  01 00 00 00
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
+0100: 13 0d 00 00  ff ff ff ff
+./peerA-I5 add inbound eroute ::/0:0 --0-> ::/0:0 => tun:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
 | processor 'initiator-auth-process' returned STF_OK (3)
 | #4 complete v2 state transition with STF_OK
 ./peerA-I5 transition from state STATE_CHILD_C0_KEYING to state STATE_CHILD_C1_KEYED
@@ -2072,7 +2119,7 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 ./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
-RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
 RC=0 #4: "peerA--peerC":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #3: "peerA--peerC":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
@@ -2169,6 +2216,9 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 |   8e 0f 10 11  12 13 14 15  16 17 18 19  1a 1b 1c 1d
 |   4a 81 ff 7a  34 11 d3 de  b4 e7 51 11  48 08 18 99
 |   88 1b 60 c5  8a b7 ee 6f  4a 95 f6 3c  c8 ed a0 58
+| route owner of "peerA--peerB" unrouted: NULL
+| command executing unroute-client-v6
+| executing unroute
 | freeing state object #1
 ./peerA-I5 leak: skeyseed_t1, item size: X
 ./peerA-I5 leak: responder keys, item size: X
