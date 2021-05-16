@@ -18,7 +18,7 @@
 ./peerC-R2 registered kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 ./peerC-R2 registered kernel integ algorithm hmac_sha2_512_256 [14, 256<=key<=256]
 | processing whack message of size: A
-| Added new connection peerC--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| Added new connection peerC--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
 ./peerC-R2   loading certificate from bobCert.pem
 ./peerC-R2   loaded host cert file '../../libpluto/samples/bob/certs/bobCert.pem' (CERT bytes)
@@ -35,14 +35,14 @@
 |   concluded with <none>
 ./peerC-R2 adding connection: "peerC--peerA"
 | ::/0===fe80::ec68:7cff:fe0c:1c1c[C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org]...fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
-| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerC--peerA finished with: 1 [fe80::ec68:7cff:fe0c:1c1c]
 RC=0 "peerC--peerA": ::/0===fe80::ec68:7cff:fe0c:1c1c[C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org]...fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0; unrouted; eroute owner: #0
 RC=0 "peerC--peerA":     myip=unset; hisip=unset; mycert=bobCert.pem;
 RC=0 "peerC--peerA":   CAs: 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'...'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 RC=0 "peerC--peerA":   keys: 1:A339 C44A 54EA F8CD A71A 5BC3 31B6 80CE 210B CBFE 2:none...
 RC=0 "peerC--peerA":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
-RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
+RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
 | Changed path to directory '../../libpluto/samples/bob/cacerts'
 ./peerC-R2   loaded CA cert file 'rootCA.pem' (CERT bytes)
 |   authcert inserted
@@ -129,7 +129,7 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 | find_host_pair: concluded with peerC--peerA
 | found_host_pair_conn (find_host_connection2): fe80::ec68:7cff:fe0c:1c1c:500 %address/fe80::8054:3eff:fe9a:d3f4:500 -> hp:peerC--peerA
 | searching for connection with policy = IKEv2ALLOW/-
-| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK (peerC--peerA)
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK (peerC--peerA)
 | find_host_connection2 returns peerC--peerA (ike=none/none)
 ./peerC-R2 tentatively considering connection: peerC--peerA
 | creating state object #1 at Z
@@ -336,7 +336,7 @@ RC=0 "peerC--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 |   72 b9 7a 20
 | emitting length of IKEv2 Notify Payload: 28
 | Thinking about sending a certificate request (CERTREQ)
-|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   my next payload will be a certificate request
 | have CA 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA', send CERTREQ with CA's Key ID
 |    next-payload: ISAKMP_NEXT_v2CERTREQ [@388=0x26]
@@ -1063,7 +1063,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:1
 |    critical bit: none
 | emitting 16 zero bytes of iv into IKEv2 Encryption Payload
 | IKEv2 thinking whether to send my certificate:
-|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |  sendcert: CERT_ALWAYSSEND and I did get a certificate request
 |  so send cert.
 |    next-payload: ISAKMP_NEXT_v2IDr [@-20=0x24]
@@ -1086,7 +1086,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:1
 |   61 76 65 40  6f 70 65 6e  73 77 61 6e  2e 6f 72 67
 | assembled IDr payload -- CERT next
 | Thinking about sending a certificate request (CERTREQ)
-|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   my next payload will not be a certificate request
 | I did not send a certificate request (CERTREQ) because
 |   already received a CERT from peer
