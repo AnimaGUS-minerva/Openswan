@@ -884,6 +884,18 @@ void fmt_ipsec_sa_established(struct state *st, char *sadetails, int sad_len)
 	     , st->hidden_variables.st_dpd_local ?
 	     "enabled" : "none");
 
+    /* advance b to end of string */
+    if(st->st_vti_mark != 0) {
+        b = b + strlen(b);
+
+        snprintf(b, sad_len-(b-sadetails)-1
+                 , "%sVTImark=%08x"
+                 , ini
+                 , st->st_vti_mark);
+        ini = " ";
+        fin = "}";
+    }
+
     ini = " ";
     fin = "}";
 
