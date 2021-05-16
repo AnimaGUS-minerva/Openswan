@@ -169,7 +169,7 @@ help(void)
 	"initiation:"
 	    "\n "
 	    " whack"
-	    " (--initiate | --terminate)"
+	    " (--initiate | --initiate-if-down | --initiate-after-dpd | --terminate)"
 	    " --name <connection_name>"
 	    " [--asynchronous]"
 	    " [--xauthname name]"
@@ -372,6 +372,8 @@ enum option_enums {
     OPT_UNROUTE,
 
     OPT_INITIATE,
+    OPT_INITIATE_IF_DOWN,
+    OPT_INITIATE_DPD,
     OPT_TERMINATE,
     OPT_DELETE,
     OPT_DELETESTATE,
@@ -607,6 +609,8 @@ static const struct option long_opts[] = {
     { "unroute", no_argument, NULL, OPT_UNROUTE + OO },
 
     { "initiate", no_argument, NULL, OPT_INITIATE + OO },
+    { "initiate-if-down", no_argument, NULL, OPT_INITIATE_IF_DOWN + OO },
+    { "initiate-dpd",     no_argument, NULL, OPT_INITIATE_DPD + OO },
     { "terminate", no_argument, NULL, OPT_TERMINATE + OO },
     { "delete", no_argument, NULL, OPT_DELETE + OO },
     { "deletestate", required_argument, NULL, OPT_DELETESTATE + OO + NUMERIC_ARG },
@@ -1185,7 +1189,15 @@ main(int argc, char **argv)
 	    continue;
 
 	case OPT_INITIATE:	/* --initiate */
-	    msg.whack_initiate = TRUE;
+	    msg.whack_initiate = INITIATE_NOW;
+	    continue;
+
+	case OPT_INITIATE_IF_DOWN: /* --initiate-if-down */
+	    msg.whack_initiate = INITIATE_IF_DOWN;
+	    continue;
+
+	case OPT_INITIATE_DPD:	/* --initiate-dpd */
+	    msg.whack_initiate = INITIATE_DPD_WAIT;
 	    continue;
 
 	case OPT_TERMINATE:	/* --terminate */

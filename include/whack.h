@@ -130,6 +130,12 @@ struct legacy_whack_message {
     bool whack_shutdown;
 };
 
+enum initiate_type {
+    INITIATE_NOW = 1,
+    INITIATE_IF_DOWN = 2,
+    INITIATE_DPD_WAIT = 3,
+};
+
 /* whack message should be size independant, but it is in host-endian format */
 struct whack_message {
     u_int32_t magic;
@@ -226,7 +232,7 @@ struct whack_message {
     bool whack_unroute;
 
     /* for WHACK_INITIATE: */
-    bool whack_initiate;
+    enum initiate_type  whack_initiate;
 
     /* for WHACK_OPINITIATE */
     bool whack_oppo_initiate;
