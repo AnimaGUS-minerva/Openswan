@@ -1,0 +1,8 @@
+This test case is an IKEv2 responder -- it uses a certificate with a wildcard
+right= policy that accepts any ID that is properly validated.
+
+At this step, peerB, having created a policy, now decides that it wants to
+rekey it.   In the field, it was observed that peerA crashes when this occurs.
+
+
+
