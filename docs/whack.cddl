@@ -5,7 +5,7 @@ whack-message = {
   WHACK_CONNECTION => Connection,
   WHACK_ROUTE      => { WHACK_OPT_NAME=> tstr },
   WHACK_UNROUTE    => { WHACK_OPT_NAME=> tstr },
-  WHACK_INITIATE   => { WHACK_OPT_NAME=> tstr, WHACK_OPT_VTINUM => uint },
+  WHACK_INITIATE   => InitOptions,
   WHACK_INITIATE_OPPO=> InitiateOppo,
   WHACK_TERMINATE  => { WHACK_OPT_NAME=> tstr },
   WHACK_ADD_KEY    => PublicKey,
@@ -20,6 +20,10 @@ whack-message = {
   WHACK_CRASHPEER  => IPaddress,
   WHACK_ASYNC      => uint,
   WHACK_NOOP       => {},
+}
+
+InitOptions = {
+            WHACK_OPT_INITTYPE => uint,
 }
 
 StatusOptions = {
@@ -254,3 +258,4 @@ WHACK_OPT_MODECFG_CLIENT=142
 WHACK_OPT_CERTPOLICY=143
 WHACK_OPT_CERTTYPE=144
 WHACK_OPT_VTINUM=145
+WHACK_OPT_INITTYPE=146
