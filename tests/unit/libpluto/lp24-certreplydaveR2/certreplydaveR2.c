@@ -102,7 +102,7 @@ static void init_loaded(void)
 
 
 #define PCAP_INPUT_COUNT 4
-
+#include "seam_parentR2v2.c"
 recv_pcap recv_inputs[]={
     recv_pcap_packet_with_ke,
     recv_pcap_packet2_with_ke,

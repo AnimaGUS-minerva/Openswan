@@ -95,14 +95,13 @@ void recv_pcap_packet3_end_delete(u_char *user
 }
 
 
-#ifndef PCAP_INPUT_COUNT
 #define PCAP_INPUT_COUNT 3
+#include "seam_parentR2v2.c"
 recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
     recv_pcap_packet_with_ke,
     recv_pcap_packet2_and_delete,
     recv_pcap_packet3_end_delete,
 };
-#endif
 
 #include "../lp12-parentR2/parentR2_main.c"
 
