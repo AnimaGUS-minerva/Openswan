@@ -407,6 +407,7 @@ err_t whack_cbor_encode_msg(struct whack_message *wm
     } else {
       QCBOREncode_AddInt64ToMapN(&qec, 0, 1);
     }
+    QCBOREncode_AddInt64ToMapN(&qec, WHACK_OPT_INITTYPE, wm->whack_initiate);
     QCBOREncode_CloseMap(&qec);
   }
   if(wm->whack_oppo_initiate) {

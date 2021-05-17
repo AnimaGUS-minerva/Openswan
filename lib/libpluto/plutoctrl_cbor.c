@@ -328,8 +328,38 @@ void whack_cbor_process_initiate(QCBORDecodeContext *qdc
                                  , struct whack_message *wm
                                  , QCBORItem *first)
 {
-  wm->whack_initiate = TRUE;
-  whack_cbor_process_namemap(qdc, "initiate", wm, first);
+  QCBORItem   item;
+  QCBORError  uErr;
+  int count = first->val.uCount;
+
+  /* must be a MAP within the connection */
+  if(first->uDataType != QCBOR_TYPE_MAP) return;
+
+  wm->whack_initiate = INITIATE_NOW;
+
+  /* now process these items */
+  while(count-- > 0
+        && ((uErr = QCBORDecode_GetNext(qdc, &item)) == QCBOR_SUCCESS)) {
+
+    CBOR_DEBUG("    %s %d key: %ld value_type: %d\n", thingtype, count
+               , item.label.int64
+               , item.uDataType);
+    switch((enum connection_keys)item.label.int64) {
+    case WHACK_OPT_NAME:
+      whack_cbor_string2c(qdc, &item, &wm->name);
+      break;
+    case WHACK_OPT_VTINUM:
+      /* not sure what to do here. Might have been bad idea */
+      break;
+    case WHACK_OPT_INITTYPE:
+      wm->whack_initiate = item.val.int64;
+      /* Could INITIATE_NOW, INITIATE_IF_DOWN, INITIATE_DPD */
+      break;
+    default:
+      whack_cbor_consume_item(qdc, &item);
+      break;
+    }
+  }
 }
 
 void whack_cbor_process_terminate(QCBORDecodeContext *qdc
