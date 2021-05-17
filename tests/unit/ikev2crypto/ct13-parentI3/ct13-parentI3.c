@@ -10,6 +10,11 @@
 #include "seam_ikev2_sendI1.c"
 #include "seam_finish.c"
 
+static void init_local_interface(void)
+{
+    init_parker_interface(TRUE);
+}
+
 static void init_loaded(void)
 {   /* nothing */ }
 
