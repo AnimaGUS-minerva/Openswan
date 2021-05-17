@@ -1935,6 +1935,8 @@ main(int argc, char **argv)
     if (!LDISJOINT(opts_seen
     , LELEM(OPT_ROUTE) | LELEM(OPT_UNROUTE)
     | LELEM(OPT_INITIATE) | LELEM(OPT_TERMINATE)
+    | LELEM(OPT_INITIATE_IF_DOWN)
+    | LELEM(OPT_INITIATE_DPD)
     | LELEM(OPT_DELETE) | LELEM(OPT_CD)))
     {
 	if (!LHAS(opts_seen, OPT_NAME))
