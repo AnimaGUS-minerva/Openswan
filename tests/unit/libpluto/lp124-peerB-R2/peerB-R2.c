@@ -17,11 +17,11 @@ static void init_fake_secrets(void)
 {
     prompt_pass_t pass;
     memset(&pass, 0, sizeof(pass));
-    osw_init_ipsecdir_str("../samples/carol");
+    osw_init_ipsecdir_str(SAMPLEDIR "carol");
 
     osw_load_preshared_secrets(&pluto_secrets
 			       , TRUE
-			       , "../samples/carol.secrets"
+			       , SAMPLEDIR "carol.secrets"
 			       , &pass, NULL);
 }
 
