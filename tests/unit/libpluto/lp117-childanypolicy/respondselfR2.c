@@ -24,6 +24,7 @@ static void init_fake_secrets(void)
 static void init_loaded(void)
 {   /* nothing */ }
 
+#include "seam_parentR2.c"
 #include "../lp12-parentR2/parentR2_main.c"
 
  /*

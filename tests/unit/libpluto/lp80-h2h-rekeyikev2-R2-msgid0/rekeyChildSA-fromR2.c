@@ -96,13 +96,12 @@ void recv_pcap_packet2_and_rekey(u_char *user
 }
 
 
-#ifndef PCAP_INPUT_COUNT
 #define PCAP_INPUT_COUNT 2
+#include "seam_parentR2v2.c"
 recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
     recv_pcap_packet_with_ke,
     recv_pcap_packet2_and_rekey,
 };
-#endif
 
 #include "../lp12-parentR2/parentR2_main.c"
 
