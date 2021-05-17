@@ -7,9 +7,9 @@
 ./peerB-R2 ike_alg_register_prf(): Activating prf-hmac-sha1: Ok (ret=0)
 ./peerB-R2 ike_alg_register_hash(): Activating OAKLEY_MD5: Ok (ret=0)
 ./peerB-R2 ike_alg_register_prf(): Activating prf-hmac-md5: Ok (ret=0)
-./peerB-R2 adjusting ipsec.d to ../samples/carol
-./peerB-R2 loading secrets from "../samples/carol.secrets"
-./peerB-R2   loaded private key file '../samples/carol/private/carolKey.pem' (CERT bytes)
+./peerB-R2 adjusting ipsec.d to ../../libpluto/samples/carol
+./peerB-R2 loading secrets from "../../libpluto/samples/carol.secrets"
+./peerB-R2   loaded private key file '../../libpluto/samples/carol/private/carolKey.pem' (CERT bytes)
 ./peerB-R2 loaded private key for keyid: PPK_RSA:AwEAAbfz1/C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB
 ./peerB-R2 registered kernel encr algorithm aes_cbc [12, 128<=key<=512]
 ./peerB-R2 registered kernel encr algorithm 3des [3, 192<=key<=192]
@@ -21,7 +21,7 @@
 | Added new connection peerB--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
 ./peerB-R2   loading certificate from carolCert.pem
-./peerB-R2   loaded host cert file '../samples/carol/certs/carolCert.pem' (CERT bytes)
+./peerB-R2   loaded host cert file '../../libpluto/samples/carol/certs/carolCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org is 0
 | based upon ID_wildcard policy, the connection is a template.
@@ -43,12 +43,12 @@ RC=0 "peerB--peerA":   CAs: 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Uni
 RC=0 "peerB--peerA":   keys: 1:C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB 2:none...
 RC=0 "peerB--peerA":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
 RC=0 "peerB--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
-| Changed path to directory '../samples/carol/cacerts'
+| Changed path to directory '../../libpluto/samples/carol/cacerts'
 ./peerB-R2   loaded CA cert file 'rootCA.pem' (CERT bytes)
 |   authcert inserted
-| Changed path to directory '../samples/carol/aacerts'
-| Changed path to directory '../samples/carol/ocspcerts'
-| Found -1 items in directory '../samples/carol/crls'
+| Changed path to directory '../../libpluto/samples/carol/aacerts'
+| Changed path to directory '../../libpluto/samples/carol/ocspcerts'
+| Found -1 items in directory '../../libpluto/samples/carol/crls'
 |
 | List of X.509 End Certificates:
 |
