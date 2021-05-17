@@ -18,7 +18,7 @@
 ./peerB-R2 registered kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 ./peerB-R2 registered kernel integ algorithm hmac_sha2_512_256 [14, 256<=key<=256]
 | processing whack message of size: A
-| Added new connection peerB--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| Added new connection peerB--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
 ./peerB-R2   loading certificate from carolCert.pem
 ./peerB-R2   loaded host cert file '../../libpluto/samples/carol/certs/carolCert.pem' (CERT bytes)
@@ -35,14 +35,14 @@
 |   concluded with <none>
 ./peerB-R2 adding connection: "peerB--peerA"
 | ::/0===fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org]...fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
-| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerB--peerA finished with: 1 [fe80::ec68:7cff:fe0c:9aa4]
 RC=0 "peerB--peerA": ::/0===fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org]...fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0; unrouted; eroute owner: #0
 RC=0 "peerB--peerA":     myip=unset; hisip=unset; mycert=carolCert.pem;
 RC=0 "peerB--peerA":   CAs: 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'...'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 RC=0 "peerB--peerA":   keys: 1:C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB 2:none...
 RC=0 "peerB--peerA":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
-RC=0 "peerB--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
+RC=0 "peerB--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
 | Changed path to directory '../../libpluto/samples/carol/cacerts'
 ./peerB-R2   loaded CA cert file 'rootCA.pem' (CERT bytes)
 |   authcert inserted
@@ -129,7 +129,7 @@ RC=0 "peerB--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 | find_host_pair: concluded with peerB--peerA
 | found_host_pair_conn (find_host_connection2): fe80::ec68:7cff:fe0c:9aa4:500 %address/fe80::8054:3eff:fe9a:d3f4:500 -> hp:peerB--peerA
 | searching for connection with policy = IKEv2ALLOW/-
-| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK (peerB--peerA)
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK (peerB--peerA)
 | find_host_connection2 returns peerB--peerA (ike=none/none)
 ./peerB-R2 tentatively considering connection: peerB--peerA
 | creating state object #1 at Z
@@ -336,7 +336,7 @@ RC=0 "peerB--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2
 |   fc e1 04 cf
 | emitting length of IKEv2 Notify Payload: 28
 | Thinking about sending a certificate request (CERTREQ)
-|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   my next payload will be a certificate request
 | have CA 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA', send CERTREQ with CA's Key ID
 |    next-payload: ISAKMP_NEXT_v2CERTREQ [@388=0x26]
@@ -1140,7 +1140,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 |    critical bit: none
 | emitting 16 zero bytes of iv into IKEv2 Encryption Payload
 | IKEv2 thinking whether to send my certificate:
-|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |  sendcert: CERT_ALWAYSSEND and I did get a certificate request
 |  so send cert.
 |    next-payload: ISAKMP_NEXT_v2IDr [@-20=0x24]
@@ -1163,11 +1163,10 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 |   61 76 65 40  6f 70 65 6e  73 77 61 6e  2e 6f 72 67
 | assembled IDr payload -- CERT next
 | Thinking about sending a certificate request (CERTREQ)
-|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   my next payload will not be a certificate request
 | I did not send a certificate request (CERTREQ) because
 |   already received a CERT from peer
-| I am sending my certificate
 |    next-payload: ISAKMP_NEXT_v2CERT [@0=0x25]
 | *****emit IKEv2 Certificate Payload:
 |    critical bit: none
@@ -1240,7 +1239,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 |   ca 8c f1 8b  33 62 1b 4f  31 da 96 01  ed d6 6b 4b
 |   6d fa e9 24  72 00
 | emitting length of IKEv2 Certificate Payload: 1051
-| CHILD SA proposals received
+./peerB-R2 received CHILD SA proposal(s) will be processed
 | going to assemble AUTH payload
 |    next-payload: ISAKMP_NEXT_v2AUTH [@84=0x27]
 | *****emit IKEv2 Authentication Payload:
@@ -1364,14 +1363,14 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 |   startport: 0
 |   endport: 65535
 |   ip low: ::
-|   ip high: ffff:ffff:f5ff:ffff:ffff:ffff:ffff:ffff
+|   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
 | printing contents struct traffic_selector
 |   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
 |   ipprotoid: 0
 |   startport: 0
 |   endport: 65535
 |   ip low: ::
-|   ip high: ffff:ffff:f5ff:ffff:ffff:ffff:ffff:ffff
+|   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
 |    next-payload: ISAKMP_NEXT_v2SA [@1135=0x21]
 | *****emit IKEv2 Security Association Payload:
 |    critical bit: none
@@ -1450,7 +1449,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 | emitting 16 raw bytes of ipv6 low into IKEv2 Traffic Selector
 | ipv6 low  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 | emitting 16 raw bytes of ipv6 high into IKEv2 Traffic Selector
-| ipv6 high  ff ff ff ff  f5 ff ff ff  ff ff ff ff  ff ff ff ff
+| ipv6 high  ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 | emitting length of IKEv2 Traffic Selector: 40
 | emitting length of IKEv2 Traffic Selector Payload: 48
 |    next-payload: ISAKMP_NEXT_v2TSr [@1443=0x2d]
@@ -1465,7 +1464,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 | emitting 16 raw bytes of ipv6 low into IKEv2 Traffic Selector
 | ipv6 low  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 | emitting 16 raw bytes of ipv6 high into IKEv2 Traffic Selector
-| ipv6 high  ff ff ff ff  f5 ff ff ff  ff ff ff ff  ff ff ff ff
+| ipv6 high  ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 | emitting length of IKEv2 Traffic Selector: 40
 | emitting length of IKEv2 Traffic Selector Payload: 48
 | ikev2_derive_child_keys: using prf-hmac-sha2-256 for prf+ (SA #2 cloned from #1)
@@ -1583,10 +1582,10 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 |   0e 00 80 03  00 00 08 03  00 00 0c 00  00 00 08 05
 |   00 00 00 2d  00 00 30 01  00 00 00 08  00 00 28 00
 |   00 ff ff 00  00 00 00 00  00 00 00 00  00 00 00 00
-|   00 00 00 ff  ff ff ff f5  ff ff ff ff  ff ff ff ff
+|   00 00 00 ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 |   ff ff ff 00  00 00 30 01  00 00 00 08  00 00 28 00
 |   00 ff ff 00  00 00 00 00  00 00 00 00  00 00 00 00
-|   00 00 00 ff  ff ff ff f5  ff ff ff ff  ff ff ff ff
+|   00 00 00 ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 |   ff ff ff 00  01 02 03 04  05 06 07 08  09 0a 0b 0c
 | data after encryption:
 |   3e b5 e9 fd  fb db 7a 65  31 2f fe aa  0a b0 2f 07
@@ -1681,11 +1680,11 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 |   10 b1 56 c1  93 02 1e 1b  1b 9e c7 cb  6c ce f1 d5
 |   3e ec 80 93  f8 65 97 34  e2 d4 54 c3  3e a4 58 5a
 |   3c d4 96 27  5c 81 1f fb  9c b2 fb 57  d8 58 c9 da
-|   86 92 05 a2  dd 35 80 d6  73 0d 89 4e  55 eb e7 1d
-|   9d c2 ba ba  ab dd 16 a4  b7 03 25 21  8d a2 b4 3b
-|   4d e4 f2 bb  2a 8e 55 ff  86 92 45 57  60 40 ee 44
-|   0b c0 96 00  88 c2 0a 0d  a4 20 1c 07  c9 20 c8 67
-|   ed 01 65 b3  8b 3c 3c 50  d3 df 5b 21  e3 e7 62 9f
+|   53 60 69 89  93 d0 b6 12  7e 25 33 c5  42 34 83 4f
+|   7d 9b 75 73  f7 e6 30 0e  b7 ef 52 e8  8d 51 80 8b
+|   83 b9 fa 87  a2 f3 23 fe  df 28 1e f3  14 8d 88 51
+|   ab 8c ee 93  1c 55 84 33  96 be a6 17  fb b3 4e c7
+|   f9 e8 5b ba  84 f7 82 89  ae a8 9b ad  5b 1c ee 0b
 | data being hmac:  8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
 |   2e 20 23 20  00 00 00 01  00 00 06 50  24 00 06 34
 |   80 01 02 03  04 05 06 07  08 09 0a 0b  0c 0d 0e 0f
@@ -1781,19 +1780,19 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:9
 |   10 b1 56 c1  93 02 1e 1b  1b 9e c7 cb  6c ce f1 d5
 |   3e ec 80 93  f8 65 97 34  e2 d4 54 c3  3e a4 58 5a
 |   3c d4 96 27  5c 81 1f fb  9c b2 fb 57  d8 58 c9 da
-|   86 92 05 a2  dd 35 80 d6  73 0d 89 4e  55 eb e7 1d
-|   9d c2 ba ba  ab dd 16 a4  b7 03 25 21  8d a2 b4 3b
-|   4d e4 f2 bb  2a 8e 55 ff  86 92 45 57  60 40 ee 44
-|   0b c0 96 00  88 c2 0a 0d  a4 20 1c 07  c9 20 c8 67
-|   ed 01 65 b3  8b 3c 3c 50  d3 df 5b 21  e3 e7 62 9f
+|   53 60 69 89  93 d0 b6 12  7e 25 33 c5  42 34 83 4f
+|   7d 9b 75 73  f7 e6 30 0e  b7 ef 52 e8  8d 51 80 8b
+|   83 b9 fa 87  a2 f3 23 fe  df 28 1e f3  14 8d 88 51
+|   ab 8c ee 93  1c 55 84 33  96 be a6 17  fb b3 4e c7
+|   f9 e8 5b ba  84 f7 82 89  ae a8 9b ad  5b 1c ee 0b
 | out calculated auth:
-|   52 c5 59 bd  b2 30 43 9e  65 69 d2 25  97 c2 e2 a8
+|   83 44 a6 66  2f c2 3f 82  68 4a b7 c1  d7 7d 80 4e
 | #2 complete v2 state transition with STF_OK
 ./peerB-R2 transition from state STATE_PARENT_R1 to state STATE_PARENT_R2
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
 ./peerB-R2 STATE_PARENT_R2: received v2I2, PARENT SA established {auth=IKEv2 oursig=AwEAAbfz1 theirsig=AwEAAeOoT cipher=aes_128 integ=sha256_128 prf=prf-hmac-sha2-256 group=modp2048} (msgid: 00000001/00000001)
-./peerB-R2 negotiated tunnel [::,ffff:ffff:f5ff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:f5ff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerB-R2 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
+./peerB-R2 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
+./peerB-R2 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00002703}
 | sending reply packet to fe80::8054:3eff:fe9a:d3f4:500 (from port 500)
 sending 1616 bytes for STATE_PARENT_R1 through eth0:500 [fe80::ec68:7cff:fe0c:9aa4:500] to fe80::8054:3eff:fe9a:d3f4:500 (using #2)
 |   8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
@@ -1891,12 +1890,12 @@ sending 1616 bytes for STATE_PARENT_R1 through eth0:500 [fe80::ec68:7cff:fe0c:9a
 |   10 b1 56 c1  93 02 1e 1b  1b 9e c7 cb  6c ce f1 d5
 |   3e ec 80 93  f8 65 97 34  e2 d4 54 c3  3e a4 58 5a
 |   3c d4 96 27  5c 81 1f fb  9c b2 fb 57  d8 58 c9 da
-|   86 92 05 a2  dd 35 80 d6  73 0d 89 4e  55 eb e7 1d
-|   9d c2 ba ba  ab dd 16 a4  b7 03 25 21  8d a2 b4 3b
-|   4d e4 f2 bb  2a 8e 55 ff  86 92 45 57  60 40 ee 44
-|   0b c0 96 00  88 c2 0a 0d  a4 20 1c 07  c9 20 c8 67
-|   ed 01 65 b3  8b 3c 3c 50  d3 df 5b 21  e3 e7 62 9f
-|   52 c5 59 bd  b2 30 43 9e  65 69 d2 25  97 c2 e2 a8
+|   53 60 69 89  93 d0 b6 12  7e 25 33 c5  42 34 83 4f
+|   7d 9b 75 73  f7 e6 30 0e  b7 ef 52 e8  8d 51 80 8b
+|   83 b9 fa 87  a2 f3 23 fe  df 28 1e f3  14 8d 88 51
+|   ab 8c ee 93  1c 55 84 33  96 be a6 17  fb b3 4e c7
+|   f9 e8 5b ba  84 f7 82 89  ae a8 9b ad  5b 1c ee 0b
+|   83 44 a6 66  2f c2 3f 82  68 4a b7 c1  d7 7d 80 4e
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 | freeing state object #1

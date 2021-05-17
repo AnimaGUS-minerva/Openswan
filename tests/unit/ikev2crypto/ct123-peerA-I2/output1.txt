@@ -18,7 +18,7 @@
 ./peerA-I2 registered kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 ./peerA-I2 registered kernel integ algorithm hmac_sha2_512_256 [14, 256<=key<=256]
 | processing whack message of size: A
-| Added new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| Added new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 ./peerA-I2   loading certificate from daveCert.pem
 ./peerA-I2   loaded host cert file '../../libpluto/samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
@@ -34,14 +34,14 @@
 |   concluded with <none>
 ./peerA-I2 adding connection: "peerA--peerB"
 | ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0
-| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
 RC=0 "peerA--peerB": ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0; unrouted; eroute owner: #0
 RC=0 "peerA--peerB":     myip=unset; hisip=unset; mycert=daveCert.pem;
 RC=0 "peerA--peerB":   CAs: 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'...'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 RC=0 "peerA--peerB":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "peerA--peerB":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
-RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_PERMANENT
+RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_PERMANENT
 | Changed path to directory '../../libpluto/samples/davecert/cacerts'
 ./peerA-I2   loaded CA cert file 'rootCA.pem' (CERT bytes)
 |   authcert inserted
@@ -253,13 +253,12 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 |   61 76 65 40  6f 70 65 6e  73 77 61 6e  2e 6f 72 67
 | emitting length of IKEv2 Identification Payload: 84
 | IKEv2 thinking whether to send my certificate:
-|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |  sendcert: CERT_ALWAYSSEND and I did not get a certificate request
 |  so send cert.
 | Thinking about sending a certificate request (CERTREQ)
-|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   my policy is : RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   my next payload will be a certificate request
-| I am sending my certificate
 |    next-payload: ISAKMP_NEXT_v2CERT [@0=0x25]
 | *****emit IKEv2 Certificate Payload:
 |    critical bit: none
@@ -486,7 +485,7 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 | emitting 16 raw bytes of ipv6 low into IKEv2 Traffic Selector
 | ipv6 low  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 | emitting 16 raw bytes of ipv6 high into IKEv2 Traffic Selector
-| ipv6 high  ff ff ff ff  f5 ff ff ff  ff ff ff ff  ff ff ff ff
+| ipv6 high  ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 | emitting length of IKEv2 Traffic Selector: 40
 | emitting length of IKEv2 Traffic Selector Payload: 48
 |    next-payload: ISAKMP_NEXT_v2TSr [@1506=0x2d]
@@ -501,7 +500,7 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 | emitting 16 raw bytes of ipv6 low into IKEv2 Traffic Selector
 | ipv6 low  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 | emitting 16 raw bytes of ipv6 high into IKEv2 Traffic Selector
-| ipv6 high  ff ff ff ff  f5 ff ff ff  ff ff ff ff  ff ff ff ff
+| ipv6 high  ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 | emitting length of IKEv2 Traffic Selector: 40
 | emitting length of IKEv2 Traffic Selector Payload: 48
 | emitting 14 raw bytes of padding and length into cleartext
@@ -607,10 +606,10 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 |   00 80 03 00  00 08 03 00  00 02 00 00  00 08 05 00
 |   00 00 2d 00  00 30 01 00  00 00 08 00  00 28 00 00
 |   ff ff 00 00  00 00 00 00  00 00 00 00  00 00 00 00
-|   00 00 ff ff  ff ff f5 ff  ff ff ff ff  ff ff ff ff
+|   00 00 ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 |   ff ff 00 00  00 30 01 00  00 00 08 00  00 28 00 00
 |   ff ff 00 00  00 00 00 00  00 00 00 00  00 00 00 00
-|   00 00 ff ff  ff ff f5 ff  ff ff ff ff  ff ff ff ff
+|   00 00 ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 |   ff ff 00 01  02 03 04 05  06 07 08 09  0a 0b 0c 0d
 | data after encryption:
 |   67 a7 d9 8f  d5 3a c4 a5  01 f5 8f f2  15 07 1f 4b
@@ -709,11 +708,11 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 |   74 7e e0 63  ff ba dd d8  b2 52 6a a0  38 61 e1 53
 |   e5 b4 05 c5  21 40 e2 d4  20 c5 31 74  ae 33 b6 86
 |   ef c1 a9 89  2f cb 84 3d  f6 a8 67 9f  11 ac 27 3b
-|   c8 63 6a 5f  c2 2c 12 a0  ca 3e b6 3a  8b a3 20 0c
-|   f5 14 18 e1  5f d7 b4 b3  18 ec 48 ce  07 a0 5b bd
-|   fc 1b 11 3c  e2 89 5a df  49 9d e0 c9  56 b5 6d fd
-|   0e 46 66 27  51 2f 0d b6  96 b3 eb 9d  ac 43 91 26
-|   0e 2c 36 46  4c f3 8a 28  52 64 dc 8f  bc 81 72 94
+|   85 e3 c9 e5  2a a5 bb b2  15 90 22 0b  ff 02 78 b7
+|   84 f5 76 fc  31 0e 84 df  80 78 8f 4b  aa e3 e3 e6
+|   2e 3e fd 63  75 cb c7 2b  16 b7 f9 87  47 22 fd d4
+|   c8 d8 d7 34  6f 9a 6f 28  27 2b 9b 47  15 ae df 85
+|   ce bf 07 af  2d b2 a3 d1  d3 69 94 47  b8 49 25 41
 | data being hmac:  8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
 |   2e 20 23 08  00 00 00 01  00 00 06 90  23 00 06 74
 |   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
@@ -813,13 +812,13 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 |   74 7e e0 63  ff ba dd d8  b2 52 6a a0  38 61 e1 53
 |   e5 b4 05 c5  21 40 e2 d4  20 c5 31 74  ae 33 b6 86
 |   ef c1 a9 89  2f cb 84 3d  f6 a8 67 9f  11 ac 27 3b
-|   c8 63 6a 5f  c2 2c 12 a0  ca 3e b6 3a  8b a3 20 0c
-|   f5 14 18 e1  5f d7 b4 b3  18 ec 48 ce  07 a0 5b bd
-|   fc 1b 11 3c  e2 89 5a df  49 9d e0 c9  56 b5 6d fd
-|   0e 46 66 27  51 2f 0d b6  96 b3 eb 9d  ac 43 91 26
-|   0e 2c 36 46  4c f3 8a 28  52 64 dc 8f  bc 81 72 94
+|   85 e3 c9 e5  2a a5 bb b2  15 90 22 0b  ff 02 78 b7
+|   84 f5 76 fc  31 0e 84 df  80 78 8f 4b  aa e3 e3 e6
+|   2e 3e fd 63  75 cb c7 2b  16 b7 f9 87  47 22 fd d4
+|   c8 d8 d7 34  6f 9a 6f 28  27 2b 9b 47  15 ae df 85
+|   ce bf 07 af  2d b2 a3 d1  d3 69 94 47  b8 49 25 41
 | out calculated auth:
-|   7c b3 2f 05  2e d6 1b a4  74 44 9e 24  f7 09 ec 89
+|   3b a8 ac d0  0f 84 fa 5c  c3 57 c1 ff  bc 64 bd d5
 | #2 complete v2 state transition with STF_OK
 ./peerA-I2 transition from state STATE_PARENT_I1 to state STATE_PARENT_I2
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
@@ -925,12 +924,12 @@ sending 1680 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |   74 7e e0 63  ff ba dd d8  b2 52 6a a0  38 61 e1 53
 |   e5 b4 05 c5  21 40 e2 d4  20 c5 31 74  ae 33 b6 86
 |   ef c1 a9 89  2f cb 84 3d  f6 a8 67 9f  11 ac 27 3b
-|   c8 63 6a 5f  c2 2c 12 a0  ca 3e b6 3a  8b a3 20 0c
-|   f5 14 18 e1  5f d7 b4 b3  18 ec 48 ce  07 a0 5b bd
-|   fc 1b 11 3c  e2 89 5a df  49 9d e0 c9  56 b5 6d fd
-|   0e 46 66 27  51 2f 0d b6  96 b3 eb 9d  ac 43 91 26
-|   0e 2c 36 46  4c f3 8a 28  52 64 dc 8f  bc 81 72 94
-|   7c b3 2f 05  2e d6 1b a4  74 44 9e 24  f7 09 ec 89
+|   85 e3 c9 e5  2a a5 bb b2  15 90 22 0b  ff 02 78 b7
+|   84 f5 76 fc  31 0e 84 df  80 78 8f 4b  aa e3 e3 e6
+|   2e 3e fd 63  75 cb c7 2b  16 b7 f9 87  47 22 fd d4
+|   c8 d8 d7 34  6f 9a 6f 28  27 2b 9b 47  15 ae df 85
+|   ce bf 07 af  2d b2 a3 d1  d3 69 94 47  b8 49 25 41
+|   3b a8 ac d0  0f 84 fa 5c  c3 57 c1 ff  bc 64 bd d5
 1: output closed
 ./peerA-I2 deleting connection
 | pass 0: considering CHILD SAs to delete
