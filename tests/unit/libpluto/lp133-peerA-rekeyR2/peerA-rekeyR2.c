@@ -69,8 +69,6 @@ void recv_pcap_packet_with_rekey(u_char *user
     DBG_log("packet 3 -- rekey starting\n");
     recv_pcap_packet_gen(user, h, bytes);
 
-
-
     /* find st involved */
     st = state_with_serialno(3);
     if(st) {
