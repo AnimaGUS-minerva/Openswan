@@ -1016,7 +1016,7 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 2: output to OUTPUT/peerA-rekeyR1.pcap
 2: input from peerB-rI1.pcap
 |   =========== input from pcap file peerB-rI1.pcap ========
-| packet 3
+| packet 3 -- rekey starting
 | *received 652 bytes from fe80::ec68:7cff:fe0c:9aa4:500 on eth0 (port=500)
 |   81 02 03 04  05 06 07 08  00 00 00 00  00 00 00 00
 |   21 20 22 08  00 00 00 00  00 00 02 8c  22 00 01 0c
@@ -1099,7 +1099,6 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 | received a notify..
 | processor 'responder-V2_init' returned STF_SUSPEND (2)
 | #3 complete v2 state transition with STF_SUSPEND
-| packet 3 continue
 | ikev2 parent inI1outR1: calculated ke+nonce, sending R1
 | nat chunk  81 02 03 04  05 06 07 08  00 00 00 00  00 00 00 00
 |   fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 9a a4
