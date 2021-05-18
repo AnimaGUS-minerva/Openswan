@@ -1,0 +1,13 @@
+This test case is an IKEv2 initiator.
+It has initiated to peerB, and completed things in lp125.
+THEN, the peer decides to initiate a rekey (in lp130).
+
+In production, this results in a passert failure at:
+    /osw/t11228-xfrm-with-vti/programs/pluto/connections.c:1456: match_id(his_id, &d->spd.that.id, &wildcards)
+
+This test case attempts to reproduce this, so that it can be fixed.
+This is where the originally initiator receives the rekey I2 message, and
+this is where the error should be.
+
+
+
