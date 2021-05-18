@@ -22,6 +22,22 @@ recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
 #include "../lp12-parentR2/parentR2_main.c"
 #include "../lp130-peerB-rekeyI1/keyPeerA.c"
 
+void key_peerA(const char *pcap_out)
+{
+    /* close pcap file from before */
+    finish_pcap();
+
+    /* open it again, to just get this packet */
+    DBG_log("%u: output to %s\n", 3, pcap_out);
+    send_packet_setup_pcap(pcap_out);
+
+    DBG_log("now re-keying to peerA\n");
+    show_states_status();
+
+    rekey_to_peerA();
+    send_packet_close();
+}
+
  /*
  * Local Variables:
  * c-style: pluto

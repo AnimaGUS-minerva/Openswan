@@ -1746,8 +1746,8 @@ sending 1552 bytes for STATE_PARENT_R1 through eth0:500 [fe80::ec68:7cff:fe0c:9a
 |   b1 19 63 b4  99 6c 22 c4  be 18 69 68  19 f7 6d 23
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
-3: output to OUTPUT/peerB-rI1.pcap
-now re-keying to peerA
+| 3: output to OUTPUT/peerB-rI1.pcap
+| now re-keying to peerA
 RC=0 #2: "peerB--peerA"[1] fe80::8054:3eff:fe9a:d3f4:500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=0; idle; import:respond to friend
 RC=0 #1: "peerB--peerA"[1] fe80::8054:3eff:fe9a:d3f4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
 | find_phase1_state: no SA found for conn 'peerB--peerA'
