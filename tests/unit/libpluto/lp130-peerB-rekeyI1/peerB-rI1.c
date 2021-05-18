@@ -49,7 +49,8 @@ static void init_loaded(void) {
 }
 
 #define PCAP_INPUT_COUNT 2
-#define AFTER_CONN key_peerA
+extern void key_peerA(const char *pcap_out);
+#define AFTER_CONN() key_peerA(pcap_out)
 #include "seam_parentR2v2.c"
 recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
     recv_pcap_packet_with_ke,
@@ -58,11 +59,18 @@ recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
 
 #include "../lp12-parentR2/parentR2_main.c"
 
-void key_peerA(void)
+void key_peerA(const char *pcap_out)
 {
     struct state *st = NULL;
     struct pcr_kenonce *kn = &crypto_req->pcr_d.kn;
     struct connection *c1;
+
+    /* close pcap file */
+    finish_pcap();
+
+    /* open it again, to just get this packet */
+    fprintf(stderr, "%u: output to %s\n", 3, pcap_out);
+    send_packet_setup_pcap(pcap_out);
 
     fprintf(stderr, "now re-keying to peerA\n");
     show_states_status();
