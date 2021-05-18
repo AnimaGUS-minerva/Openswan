@@ -4,7 +4,7 @@ ENDNAME=acppeers
 
 TESTNAME=peerB-rI1
 EXTRAOBJS+=${OBJDIRTOP}/programs/pluto/x509keys.o
-UNITTEST1ARGS=${WHACKFILE} ${CONNNAME} OUTPUT/${TESTNAME}.pcap peerA-I3.pcap peerA-I4.pcap
+UNITTEST1ARGS=${WHACKFILE} ${CONNNAME} OUTPUT/${TESTNAME}.pcap peerA-I1.pcap peerA-I2.pcap
 
 PCAPDEPENDENCIES = ../lp121-peerA-I1/OUTPUT/peerA-I1.pcap
 PCAPDEPENDENCIES +=../lp123-peerA-I2/OUTPUT/peerA-I2.pcap
