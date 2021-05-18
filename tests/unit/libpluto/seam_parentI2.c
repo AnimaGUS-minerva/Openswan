@@ -1,4 +1,6 @@
-/* this is replicated in the unit test cases since the patching up of the crypto values is case specific */
+/* this is sometimes replicated in each unit test case
+ * since the patching up of the crypto values is case specific
+*/
 void recv_pcap_packet(u_char *user
 		      , const struct pcap_pkthdr *h
 		      , const u_char *bytes)
