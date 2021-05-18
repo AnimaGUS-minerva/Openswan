@@ -187,7 +187,9 @@ UNITTESTS_v1R3+=lp126-peerC-R1
 UNITTESTS_I4+=lp127-peerA-I4
 UNITTESTS_R4+=lp128-peerC-R2
 UNITTESTS_I5+=lp129-peerA-I5
-
+UNITTESTS_I4+=lp130-peerB-rekeyI1
+UNITTESTS_R4+=lp131-peerA-rekeyR1
+UNITTESTS_I5+=lp132-peerB-rekeyI2
 
 # first runs tests that have no interdependancies
 UNITTESTS=${UNITTESTS_0}
