@@ -20,7 +20,7 @@ void send_packet_close(void)
   }
 }
 
-void send_packet_setup_pcap(char *file)
+void send_packet_setup_pcap(const char *file)
 {
 	pcap_t *pt;
 
