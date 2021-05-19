@@ -23,24 +23,26 @@
 ./peerA-I5   loaded host cert file '../../libpluto/samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org is 0
-| counting wild cards for %fromcert is 0
+| counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
+| based upon ID_wildcard policy, the connection is a template.
 | orient peerA--peerB checking against if: eth0 (AF_INET6:fe80::8054:3eff:fe9a:d3f4:500)
 |     orient matched on IP
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
 | find_host_pair: looking for me=fe80::8054:3eff:fe9a:d3f4:500 %address him=fe80::ec68:7cff:fe0c:9aa4:500 exact-match
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: fe80::8054:3eff:fe9a:d3f4:500 %address fe80::ec68:7cff:fe0c:9aa4:500 -> hp:none
-| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=%fromcert (exact)
+| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=<any> (exact)
 |   concluded with <none>
 ./peerA-I5 adding connection: "peerA--peerB"
-| ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0
+| ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 | Added new connection peerA--peerC with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 ./peerA-I5   loading certificate from daveCert.pem
 ./peerA-I5   loaded host cert file '../../libpluto/samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org is 0
-| counting wild cards for %fromcert is 0
+| counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
+| based upon ID_wildcard policy, the connection is a template.
 | orient peerA--peerC checking against if: eth0 (AF_INET6:fe80::8054:3eff:fe9a:d3f4:500)
 |     orient matched on IP
 |   orient peerA--peerC finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
@@ -48,19 +50,19 @@
 | find_host_pair: comparing to me=fe80::8054:3eff:fe9a:d3f4:500 %address him=fe80::ec68:7cff:fe0c:9aa4:500
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: fe80::8054:3eff:fe9a:d3f4:500 %address fe80::ec68:7cff:fe0c:1c1c:500 -> hp:none
-| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=%fromcert (exact)
-|                   comparing to me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=%fromcert (peerA--peerB)
+| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=<any> (exact)
+|                   comparing to me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=* (peerA--peerB)
 |   concluded with peerA--peerB
 ./peerA-I5 adding connection: "peerA--peerC"
-| ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:1c1c[%fromcert]===::/0
+| ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:1c1c[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
-RC=0 "peerA--peerB": ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0; unrouted; eroute owner: #0
+RC=0 "peerA--peerB": ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0; unrouted; eroute owner: #0
 RC=0 "peerA--peerB":     myip=unset; hisip=unset; mycert=daveCert.pem;
 RC=0 "peerA--peerB":   CAs: 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'...'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 RC=0 "peerA--peerB":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "peerA--peerB":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
-RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_PERMANENT
+RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
 | Changed path to directory '../../libpluto/samples/davecert/cacerts'
 ./peerA-I5   loaded CA cert file 'rootCA.pem' (CERT bytes)
 |   authcert inserted
@@ -1025,7 +1027,7 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
 | state #2: install_ipsec_sa() for inbound and outbound
 | route owner of "peerA--peerB" unrouted: NULL; eroute owner: NULL
-| could_route called for peerA--peerB (kind=CK_PERMANENT)
+| could_route called for peerA--peerB (kind=CK_TEMPLATE)
 writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:9aa4
 0000: b4 01 00 00  10 00 05 00  00 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
@@ -1101,7 +1103,7 @@ writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 | v2_state_transition: st is #2; pst is #0; transition_st is #0
 ./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
 ./peerA-I5 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
+./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=000011d7}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 now keying to peerC
@@ -2065,7 +2067,7 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
 | state #4: install_ipsec_sa() for inbound and outbound
 | route owner of "peerA--peerC" unrouted: "peerA--peerB" erouted; eroute owner: "peerA--peerB" erouted
-| could_route called for peerA--peerC (kind=CK_PERMANENT)
+| could_route called for peerA--peerC (kind=CK_TEMPLATE)
 writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:1c1c
 0000: b4 01 00 00  10 00 05 00  00 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
@@ -2116,7 +2118,7 @@ writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 | v2_state_transition: st is #4; pst is #0; transition_st is #0
 ./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
 ./peerA-I5 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
+./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00000d13}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=1; idle; import:admin initiate
@@ -2334,6 +2336,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-I5 leak: host_pair, item size: X
 ./peerA-I5 leak: host ip, item size: X
 ./peerA-I5 leak: ca string, item size: X
+./peerA-I5 leak: keep id name, item size: X
 ./peerA-I5 leak: host ip, item size: X
 ./peerA-I5 leak: ca string, item size: X
 ./peerA-I5 leak: keep id name, item size: X
@@ -2351,7 +2354,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-I5 leak: pubkey, item size: X
 ./peerA-I5 leak: certificate filename, item size: X
 ./peerA-I5 leak: struct connection, item size: X
-./peerA-I5 leak: keep id name, item size: X
+./peerA-I5 leak: 2 * keep id name, item size: X
 ./peerA-I5 leak: ID host_pair, item size: X
 ./peerA-I5 leak: issuer, item size: X
 ./peerA-I5 leak: rfc3110 format of public key [created], item size: X
