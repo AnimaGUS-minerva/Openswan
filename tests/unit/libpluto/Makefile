@@ -190,6 +190,7 @@ UNITTESTS_I5+=lp129-peerA-I5
 UNITTESTS_I4+=lp130-peerB-rekeyI1
 UNITTESTS_R4+=lp131-peerA-rekeyR1
 UNITTESTS_I5+=lp132-peerB-rekeyI2
+UNITTESTS_R5+=lp133-peerA-rekeyR2
 
 # first runs tests that have no interdependancies
 UNITTESTS=${UNITTESTS_0}
@@ -209,6 +210,7 @@ UNITTESTS+=${UNITTESTS_v1R3}
 UNITTESTS+=${UNITTESTS_I4}
 UNITTESTS+=${UNITTESTS_R4}
 UNITTESTS+=${UNITTESTS_I5}
+UNITTESTS+=${UNITTESTS_R5}
 
 # running 'make check KEEPGOING=1' will run through all tests w/o stopping
 ERROR_CHECK=$(if ${KEEPGOING},,set -e;)
