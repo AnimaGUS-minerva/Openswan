@@ -23,25 +23,26 @@
 ./peerA-rekeyR1   loaded host cert file '../samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org is 0
-| counting wild cards for %fromcert is 0
+| counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
+| based upon ID_wildcard policy, the connection is a template.
 | orient peerA--peerB checking against if: eth0 (AF_INET6:fe80::8054:3eff:fe9a:d3f4:500)
 |     orient matched on IP
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
 | find_host_pair: looking for me=fe80::8054:3eff:fe9a:d3f4:500 %address him=fe80::ec68:7cff:fe0c:9aa4:500 exact-match
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: fe80::8054:3eff:fe9a:d3f4:500 %address fe80::ec68:7cff:fe0c:9aa4:500 -> hp:none
-| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=%fromcert (exact)
+| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=<any> (exact)
 |   concluded with <none>
 ./peerA-rekeyR1 adding connection: "peerA--peerB"
-| ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0
+| ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
-RC=0 "peerA--peerB": ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[%fromcert]===::/0; unrouted; eroute owner: #0
+RC=0 "peerA--peerB": ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0; unrouted; eroute owner: #0
 RC=0 "peerA--peerB":     myip=unset; hisip=unset; mycert=daveCert.pem;
 RC=0 "peerA--peerB":   CAs: 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'...'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 RC=0 "peerA--peerB":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "peerA--peerB":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
-RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_PERMANENT
+RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
 | Changed path to directory '../samples/davecert/cacerts'
 ./peerA-rekeyR1   loaded CA cert file 'rootCA.pem' (CERT bytes)
 |   authcert inserted
