@@ -31,7 +31,7 @@ static void init_loaded(void)
 
 #define MORE_DEBUGGING DBG_CRYPT|DBG_PARSING|DBG_EMITTING
 
-#include "seam_parentR2.c"
+#include "seam_parentR2v2.c"
 #include "../../libpluto/lp12-parentR2/parentR2_main.c"
 
  /*

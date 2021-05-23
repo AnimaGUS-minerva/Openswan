@@ -50,6 +50,7 @@ static void init_loaded(void) {
     list_authcerts("CA", AUTH_CA, 1);
 }
 
+#include "seam_parentR2v2.c"
 #include "../lp12-parentR2/parentR2_main.c"
 
  /*
