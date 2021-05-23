@@ -168,3 +168,40 @@ This test uses IKEv1 with certificates and NAT-traversal.
                                      lp109-v1rwnatQR1
 
 
+ACP-peers system
+================
+
+This test series is about the RFC8994 (Autonomic Control Plane) mechanisms.
+It was originally created to verify problems with VTI and eroutes.
+
+This is the basic interaction:
+
+    lp121-peerA-I1       ---I1-->
+                                     lp122-peerB-R1
+                         <--R1---
+    lp123-peerA-I2       ---I2-->
+                                     lp124-peerB-R2
+                         <--R2---
+    lp125-peerA-I3
+
+To this, a second responder was added, called "peerC", and peerA initiates to it in I3, after keying with peerB:
+
+                         -->I1c-->
+                                     lp126-peerC-R1
+                         <--R1c---
+    lp127-peerA-I4       ---I2c--->
+                                     lp128-peerC-R2
+                         <--R2c---
+    lp129-peerA-I5
+
+
+As a second branch after lp125, peerB rekeys the connection with peerA, after its lp124:
+
+                                     lp130-peerB-rekeyI1
+                         <---I1r---
+    lp131-peerA-rekeyR1  ----R1r-->
+                                     lp132-peerB-rekeyI2
+                         <---I2r---
+    lp133-peerA-rekeyR2  ----R2r-->
+
+
