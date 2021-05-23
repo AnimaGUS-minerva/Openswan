@@ -47,6 +47,10 @@ programs ${TESTNAME}: ${TESTNAME}.c $(wildcard ../seam_*.c) ${EXTRAOBJS}
 	@echo " LD ${TESTNAME}"
 	${Q}${CC} -g -O0 -o ${TESTNAME} ${TESTNAME}.o ${EXTRAFLAGS} ${EXTRAOBJS} ${EXTRALIBS}
 
+${TESTNAME}.E: ${TESTNAME}.c
+	@echo " CC ${TESTNAME}"
+	${Q}${CC} -o ${TESTNAME}.E -E -c -g -O0 ${TESTNAME}.c ${EXTRAFLAGS}
+
 check: OUTPUT/R2-dump.txt
 OUTPUT/R2-dump.txt:	${WHACKFILE} ${TESTNAME}
 	@mkdir -p OUTPUT
