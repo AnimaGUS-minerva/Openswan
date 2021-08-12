@@ -47,8 +47,8 @@ a2                                      # map(2)
       04                                # unsigned(4)
       ab                                # map(11)
          05                             # unsigned(5)
-         65                             # text(5)
-            2563657274                  # "%cert"
+         78 1e                          # text(30)
+            433d43412c2053543d4f4e2c204f3d58656c6572616e63652c20434e3d2a # "C=CA, ST=ON, O=Xelerance, CN=*"
          07                             # unsigned(7)
          65                             # text(5)
             2573616d65                  # "%same"
