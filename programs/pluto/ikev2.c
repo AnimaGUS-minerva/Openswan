@@ -1226,20 +1226,38 @@ static void success_v2_state_transition(struct msg_digest **mdp)
 
 	if(st!=pst && IS_CHILD_SA(st) && IS_CHILD_SA_ESTABLISHED(st))
 	{
-	    char usubl[128], usubh[128];
-	    char tsubl[128], tsubh[128];
             const char *story = enum_name(&state_stories, st->st_state);
             struct state *saved_state;
 
-	    addrtot(&st->st_ts_this.low,  0, usubl, sizeof(usubl));
-	    addrtot(&st->st_ts_this.high, 0, usubh, sizeof(usubh));
-	    addrtot(&st->st_ts_that.low,  0, tsubl, sizeof(tsubl));
-	    addrtot(&st->st_ts_that.high, 0, tsubh, sizeof(tsubh));
+            {
+                char usubl[128], usubh[128];
+                char tsubl[128], tsubh[128];
+                addrtot(&st->st_ts_this.low,  0, usubl, sizeof(usubl));
+                addrtot(&st->st_ts_this.high, 0, usubh, sizeof(usubh));
+                addrtot(&st->st_ts_that.low,  0, tsubl, sizeof(tsubl));
+                addrtot(&st->st_ts_that.high, 0, tsubh, sizeof(tsubh));
 
-	    /* but if this is the parent st, this information is not set! you need to check the child sa! */
-	    openswan_log("negotiated tunnel [%s,%s proto:%u port:%u-%u] -> [%s,%s proto:%u port:%u-%u]"
-                         , usubl, usubh, st->st_ts_this.ipprotoid, st->st_ts_this.startport, st->st_ts_this.endport
-                         , tsubl, tsubh, st->st_ts_that.ipprotoid, st->st_ts_that.startport, st->st_ts_that.endport);
+                /* but if this is the parent st, this information is not set! you need to check the child sa! */
+                openswan_log("negotiated tunnel [%s,%s proto:%u port:%u-%u] -> [%s,%s proto:%u port:%u-%u]"
+                             , usubl, usubh, st->st_ts_this.ipprotoid, st->st_ts_this.startport, st->st_ts_this.endport
+                             , tsubl, tsubh, st->st_ts_that.ipprotoid, st->st_ts_that.startport, st->st_ts_that.endport);
+            }
+
+            {
+                char localaddr_buf[128];
+                char remoteaddr_buf[128];
+
+                addrtot(&st->st_localaddr,  0, localaddr_buf,  sizeof(localaddr_buf));
+                addrtot(&st->st_remoteaddr, 0, remoteaddr_buf, sizeof(remoteaddr_buf));
+
+                /* tell about where traffic is going */
+                /* when ESP, the port number is meaningless */
+                openswan_log("negotiated endpoints are [%s] %s:%u -> [%s] %s:%u"
+                             , localaddr_buf, (st->st_localport ? "UDP" : "ESP")
+                             , st->st_localport
+                             , remoteaddr_buf, (st->st_remoteport ? "UDP" : "ESP")
+                             , st->st_remoteport);
+            }
 
 	    fmt_ipsec_sa_established(st,  sadetails,sizeof(sadetails));
 
