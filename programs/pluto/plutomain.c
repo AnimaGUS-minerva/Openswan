@@ -289,15 +289,6 @@ main(int argc, char **argv)
 
     lockfd = create_lock();
 
-    /* select between logging methods */
-
-    if (oco->log_to_stderr_desired) {
-	oco->log_to_syslog = FALSE;
-	if (oco->log_with_timestamp_desired)
-	   oco->log_with_timestamp = TRUE;
-    }
-    else
-	oco->log_to_stderr = FALSE;
 
 #ifdef DEBUG
 #if 0

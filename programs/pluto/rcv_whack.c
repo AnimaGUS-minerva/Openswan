@@ -714,12 +714,20 @@ whack_compare_options(struct osw_conf_options *old
 
     /* fix up logging interactions */
     if (new->log_to_stderr_desired) {
+        if(old->log_to_stderr_desired != new->log_to_stderr_desired) {
+            openswan_log("Logging switched to stderr");
+        }
+	new->log_to_stderr = TRUE;
 	new->log_to_syslog = FALSE;
 	if (new->log_with_timestamp_desired)
 	   new->log_with_timestamp = TRUE;
     }
-    else
-	new->log_to_stderr = FALSE;
+    else {
+        new->log_to_stderr = FALSE;
+        if(old->log_to_stderr_desired != new->log_to_stderr_desired) {
+            openswan_log("Logging to stderr turned off");
+        }
+    }
 
     /* check for changed control socket */
     if(old->ctlbase != new->ctlbase

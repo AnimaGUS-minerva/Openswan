@@ -748,7 +748,6 @@ void whack_cbor_process_status(QCBORDecodeContext *qdc
     }
 }
 
-
 void whack_cbor_process_options(QCBORDecodeContext *qdc
                                 , struct whack_message *wm
                                 , QCBORItem *first)
