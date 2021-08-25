@@ -11,6 +11,10 @@ recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
 };
 #endif
 
+#ifndef PCAP_CAPTURE_COUNT
+#define PCAP_CAPTURE_COUNT 0
+#endif
+
 
 int main(int argc, char *argv[])
 {
@@ -21,6 +25,7 @@ int main(int argc, char *argv[])
     char *pcap_out;
     int  regression = 0;
     int  bootstrap  = 0;
+    int  output_already_open = 0;
     struct connection *c1;
     struct state *st;
 
@@ -91,12 +96,13 @@ int main(int argc, char *argv[])
     }
 
     for(i=0; i<PCAP_INPUT_COUNT; i++) {
-        if((i+1) < PCAP_INPUT_COUNT) {
-            /* omit the R1 reply */
+        if((i+1) < (PCAP_INPUT_COUNT-PCAP_CAPTURE_COUNT)) {
+            /* omit the PCAP_IGNORE_COUNT replies, usually 1 */
             send_packet_setup_pcap("/dev/null");
-        } else {
+        } else if (!output_already_open) {
             fprintf(stderr, "%u: output to %s\n", i, pcap_out);
             send_packet_setup_pcap(pcap_out);
+            output_already_open = 1;
         }
 
         /* setup to process the n'th packet */
