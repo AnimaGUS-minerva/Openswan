@@ -57,6 +57,7 @@ OUTPUT/${TESTNAME}_1.txt:	${WHACKFILE} ${TESTNAME} output1.txt
 	@echo "set args "${UNITTEST1ARGS} >>.gdb1init
 	ulimit -c unlimited && ./${TESTNAME} ${UNITTEST1ARGS} >OUTPUT/${TESTNAME}_1.txt 2>&1
 	@if [ -f OUTPUT/${TESTNAME}.pcap ]; then tcpdump -nn -t -v -r OUTPUT/${TESTNAME}.pcap | tee OUTPUT/I2-dump.txt | sed -f ${TESTUTILS}/sanity.sed | diff - I2-dump.txt; fi
+	@if [ -n "${MORE_PCAP_FILES}" ]; then for f in ${MORE_PCAP_FILES}; do tcpdump -nn -t -v -r OUTPUT/$$f.pcap; done | tee OUTPUT/pcap-dump.txt | sed -f ${TESTUTILS}/sanity.sed | diff - pcap-dump.txt; fi
 	@${FILTERS} OUTPUT/${TESTNAME}_1.txt | diff - output1.txt
 
 ${WHACKFILE}:
@@ -67,6 +68,7 @@ update: update1
 update1:
 	${FILTERS} OUTPUT/${TESTNAME}_1.txt >output1.txt
 	if [ -f OUTPUT/I2-dump.txt ]; then sed -f ${TESTUTILS}/sanity.sed OUTPUT/I2-dump.txt >I2-dump.txt; fi
+	if [ -n "${MORE_PCAP_FILES}" ]; then cat OUTPUT/pcap-dump.txt | sed -f ${TESTUTILS}/sanity.sed > pcap-dump.txt; fi
 
 clean:
 	rm -f OUTPUT/${TESTNAME}_*.txt ${TESTNAME} ${WHACKFILE} OUTPUT/*.pcap *~ *.o
