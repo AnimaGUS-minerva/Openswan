@@ -192,6 +192,12 @@ UNITTESTS_R4+=lp131-peerA-rekeyR1
 UNITTESTS_I5+=lp132-peerB-rekeyI2
 UNITTESTS_R5+=lp133-peerA-rekeyR2
 
+# test cases for simultaneous initiate
+UNITTESTS_I1+=lp141-peerA-I1
+UNITTESTS_R1+=lp142-peerB-I1
+UNITTESTS_I2+=lp143-peerA-R1S
+UNITTESTS_R2+=lp144-peerB-R1S
+
 # first runs tests that have no interdependancies
 UNITTESTS=${UNITTESTS_0}
 # then run all the I1,R1,I2,R2,I3
