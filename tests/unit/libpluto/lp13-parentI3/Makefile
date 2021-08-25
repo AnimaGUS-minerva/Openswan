@@ -28,6 +28,9 @@ READWRITE=${OBJDIRTOP}/programs/readwriteconf/readwriteconf
 SAMPLEDIR?=../samples/
 EXTRAFLAGS+=-DSAMPLEDIR=\"${SAMPLEDIR}\"
 FILTERS=sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/whack-processing.sed -f ${TESTUTILS}/certsize.sed -f ${TESTUTILS}/sanity.sed
+
+all: check
+
 include Makefile.testcase
 
 ifeq (${WHACKFILE},)
@@ -43,6 +46,9 @@ programs ${TESTNAME}: ${TESTNAME}.c $(wildcard ../seam_*.c) ${EXTRAOBJS} $(wildc
 	${Q}${CC} -c -g -O0 ${TESTNAME}.c ${EXTRAFLAGS}
 	@echo " LD ${TESTNAME}"
 	${Q}${CC} -g -O0 -o ${TESTNAME} ${TESTNAME}.o ${EXTRAFLAGS} ${EXTRAOBJS} ${EXTRALIBS}
+
+bootstrap: ${TESTNAME} ${WHACKFILE}
+	ulimit -c unlimited && ./${TESTNAME} -B ${UNITTEST1ARGS}
 
 check: OUTPUT/${TESTNAME}_1.txt
 OUTPUT/${TESTNAME}_1.txt:	${WHACKFILE} ${TESTNAME} output1.txt

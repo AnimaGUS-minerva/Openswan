@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     int   i;
     char *pcap_out;
     int  regression = 0;
+    int  bootstrap  = 0;
     struct connection *c1;
     struct state *st;
 
@@ -33,6 +34,10 @@ int main(int argc, char *argv[])
     /* skip argv0 */
     argc--; argv++;
 
+    if(strcmp(argv[0], "-B")==0) {
+        bootstrap = 1;
+        argc--; argv++;
+    }
     if(strcmp(argv[0], "-r")==0) {
         regression = 1;
         argc--; argv++;
@@ -75,7 +80,15 @@ int main(int argc, char *argv[])
     show_one_connection(c1, whack_log);
     init_loaded();
 
+    if(bootstrap) {
+        send_packet_setup_pcap(pcap_out);
+    }
     st = sendI1(c1, DBG_CONTROL, regression == 0);
+
+    if(bootstrap) {
+        /* exit before trying to read files that might not exist */
+        exit(2);
+    }
 
     for(i=0; i<PCAP_INPUT_COUNT; i++) {
         if((i+1) < PCAP_INPUT_COUNT) {
