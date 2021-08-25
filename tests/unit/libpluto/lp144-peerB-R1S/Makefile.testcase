@@ -7,6 +7,8 @@ TESTNAME=peerB-R1S
 
 EXTRAOBJS+=${OBJDIRTOP}/programs/pluto/x509keys.o
 
+MORE_PCAP_FILES=02_peerB-R1S
+
 pcapupdate::
 	cp ../lp141-peerA-I1/OUTPUT/peerA-I1.pcap	peerA-I1.pcap
 	cp ../lp143-peerA-R1S/OUTPUT/peerA-R1S.pcap	peerA-R1S.pcap
