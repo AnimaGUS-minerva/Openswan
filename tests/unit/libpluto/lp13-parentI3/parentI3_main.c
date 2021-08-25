@@ -16,6 +16,9 @@ recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
 #define PCAP_CAPTURE_COUNT 0
 #endif
 
+#ifndef PROCESS_DEBUGGING
+#define PROCESS_DEBUGGING DBG_EMITTING|DBG_CONTROL|DBG_CONTROLMORE
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -125,7 +128,7 @@ int main(int argc, char *argv[])
         recv_pcap_setup(pcapin[i]);
 
         /* process i'th packet */
-        cur_debugging = DBG_EMITTING|DBG_CONTROL|DBG_CONTROLMORE;
+        cur_debugging = PROCESS_DEBUGGING;
         assert(recv_inputs[i] != NULL);
         pcap_dispatch(pt, -1, recv_inputs[i], NULL);
     }
