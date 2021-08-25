@@ -1,3 +1,4 @@
+#include <libgen.h>
 
 #ifndef AFTER_CONN
 #define AFTER_CONN() do {} while(0)
@@ -99,10 +100,24 @@ int main(int argc, char *argv[])
         if((i+1) < (PCAP_INPUT_COUNT-PCAP_CAPTURE_COUNT)) {
             /* omit the PCAP_IGNORE_COUNT replies, usually 1 */
             send_packet_setup_pcap("/dev/null");
-        } else if (!output_already_open) {
+        } else if (output_already_open == 0) {
             fprintf(stderr, "%u: output to %s\n", i, pcap_out);
             send_packet_setup_pcap(pcap_out);
             output_already_open = 1;
+        } else {
+            /* if *output_already_open* then make new numbered files */
+            char namebuf[256];
+            char namebuf2[256];
+            memset(namebuf2, 0, 256);
+            strncpy(namebuf2, pcap_out, sizeof(namebuf)-1);
+            char *base= basename(namebuf2);
+            char *dir = dirname(namebuf2);
+            snprintf(namebuf, sizeof(namebuf), "%s/%02d_%s"
+                     , dir
+                     , ++output_already_open
+                     , base);
+            fprintf(stderr, "%u: output to %s\n", i, namebuf);
+            send_packet_setup_pcap(namebuf);
         }
 
         /* setup to process the n'th packet */
