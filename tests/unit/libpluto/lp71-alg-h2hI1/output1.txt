@@ -65,7 +65,6 @@ RC=0 "alttunnel":   ESP algorithms loaded: aes_cbc(12)_128-hmac_sha1_96(2)_160
 | inserting state object #1 bucket: 4
 ./h2hI1 initiating v2 parent SA
 ./h2hI1 STATE_PARENT_I1: initiate
-| found algorithm: 3des(3)-hmac_md5_96(1)-prfmd5(1)-MODP2048(14)
 | ikev2 parent outI1: calculated ke+nonce, sending I1
 | **emit ISAKMP Message:
 |    initiator cookie:

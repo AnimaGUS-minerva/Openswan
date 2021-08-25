@@ -65,7 +65,6 @@ RC=0 "alttunnel":   ESP algorithms loaded: aes_cbc(12)_128-hmac_sha1_96(2)_160
 | inserting state object #1 bucket: 4
 ./h2hI3 initiating v2 parent SA
 ./h2hI3 STATE_PARENT_I1: initiate
-| found algorithm: 3des(3)-hmac_md5_96(1)-prfmd5(1)-MODP2048(14)
 sending 428 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:500] to 132.213.238.7:500 (using #1)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
 |   21 20 22 08  00 00 00 00  00 00 01 ac  22 00 00 2c

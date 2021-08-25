@@ -61,7 +61,6 @@ struct state *sendI1(struct connection *c1, int debugging, int calculate)
 	struct state *st;
 	so_serial_t newone;
 
-	c1->extra_debugging = DBG_EMITTING|DBG_CONTROL|DBG_CONTROLMORE;
 	newone = ipsecdoi_initiate(/* whack-sock=stdout */1
                                    , NULL, NULL
                                    , c1
