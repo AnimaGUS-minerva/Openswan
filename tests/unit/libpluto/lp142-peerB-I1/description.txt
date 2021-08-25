@@ -1,0 +1,16 @@
+This test case is an IKEv2 initiator -- the client peerB will use it's
+certificate to authenticate.
+
+This is the start (I1) of a simultaneous init by peerA and peerB.
+It is identical to the lp12* sequence.
+
+
+
+
+
+
+
+
+
+
+

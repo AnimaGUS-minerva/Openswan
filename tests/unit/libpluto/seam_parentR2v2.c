@@ -1,8 +1,11 @@
 /* this is replicated in the unit test cases since
  * the patching up of the crypto values is case specific */
-void recv_pcap_packet_with_ke(u_char *user
-		      , const struct pcap_pkthdr *h
-		      , const u_char *bytes)
+
+/* make the stateno specific */
+void recv_pcap_packet_with_ke0(u_char *user
+                              , const struct pcap_pkthdr *h
+                              , const u_char *bytes
+                              , unsigned int stateno)
 {
     struct state *st;
     struct pcr_kenonce *kn = &crypto_req->pcr_d.kn;
@@ -10,7 +13,7 @@ void recv_pcap_packet_with_ke(u_char *user
     recv_pcap_packet_gen(user, h, bytes);
 
     /* find st involved */
-    st = state_with_serialno(1);
+    st = state_with_serialno(stateno);
     if(st) {
         st->st_connection->extra_debugging = DBG_EMITTING|DBG_CONTROL|DBG_CONTROLMORE;
 
@@ -20,6 +23,21 @@ void recv_pcap_packet_with_ke(u_char *user
 
         run_one_continuation(crypto_req);
     }
+}
+
+void recv_pcap_packet_with_ke(u_char *user
+                              , const struct pcap_pkthdr *h
+                              , const u_char *bytes)
+{
+  recv_pcap_packet_with_ke0(user, h, bytes, 1);
+}
+
+/* a second negotiation */
+void recv_pcap_packet_with_ke2(u_char *user
+                               , const struct pcap_pkthdr *h
+                               , const u_char *bytes)
+{
+  recv_pcap_packet_with_ke0(user, h, bytes, 2);
 }
 
 void recv_pcap_packet2_with_ke(u_char *user

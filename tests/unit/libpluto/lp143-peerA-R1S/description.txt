@@ -1,0 +1,18 @@
+This test case is an IKEv2 initiator -- the client peerA will use it's
+certificate to authenticate.
+
+PeerA initiates to PeerB.
+PeerA then processes the I1 from PeerB.
+
+
+
+
+
+
+
+
+
+
+
+
+

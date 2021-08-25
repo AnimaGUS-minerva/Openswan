@@ -204,4 +204,22 @@ As a second branch after lp125, peerB rekeys the connection with peerA, after it
                          <---I2r---
     lp133-peerA-rekeyR2  ----R2r-->
 
+Simultanous Keying
+==================
+
+This tests simultaneous keying by two IKE initiators.  They need to recognize that they have keyed a parent SA with each other, and then, they need to delete one of the parent SAs,
+and one of the child SAs.
+
+    lp141-peerA-I1       ---I1a-->  [see below]
+
+                                   lp142-peerB-I1
+                         <--I1b---
+    lp143-peerA-R1S
+                         ---R1b-->
+                         ---I1a-->
+                                   lp144-peerB-R1S
+                         <--R1b---
+                         <--I2a---
+
+
 

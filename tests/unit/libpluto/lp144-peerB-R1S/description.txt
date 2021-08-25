@@ -1,0 +1,15 @@
+This is step two of a simultaneous initiate between two peers.
+This is peerB processing peerA's I1a, after having emitted it's own I1b.
+It then receives peerA's R1b reply to it's I1b, and responds with it's R2b.
+
+
+
+
+
+
+
+
+
+
+
+
