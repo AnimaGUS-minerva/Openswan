@@ -1,3 +1,7 @@
+#define PROCESS_DEBUGGING DBG_CONTROL
+#define CRYPTO_DEBUGGING  DBG_CONTROL
+#define WANT_THIS_DBG     DBG_CONTROL
+
 /* repeats existing test case */
 #include "../lp13-parentI3/parentI3_head.c"
 #include "seam_gi_sha1.c"

@@ -3,6 +3,9 @@
 #define CRYPTO_DEBUGGING  DBG_CONTROL
 #define WANT_THIS_DBG     DBG_CONTROL
 
+/* Wed Aug 25 21:15:40 EDT 2021 */
+#define FAKE_TIME         1629940533
+
 #include "../lp13-parentI3/parentI3_head.c"
 #include "seam_gi_sha1.c"
 #include "seam_gi_sha256_group14.c"
