@@ -3,6 +3,11 @@
 #include "seam_dh_v2.c"
 #include "seam_ke.c"
 
+#ifndef FAKE_TIME
+/* Thu Jul 30 09:21:01 EDT 2015 in seconds */
+#define FAKE_TIME 1438262454
+#endif
+
 bool ikev2_calculate_rsa_sha1(struct state *st
 			      , enum phase1_role role
 			      , unsigned char *idhash
@@ -52,7 +57,7 @@ ikev2_check_key_seam(struct state *st
     if (key->alg == PUBKEY_ALG_RSA
         && same_id(&st->ikev2.st_peer_id, &key->id)
         && (key->dns_auth_level > DAL_UNSIGNED || trusted_ca_by_name(key->issuer, c->spd.that.ca, &pathlen))) {
-        time_t tnow;
+        time_t tnow = FAKE_TIME;
 
         DBG(DBG_CONTROL,
             char buf[IDTOA_BUF];
@@ -60,7 +65,6 @@ ikev2_check_key_seam(struct state *st
             DBG_log("key issuer CA is '%s'", buf));
 
         /* check if found public key has expired */
-        time(&tnow);
         if (key->until_time != UNDEFINED_TIME && key->until_time < tnow)
             {
                 loglog(RC_LOG_SERIOUS,
@@ -101,7 +105,7 @@ ikev2_verify_rsa_sha1(struct state *st
 
   {
     time_t n;
-    n = 1438262454;   /* Thu Jul 30 09:21:01 EDT 2015 in seconds */
+    n = FAKE_TIME;
     list_certs(n);
   }
 
