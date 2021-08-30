@@ -1212,14 +1212,44 @@ void ikev2_update_counters(struct msg_digest *md)
     }
 }
 
-void ikev2_find_matching(struct state *st)
-{
-#if 0
-    foreach_states_by_connection_func(c, same_phase1_no_phase2
-				      , rekey_state_function
-				      , &parent_sa);
-#endif
+struct find_matching {
+    struct state *recent_st;
+};
 
+static void same_parent_sa_identities(struct state *this
+                                      , void *data)
+{
+    struct find_matching *fm = (struct find_matching *)data;
+
+    /* if self, then end here */
+    if(this == fm->recent_st) return;
+    if(!IS_PARENT_SA(this)) return;
+
+    DBG_log("same_parent %s: #%lu vs #%lu"
+            , this->st_connection->name
+            , this->st_serialno
+            , fm->recent_st->st_serialno);
+    if(IS_PARENT_SA(this) && IS_PARENT_SA(fm->recent_st)
+       && this->st_connection == fm->recent_st->st_connection
+       && IS_PARENT_SA_ESTABLISHED(this->st_state)) {
+        DBG_log("matched!");
+    }
+}
+
+void ikev2_find_matching_parent(struct state *st)
+{
+    struct find_matching fm;
+    memset(&fm, 0, sizeof(fm));
+    fm.recent_st = st;
+
+    if(!IS_PARENT_SA(st)) return;
+
+    show_states_status();
+    DBG_log("find_matching for %s #%lu"
+            , st->st_connection->name
+            , st->st_serialno);
+
+    for_each_state(same_parent_sa_identities, (void *)&fm);
 }
 
 
@@ -1374,7 +1404,7 @@ static void success_v2_state_transition(struct msg_digest **mdp)
     TCLCALLOUT("adjustTimers", st, st->st_connection, md);
 
     if (w == RC_SUCCESS) {
-	struct state *pst;
+	struct state *pst = NULL;
 
 	DBG(DBG_CONTROL, DBG_log("releasing whack for #%lu (sock=%d)"
                                  , st->st_serialno, st->st_whack_sock));
@@ -1386,14 +1416,14 @@ static void success_v2_state_transition(struct msg_digest **mdp)
             DBG(DBG_CONTROL, DBG_log("releasing whack for #%lu (sock=%d)"
                                      , pst->st_serialno, pst->st_whack_sock));
 	    release_whack(pst);
-	}
 
-        /*
-         * next step is upon PARENT or CHILD established, look to see if there are states
-         * that have identical end points.
-         * For CHILD the TS and other attributes have to be identical.
-         */
-        ikev2_find_matching(st);
+            /*
+             * next step is upon PARENT or CHILD established, look to see if there are states
+             * that have identical end points.
+             * For CHILD the TS and other attributes have to be identical.
+             */
+            ikev2_find_matching_parent(pst);
+	}
     }
 
     /* Schedule for whatever timeout is specified */

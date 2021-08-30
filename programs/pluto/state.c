@@ -1055,8 +1055,7 @@ duplicate_state(struct state *st)
     return nst;
 }
 
-#if 1
-void for_each_state(void *(f)(struct state *, void *data), void *data)
+void for_each_state(void (*f)(struct state *, void *data), void *data)
 {
 	struct state *st, *ocs = cur_state;
 	int i;
@@ -1068,7 +1067,6 @@ void for_each_state(void *(f)(struct state *, void *data), void *data)
 	}
 	cur_state = ocs;
 }
-#endif
 
 /*
  * Find a state object for an IKEv1 state

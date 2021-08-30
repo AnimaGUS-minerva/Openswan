@@ -560,9 +560,7 @@ extern void show_states_status(void);
 extern void dump_one_state(struct state *st);
 
 
-#if 1
-void for_each_state(void *(f)(struct state *, void *data), void *data);
-#endif
+void for_each_state(void (*f)(struct state *, void *data), void *data);
 
 extern void find_my_cpi_gap(cpi_t *latest_cpi, cpi_t *first_busy_cpi);
 extern ipsec_spi_t uniquify_his_cpi(ipsec_spi_t cpi, struct state *st);
