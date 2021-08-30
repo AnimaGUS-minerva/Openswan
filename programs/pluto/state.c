@@ -625,7 +625,7 @@ states_use_connection(struct connection *c)
  * additionally delete any states for which func(st, arg)
  * returns true.
  */
-static void
+void
 foreach_states_by_connection_func(struct connection *c
 				  , bool (*comparefunc)(struct state *st, struct connection *c, void *arg, int pass)
 				 , void (*successfunc)(struct state *st, struct connection *c, void *arg)

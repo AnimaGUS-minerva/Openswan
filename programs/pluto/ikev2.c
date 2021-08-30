@@ -1212,6 +1212,17 @@ void ikev2_update_counters(struct msg_digest *md)
     }
 }
 
+void ikev2_find_matching(struct state *st)
+{
+#if 0
+    foreach_states_by_connection_func(c, same_phase1_no_phase2
+				      , rekey_state_function
+				      , &parent_sa);
+#endif
+
+}
+
+
 static void success_v2_state_transition(struct msg_digest **mdp)
 {
     struct msg_digest *md = *mdp;
@@ -1376,6 +1387,13 @@ static void success_v2_state_transition(struct msg_digest **mdp)
                                      , pst->st_serialno, pst->st_whack_sock));
 	    release_whack(pst);
 	}
+
+        /*
+         * next step is upon PARENT or CHILD established, look to see if there are states
+         * that have identical end points.
+         * For CHILD the TS and other attributes have to be identical.
+         */
+        ikev2_find_matching(st);
     }
 
     /* Schedule for whatever timeout is specified */
