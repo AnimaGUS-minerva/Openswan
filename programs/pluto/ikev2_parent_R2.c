@@ -184,8 +184,8 @@ ikev2_parent_inI2outR2_tail(struct pluto_crypto_req_cont *pcrc
         return STF_FAIL;
     }
 
-    strcpy(st->ikev2.st_peer_buf, "<unknown>");
-    strcpy(st->ikev2.st_local_buf, "<myid>");
+    // strcpy(st->ikev2.st_peer_buf, "<unknown>");
+    // strcpy(st->ikev2.st_local_buf, "<myid>");
 
     if(!ikev2_decode_peer_id(md, RESPONDER)) {
         return STF_FAIL + v2N_AUTHENTICATION_FAILED;

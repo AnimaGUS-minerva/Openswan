@@ -815,7 +815,9 @@ sending 1552 bytes for STATE_PARENT_R1 through eth0:500 [fe80::ec68:7cff:fe0c:9a
 |                  not after  Dec 11 04:15:59 UTC 2021 ok
 |        subjkey:  5c:59:70:62:57:2d:2a:24:9c:5c:94:56:9b:89:5e:e5:c5:05:b6:bd
 |        authkey:  86:cb:59:12:06:07:df:3f:00:36:b9:64:c6:c5:14:1f:3a:ed:cd:aa
-| checking alg=1 == 1, keyid=dave@openswan.org same_id=1
+| checking alg=1 == 1, keyid=dave@openswan.org same_id=0
+| checking alg=1 == 1, keyid=carol@openswan.org same_id=0
+| checking alg=1 == 1, keyid=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org same_id=1
 | key issuer CA is 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 | ei->port 0  tsi[tsi_ni].startport 0  tsi[tsi_ni].endport 65535
 |     evaluate_connection_port_fit tsi_n[1], best=-1
@@ -837,6 +839,12 @@ sending 1552 bytes for STATE_PARENT_R1 through eth0:500 [fe80::ec68:7cff:fe0c:9a
 ./peerB-R2S STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00002703}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+RC=0 #3: "peerB--peerA":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #1: "peerB--peerA":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #4: "peerB--peerA"[1] fe80::8054:3eff:fe9a:d3f4:500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=0; idle; import:respond to friend
+RC=0 #2: "peerB--peerA"[1] fe80::8054:3eff:fe9a:d3f4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
+| find_matching for peerB--peerA #1
+| same_parent peerB--peerA: #2 [est:1] vs #1
 should have found a continuation, but none was found
 RC=0 #3: "peerB--peerA":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #1: "peerB--peerA":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
