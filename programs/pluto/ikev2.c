@@ -935,7 +935,7 @@ process_v2_packet(struct msg_digest **mdp)
 }
 
 void
-ikev2_copy_child_peer(struct state *st)
+ikev2_copy_child_peers(struct state *st)
 {
     if(IS_CHILD_SA(st)) {
         struct state *pst = NULL;
@@ -975,6 +975,7 @@ ikev2_extract_peer_id(struct msg_digest *md, enum phase1_role init
 {
     const unsigned int hisID = (init==INITIATOR) ?
 	ISAKMP_NEXT_v2IDr : ISAKMP_NEXT_v2IDi;
+    const char *IDhim_str = (init==INITIATOR) ? "v2IDr" : "v2IDi";
     /* unsigned int myID  = initiator ? ISAKMP_NEXT_v2IDi: ISAKMP_NEXT_v2IDr;
      * struct payload_digest *const id_me  = md->chain[myID];
      */
@@ -983,7 +984,7 @@ ikev2_extract_peer_id(struct msg_digest *md, enum phase1_role init
     struct ikev2_id * id;
 
     if(!id_him) {
-	openswan_log("IKEv2 mode no peer ID (hisID)");
+	openswan_log("IKEv2 mode no peer ID (%s)", IDhim_str);
 	return FALSE;
     }
 
@@ -1016,7 +1017,7 @@ ikev2_decode_peer_id(struct msg_digest *md, enum phase1_role init)
     }
 
     /* copy the peer ID contents to the parent state */
-    ikev2_copy_child_peer(st);
+    ikev2_copy_child_peers(st);
 
     return TRUE;
 }
@@ -1216,6 +1217,42 @@ struct find_matching {
     struct state *recent_st;
 };
 
+static bool check_same_parents(struct state *this
+                               , struct state *that)
+{
+    /* it matches if things are the same in the same order */
+    if(same_exact_id(&this->ikev2.st_peer_id,
+                     &that->ikev2.st_peer_id)
+       && same_exact_id(&this->ikev2.st_local_id,
+                        &that->ikev2.st_local_id)) {
+        DBG(DBG_CONTROL
+            , DBG_log("same parents matches A-->B"));
+        return TRUE;
+    }
+
+    /* it matches if things are in the opposite order */
+    if(same_exact_id(&this->ikev2.st_peer_id,
+                     &that->ikev2.st_local_id)
+       && same_exact_id(&this->ikev2.st_local_id,
+                        &that->ikev2.st_peer_id)) {
+        DBG(DBG_CONTROL
+            , DBG_log("same parents matches B-->A"));
+        return TRUE;
+    }
+
+    DBG_log("failed to match ID1: A{%s} vs B{%s}"
+            , this->ikev2.st_local_buf
+            , that->ikev2.st_local_buf);
+
+    DBG_log("failed to match ID2: A{%s} vs B{%s}"
+            , this->ikev2.st_peer_buf
+            , that->ikev2.st_peer_buf);
+
+
+    /* otherwise, it does not match */
+    return FALSE;
+}
+
 static void same_parent_sa_identities(struct state *this
                                       , void *data)
 {
@@ -1225,14 +1262,22 @@ static void same_parent_sa_identities(struct state *this
     if(this == fm->recent_st) return;
     if(!IS_PARENT_SA(this)) return;
 
-    DBG_log("same_parent %s: #%lu vs #%lu"
+    DBG_log("same_parent %s: #%lu [est:%s] vs #%lu"
             , this->st_connection->name
             , this->st_serialno
+            , IS_PARENT_SA_ESTABLISHED(this->st_state) ? "true" : "false"
             , fm->recent_st->st_serialno);
+
     if(IS_PARENT_SA(this) && IS_PARENT_SA(fm->recent_st)
-       && this->st_connection == fm->recent_st->st_connection
        && IS_PARENT_SA_ESTABLISHED(this->st_state)) {
-        DBG_log("matched!");
+
+        if(check_same_parents(fm->recent_st, this)) {
+            DBG_log("matched1");
+        } else {
+            DBG_log("failed0");
+        }
+    } else {
+        DBG_log("failed1");
     }
 }
 
