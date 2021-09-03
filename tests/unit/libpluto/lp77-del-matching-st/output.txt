@@ -30,9 +30,13 @@
 | state hash entry 28
 | inserting state object #4 bucket: 28
 RC=0 #4: "alttunnel":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #4: "alttunnel":500 IKEv2.0 me= him=132.213.238.7
 RC=0 #3: "alttunnel":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #3: "alttunnel":500 IKEv2.0 me= him=
 RC=0 #2: "alttunnel":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #2: "alttunnel":500 IKEv2.0 me= him=132.213.238.7
 RC=0 #1: "alttunnel":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "alttunnel":500 IKEv2.0 me= him=
 ./add2sa-del1sa deleting state #2 (STATE_CHILDSA_DEL)
 | received request to delete child state
 | now deleting the child state
@@ -42,7 +46,9 @@ RC=0 #1: "alttunnel":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none i
 | now deleting the IKE (or parent) state
 | removing state object #1
 RC=0 #4: "alttunnel":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #4: "alttunnel":500 IKEv2.0 me= him=132.213.238.7
 RC=0 #3: "alttunnel":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #3: "alttunnel":500 IKEv2.0 me= him=
 ./add2sa-del1sa leak: 4 * struct state in new_state(), item size: X
 ./add2sa-del1sa leak: 2 * id list, item size: X
 ./add2sa-del1sa leak: rfc3110 format of public key [created], item size: X

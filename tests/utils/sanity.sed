@@ -8,3 +8,4 @@ s/v2vid: len=12 vid=OE........../v2vid: len=12 vid=OEababababab/
 /Vendor.*this version/d
 /ignoring unknown Vendor ID payload/d
 /negotiated endpoints/d
+/TEST FINISHED/,$d

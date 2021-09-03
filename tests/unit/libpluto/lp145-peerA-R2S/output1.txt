@@ -588,286 +588,112 @@ sending 1552 bytes for STATE_PARENT_R1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |   97 18 19 1a  1b 1c 1d 1e  97 03 67 ba  2d 8b a4 1d
 |   2e 20 23 20  00 00 00 01  00 00 06 10  24 00 05 f4
 |   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
-|   e8 7b 92 74  33 3f ee f4  33 48 87 9a  d7 b2 aa 20
-|   ff 23 ef 67  60 c0 97 0b  19 e3 6e 3a  ee c5 e2 a3
-|   2d a7 b7 1f  58 b3 08 a5  b6 67 33 c8  2e 42 fc 95
-|   05 03 b7 d5  17 08 82 21  ac 01 50 82  d8 2a 9b 26
-|   62 4e 40 f5  b1 7b 09 4e  f5 19 8a 76  89 fc 2e 60
-|   e9 49 86 b8  b8 17 00 98  33 c8 99 f7  eb cb 19 bf
-|   a5 a4 8c a5  e1 70 28 3d  2d 72 48 28  2c fc 2c cd
-|   a7 0a a5 d9  7d b5 d4 fe  55 67 0c 1e  b7 74 5f 5f
-|   0e 19 61 f5  00 bc 1f 7b  06 5f 3e dc  60 29 a0 d2
-|   95 32 df a0  12 48 cc c8  de b4 fb 7c  7f d0 13 76
-|   4b 94 52 62  a8 b6 b0 14  35 05 26 1c  bc ed 54 3d
-|   bf 64 61 b1  15 ac a4 54  cc 92 f8 1e  65 bc 6e 10
-|   60 34 90 70  50 cf ed 93  3e eb 92 73  c7 63 23 f9
-|   b0 ca 3d 90  fb 0e 68 15  54 49 58 d8  1d 0c 6b 31
-|   b8 ba 65 2a  4b f4 95 ee  53 3e 1c 5f  66 9f ba fb
-|   51 21 9c ad  6c 6d e4 b5  71 8c 88 88  8d 42 3e c9
-|   be dc ef 46  cb 7c 44 55  10 ee 3c c9  fe 77 19 78
-|   a1 1b ff d6  e3 c1 4d 7b  cb ee fe e4  9a 03 f6 30
-|   a8 11 36 d4  66 40 04 4a  9c 77 34 4b  c8 3c 74 47
-|   4b 42 b0 ca  2b 52 ef c6  d0 b1 5a 59  06 e9 3c 12
-|   f5 42 28 b0  18 98 4f e9  d3 e6 b6 77  8d ca a9 3c
-|   47 60 a3 4c  9a 34 65 53  be 89 e6 5a  10 d4 f4 0c
-|   36 f6 1e 0c  50 18 d4 cf  0a d7 8c c7  f3 d9 93 dc
-|   b5 30 5f 2f  98 6e b9 6e  16 03 06 27  90 fb d5 17
-|   6a 38 9c be  29 3b 47 55  eb d0 b1 8c  e6 f7 f7 89
-|   a6 86 0d 88  9d 91 58 8e  2a 07 29 f2  0f 83 a5 f8
-|   1a f5 78 64  a2 fa 83 09  f4 70 8d 16  28 6a 97 cc
-|   8e 3d 9e 1a  6b a1 ee da  5d 2a 07 c1  d6 c0 01 dc
-|   15 5f 8a 6a  13 f7 03 18  9b 9c 29 3c  a9 8c 00 5f
-|   1d cc 45 14  3a c5 0c ec  f3 7f 13 76  fc ef cd 26
-|   d4 ee 08 54  e6 21 e3 d4  25 19 c8 50  ca 06 8e b3
-|   62 39 8a 00  ca 35 b0 84  ac a5 2e d6  94 26 e8 9e
-|   de b9 bf 31  9b 95 66 61  30 a2 ea 39  86 74 32 d1
-|   e1 32 7d 4a  40 7a a8 d5  c5 1f cf 9b  c3 07 fc a0
-|   5b 7a bd 54  66 1d 03 c9  32 47 8d 42  c5 f3 d3 f8
-|   ee 59 76 9d  3c 27 66 b7  ee ff 55 ff  22 e5 78 de
-|   9c 48 9d ca  e2 ff be f6  25 e4 5f 44  b6 10 fe f5
-|   6f 3a 69 81  9b c1 8a 9d  0b dd 4e 70  cd 6c 71 96
-|   a8 89 e8 77  59 29 3d 3b  99 a1 87 4e  23 b3 63 c6
-|   6e 26 f2 1b  27 ef 79 35  03 59 98 da  2c b6 0b 87
-|   01 21 5b 75  07 6c 99 d0  17 52 ef 3b  0f ac 7e 49
-|   0e f6 6f 54  be 68 b1 ef  a3 8d 30 bf  97 5d 9b e5
-|   bb 1a b8 4c  8d b9 7b 2d  72 b9 18 e9  a4 13 80 18
-|   ae 32 79 d8  80 c6 24 dc  ba cc b0 e9  8c d5 22 fb
-|   6c 04 b1 15  fb 00 41 d0  f4 0d c5 a4  e6 de 53 5b
-|   a3 7d 4e 7f  03 a8 7a 84  77 86 bb 09  7e dc ab c3
-|   9e a4 66 d4  76 29 e7 a2  10 1b 03 c3  42 4e 34 ab
-|   4e bb 47 72  4f 31 4e 4d  4f c0 13 f1  a8 63 3f 42
-|   37 ec a8 66  89 99 1d 4d  1c d7 8b fc  7a a0 a4 33
-|   47 8f c3 49  b4 df 52 77  46 62 27 29  1a 40 17 d7
-|   7c a6 23 21  14 e1 7e cb  83 ed 94 9b  e3 e5 5d 2a
-|   6d 8e ef 9f  28 81 17 05  b0 4e 5d df  a1 41 cb e4
-|   c6 35 ba 3a  10 16 b9 73  a1 21 e5 8d  ea df 57 5d
-|   80 a8 3e e8  cb 4e 08 82  bf a9 a5 43  6b 15 ab e9
-|   2e b9 32 3b  e1 20 de 4a  34 4b 98 3d  ee 9a 26 86
-|   24 78 a7 54  2d d6 ab bc  5b 73 4e 42  c6 44 d5 1f
-|   c5 22 9b 52  8a 0e 25 39  af 53 75 44  07 af 4a 91
-|   22 8f b5 38  4c 45 7f 35  e8 10 b2 55  96 4f 9c 76
-|   7f 0b 0e f7  ea 8e 06 f6  c0 57 46 c4  b4 7c 3c 27
-|   ab fa 95 7d  f5 e5 4f 6f  80 af 47 f5  fc b3 08 57
-|   17 72 a0 a9  c9 9f a4 21  53 d5 32 fa  c9 87 78 a2
-|   80 f2 86 9c  81 48 07 1b  97 42 40 e4  b6 29 ac 30
-|   3d d7 88 21  fb 19 8f 64  72 d7 a5 89  0a d5 8f 2a
-|   49 7d d2 65  5c 00 0f 2c  96 be f5 90  e3 66 bb 51
-|   5d a1 18 e3  5b ad be 9e  fb e0 01 c4  56 90 91 ff
-|   11 38 4b 86  28 e6 1c 97  89 c8 7a c6  7f bc 9a 5c
-|   c8 54 9d cc  2a ec db d1  04 18 19 a8  d2 e2 c1 9c
-|   14 20 c2 78  fd 2e d0 9f  80 c3 46 0d  d0 c3 9d 55
-|   0d f1 f2 90  26 16 6f b4  b4 b2 cc 91  ef cb 83 6f
-|   c9 89 04 7a  75 c6 16 9d  3a 2b 20 18  9d 71 ea 71
-|   d4 08 14 b6  ff 4a c3 8d  21 3a f4 f6  29 72 07 ec
-|   47 d7 8d d3  68 45 c8 80  7d 35 88 f6  1f 3e 56 7b
-|   65 2a 48 dc  ca 69 cc 1d  09 08 23 b8  db 24 12 24
-|   36 e8 35 30  9f 2d 05 5c  dc 9f 41 2f  3e 7b 0e 80
-|   96 13 60 8c  29 78 d3 12  e6 8e c1 aa  d9 d6 5e ea
-|   af 87 e7 ce  05 06 c7 27  c1 6a 3a cf  67 23 f4 e2
-|   27 08 36 2a  18 01 14 8c  42 50 fc 2b  2f 5c a6 20
-|   f1 89 f5 b2  47 6b ba af  cb 18 5d 35  ae 82 fe a6
-|   f8 22 e8 17  59 2d f5 5c  21 f3 d5 84  0f fb 43 a6
-|   d7 74 47 bd  10 40 df fa  55 7f 77 d2  39 0c 3d 7c
-|   a7 de 42 00  d4 65 13 31  41 af 72 c1  80 e1 2e 0f
-|   45 48 47 ce  c0 8b 8b 56  b1 ea f4 d8  24 72 58 77
-|   13 4e 64 f4  3b a9 a6 9e  15 e5 d1 c1  2b 13 3c 6a
-|   93 f6 cd 4e  a3 e9 71 65  be db 26 db  b9 38 5a 85
-|   f3 29 63 a8  3c 58 22 1d  9a 6b c5 cf  13 a3 aa 62
-|   21 0e 84 ce  fa 9f 60 8a  da 98 e0 06  78 03 7e 32
-|   84 70 38 d6  08 77 8c e8  4c 39 ad c2  b9 4e b7 70
-|   de d3 2a f0  01 22 24 33  2c 87 8b c4  b5 91 e9 36
-|   48 7d 39 3a  c5 fc 1f 28  2c 12 ef b9  8a 12 4f 52
-|   70 8a 23 fb  b8 92 53 73  86 7d cc 14  74 53 83 95
-|   f2 41 2c 11  8d bf 21 88  a9 be cc 2b  7d c0 a4 b9
-|   48 1d af e5  a5 0a e9 f7  43 08 74 27  a4 74 83 60
-|   90 12 f9 f4  6c 8a 7e 06  34 1f 09 f4  bb 11 63 1c
-|   db 90 33 81  f0 1e 59 0d  02 79 1a 5a  eb b6 dc ce
+|   ae e3 fe 75  ce 32 e4 53  47 b1 a6 cc  42 b7 95 66
+|   71 a7 32 f7  c8 ad af bf  d1 16 fe 5a  24 5b 25 33
+|   8d 5d 24 30  30 0b 2c e2  f2 47 95 d1  9a 99 30 d5
+|   52 f7 3f d0  a5 5f fc 41  15 d4 a2 7a  4c c4 f0 57
+|   ed 0d f2 06  94 7f 77 90  0c 68 73 d1  b4 0f ee 9d
+|   86 e9 78 89  27 7e 0b c3  fe 63 7e 1b  a7 49 fb 36
+|   da b0 a5 20  af ee df 86  22 c5 c8 9e  e9 8d a8 b8
+|   36 f4 29 f2  c5 17 fe 7a  da ef 05 95  27 31 be f9
+|   a1 84 39 92  6c 78 1c ae  3a 63 c5 36  a9 13 c0 46
+|   cc e8 45 37  32 bf 35 07  5a 9d 8f 6a  b9 33 1d a8
+|   21 ab fe fd  02 e5 7c 35  59 7d f7 b3  a7 99 c2 ed
+|   90 4b 8f a1  87 4f 74 0d  00 e1 b4 58  f0 03 63 11
+|   28 a9 36 c8  a6 71 8b f0  62 42 eb 16  7f 64 f0 01
+|   dd ce f4 3a  52 b2 ab e9  c4 7f fe 02  45 33 6f b6
+|   a4 fc 49 e9  15 f7 0c 17  e4 5f fa b1  b9 82 1d 48
+|   30 e0 1c 11  26 96 1f 95  3f 33 eb 4b  68 c6 38 28
+|   21 87 d4 60  5d 1f ff 20  9c 56 7b 27  3c 88 41 77
+|   50 28 c7 3f  96 f1 43 c6  9c 9f 0e 83  9c 2b 0c 16
+|   f9 6f 1d 79  bd f4 14 85  72 ef db c7  a6 93 36 9b
+|   c0 28 1e c7  4e da 14 23  00 00 1d 06  d2 0b 01 3d
+|   2b 9f c1 08  a1 52 94 bd  b3 84 87 bd  93 fd 89 04
+|   f5 b4 fd 11  6e 6d e2 fd  76 22 b4 b7  71 c1 c7 99
+|   70 77 bb 8a  31 8c bc 5b  67 a4 36 3d  aa 1e 49 99
+|   cd c8 79 d1  37 67 49 c2  e0 ba 38 cd  15 7e 7e 63
+|   a3 96 0c bb  95 bf ab 2f  6a 73 7e 61  ff d2 f8 b7
+|   1d 14 34 89  e7 58 61 ad  bc 1f 2b bb  c2 a2 68 6b
+|   8e ee f0 10  18 b0 6a bd  13 54 fd 43  6d e2 75 34
+|   43 2f b1 ec  d9 19 b9 3a  96 e7 e6 ba  a8 70 73 de
+|   77 76 29 cc  73 99 db 53  d0 0b 43 41  1d db 6a 18
+|   d4 d2 d9 80  c8 7e ac 85  af c9 5e 23  00 77 f2 66
+|   3f de bb 4b  6e ca d9 ed  c6 36 72 9d  5d 55 8b 89
+|   e1 8e c4 80  aa db f8 41  94 ee 21 0a  4b 4f b2 f9
+|   e2 be 38 fa  5e 5a 49 63  c1 20 d6 38  bf a9 84 21
+|   2d da 72 9a  59 5d 06 3d  a5 0a 43 c4  d8 d5 0a dd
+|   a6 10 ed 13  5f c9 28 ae  5e 2f ef f7  c1 fe 97 07
+|   72 c8 5b 4b  b7 fd f6 1e  6b b5 88 9e  8c e0 73 ac
+|   86 de 52 d9  d4 6b 02 d7  a3 34 0b e3  27 86 16 34
+|   dd ea 1a 35  7a b3 cb 77  6a cb 19 0e  8e cc b5 03
+|   90 06 a0 08  61 5e 03 35  76 be be 16  64 99 a8 cd
+|   5a b9 13 6b  af be 2c 19  6f 4f 88 45  b5 a9 bf f2
+|   14 7e cd 1b  11 26 97 a1  95 23 05 b9  96 d8 00 15
+|   68 68 9b 1d  87 16 e7 11  f0 b7 f2 92  2a fc bc 8d
+|   5e fa 08 47  bc 71 e7 92  ac d2 6f bf  63 a5 6f 68
+|   38 0d 64 80  df 50 77 e0  1c 22 aa 4f  db 90 30 6c
+|   d9 40 fb bc  23 24 15 e9  bc 3a d3 13  b6 05 89 84
+|   38 06 b5 4f  3c 99 5f ed  2e bd 9e 56  4a b1 5d 72
+|   6e ea 43 23  c0 91 c8 b1  9a 6f 74 41  84 02 83 bf
+|   83 0c 4a 4d  61 f9 db 90  9c 89 8e 24  bf aa b2 af
+|   1d f1 5d 25  3c 23 82 30  9e 43 97 fd  e1 d3 5f 9e
+|   e0 3c 19 c0  10 d6 d1 16  17 bc b0 24  b4 e7 11 ff
+|   92 cd 75 df  ba 27 d9 8a  2c f0 45 ef  0f 40 80 f5
+|   dd a7 d7 c5  e3 96 8e 68  81 63 7f 8f  cb af 28 6e
+|   41 1f 6e af  88 75 e2 ea  27 5e 5f 0e  12 6c b9 fc
+|   32 7d 73 85  34 9a 9d 2c  46 08 b9 d8  7b e7 52 ef
+|   8f e5 61 e3  cd 2d 2c f3  dc 8c 45 e7  01 1a 71 23
+|   db f5 ce 38  96 53 64 e4  d4 74 3f e6  5c b9 db de
+|   e7 68 d8 bc  1c 59 df 21  d2 58 a1 cd  89 d8 6a 9e
+|   e5 a0 de c4  c1 0b c5 c3  20 5a 10 3e  74 ee 11 a5
+|   25 55 48 cf  fa 30 15 72  c6 ef 22 53  6e 75 81 a7
+|   90 6b 08 43  eb e7 f2 cb  e5 5e 06 72  e6 e9 ca e0
+|   70 51 4b 33  e4 28 ed 38  a8 55 91 9f  fb b5 54 21
+|   9b a6 3d 92  0f a4 2d a9  33 b7 3b 1b  62 e2 86 d5
+|   b9 b2 c8 23  aa 4a a2 ef  45 67 90 e4  c0 5b d2 ae
+|   34 eb 9e 51  e3 40 34 13  bb bc 83 e3  6e 0d 2e f4
+|   fc 22 a6 d1  1a 0f 93 8d  28 91 3a 19  24 0a 41 71
+|   29 5d ea b9  1d dc 5b cd  a2 a4 a6 4f  a2 4d e0 98
+|   b1 96 9b 8b  6c 1c 19 ed  14 20 22 dc  42 f6 2f 28
+|   18 21 9c ce  35 9b aa d7  57 06 c5 7a  72 92 5c 64
+|   87 f8 5e d2  7b 06 85 a8  47 00 52 9a  54 c4 67 ad
+|   9d 13 1c e8  d3 e8 14 89  08 fb bc 5e  2e f6 d0 ba
+|   d7 d2 07 75  ae 4d e2 22  cd 53 0e 3f  ca 94 76 23
+|   5b cb 0c 4b  3f 0d 10 07  a2 83 3c f6  68 5e 0a cc
+|   54 f4 72 67  07 c5 ab 66  e4 7b 9a 28  6a 98 3f e6
+|   2f 7d af f6  0b 2e 4a 01  03 12 e0 6a  9c a3 96 aa
+|   b6 c1 f8 08  dd b4 66 9b  bf 48 af 00  bc 5a 81 d6
+|   26 f2 f7 8c  26 c7 44 f8  ce 9a 64 23  9a a0 85 90
+|   04 37 91 62  36 e0 c4 25  32 71 85 4c  92 4c 83 2e
+|   8c 6b e9 75  94 e5 5b c5  0f ee 61 b5  ec 12 e6 03
+|   70 6c 2f 7e  91 4e 1f 7b  ff 3a 87 ca  85 66 37 b3
+|   6d 7d 29 49  29 c7 52 6d  ae d9 22 4c  55 ed 9c 9b
+|   c8 5b 23 ea  38 65 00 13  be 43 46 77  eb 95 4e 90
+|   dd 63 b8 ab  b7 35 5a d4  2d 9d 64 db  00 74 b2 64
+|   15 b3 19 ac  4e 0c 2e ac  34 7d d9 cf  04 8a cb 10
+|   68 59 30 08  ce f4 f8 4d  4e 69 41 57  c0 be e9 ad
+|   70 8c d5 64  b2 26 e0 27  bc 87 11 af  86 15 89 2e
+|   96 36 8a bf  c1 85 0d de  47 9d 45 06  72 13 e4 c8
+|   89 93 33 62  56 14 03 db  34 dd 49 be  aa 54 11 b9
+|   ea ea 72 a0  79 d8 0b bb  8a 41 d3 0d  ed 0c bc ee
+|   ac 9c 2a 40  64 4c 14 7e  28 dd 2a 0e  9f 8d 6e b6
+|   33 2a 87 ce  01 eb 83 ef  c2 b3 e1 e9  4e 93 9f 48
+|   0c 51 ce d1  75 ab 81 09  60 5f 57 fe  aa 47 21 6e
+|   76 11 e7 6f  85 e9 10 02  2b f3 77 1c  a9 18 21 5e
+|   35 e6 43 37  ce 7a 75 27  b5 5f 7d c9  43 1b f5 65
+|   13 65 68 84  ff 40 91 56  d4 6e 7d 5c  2a af 7f f9
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 RC=0 #3: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C0_KEYING (CHILD SA keying); none in -1s; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #3: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
 RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I2 (sent v2I2, expected v2R2); none in -1s; nodpd; retranscnt=0,outorder=0,last=0,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
 RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=0; idle; import:respond to friend
+RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
-./peerA-R2S deleting connection
-| pass 0: considering CHILD SAs to delete
-./peerA-R2S deleting state #4 (STATE_CHILD_C1_KEYED)
-| received request to delete child state
-| sending Child SA delete request
-sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f4:500] to fe80::ec68:7cff:fe0c:9aa4:500 (using #2)
-|   97 18 19 1a  1b 1c 1d 1e  97 03 67 ba  2d 8b a4 1d
-|   2e 20 25 00  00 00 00 00  00 00 00 50  2a 00 00 34
-|   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
-|   94 85 95 57  0a a9 cb 4f  44 2a 65 be  47 3b 6e ea
-|   05 42 cf 10  21 0c 1c e9  08 2f 77 bb  a4 de 6c 6a
-./peerA-R2S deleting state #3 (STATE_CHILD_C0_KEYING)
-| received request to delete child state
-| removing state object #3
-| ICOOKIE:  8d 0e 0f 10  11 12 13 14
-| RCOOKIE:  78 5b 90 fe  dd d1 18 2d
-| state hash entry 6
-./peerA-R2S deleting state #1 (STATE_PARENT_I2)
-| considering request to delete IKE parent state
-| sending IKE SA delete request
-sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f4:500] to fe80::ec68:7cff:fe0c:9aa4:500 (using #1)
-|   8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
-|   2e 20 25 08  00 00 00 02  00 00 00 50  2a 00 00 34
-|   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
-|   ef 61 43 7e  20 c8 ff cc  28 2e 1d 57  52 43 96 41
-|   53 26 5b 43  1c 16 b1 38  a1 15 c6 bc  7a 0d 23 e0
-| pass 1: considering PARENT SAs to delete
-./peerA-R2S deleting state #1 (STATE_IKESA_DEL)
-| considering request to delete IKE parent state
-| now deleting the IKE (or parent) state
-| removing state object #1
-| ICOOKIE:  8d 0e 0f 10  11 12 13 14
-| RCOOKIE:  78 5b 90 fe  dd d1 18 2d
-| state hash entry 6
-./peerA-R2S leak: 2 * request packet for informational exchange, item size: X
-./peerA-R2S leak: reply packet, item size: X
-./peerA-R2S leak: skeyseed_t1, item size: X
-./peerA-R2S leak: responder keys, item size: X
-./peerA-R2S leak: initiator keys, item size: X
-./peerA-R2S leak: alg_info_esp, item size: X
-./peerA-R2S leak: db_context->attrs, item size: X
-./peerA-R2S leak: db_context->trans, item size: X
-./peerA-R2S leak: db_context->conj, item size: X
-./peerA-R2S leak: db_context, item size: X
-./peerA-R2S leak: v2 policy database, item size: X
-./peerA-R2S leak: st_nr in duplicate_state, item size: X
-./peerA-R2S leak: st_ni in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_pr in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_pi in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_er in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_ei in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_ar in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_ai in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_d in duplicate_state, item size: X
-./peerA-R2S leak: st_skeyseed in duplicate_state, item size: X
-./peerA-R2S leak: st_enc_key in duplicate_state, item size: X
-./peerA-R2S leak: struct state in new_state(), item size: X
-./peerA-R2S leak: host ip, item size: X
-./peerA-R2S leak: ca string, item size: X
-./peerA-R2S leak: keep id name, item size: X
-./peerA-R2S leak: host ip, item size: X
-./peerA-R2S leak: ca string, item size: X
-./peerA-R2S leak: keep id name, item size: X
-./peerA-R2S leak: connection name, item size: X
-./peerA-R2S leak: temporary connection, item size: X
-./peerA-R2S leak: ca keyid, item size: X
-./peerA-R2S leak: generalName, item size: X
-./peerA-R2S leak: rfc3110 format of public key [created], item size: X
-./peerA-R2S leak: issuer dn, item size: X
-./peerA-R2S leak: keep id name, item size: X
-./peerA-R2S leak: pubkey entry, item size: X
-./peerA-R2S leak: issuer, item size: X
-./peerA-R2S leak: pubkey, item size: X
-./peerA-R2S leak: rfc3110 format of public key [created], item size: X
-./peerA-R2S leak: issuer dn, item size: X
-./peerA-R2S leak: keep id name, item size: X
-./peerA-R2S leak: pubkey entry, item size: X
-./peerA-R2S leak: pubkey, item size: X
-./peerA-R2S leak: calculated skey_prshared secret, item size: X
-./peerA-R2S leak: calculated skey_pishared secret, item size: X
-./peerA-R2S leak: calculated skey_ershared secret, item size: X
-./peerA-R2S leak: calculated skey_eishared secret, item size: X
-./peerA-R2S leak: calculated skey_arshared secret, item size: X
-./peerA-R2S leak: calculated skey_aishared secret, item size: X
-./peerA-R2S leak: calculated skey_dshared secret, item size: X
-./peerA-R2S leak: calculated sharedshared secret, item size: X
-./peerA-R2S leak: ikev2_inI2outR2 KE, item size: X
-./peerA-R2S leak: reply packet, item size: X
-./peerA-R2S leak: alg_info_esp, item size: X
-./peerA-R2S leak: db_context->attrs, item size: X
-./peerA-R2S leak: db_context->trans, item size: X
-./peerA-R2S leak: db_context->conj, item size: X
-./peerA-R2S leak: db_context, item size: X
-./peerA-R2S leak: v2 policy database, item size: X
-./peerA-R2S leak: saved first received packet, item size: X
-./peerA-R2S leak: st_nr in duplicate_state, item size: X
-./peerA-R2S leak: st_ni in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_pr in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_pi in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_er in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_ei in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_ar in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_ai in duplicate_state, item size: X
-./peerA-R2S leak: st_skey_d in duplicate_state, item size: X
-./peerA-R2S leak: st_skeyseed in duplicate_state, item size: X
-./peerA-R2S leak: st_enc_key in duplicate_state, item size: X
-./peerA-R2S leak: struct state in new_state(), item size: X
-./peerA-R2S leak: calculated skey_prshared secret, item size: X
-./peerA-R2S leak: calculated skey_pishared secret, item size: X
-./peerA-R2S leak: calculated skey_ershared secret, item size: X
-./peerA-R2S leak: calculated skey_eishared secret, item size: X
-./peerA-R2S leak: calculated skey_arshared secret, item size: X
-./peerA-R2S leak: calculated skey_aishared secret, item size: X
-./peerA-R2S leak: calculated skey_dshared secret, item size: X
-./peerA-R2S leak: calculated sharedshared secret, item size: X
-./peerA-R2S leak: ikev2_inR1outI2 KE, item size: X
-./peerA-R2S leak: ca keyid, item size: X
-./peerA-R2S leak: generalName, item size: X
-./peerA-R2S leak: nonce, item size: X
-./peerA-R2S leak: Gr, item size: X
-./peerA-R2S leak: saved first packet, item size: X
-./peerA-R2S leak: initiator nonce, item size: X
-./peerA-R2S leak: long term secret, item size: X
-./peerA-R2S leak: saved gi value, item size: X
-./peerA-R2S leak: nonce, item size: X
-./peerA-R2S leak: Gi, item size: X
-./peerA-R2S leak: db2_expand->attrs, item size: X
-./peerA-R2S leak: db_context->trans (expand), item size: X
-./peerA-R2S leak: db_context->conj (expand), item size: X
-./peerA-R2S leak: alg_info_ike, item size: X
-./peerA-R2S leak: db_context, item size: X
-./peerA-R2S leak: v2 policy database, item size: X
-./peerA-R2S leak: saved first received packet, item size: X
-./peerA-R2S leak: ikev2_inI1outR1 KE, item size: X
-./peerA-R2S leak: struct state in new_state(), item size: X
-./peerA-R2S leak: saved first packet, item size: X
-./peerA-R2S leak: sa in main_outI1, item size: X
-./peerA-R2S leak: initiator nonce, item size: X
-./peerA-R2S leak: long term secret, item size: X
-./peerA-R2S leak: saved gi value, item size: X
-./peerA-R2S leak: msg_digest, item size: X
-./peerA-R2S leak: ikev2_outI1 KE, item size: X
-./peerA-R2S leak: db2_expand->attrs, item size: X
-./peerA-R2S leak: db_context->trans (expand), item size: X
-./peerA-R2S leak: db_context->conj (expand), item size: X
-./peerA-R2S leak: alg_info_ike, item size: X
-./peerA-R2S leak: db_context, item size: X
-./peerA-R2S leak: v2 policy database, item size: X
-./peerA-R2S leak: struct state in new_state(), item size: X
-./peerA-R2S leak: generalName, item size: X
-./peerA-R2S leak: x509cert, item size: X
-./peerA-R2S leak: CA cert, item size: X
-./peerA-R2S leak: host_pair, item size: X
-./peerA-R2S leak: rfc3110 format of public key [created], item size: X
-./peerA-R2S leak: issuer dn, item size: X
-./peerA-R2S leak: keep id name, item size: X
-./peerA-R2S leak: pubkey entry, item size: X
-./peerA-R2S leak: issuer, item size: X
-./peerA-R2S leak: pubkey, item size: X
-./peerA-R2S leak: rfc3110 format of public key [created], item size: X
-./peerA-R2S leak: issuer dn, item size: X
-./peerA-R2S leak: keep id name, item size: X
-./peerA-R2S leak: pubkey entry, item size: X
-./peerA-R2S leak: pubkey, item size: X
-./peerA-R2S leak: generalName, item size: X
-./peerA-R2S leak: x509cert, item size: X
-./peerA-R2S leak: host cert, item size: X
-./peerA-R2S leak: certificate filename, item size: X
-./peerA-R2S leak: 2 * id list, item size: X
-./peerA-R2S leak: rfc3110 format of public key [created], item size: X
-./peerA-R2S leak: pubkey, item size: X
-./peerA-R2S leak: secret, item size: X
-./peerA-R2S leak: 4 * hasher name, item size: X
-./peerA-R2S leak: 10 * group description, item size: X
-./peerA-R2S leak: policies path, item size: X
-./peerA-R2S leak: ocspcerts path, item size: X
-./peerA-R2S leak: aacerts path, item size: X
-./peerA-R2S leak: certs path, item size: X
-./peerA-R2S leak: private path, item size: X
-./peerA-R2S leak: crls path, item size: X
-./peerA-R2S leak: cacert path, item size: X
-./peerA-R2S leak: acert path, item size: X
-./peerA-R2S leak detective found Z leaks, total size X
+RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
+| duplicate parent SA looking for state matching for peerA--peerB #2
+| same_parent peerA--peerB: #1 [est:true] vs #2
+| failed to match ID1: A{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
+| failed to match ID2: A{C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=*}
+| failed0

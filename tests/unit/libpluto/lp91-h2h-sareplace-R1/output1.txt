@@ -664,9 +664,6 @@ sending 416 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 |    number of TS: 1
 | processing payload: ISAKMP_NEXT_v2TSr (len=24)
 ./rekeyParentSA IKEv2 mode peer ID is ID_IPV4_ADDR: '132.213.238.7'
-|    match_id a=132.213.238.7
-|             b=132.213.238.7
-|    results  matched
 | idhash verify pr  e9 00 11 7e  41 d4 31 62  40 b8 63 22  bf 06 9f bc
 |   2e 05 3c 7e  12 87 12 99  2e 05 3c 7e  12 87 12 99
 | idhash auth R2  01 00 00 00  84 d5 ee 07
@@ -783,6 +780,11 @@ sending 416 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 ./rekeyParentSA STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+RC=0 #2: "mytunnel":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #2: "mytunnel":500 IKEv2.0 me=192.168.1.1 him=132.213.238.7
+RC=0 #1: "mytunnel":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "mytunnel":500 IKEv2.0 me=192.168.1.1 him=132.213.238.7
+| duplicate parent SA looking for state matching for mytunnel #1
 | recv_pcap_packet2() call 1: continuation
 | recv_pcap_packet2() call 1: exit
 | recv_pcap_packet2() call 2: enter
@@ -1271,97 +1273,3 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [192.168.1.1:500] to 13
 |   e3 d1 67 2c  3b c2 f8 74  90 88 b9 c1  61 b8 65 1f
 |   00 00 00 10  4f 45 ab ab  ab ab ab ab  ab ab ab ab
 | recv_pcap_packet2() call 3: exit
-RC=0 #3: "mytunnel":500 IKEv2.0 STATE_PARENT_R1 (received v2I1, sent v2R1); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=0; msgid=0; idle; import:respond to stranger
-./rekeyParentSA deleting connection
-| pass 0: considering CHILD SAs to delete
-./rekeyParentSA deleting state #3 (STATE_PARENT_R1)
-| considering request to delete IKE parent state
-| removing state object #3
-| ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  42 62 b0 5c  c1 88 c3 f9
-| state hash entry 13
-| pass 1: considering PARENT SAs to delete
-./rekeyParentSA leak: reply packet, item size: X
-./rekeyParentSA leak: saved first packet, item size: X
-./rekeyParentSA leak: initiator nonce, item size: X
-./rekeyParentSA leak: long term secret, item size: X
-./rekeyParentSA leak: saved gi value, item size: X
-./rekeyParentSA leak: nonce, item size: X
-./rekeyParentSA leak: Gi, item size: X
-./rekeyParentSA leak: db2_expand->attrs, item size: X
-./rekeyParentSA leak: db_context->trans (expand), item size: X
-./rekeyParentSA leak: db_context->conj (expand), item size: X
-./rekeyParentSA leak: alg_info_ike, item size: X
-./rekeyParentSA leak: db_context, item size: X
-./rekeyParentSA leak: v2 policy database, item size: X
-./rekeyParentSA leak: saved first received packet, item size: X
-./rekeyParentSA leak: ikev2_inI1outR1 KE, item size: X
-./rekeyParentSA leak: struct state in new_state(), item size: X
-./rekeyParentSA leak: reply packet for informational exchange, item size: X
-./rekeyParentSA leak: skeyseed_t1, item size: X
-./rekeyParentSA leak: responder keys, item size: X
-./rekeyParentSA leak: initiator keys, item size: X
-./rekeyParentSA leak: alg_info_esp, item size: X
-./rekeyParentSA leak: db_context->attrs, item size: X
-./rekeyParentSA leak: db_context->trans, item size: X
-./rekeyParentSA leak: db_context->conj, item size: X
-./rekeyParentSA leak: db_context, item size: X
-./rekeyParentSA leak: v2 policy database, item size: X
-./rekeyParentSA leak: reply packet, item size: X
-./rekeyParentSA leak: alg_info_esp, item size: X
-./rekeyParentSA leak: db_context->attrs, item size: X
-./rekeyParentSA leak: db_context->trans, item size: X
-./rekeyParentSA leak: db_context->conj, item size: X
-./rekeyParentSA leak: db_context, item size: X
-./rekeyParentSA leak: v2 policy database, item size: X
-./rekeyParentSA leak: saved first received packet, item size: X
-./rekeyParentSA leak: st_nr in duplicate_state, item size: X
-./rekeyParentSA leak: st_ni in duplicate_state, item size: X
-./rekeyParentSA leak: st_skey_pr in duplicate_state, item size: X
-./rekeyParentSA leak: st_skey_pi in duplicate_state, item size: X
-./rekeyParentSA leak: st_skey_er in duplicate_state, item size: X
-./rekeyParentSA leak: st_skey_ei in duplicate_state, item size: X
-./rekeyParentSA leak: st_skey_ar in duplicate_state, item size: X
-./rekeyParentSA leak: st_skey_ai in duplicate_state, item size: X
-./rekeyParentSA leak: st_skey_d in duplicate_state, item size: X
-./rekeyParentSA leak: st_skeyseed in duplicate_state, item size: X
-./rekeyParentSA leak: st_enc_key in duplicate_state, item size: X
-./rekeyParentSA leak: struct state in new_state(), item size: X
-./rekeyParentSA leak: calculated skey_prshared secret, item size: X
-./rekeyParentSA leak: calculated skey_pishared secret, item size: X
-./rekeyParentSA leak: calculated skey_ershared secret, item size: X
-./rekeyParentSA leak: calculated skey_eishared secret, item size: X
-./rekeyParentSA leak: calculated skey_arshared secret, item size: X
-./rekeyParentSA leak: calculated skey_aishared secret, item size: X
-./rekeyParentSA leak: calculated skey_dshared secret, item size: X
-./rekeyParentSA leak: calculated sharedshared secret, item size: X
-./rekeyParentSA leak: ikev2_inR1outI2 KE, item size: X
-./rekeyParentSA leak: nonce, item size: X
-./rekeyParentSA leak: Gr, item size: X
-./rekeyParentSA leak: saved first packet, item size: X
-./rekeyParentSA leak: sa in main_outI1, item size: X
-./rekeyParentSA leak: initiator nonce, item size: X
-./rekeyParentSA leak: long term secret, item size: X
-./rekeyParentSA leak: saved gi value, item size: X
-./rekeyParentSA leak: msg_digest, item size: X
-./rekeyParentSA leak: ikev2_outI1 KE, item size: X
-./rekeyParentSA leak: db2_expand->attrs, item size: X
-./rekeyParentSA leak: db_context->trans (expand), item size: X
-./rekeyParentSA leak: db_context->conj (expand), item size: X
-./rekeyParentSA leak: alg_info_ike, item size: X
-./rekeyParentSA leak: db_context, item size: X
-./rekeyParentSA leak: v2 policy database, item size: X
-./rekeyParentSA leak: struct state in new_state(), item size: X
-./rekeyParentSA leak: pubkey entry, item size: X
-./rekeyParentSA leak: rfc3110 format of public key, item size: X
-./rekeyParentSA leak: pubkey, item size: X
-./rekeyParentSA leak: pubkey entry, item size: X
-./rekeyParentSA leak: rfc3110 format of public key, item size: X
-./rekeyParentSA leak: pubkey, item size: X
-./rekeyParentSA leak: 2 * id list, item size: X
-./rekeyParentSA leak: rfc3110 format of public key [created], item size: X
-./rekeyParentSA leak: pubkey, item size: X
-./rekeyParentSA leak: secret, item size: X
-./rekeyParentSA leak: 4 * hasher name, item size: X
-./rekeyParentSA leak: 10 * group description, item size: X
-./rekeyParentSA leak detective found Z leaks, total size X

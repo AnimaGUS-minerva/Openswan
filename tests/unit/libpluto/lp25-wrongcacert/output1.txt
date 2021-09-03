@@ -812,7 +812,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |   31 1b 30 19  06 03 55 04  03 0c 12 63  61 72 6f 6c
 |   40 6f 70 65  6e 73 77 61  6e 2e 6f 72  67
 ./wrongcacert IKEv2 mode peer ID is ID_DER_ASN1_DN: 'C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org'
-| find_ID_host_pair: looking for me=@moon.testing.openswan.org him=<any> (wildcard)
+| find_ID_host_pair: looking for me=@moon.testing.openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org (wildcard)
 |                   comparing to me=@moon.testing.openswan.org him=(none) (rw-any)
 |    match_id a=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 |             b=(none)

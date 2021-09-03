@@ -135,6 +135,7 @@ int main(int argc, char *argv[])
 
     AFTER_CONN();
 
+    DBG_log("TEST FINISHED");
     show_states_status();
 
     /* dump the delete message that comes out */
