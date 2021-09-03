@@ -1290,7 +1290,7 @@ void ikev2_find_matching_parent(struct state *st)
     if(!IS_PARENT_SA(st)) return;
 
     show_states_status();
-    DBG_log("find_matching for %s #%lu"
+    DBG_log("duplicate parent SA looking for state matching for %s #%lu"
             , st->st_connection->name
             , st->st_serialno);
 
