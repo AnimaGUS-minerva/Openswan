@@ -1485,7 +1485,8 @@ static long msgid_invalid(msgid_t thing)
 
 void fmt_state(struct state *st, const time_t n
 , char *state_buf, const size_t state_buf_len
-, char *state_buf2, const size_t state_buf2_len)
+, char *state_buf2, const size_t state_buf2_len
+, char *state_buf3, const size_t state_buf3_len)
 {
     /* what the heck is interesting about a state? */
     const struct connection *c = st->st_connection;
@@ -1530,8 +1531,8 @@ void fmt_state(struct state *st, const time_t n
         if(st->st_ikev2) {
             if(IS_PARENT_SA(st)) {
                 snprintf(msgidbuf, sizeof(msgidbuf), "; retranscnt=%ld,outorder=%ld,last=%ld,next=%ld,recv=%ld; msgid=%ld"
-                     , (long)st->st_msg_retransmitted
-                     , (long)st->st_msg_badmsgid_recv
+                         , (long)st->st_msg_retransmitted
+                         , (long)st->st_msg_badmsgid_recv
                          , msgid_invalid(st->st_msgid_lastack)
                          , msgid_invalid(st->st_msgid_nextuse)
                          , msgid_invalid(st->st_msgid_lastrecv)
@@ -1650,6 +1651,20 @@ void fmt_state(struct state *st, const time_t n
 
 #	undef add_said
     }
+
+    /* now dump the identities at each end, if IKEv2 */
+    state_buf3[0]='\0';
+    if(st->st_ike_maj >= 2) {
+        snprintf(state_buf3, state_buf3_len
+                 , "#%lu: \"%s\"%s:%u IKEv%u.%u me=%s him=%s"
+                 , st->st_serialno
+                 , c->name, inst
+                 , st->st_remoteport
+                 , st->st_ike_maj, st->st_ike_min
+                 , st->ikev2.st_local_buf
+                 , st->ikev2.st_peer_buf);
+    }
+
 }
 
 /*
@@ -1681,6 +1696,7 @@ show_states_status(void)
     int i;
     char state_buf[LOG_WIDTH];
     char state_buf2[LOG_WIDTH];
+    char state_buf3[LOG_WIDTH];
     int count;
     struct state **array;
 
@@ -1720,10 +1736,13 @@ show_states_status(void)
 	  struct state *st;
 	  st = array[i];
 	  fmt_state(st, n, state_buf, sizeof(state_buf)
-		, state_buf2, sizeof(state_buf2));
+                    , state_buf2, sizeof(state_buf2)
+                    , state_buf3, sizeof(state_buf3));
 	  whack_log(RC_COMMENT, "%s", state_buf);
 	  if (state_buf2[0] != '\0')
 		whack_log(RC_COMMENT, "%s", state_buf2);
+	  if (state_buf3[0] != '\0')
+		whack_log(RC_COMMENT, "%s", state_buf3);
 
 	  /* show any associated pending Phase 2s */
 	  if (IS_PHASE1(st->st_state) || IS_PHASE15(st->st_state ))
@@ -1739,12 +1758,16 @@ void dump_one_state(struct state *st)
 {
     char state_buf[LOG_WIDTH];
     char state_buf2[LOG_WIDTH];
+    char state_buf3[LOG_WIDTH];
 
     fmt_state(st, 1, state_buf, sizeof(state_buf)
-              , state_buf2, sizeof(state_buf2));
+              , state_buf2, sizeof(state_buf2)
+              , state_buf3, sizeof(state_buf3));
     DBG_log("%s", state_buf);
     if (state_buf2[0] != '\0')
         DBG_log("%s", state_buf2);
+    if (state_buf3[0] != '\0')
+        DBG_log("%s", state_buf3);
 }
 
 /* Given that we've used up a range of unused CPI's,

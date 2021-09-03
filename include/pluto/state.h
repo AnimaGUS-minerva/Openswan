@@ -566,7 +566,8 @@ extern void find_my_cpi_gap(cpi_t *latest_cpi, cpi_t *first_busy_cpi);
 extern ipsec_spi_t uniquify_his_cpi(ipsec_spi_t cpi, struct state *st);
 extern void fmt_state(struct state *st, const time_t n
 		     , char *state_buf, const size_t state_buf_len
-		     , char *state_buf2, const size_t state_buf_len2);
+		     , char *state_buf2, const size_t state_buf_len2
+		     , char *state_buf3, const size_t state_buf_len3);
 extern void delete_states_by_peer(ip_address *peer);
 extern void replace_states_by_peer(ip_address *peer);
 
