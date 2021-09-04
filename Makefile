@@ -186,7 +186,7 @@ export OBJDIRTOP
 
 programs install clean:: ${OBJDIR}/Makefile
 	@echo OBJDIR: ${OBJDIR}
-	@if [ ! -d lib/libwhack/qcbor/inc ]; then echo Please run "make submodule" first; exit 1; fi
+	@if [ ! -d lib/libwhack/qcbor/inc ]; then echo QCBOR submodule missing, please run "make submodules" first; exit 1; fi
 	(cd ${ABSOBJDIR} && OBJDIRTOP=${ABSOBJDIR} OBJDIR=${ABSOBJDIR} ${MAKE} $@ )
 
 ${OBJDIR}/Makefile: ${srcdir}/Makefile packaging/utils/makeshadowdir
