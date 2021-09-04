@@ -174,7 +174,7 @@ submodules:
 
 ifeq ($(strip $(OBJDIR)),.) # If OBJDIR is OPENSWANSRCDIR (ie dot) then the simple case:
 programs install clean::
-	@if [ ! -d lib/libwhack/qcbor/inc ]; then echo Please run "make submodule" first; exit 1; fi
+	@if [ ! -d lib/libwhack/qcbor/inc ]; then echo Missing git submodules. Please run "make submodules" first; exit 1; fi
 	@for d in $(SUBDIRS) ; \
 	do \
 		(cd $$d && $(MAKE) srcdir=${OPENSWANSRCDIR}/$$d/ OPENSWANSRCDIR=${OPENSWANSRCDIR} $@ ) || exit 1; \
