@@ -1,5 +1,5 @@
 adjusting ipsec.d to XX
-Logging to stderr desired
+Logging switched to stderr
 Starting Pluto (Openswan Version VERSION
 LEAK_DETECTIVE support [disabled]
 OCF support for IKE [disabled]
