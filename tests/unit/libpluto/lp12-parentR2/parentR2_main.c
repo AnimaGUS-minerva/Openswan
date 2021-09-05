@@ -95,8 +95,10 @@ int main(int argc, char *argv[])
     }
 
     AFTER_CONN();
-
     finish_pcap();
+
+    DBG_log("TEST FINISHED");
+    show_states_status();
 
     /* clean up so that we can see any leaks */
     st = state_with_serialno(1);
