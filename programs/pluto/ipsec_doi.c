@@ -749,6 +749,14 @@ void initialize_new_state(struct state *st
     st->st_msgid_nextuse = c->first_msgid; // defaults to 0, firstmsgid=[0|1] from ipsec.conf
     st->st_msgid_lastack = INVALID_MSGID;
 
+    /* fill in ikev2 local ID */
+    st->ikev2.st_local_id = c->spd.this.id;
+    idtoa(&st->ikev2.st_local_id, st->ikev2.st_local_buf, sizeof(st->ikev2.st_local_buf));
+
+    /* fill in ikev2 remote ID */
+    st->ikev2.st_peer_id = c->spd.that.id;
+    idtoa(&st->ikev2.st_peer_id, st->ikev2.st_peer_buf, sizeof(st->ikev2.st_peer_buf));
+
     for(sr=&c->spd; sr!=NULL; sr=sr->next) {
 	if(sr->this.xauth_client) {
 	    if(sr->this.xauth_name) {

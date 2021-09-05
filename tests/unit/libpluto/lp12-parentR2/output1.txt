@@ -534,7 +534,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |    number of TS: 1
 | processing payload: ISAKMP_NEXT_v2TSr (len=48)
 ./parentR2 IKEv2 mode peer ID is ID_FQDN: '@parker01.emmjay.credil.org'
-| find_ID_host_pair: looking for me=(none) him=@parker01.emmjay.credil.org (wildcard)
+| find_ID_host_pair: looking for me=@jamesjohnson.emmjay.credil.org him=@parker01.emmjay.credil.org (wildcard)
 |                   comparing to me=@jamesjohnson.emmjay.credil.org him=@parker01.emmjay.credil.org (parker1--jj2)
 |    match_id a=@parker01.emmjay.credil.org
 |             b=@parker01.emmjay.credil.org
@@ -880,54 +880,8 @@ sending 448 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 19
 |   28 37 25 54  20 50 ff c0  bc 0a 77 b2  2f 96 a2 01
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
-| freeing state object #1
-./parentR2 leak: reply packet, item size: X
-./parentR2 leak: skeyseed_t1, item size: X
-./parentR2 leak: responder keys, item size: X
-./parentR2 leak: initiator keys, item size: X
-./parentR2 leak: alg_info_esp, item size: X
-./parentR2 leak: db_context->attrs, item size: X
-./parentR2 leak: db_context->trans, item size: X
-./parentR2 leak: db_context->conj, item size: X
-./parentR2 leak: db_context, item size: X
-./parentR2 leak: v2 policy database, item size: X
-./parentR2 leak: st_nr in duplicate_state, item size: X
-./parentR2 leak: st_ni in duplicate_state, item size: X
-./parentR2 leak: st_skey_pr in duplicate_state, item size: X
-./parentR2 leak: st_skey_pi in duplicate_state, item size: X
-./parentR2 leak: st_skey_er in duplicate_state, item size: X
-./parentR2 leak: st_skey_ei in duplicate_state, item size: X
-./parentR2 leak: st_skey_ar in duplicate_state, item size: X
-./parentR2 leak: st_skey_ai in duplicate_state, item size: X
-./parentR2 leak: st_skey_d in duplicate_state, item size: X
-./parentR2 leak: st_skeyseed in duplicate_state, item size: X
-./parentR2 leak: st_enc_key in duplicate_state, item size: X
-./parentR2 leak: struct state in new_state(), item size: X
-./parentR2 leak: ikev2_inI2outR2 KE, item size: X
-./parentR2 leak: alg_info_ike, item size: X
-./parentR2 leak: ikev2_inI1outR1 KE, item size: X
-./parentR2 leak: msg_digest, item size: X
-./parentR2 leak: 2 * keep id name, item size: X
-./parentR2 leak: ID host_pair, item size: X
-./parentR2 leak: host_pair, item size: X
-./parentR2 leak: host ip, item size: X
-./parentR2 leak: keep id name, item size: X
-./parentR2 leak: host ip, item size: X
-./parentR2 leak: keep id name, item size: X
-./parentR2 leak: connection name, item size: X
-./parentR2 leak: struct connection, item size: X
-./parentR2 leak: keep id name, item size: X
-./parentR2 leak: pubkey entry, item size: X
-./parentR2 leak: rfc3110 format of public key, item size: X
-./parentR2 leak: pubkey, item size: X
-./parentR2 leak: keep id name, item size: X
-./parentR2 leak: pubkey entry, item size: X
-./parentR2 leak: rfc3110 format of public key, item size: X
-./parentR2 leak: pubkey, item size: X
-./parentR2 leak: 2 * id list, item size: X
-./parentR2 leak: rfc3110 format of public key [created], item size: X
-./parentR2 leak: pubkey, item size: X
-./parentR2 leak: secret, item size: X
-./parentR2 leak: 4 * hasher name, item size: X
-./parentR2 leak: 10 * group description, item size: X
-./parentR2 leak detective found Z leaks, total size X
+RC=0 #2: "parker1--jj2":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=0; idle; import:respond to friend
+RC=0 #2: "parker1--jj2":500 IKEv2.0 me=@jamesjohnson.emmjay.credil.org him=@parker01.emmjay.credil.org
+RC=0 #1: "parker1--jj2":500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
+RC=0 #1: "parker1--jj2":500 IKEv2.0 me=@jamesjohnson.emmjay.credil.org him=@parker01.emmjay.credil.org
+| duplicate parent SA looking for state matching for parker1--jj2 #1
