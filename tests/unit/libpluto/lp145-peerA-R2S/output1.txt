@@ -115,8 +115,8 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 ./peerA-R2S transition from state STATE_IKEv2_START to state STATE_PARENT_I1
 | v2_state_transition: st is #1; pst is #0; transition_st is #0
 ./peerA-R2S STATE_PARENT_I1: sent v2I1, expected v2R1 (msgid: 00000000/4294967295)
-0: input from peerB-I1.pcap
-|   =========== input from pcap file peerB-I1.pcap ========
+0: input from peerB-I1b.pcap
+|   =========== input from pcap file peerB-I1b.pcap ========
 | *received 652 bytes from fe80::ec68:7cff:fe0c:9aa4:500 on eth0 (port=500)
 |   97 18 19 1a  1b 1c 1d 1e  00 00 00 00  00 00 00 00
 |   21 20 22 08  00 00 00 00  00 00 02 8c  22 00 01 0c
@@ -406,8 +406,8 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |   ba 25 fb 76  f7 36 b4 3e  9a 2d f5 62  9c 14 b4 bf
 |   5e 83 48 a5  26 f6 96 b8  db 16 59 ed  21 2d d9 06
 2: output to OUTPUT/02_peerA-R2S.pcap
-2: input from peerB-R2b.pcap
-|   =========== input from pcap file peerB-R2b.pcap ========
+2: input from peerB-I2b.pcap
+|   =========== input from pcap file peerB-I2b.pcap ========
 | *received 1616 bytes from fe80::ec68:7cff:fe0c:9aa4:500 on eth0 (port=500)
 |   97 18 19 1a  1b 1c 1d 1e  97 03 67 ba  2d 8b a4 1d
 |   2e 20 23 08  00 00 00 01  00 00 06 50  23 00 06 34

@@ -1,16 +1,18 @@
 # -*- makefile -*-
 CONNNAME=peerA--peerB
 ENDNAME=acppeers
-UNITTEST1ARGS=-r ${WHACKFILE} ${CONNNAME} OUTPUT/${TESTNAME}.pcap peerB-I1.pcap peerB-R1a.pcap peerB-R2b.pcap
+UNITTEST1ARGS=-r ${WHACKFILE} ${CONNNAME} OUTPUT/${TESTNAME}.pcap peerB-I1b.pcap peerB-R1a.pcap peerB-I2b.pcap
 
 TESTNAME=peerA-R2S
 MORE_PCAP_FILES=02_peerA-R2S
 
 EXTRAOBJS+=${OBJDIRTOP}/programs/pluto/x509keys.o
 
-# note that peerB-R1S has two packets in it.
+# peerB-I1b  is B initiating to us  (we'll respond with an R1 in lp142)
+# peerB-R1a  is B responding to our I1 from lp143
+# peerB-I2b  is B initiating an I2  in response to our R1.
 pcapupdate::
-	cp ../lp142-peerB-I1/OUTPUT/peerB-I1.pcap	peerB-I1.pcap
+	cp ../lp142-peerB-I1/OUTPUT/peerB-I1.pcap	peerB-I1b.pcap
 	cp ../lp144-peerB-R1S/OUTPUT/peerB-R1S.pcap	peerB-R1a.pcap
-	cp ../lp144-peerB-R1S/OUTPUT/02_peerB-R1S.pcap	peerB-R2b.pcap
+	cp ../lp144-peerB-R1S/OUTPUT/02_peerB-R1S.pcap	peerB-I2b.pcap
 
