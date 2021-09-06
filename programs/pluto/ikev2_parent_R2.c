@@ -383,7 +383,7 @@ ikev2_parent_inI2outR2_tail(struct pluto_crypto_req_cont *pcrc
                             , st->st_skey_pr);
             build_id_payload((struct isakmp_ipsec_id *)&r_id, &id_b
                              , &c->spd.this
-                             , &st->ikev2.st_peer_id);
+                             , &st->ikev2.st_local_id);
             r_id.isai_critical = ISAKMP_PAYLOAD_NONCRITICAL;
 
             r_id.isai_np = 0;

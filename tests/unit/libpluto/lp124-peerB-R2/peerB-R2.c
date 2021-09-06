@@ -1,3 +1,5 @@
+// #define PROCESS_DEBUGGING DBG_CONTROL|DBG_CONTROLMORE|DBG_EMITTING
+
 #include "../lp12-parentR2/parentR2_head.c"
 #include "seam_natt.c"
 #include "seam_host_peerB.c"

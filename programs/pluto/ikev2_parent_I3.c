@@ -79,10 +79,14 @@ stf_status ikev2parent_inR2(struct msg_digest *md)
 
     /* now check if it's the same */
     if(!match_id(&responderid, &st->ikev2.st_peer_id, &wildcards)) {
-        openswan_log("Responder used id %s, we expected id: %s"
-                     , responderbuf, st->ikev2.st_peer_buf);
+        openswan_log("Responder used id %s, we expected id: %s (wildcards=%d)"
+                     , responderbuf, st->ikev2.st_peer_buf, wildcards);
         return STF_FAIL;
     }
+
+    /* the st_peer_id could have had wildcards, so take what was actually sent */
+    pst->ikev2.st_peer_id = responderid;
+    strcpy(pst->ikev2.st_peer_buf, responderbuf);
 
     {
         struct hmac_ctx id_ctx;
