@@ -502,6 +502,9 @@ has_preloaded_public_key(struct state *st)
 bool
 extract_peer_id(struct id *peer, const pb_stream *id_pbs)
 {
+    /* peer IDs are never allowed to have wildcards */
+    peer->has_wildcards = FALSE;
+
     switch (peer->kind)
     {
     case ID_IPV4_ADDR:
