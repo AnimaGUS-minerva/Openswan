@@ -969,10 +969,11 @@ ikev2_copy_child_local(struct state *st)
 }
 
 bool
-ikev2_decode_peer_id(struct msg_digest *md, enum phase1_role init)
+ikev2_extract_peer_id(struct msg_digest *md, enum phase1_role init
+                      , struct id *peer_id
+                      , char *peer_buf, int peer_buf_len)
 {
-    struct state *const st = md->st;
-    unsigned int hisID = (init==INITIATOR) ?
+    const unsigned int hisID = (init==INITIATOR) ?
 	ISAKMP_NEXT_v2IDr : ISAKMP_NEXT_v2IDi;
     /* unsigned int myID  = initiator ? ISAKMP_NEXT_v2IDi: ISAKMP_NEXT_v2IDr;
      * struct payload_digest *const id_me  = md->chain[myID];
@@ -988,17 +989,31 @@ ikev2_decode_peer_id(struct msg_digest *md, enum phase1_role init)
 
     id_pbs = &id_him->pbs;
     id = &id_him->payload.v2id;
-    st->ikev2.st_peer_id.kind = id->isai_type;
+    peer_id->kind = id->isai_type;
 
-    if(!extract_peer_id(&st->ikev2.st_peer_id, id_pbs)) {
+    if(!extract_peer_id(peer_id, id_pbs)) {
 	openswan_log("IKEv2 mode peer ID extraction failed");
 	return FALSE;
     }
 
-    idtoa(&st->ikev2.st_peer_id, st->ikev2.st_peer_buf, sizeof(st->ikev2.st_peer_buf));
+    idtoa(peer_id, peer_buf, peer_buf_len);
     openswan_log("IKEv2 mode peer ID is %s: '%s'"
-                 , enum_show(&ident_names, id->isai_type), st->ikev2.st_peer_buf);
+                 , enum_show(&ident_names, id->isai_type), peer_buf);
 
+    return TRUE;
+}
+
+bool
+ikev2_decode_peer_id(struct msg_digest *md, enum phase1_role init)
+{
+    struct state *const st = md->st;
+
+    if(ikev2_extract_peer_id(md, init
+                             , &st->ikev2.st_peer_id
+                             , st->ikev2.st_peer_buf
+                             , sizeof(st->ikev2.st_peer_buf)) != TRUE) {
+        return FALSE;
+    }
 
     /* copy the peer ID contents to the parent state */
     ikev2_copy_child_peer(st);
