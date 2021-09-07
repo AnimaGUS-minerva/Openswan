@@ -934,6 +934,40 @@ process_v2_packet(struct msg_digest **mdp)
     complete_v2_state_transition(mdp, ret);
 }
 
+void
+ikev2_copy_child_peer(struct state *st)
+{
+    if(IS_CHILD_SA(st)) {
+        struct state *pst = NULL;
+
+        if(st->st_clonedfrom != 0) {
+            pst = state_with_serialno(st->st_clonedfrom);
+        }
+
+        if(pst) {
+            pst->ikev2.st_peer_id = st->ikev2.st_peer_id;
+            strcpy(pst->ikev2.st_peer_buf, st->ikev2.st_peer_buf);
+        }
+    }
+}
+
+void
+ikev2_copy_child_local(struct state *st)
+{
+    if(IS_CHILD_SA(st)) {
+        struct state *pst = NULL;
+
+        if(st->st_clonedfrom != 0) {
+            pst = state_with_serialno(st->st_clonedfrom);
+        }
+
+        if(pst) {
+            pst->ikev2.st_local_id = st->ikev2.st_local_id;
+            strcpy(pst->ikev2.st_local_buf, st->ikev2.st_local_buf);
+        }
+    }
+}
+
 bool
 ikev2_decode_peer_id(struct msg_digest *md, enum phase1_role init)
 {
@@ -964,6 +998,10 @@ ikev2_decode_peer_id(struct msg_digest *md, enum phase1_role init)
     idtoa(&st->ikev2.st_peer_id, st->ikev2.st_peer_buf, sizeof(st->ikev2.st_peer_buf));
     openswan_log("IKEv2 mode peer ID is %s: '%s'"
                  , enum_show(&ident_names, id->isai_type), st->ikev2.st_peer_buf);
+
+
+    /* copy the peer ID contents to the parent state */
+    ikev2_copy_child_peer(st);
 
     return TRUE;
 }
@@ -1002,6 +1040,9 @@ ikev2_decode_local_id(struct msg_digest *md, enum phase1_role init)
     idtoa(&st->ikev2.st_local_id, st->ikev2.st_local_buf, sizeof(st->ikev2.st_local_buf));
     openswan_log("IKEv2 mode me ID is %s: '%s'"
 		     , enum_show(&ident_names, id->isai_type), st->ikev2.st_local_buf);
+
+    /* copy the local ID contents to the parent state */
+    ikev2_copy_child_local(st);
 
     return TRUE;
 }
