@@ -935,7 +935,7 @@ process_v2_packet(struct msg_digest **mdp)
 }
 
 void
-ikev2_copy_child_peers(struct state *st)
+ikev2_copy_child_peer(struct state *st)
 {
     if(IS_CHILD_SA(st)) {
         struct state *pst = NULL;
@@ -1017,7 +1017,7 @@ ikev2_decode_peer_id(struct msg_digest *md, enum phase1_role init)
     }
 
     /* copy the peer ID contents to the parent state */
-    ikev2_copy_child_peers(st);
+    ikev2_copy_child_peer(st);
 
     return TRUE;
 }
