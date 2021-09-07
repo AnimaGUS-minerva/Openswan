@@ -678,6 +678,9 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |   41 57 00 00  ff ff ff ff  ff ff ff ff  00 01 02 03
 | striping 4 bytes as pad
 ./xf13-parentI3 IKEv2 mode peer ID is ID_FQDN: '@jamesjohnson.emmjay.credil.org'
+|    match_id a=@jamesjohnson.emmjay.credil.org
+|             b=@jamesjohnson.emmjay.credil.org
+|    results  matched
 | idhash verify pr  e9 00 11 7e  41 d4 31 62  40 b8 63 22  bf 06 9f bc
 |   2e 05 3c 7e  12 87 12 99  2e 05 3c 7e  12 87 12 99
 | idhash auth R2  02 00 00 00  6a 61 6d 65  73 6a 6f 68  6e 73 6f 6e

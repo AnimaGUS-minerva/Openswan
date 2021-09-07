@@ -521,7 +521,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |    number of TS: 1
 | processing payload: ISAKMP_NEXT_v2TSr (len=24)
 ./respondselfR2 IKEv2 mode peer ID is ID_FQDN: '@example.com'
-| find_ID_host_pair: looking for me=(none) him=@example.com (wildcard)
+| find_ID_host_pair: looking for me=@jamesjohnson.emmjay.credil.org him=@example.com (wildcard)
 |                   comparing to me=@jamesjohnson.emmjay.credil.org him=@example.com (gateway--any)
 |    match_id a=@example.com
 |             b=@example.com

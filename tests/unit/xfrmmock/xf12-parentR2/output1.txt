@@ -564,7 +564,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |    number of TS: 1
 | processing payload: ISAKMP_NEXT_v2TSr (len=48)
 ./xf12-parentR2 IKEv2 mode peer ID is ID_FQDN: '@parker01.emmjay.credil.org'
-| find_ID_host_pair: looking for me=(none) him=@parker01.emmjay.credil.org (wildcard)
+| find_ID_host_pair: looking for me=@jamesjohnson.emmjay.credil.org him=@parker01.emmjay.credil.org (wildcard)
 |                   comparing to me=@jamesjohnson.emmjay.credil.org him=@parker01.emmjay.credil.org (parker1--jj2)
 |    match_id a=@parker01.emmjay.credil.org
 |             b=@parker01.emmjay.credil.org

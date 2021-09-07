@@ -533,7 +533,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |    number of TS: 1
 | processing payload: ISAKMP_NEXT_v2TSr (len=24)
 ./rekeyChildSA-fromR2 IKEv2 mode peer ID is ID_IPV4_ADDR: '192.168.1.1'
-| find_ID_host_pair: looking for me=(none) him=192.168.1.1 (wildcard)
+| find_ID_host_pair: looking for me=132.213.238.7 him=192.168.1.1 (wildcard)
 |                   comparing to me=132.213.238.7 him=192.168.1.1 (mytunnel)
 |    match_id a=192.168.1.1
 |             b=192.168.1.1

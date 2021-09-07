@@ -950,6 +950,9 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 | ikev2 parent inR2: calculating g^{xy} in order to decrypt I2
 | decrypting as INITIATOR, using RESPONDER keys
 ./peerA-rekeyR2 IKEv2 mode peer ID is ID_DER_ASN1_DN: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
+|    match_id a=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
+|             b=C=CA, ST=ON, O=Xelerance, CN=*
+|    results  matched
 ./peerA-rekeyR2 v2_CERT received on initiator, attempting to validate
 ./peerA-rekeyR2 no crl from issuer "C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA" found (strict=no)
 | reached self-signed root ca
@@ -969,53 +972,48 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |        authkey:  86:cb:59:12:06:07:df:3f:00:36:b9:64:c6:c5:14:1f:3a:ed:cd:aa
 | checking alg=1 == 1, keyid=carol@openswan.org same_id=0
 | checking alg=1 == 1, keyid=dave@openswan.org same_id=0
-| checking alg=1 == 1, keyid=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org same_id=1
-| key issuer CA is 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
-|  checking narrowing - responding to R2
-| checking TSi(1)/TSr(1) selectors, looking for exact match
-|   ikev2_evaluate_connection_fit evaluating our I=peerA--peerB:::/0:0/0 R=::/0:0/0  to their:
-|     tsi[0]=::/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto=0 portrange 0-65535
-|     tsr[0]=::/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto=0 portrange 0-65535
-| ei->port 0  tsi[tsi_ni].startport 0  tsi[tsi_ni].endport 65535
-|       has ts_range1=128 maskbits1=0 ts_range2=128 maskbits2=0 fitbits=32896 <> -1
-|  prefix fitness found a better match c peerA--peerB
-|     evaluate_connection_port_fit tsi_n[1], best=-1
-|    tsi[0] 0-65535: exact port match with 0.  fitness 65536
-|       evaluating_connection_port_fit tsi_n[0], range_i=65536 best=-1
-|    tsr[0] 0-65535: exact port match with 0.  fitness 65536
-|       evaluating_connection_port_fit tsi_n[0] tsr_n[0], range=65536/65536 best=-1
-|     best ports fit so far: tsi[0] fitrange_i 65536, tsr[0] fitrange_r 65536, matchiness 131072
-|     port_fitness 131072
-|   port fitness found better match c peerA--peerB, tsi[0],tsr[0]
-| protocol 0 and tsi[0].ipprotoid 0: exact match
-| protocol 0 and tsr[0].ipprotoid 0: exact match
-|     best protocol fit so far: tsi[0] fitrange_i 255, tsr[0] fitrange_r 255, matchiness 510
-|     protocol_fitness 510
-|    protocol fitness found better match c peerA--peerB, tsi[0],tsr[0]
-| found an acceptable TSi/TSr Traffic Selector
-| printing contents struct traffic_selector
-|   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
-|   ipprotoid: 0
-|   startport: 0
-|   endport: 65535
-|   ip low: ::
-|   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
-| printing contents struct traffic_selector
-|   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
-|   ipprotoid: 0
-|   startport: 0
-|   endport: 65535
-|   ip low: ::
-|   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
-| processor 'initiator-auth-process' returned STF_OK (3)
-| #2 complete v2 state transition with STF_OK
-./peerA-rekeyR2 transition from state STATE_CHILD_C0_KEYING to state STATE_CHILD_C1_KEYED
-| v2_state_transition: st is #2; pst is #0; transition_st is #0
-./peerA-rekeyR2 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
-./peerA-rekeyR2 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerA-rekeyR2 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=000011d7}
-| releasing whack for #X (sock=Y)
-| releasing whack for #X (sock=Y)
+| checking alg=1 == 1, keyid=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org same_id=0
+| checking alg=1 == 1, keyid=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org same_id=0
+RC=0
+RC=0 List of Public Keys:
+RC=0
+RC=0 DATE RSA dndsec key AwEAAbfz1/C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB (no private key), until Dec 11 04:15:59 UTC 2021 ok
+RC=0        ID_USER_FQDN 'carol@openswan.org'
+RC=0        Issuer 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+RC=0 DATE RSA localf key AwEAAeOoT/75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 (has private key), until Dec 11 04:15:59 UTC 2021 ok
+RC=0        ID_USER_FQDN 'dave@openswan.org'
+RC=0        Issuer 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+RC=0 DATE RSA localf key AwEAAeOoT/75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 (has private key), until Dec 11 04:15:59 UTC 2021 ok
+RC=0        ID_DER_ASN1_DN 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
+RC=0        Issuer 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+./peerA-rekeyR2 authentication failed
+./peerA-rekeyR2 sending notification ISAKMP_v2_AUTH/v2N_AUTHENTICATION_FAILED to fe80::ec68:7cff:fe0c:9aa4:500
+| **emit ISAKMP Message:
+|    initiator cookie:
+|   8d 0e 0f 10  11 12 13 14
+|    responder cookie:
+|   78 5b 90 fe  dd d1 18 2d
+|    ISAKMP version: IKEv2 version 2.0 (rfc4306/rfc5996)
+|    exchange type: ISAKMP_v2_AUTH
+|    flags: ISAKMP_FLAG_INIT+ISAKMP_FLAG_RESPONSE
+|    message ID:  00 00 00 01
+| Adding a v2N Payload
+|    next-payload: ISAKMP_NEXT_v2N [@16=0x29]
+| ***emit IKEv2 Notify Payload:
+|    critical bit: none
+|    Protocol ID: PROTO_ISAKMP
+|    SPI size: 0
+|    Notify Message Type: v2N_AUTHENTICATION_FAILED
+| emitting length of IKEv2 Notify Payload: 8
+| emitting length of ISAKMP Message: 36
+sending 36 bytes for send_v2_notification through eth0:500 [fe80::8054:3eff:fe9a:d3f4:500] to fe80::ec68:7cff:fe0c:9aa4:500 (using #2)
+|   8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
+|   29 20 23 28  00 00 00 01  00 00 00 24  00 00 00 08
+|   01 00 00 18
+| processor 'initiator-auth-process' returned STF_FAIL (8)
+| #2 complete v2 state transition with STF_FAIL
+./peerA-rekeyR2 STATE_CHILD_C0_KEYING: (null)
+| state transition function for STATE_CHILD_C0_KEYING failed: <no reason given>
 2: input from peerB-rI1.pcap
 |   =========== input from pcap file peerB-rI1.pcap ========
 | initial rekey results
@@ -1026,9 +1024,8 @@ RC=0 "peerA--peerB":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535
 RC=0 "peerA--peerB":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; firstmsgid: 0
 RC=0 "peerA--peerB":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 0,0; interface: eth0; kind=CK_TEMPLATE
 RC=0 "peerA--peerB":   debug: crypt+emitting+control+controlmore+private
-RC=0 "peerA--peerB":   IKE algorithm newest: aes_cbc_128-aes_xcbc_96-MODP2048
-RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
-RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C0_KEYING (CHILD SA keying); none in -1s; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I2 (sent v2I2, expected v2R2); none in -1s; nodpd; retranscnt=0,outorder=0,last=0,next=2,recv=-1; msgid=0; idle; import:admin initiate
 | packet 3 -- rekey starting
 | *received 652 bytes from fe80::ec68:7cff:fe0c:9aa4:500 on eth0 (port=500)
 |   81 02 03 04  05 06 07 08  00 00 00 00  00 00 00 00
@@ -1831,7 +1828,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::8054:3eff:fe9a:d
 |   31 1b 30 19  06 03 55 04  03 0c 12 63  61 72 6f 6c
 |   40 6f 70 65  6e 73 77 61  6e 2e 6f 72  67
 ./peerA-rekeyR2 IKEv2 mode peer ID is ID_DER_ASN1_DN: 'C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org'
-| find_ID_host_pair: looking for me=(none) him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org (wildcard)
+| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=<any> (wildcard)
 |                   comparing to me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=* (peerA--peerB)
 |    match_id a=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 |             b=C=CA, ST=ON, O=Xelerance, CN=*
@@ -2717,8 +2714,8 @@ sending 1552 bytes for STATE_PARENT_R1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |   b1 f0 8c 15  c8 61 70 1b  93 d0 8a fa  e8 07 44 8d
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
-RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
-RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C0_KEYING (CHILD SA keying); none in -1s; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I2 (sent v2I2, expected v2R2); none in -1s; nodpd; retranscnt=0,outorder=0,last=0,next=2,recv=-1; msgid=0; idle; import:admin initiate
 RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=0; idle; import:respond to friend
 RC=0 #3: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
 ./peerA-rekeyR2 deleting connection
@@ -2769,54 +2766,13 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 |   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
 |   94 85 95 57  0a a9 cb 4f  44 2a 65 be  47 3b 6e ea
 |   70 44 cc 94  1d 86 80 5d  89 69 54 f6  85 ea 99 e4
-./peerA-rekeyR2 deleting state #2 (STATE_CHILD_C1_KEYED)
+./peerA-rekeyR2 deleting state #2 (STATE_CHILD_C0_KEYING)
 | received request to delete child state
-| sending Child SA delete request
-| preparing to delete #2, we are the original INITIATOR of parent #1
-| **emit ISAKMP Message:
-|    initiator cookie:
-|   8d 0e 0f 10  11 12 13 14
-|    responder cookie:
-|   78 5b 90 fe  dd d1 18 2d
-|    ISAKMP version: IKEv2 version 2.0 (rfc4306/rfc5996)
-|    exchange type: ISAKMP_v2_INFORMATIONAL
-|    flags: ISAKMP_FLAG_INIT
-|    message ID:  00 00 00 02
-| ***emit IKEv2 Encryption Payload:
-|    critical bit: none
-| emitting 16 zero bytes of iv into IKEv2 Encryption Payload
-| *****emit IKEv2 Delete Payload:
-|    critical bit: none
-|    protocol ID: 3
-|    SPI size: 4
-|    number of SPIs: 1
-| emitting 4 raw bytes of local spis into IKEv2 Delete Payload
-| local spis  12 34 56 78
-| emitting length of IKEv2 Delete Payload: 12
-| emitting 4 raw bytes of padding and length into cleartext
-| padding and length  00 01 02 03
-| emitting 16 zero bytes of length of truncated HMAC into IKEv2 Encryption Payload
-| emitting length of IKEv2 Encryption Payload: 52
-| emitting length of ISAKMP Message: 80
-| encrypting as INITIATOR, parent SA #1
-| data before encryption:
-|   00 00 00 0c  03 04 00 01  12 34 56 78  00 01 02 03
-| data after encryption:
-|   e6 a5 68 9a  47 20 c4 2b  05 eb 37 40  a9 ac c8 f1
-| data being hmac:  8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
-|   2e 20 25 08  00 00 00 02  00 00 00 50  2a 00 00 34
-|   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
-|   e6 a5 68 9a  47 20 c4 2b  05 eb 37 40  a9 ac c8 f1
-| out calculated auth:
-|   34 69 0a 36  9f de 54 94  9c 50 45 da  08 44 08 d5
-sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f4:500] to fe80::ec68:7cff:fe0c:9aa4:500 (using #1)
-|   8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
-|   2e 20 25 08  00 00 00 02  00 00 00 50  2a 00 00 34
-|   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
-|   e6 a5 68 9a  47 20 c4 2b  05 eb 37 40  a9 ac c8 f1
-|   34 69 0a 36  9f de 54 94  9c 50 45 da  08 44 08 d5
-| pass 1: considering PARENT SAs to delete
-./peerA-rekeyR2 deleting state #1 (STATE_PARENT_I3)
+| removing state object #2
+| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| RCOOKIE:  78 5b 90 fe  dd d1 18 2d
+| state hash entry 6
+./peerA-rekeyR2 deleting state #1 (STATE_PARENT_I2)
 | considering request to delete IKE parent state
 | sending IKE SA delete request
 | preparing to delete #1, we are the original INITIATOR of parent #1
@@ -2828,7 +2784,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 |    ISAKMP version: IKEv2 version 2.0 (rfc4306/rfc5996)
 |    exchange type: ISAKMP_v2_INFORMATIONAL
 |    flags: ISAKMP_FLAG_INIT
-|    message ID:  00 00 00 03
+|    message ID:  00 00 00 02
 | ***emit IKEv2 Encryption Payload:
 |    critical bit: none
 | emitting 16 zero bytes of iv into IKEv2 Encryption Payload
@@ -2849,19 +2805,26 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 | data after encryption:
 |   ef 61 43 7e  20 c8 ff cc  28 2e 1d 57  52 43 96 41
 | data being hmac:  8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
-|   2e 20 25 08  00 00 00 03  00 00 00 50  2a 00 00 34
+|   2e 20 25 08  00 00 00 02  00 00 00 50  2a 00 00 34
 |   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
 |   ef 61 43 7e  20 c8 ff cc  28 2e 1d 57  52 43 96 41
 | out calculated auth:
-|   6e 9b c6 4f  a4 76 d0 19  40 89 83 b8  41 72 a0 8e
+|   53 26 5b 43  1c 16 b1 38  a1 15 c6 bc  7a 0d 23 e0
 sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f4:500] to fe80::ec68:7cff:fe0c:9aa4:500 (using #1)
 |   8d 0e 0f 10  11 12 13 14  78 5b 90 fe  dd d1 18 2d
-|   2e 20 25 08  00 00 00 03  00 00 00 50  2a 00 00 34
+|   2e 20 25 08  00 00 00 02  00 00 00 50  2a 00 00 34
 |   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
 |   ef 61 43 7e  20 c8 ff cc  28 2e 1d 57  52 43 96 41
-|   6e 9b c6 4f  a4 76 d0 19  40 89 83 b8  41 72 a0 8e
-| freeing state object #1
-./peerA-rekeyR2 leak: request packet for informational exchange, item size: X
+|   53 26 5b 43  1c 16 b1 38  a1 15 c6 bc  7a 0d 23 e0
+| pass 1: considering PARENT SAs to delete
+./peerA-rekeyR2 deleting state #1 (STATE_IKESA_DEL)
+| considering request to delete IKE parent state
+| now deleting the IKE (or parent) state
+| removing state object #1
+| ICOOKIE:  8d 0e 0f 10  11 12 13 14
+| RCOOKIE:  78 5b 90 fe  dd d1 18 2d
+| state hash entry 6
+./peerA-rekeyR2 leak: 2 * request packet for informational exchange, item size: X
 ./peerA-rekeyR2 leak: reply packet, item size: X
 ./peerA-rekeyR2 leak: skeyseed_t1, item size: X
 ./peerA-rekeyR2 leak: responder keys, item size: X
@@ -2929,15 +2892,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-rekeyR2 leak: saved first received packet, item size: X
 ./peerA-rekeyR2 leak: ikev2_inI1outR1 KE, item size: X
 ./peerA-rekeyR2 leak: struct state in new_state(), item size: X
-./peerA-rekeyR2 leak: skeyseed_t1, item size: X
-./peerA-rekeyR2 leak: responder keys, item size: X
-./peerA-rekeyR2 leak: initiator keys, item size: X
-./peerA-rekeyR2 leak: alg_info_esp, item size: X
-./peerA-rekeyR2 leak: db_context->attrs, item size: X
-./peerA-rekeyR2 leak: db_context->trans, item size: X
-./peerA-rekeyR2 leak: db_context->conj, item size: X
-./peerA-rekeyR2 leak: db_context, item size: X
-./peerA-rekeyR2 leak: v2 policy database, item size: X
+./peerA-rekeyR2 leak: notification packet, item size: X
 ./peerA-rekeyR2 leak: issuer, item size: X
 ./peerA-rekeyR2 leak: rfc3110 format of public key [created], item size: X
 ./peerA-rekeyR2 leak: issuer dn, item size: X
@@ -2951,6 +2906,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-rekeyR2 leak: db_context->conj, item size: X
 ./peerA-rekeyR2 leak: db_context, item size: X
 ./peerA-rekeyR2 leak: v2 policy database, item size: X
+./peerA-rekeyR2 leak: saved first received packet, item size: X
 ./peerA-rekeyR2 leak: st_nr in duplicate_state, item size: X
 ./peerA-rekeyR2 leak: st_ni in duplicate_state, item size: X
 ./peerA-rekeyR2 leak: st_skey_pr in duplicate_state, item size: X
@@ -2963,10 +2919,31 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-rekeyR2 leak: st_skeyseed in duplicate_state, item size: X
 ./peerA-rekeyR2 leak: st_enc_key in duplicate_state, item size: X
 ./peerA-rekeyR2 leak: struct state in new_state(), item size: X
+./peerA-rekeyR2 leak: calculated skey_prshared secret, item size: X
+./peerA-rekeyR2 leak: calculated skey_pishared secret, item size: X
+./peerA-rekeyR2 leak: calculated skey_ershared secret, item size: X
+./peerA-rekeyR2 leak: calculated skey_eishared secret, item size: X
+./peerA-rekeyR2 leak: calculated skey_arshared secret, item size: X
+./peerA-rekeyR2 leak: calculated skey_aishared secret, item size: X
+./peerA-rekeyR2 leak: calculated skey_dshared secret, item size: X
+./peerA-rekeyR2 leak: calculated sharedshared secret, item size: X
 ./peerA-rekeyR2 leak: ikev2_inR1outI2 KE, item size: X
+./peerA-rekeyR2 leak: nonce, item size: X
+./peerA-rekeyR2 leak: Gr, item size: X
+./peerA-rekeyR2 leak: saved first packet, item size: X
+./peerA-rekeyR2 leak: sa in main_outI1, item size: X
+./peerA-rekeyR2 leak: initiator nonce, item size: X
+./peerA-rekeyR2 leak: long term secret, item size: X
+./peerA-rekeyR2 leak: saved gi value, item size: X
 ./peerA-rekeyR2 leak: msg_digest, item size: X
 ./peerA-rekeyR2 leak: ikev2_outI1 KE, item size: X
+./peerA-rekeyR2 leak: db2_expand->attrs, item size: X
+./peerA-rekeyR2 leak: db_context->trans (expand), item size: X
+./peerA-rekeyR2 leak: db_context->conj (expand), item size: X
 ./peerA-rekeyR2 leak: alg_info_ike, item size: X
+./peerA-rekeyR2 leak: db_context, item size: X
+./peerA-rekeyR2 leak: v2 policy database, item size: X
+./peerA-rekeyR2 leak: struct state in new_state(), item size: X
 ./peerA-rekeyR2 leak: generalName, item size: X
 ./peerA-rekeyR2 leak: x509cert, item size: X
 ./peerA-rekeyR2 leak: CA cert, item size: X

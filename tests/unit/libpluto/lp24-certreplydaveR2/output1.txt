@@ -895,7 +895,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |   31 1b 30 19  06 03 55 04  03 0c 12 63  61 72 6f 6c
 |   40 6f 70 65  6e 73 77 61  6e 2e 6f 72  67
 ./certreplydaveR2 IKEv2 mode peer ID is ID_DER_ASN1_DN: 'C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org'
-| find_ID_host_pair: looking for me=(none) him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org (wildcard)
+| find_ID_host_pair: looking for me=@moon.testing.openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org (wildcard)
 |                   comparing to me=@moon.testing.openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org (rw-dave)
 |    match_id a=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 |             b=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
@@ -908,7 +908,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |    match_id a=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 |             b=(none)
 |    results  matched
-|   concluded with rw-any [wildcard: 15]
+|   concluded with rw-any [wildcard: 16]
 | parent SA IDi pi verify
 |   cc 07 97 44  b4 a3 4e 8a  0d 2f 27 8b  ee 06 6d 07
 |   2e 05 3c 7e  12 87 12 99  2e 05 3c 7e  12 87 12 99
@@ -2549,7 +2549,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |   31 1a 30 18  06 03 55 04  03 0c 11 64  61 76 65 40
 |   6f 70 65 6e  73 77 61 6e  2e 6f 72 67
 ./certreplydaveR2 IKEv2 mode peer ID is ID_DER_ASN1_DN: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
-| find_ID_host_pair: looking for me=(none) him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org (wildcard)
+| find_ID_host_pair: looking for me=@moon.testing.openswan.org him=<any> (wildcard)
 |                   comparing to me=@moon.testing.openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org (rw-dave)
 |    match_id a=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 |             b=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org

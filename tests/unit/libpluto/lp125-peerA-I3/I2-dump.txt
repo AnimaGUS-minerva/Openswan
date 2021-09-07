@@ -1,3 +1,5 @@
+IP6 (hlim 64, next-header UDP (17) payload length: 44) fe80::8054:3eff:fe9a:d3f4.500 > fe80::ec68:7cff:fe0c:9aa4.500: [bad udp cksum 0x0000 -> 0x5d84!] isakmp 2.0 msgid 00000001: child_sa  ikev2_auth[IR]:
+    (n: prot_id=isakmp type=24(authentication_failed))
 IP6 (hlim 64, next-header UDP (17) payload length: 660) fe80::8054:3eff:fe9a:d3f4.500 > fe80::ec68:7cff:fe0c:1c1c.500: [bad udp cksum 0x0000 -> 0x2560!] isakmp 2.0 msgid 00000000: parent_sa ikev2_init[I]:
     (sa: len=264
         (p: #1 protoid=isakmp transform=4 len=44

@@ -862,7 +862,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:1
 |   31 1a 30 18  06 03 55 04  03 0c 11 64  61 76 65 40
 |   6f 70 65 6e  73 77 61 6e  2e 6f 72 67
 ./peerC-R2 IKEv2 mode peer ID is ID_DER_ASN1_DN: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
-| find_ID_host_pair: looking for me=(none) him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org (wildcard)
+| find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org him=<any> (wildcard)
 |                   comparing to me=C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=* (peerC--peerA)
 |    match_id a=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 |             b=C=CA, ST=ON, O=Xelerance, CN=*

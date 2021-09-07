@@ -801,7 +801,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |    number of TS: 1
 | processing payload: ISAKMP_NEXT_v2TSr (len=24)
 ./davecertR2-id IKEv2 mode peer ID is ID_USER_FQDN: 'dave@openswan.org'
-| find_ID_host_pair: looking for me=(none) him=dave@openswan.org (wildcard)
+| find_ID_host_pair: looking for me=@moon.strongswan.org him=dave@openswan.org (wildcard)
 |                   comparing to me=@moon.strongswan.org him=dave@openswan.org (rw-dave)
 |    match_id a=dave@openswan.org
 |             b=dave@openswan.org
