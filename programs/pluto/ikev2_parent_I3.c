@@ -41,6 +41,9 @@ stf_status ikev2parent_inR2(struct msg_digest *md)
     struct connection *c = st->st_connection;
     unsigned char *idhash_in;
     struct state *pst = st;
+    struct id     responderid;
+    char responderbuf[IDTOA_BUF];
+    int  wildcards;
     stf_status e;
 
     if(st->st_clonedfrom != 0) {
@@ -68,11 +71,18 @@ stf_status ikev2parent_inR2(struct msg_digest *md)
         if(ret != STF_OK) return ret;
     }
 
-    if(!ikev2_decode_peer_id(md, INITIATOR)) {
-        return STF_FAIL + INVALID_ID_INFORMATION;
+    /* break the responderid out, check if it is the same value as in state */
+    if(!ikev2_extract_peer_id(md, INITIATOR, &responderid, responderbuf, sizeof(responderbuf))) {
+	openswan_log("IKEv2 mode peer ID extraction failed");
+	return STF_FAIL;
     }
 
-    ikev2_decode_local_id(md, INITIATOR);
+    /* now check if it's the same */
+    if(!match_id(&responderid, &st->ikev2.st_peer_id, &wildcards)) {
+        openswan_log("Responder used id %s, we expected id: %s"
+                     , responderbuf, st->ikev2.st_peer_buf);
+        return STF_FAIL;
+    }
 
     {
         struct hmac_ctx id_ctx;
