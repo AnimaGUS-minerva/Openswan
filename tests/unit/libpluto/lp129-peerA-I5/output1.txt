@@ -987,7 +987,9 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |                  not after  Dec 11 04:15:59 UTC 2021 ok
 |        subjkey:  c2:64:69:e8:dc:88:e3:23:58:47:07:86:4b:5e:d4:b3:ea:bc:a7:10
 |        authkey:  86:cb:59:12:06:07:df:3f:00:36:b9:64:c6:c5:14:1f:3a:ed:cd:aa
-| checking alg=1 == 1, keyid=carol@openswan.org same_id=1
+| checking alg=1 == 1, keyid=carol@openswan.org same_id=0
+| checking alg=1 == 1, keyid=dave@openswan.org same_id=0
+| checking alg=1 == 1, keyid=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org same_id=1
 | key issuer CA is 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 |  checking narrowing - responding to R2
 | checking TSi(1)/TSr(1) selectors, looking for exact match
@@ -1955,7 +1957,10 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |                  not after  Dec 11 04:15:59 UTC 2021 ok
 |        subjkey:  c2:64:69:e8:dc:88:e3:23:58:47:07:86:4b:5e:d4:b3:ea:bc:a7:10
 |        authkey:  86:cb:59:12:06:07:df:3f:00:36:b9:64:c6:c5:14:1f:3a:ed:cd:aa
-| checking alg=1 == 1, keyid=bob@openswan.org same_id=1
+| checking alg=1 == 1, keyid=bob@openswan.org same_id=0
+| checking alg=1 == 1, keyid=carol@openswan.org same_id=0
+| checking alg=1 == 1, keyid=dave@openswan.org same_id=0
+| checking alg=1 == 1, keyid=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org same_id=1
 | key issuer CA is 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
 |  checking narrowing - responding to R2
 | checking TSi(1)/TSr(1) selectors, looking for exact match
