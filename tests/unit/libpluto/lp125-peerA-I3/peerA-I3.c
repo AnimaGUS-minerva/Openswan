@@ -1,3 +1,5 @@
+#define WANT_THIS_DBG DBG_CONTROL|DBG_CONTROLMORE
+
 #include "../lp13-parentI3/parentI3_head.c"
 #include "seam_gi_sha1.c"
 #include "seam_gi_sha256_group14.c"
