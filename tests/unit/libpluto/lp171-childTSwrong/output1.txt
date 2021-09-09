@@ -745,29 +745,3 @@ sending 320 bytes for STATE_PARENT_R1 through eth0:4500 [132.213.238.7:4500] to 
 |   d8 14 09 5c  40 98 92 7d  7e e9 15 7f  c0 a8 34 fc
 |   c4 86 d4 df  64 78 ef b9  4c 46 95 07  62 44 8c 63
 |   be 55 2d 2a  b6 d5 f9 fb  6a 21 4b 65  66 9c e0 88
-| freeing state object #1
-./childTSwrong leak: ikev2_inI2outR2 KE, item size: X
-./childTSwrong leak: alg_info_ike, item size: X
-./childTSwrong leak: ikev2_inI1outR1 KE, item size: X
-./childTSwrong leak: msg_digest, item size: X
-./childTSwrong leak: 2 * keep id name, item size: X
-./childTSwrong leak: ID host_pair, item size: X
-./childTSwrong leak: host_pair, item size: X
-./childTSwrong leak: 2 * keep id name, item size: X
-./childTSwrong leak: connection name, item size: X
-./childTSwrong leak: struct connection, item size: X
-./childTSwrong leak: keep id name, item size: X
-./childTSwrong leak: pubkey entry, item size: X
-./childTSwrong leak: rfc3110 format of public key, item size: X
-./childTSwrong leak: pubkey, item size: X
-./childTSwrong leak: keep id name, item size: X
-./childTSwrong leak: pubkey entry, item size: X
-./childTSwrong leak: rfc3110 format of public key, item size: X
-./childTSwrong leak: pubkey, item size: X
-./childTSwrong leak: 2 * id list, item size: X
-./childTSwrong leak: rfc3110 format of public key [created], item size: X
-./childTSwrong leak: pubkey, item size: X
-./childTSwrong leak: secret, item size: X
-./childTSwrong leak: 4 * hasher name, item size: X
-./childTSwrong leak: 10 * group description, item size: X
-./childTSwrong leak detective found Z leaks, total size X

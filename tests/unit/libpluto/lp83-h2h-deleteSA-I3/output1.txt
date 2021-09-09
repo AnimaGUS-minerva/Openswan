@@ -664,6 +664,9 @@ sending 416 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 |    number of TS: 1
 | processing payload: ISAKMP_NEXT_v2TSr (len=24)
 ./deleteChildSA-msgInI3 IKEv2 mode peer ID is ID_IPV4_ADDR: '132.213.238.7'
+|    match_id a=132.213.238.7
+|             b=132.213.238.7
+|    results  matched
 | idhash verify pr  e9 00 11 7e  41 d4 31 62  40 b8 63 22  bf 06 9f bc
 |   2e 05 3c 7e  12 87 12 99  2e 05 3c 7e  12 87 12 99
 | idhash auth R2  01 00 00 00  84 d5 ee 07

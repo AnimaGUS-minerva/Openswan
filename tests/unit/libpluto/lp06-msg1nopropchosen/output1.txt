@@ -482,38 +482,3 @@ sending 36 bytes for send_v2_notification through eth0:500 [132.213.238.7:500] t
 | did not find valid state; giving up
 ./parentR2 cannot send notification ISAKMP_v2_AUTH/v2N_INVALID_MESSAGE_ID, state is NULL
 should have found a continuation, but none was found
-./parentR2 leak: notification packet, item size: X
-./parentR2 leak: db_context->trans (expand), item size: X
-./parentR2 leak: db_context->attrs, item size: X
-./parentR2 leak: db_context->conj, item size: X
-./parentR2 leak: db_context, item size: X
-./parentR2 leak: v2 policy database, item size: X
-./parentR2 leak: saved first received packet, item size: X
-./parentR2 leak: ikev2_inI1outR1 KE, item size: X
-./parentR2 leak: struct state in new_state(), item size: X
-./parentR2 leak: msg_digest, item size: X
-./parentR2 leak: 2 * keep id name, item size: X
-./parentR2 leak: ID host_pair, item size: X
-./parentR2 leak: host_pair, item size: X
-./parentR2 leak: host ip, item size: X
-./parentR2 leak: keep id name, item size: X
-./parentR2 leak: host ip, item size: X
-./parentR2 leak: keep id name, item size: X
-./parentR2 leak: connection name, item size: X
-./parentR2 leak: struct connection, item size: X
-./parentR2 leak: alg_info_ike, item size: X
-./parentR2 leak: keep id name, item size: X
-./parentR2 leak: pubkey entry, item size: X
-./parentR2 leak: rfc3110 format of public key, item size: X
-./parentR2 leak: pubkey, item size: X
-./parentR2 leak: keep id name, item size: X
-./parentR2 leak: pubkey entry, item size: X
-./parentR2 leak: rfc3110 format of public key, item size: X
-./parentR2 leak: pubkey, item size: X
-./parentR2 leak: 2 * id list, item size: X
-./parentR2 leak: rfc3110 format of public key [created], item size: X
-./parentR2 leak: pubkey, item size: X
-./parentR2 leak: secret, item size: X
-./parentR2 leak: 4 * hasher name, item size: X
-./parentR2 leak: 10 * group description, item size: X
-./parentR2 leak detective found Z leaks, total size X

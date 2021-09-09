@@ -958,16 +958,157 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 | ikev2 parent inR2: calculating g^{xy} in order to decrypt I2
 | decrypting as INITIATOR, using RESPONDER keys
 ./peerA-I5 IKEv2 mode peer ID is ID_DER_ASN1_DN: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
-./peerA-I5 Responder used id C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org, we expected id C=CA, ST=ON, O=Xelerance, CN=*
-| processor 'initiator-auth-process' returned STF_FAIL (8)
-| #2 complete v2 state transition with STF_FAIL
-./peerA-I5 STATE_CHILD_C0_KEYING: (null)
-| state transition function for STATE_CHILD_C0_KEYING failed: <no reason given>
-now keying to peerC
-RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C0_KEYING (CHILD SA keying); none in -1s; nodpd; msgid=1; idle; import:admin initiate
+|    match_id a=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
+|             b=C=CA, ST=ON, O=Xelerance, CN=*
+|    results  matched
+./peerA-I5 v2_CERT received on initiator, attempting to validate
+./peerA-I5 no crl from issuer "C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA" found (strict=no)
+| reached self-signed root ca
+./peerA-I5 0: validated X509 certificate: 'C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org', added to trusted database
+| ikev2 verify required CA is 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+|
+| List of X.509 End Certificates:
+|
+| NOW, count: 2
+|        subject: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
+|        issuer:  'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+|        serial:   04
+|        pubkey:   2048 RSA Key AwEAAeOoT
+|        validity: not before Sep 03 04:15:59 UTC 2019 ok
+|                  not after  Dec 11 04:15:59 UTC 2021 ok
+|        subjkey:  c2:64:69:e8:dc:88:e3:23:58:47:07:86:4b:5e:d4:b3:ea:bc:a7:10
+|        authkey:  86:cb:59:12:06:07:df:3f:00:36:b9:64:c6:c5:14:1f:3a:ed:cd:aa
+| checking alg=1 == 1, keyid=carol@openswan.org same_id=0
+| checking alg=1 == 1, keyid=dave@openswan.org same_id=0
+| checking alg=1 == 1, keyid=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org same_id=1
+| key issuer CA is 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+|  checking narrowing - responding to R2
+| checking TSi(1)/TSr(1) selectors, looking for exact match
+|   ikev2_evaluate_connection_fit evaluating our I=peerA--peerB:::/0:0/0 R=::/0:0/0  to their:
+|     tsi[0]=::/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto=0 portrange 0-65535
+|     tsr[0]=::/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto=0 portrange 0-65535
+| ei->port 0  tsi[tsi_ni].startport 0  tsi[tsi_ni].endport 65535
+|       has ts_range1=128 maskbits1=0 ts_range2=128 maskbits2=0 fitbits=32896 <> -1
+|  prefix fitness found a better match c peerA--peerB
+|     evaluate_connection_port_fit tsi_n[1], best=-1
+|    tsi[0] 0-65535: exact port match with 0.  fitness 65536
+|       evaluating_connection_port_fit tsi_n[0], range_i=65536 best=-1
+|    tsr[0] 0-65535: exact port match with 0.  fitness 65536
+|       evaluating_connection_port_fit tsi_n[0] tsr_n[0], range=65536/65536 best=-1
+|     best ports fit so far: tsi[0] fitrange_i 65536, tsr[0] fitrange_r 65536, matchiness 131072
+|     port_fitness 131072
+|   port fitness found better match c peerA--peerB, tsi[0],tsr[0]
+| protocol 0 and tsi[0].ipprotoid 0: exact match
+| protocol 0 and tsr[0].ipprotoid 0: exact match
+|     best protocol fit so far: tsi[0] fitrange_i 255, tsr[0] fitrange_r 255, matchiness 510
+|     protocol_fitness 510
+|    protocol fitness found better match c peerA--peerB, tsi[0],tsr[0]
+| found an acceptable TSi/TSr Traffic Selector
+| printing contents struct traffic_selector
+|   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
+|   ipprotoid: 0
+|   startport: 0
+|   endport: 65535
+|   ip low: ::
+|   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+| printing contents struct traffic_selector
+|   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
+|   ipprotoid: 0
+|   startport: 0
+|   endport: 65535
+|   ip low: ::
+|   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+| state #2: install_ipsec_sa() for inbound and outbound
+| route owner of "peerA--peerB" unrouted: NULL; eroute owner: NULL
+| could_route called for peerA--peerB (kind=CK_TEMPLATE)
+writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:9aa4
+0000: b4 01 00 00  10 00 05 00  00 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
+0050: ec 68 7c ff  fe 0c 9a a4  12 34 56 78  32 00 00 00
+0060: fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
+0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+00e0: 01 40 00 00  0a 00 01 20  20 00 00 00  00 00 00 00
+00f0: 6c 00 14 00  73 68 61 32  35 36 00 00  00 00 00 00
+0130: 00 00 00 00  00 01 00 00  80 00 00 00  78 9d 67 25
+0140: ba a5 bf 18  27 62 68 08  85 2d 47 12  fe 7f a4 85
+0150: 4c 77 99 8e  bd 38 73 a0  58 50 d5 9d  58 00 02 00
+0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
+01a0: 80 00 00 00  8a 19 a9 d4  0d 41 52 27  5e 5f c5 7c
+01b0: 38 9d 1a 41
+writing netlink for esp:12345678@fe80::8054:3eff:fe9a:d3f4
+0000: b4 01 00 00  1a 00 05 00  00 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
+0050: 80 54 3e ff  fe 9a d3 f4  12 34 56 78  32 00 00 00
+0060: fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 9a a4
+0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+00e0: 01 40 00 00  0a 00 01 20  20 00 00 00  00 00 00 00
+00f0: 6c 00 14 00  73 68 61 32  35 36 00 00  00 00 00 00
+0130: 00 00 00 00  00 01 00 00  80 00 00 00  9d e0 a0 3a
+0140: b4 f2 d5 8e  19 f2 45 f6  b8 a1 a1 70  ef 67 05 70
+0150: 8f 1c e2 17  a6 b0 0e 1d  9d ce d1 13  58 00 02 00
+0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
+01a0: 80 00 00 00  36 99 5c dd  82 37 91 bd  af 84 94 1e
+01b0: fd 34 cd 52
+writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
+0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0060: ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+00a0: 00 00 00 00  00 00 00 00  00 85 00 00  00 00 00 00
+00b0: 00 00 00 00  00 00 00 00  44 00 05 00  fe 80 00 00
+00c0: 00 00 00 00  80 54 3e ff  fe 9a d3 f4  00 00 00 00
+00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
+00e0: ec 68 7c ff  fe 0c 9a a4  01 40 00 00  01 00 00 00
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
+0100: d7 11 00 00  ff ff ff ff
+./peerA-I5 add inbound eroute ::/0:0 --0-> ::/0:0 => tun:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
+| sr for #2: unrouted (eroute_owner: #0)
+| route owner of "peerA--peerB" unrouted: NULL; eroute owner: NULL
+| route_and_eroute with c: peerA--peerB (next: none) ero:null esr:{(nil)} ro:null rosr:{(nil)} and state: 2
+writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
+0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0060: ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+00a0: 00 00 00 00  00 00 00 00  00 85 00 00  00 00 00 00
+00b0: 01 00 00 00  00 00 00 00  44 00 05 00  fe 80 00 00
+00c0: 00 00 00 00  ec 68 7c ff  fe 0c 9a a4  00 00 00 00
+00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
+00e0: 80 54 3e ff  fe 9a d3 f4  01 40 00 00  01 00 00 00
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
+0100: d7 11 00 00  ff ff ff ff
+./peerA-I5 eroute_connection add eroute ::/0:0 --0-> ::/0:0 => tun:0@fe80::ec68:7cff:fe0c:9aa4 succeeded
+| command executing up-client-v6
+| executing up
+| route_and_eroute: firewall_notified: true
+| command executing prepare-client-v6
+| executing prepare
+| command executing route-client-v6
+| executing route
+| route_and_eroute: instance "peerA--peerB", setting eroute_owner to #2 (was #0) (newest_ipsec_sa=#2)
+| processor 'initiator-auth-process' returned STF_OK (3)
+| #2 complete v2 state transition with STF_OK
+./peerA-I5 transition from state STATE_CHILD_C0_KEYING to state STATE_CHILD_C1_KEYED
+| v2_state_transition: st is #2; pst is #0; transition_st is #0
+./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
+./peerA-I5 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
+./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=000011d7}
+| releasing whack for #X (sock=Y)
+| releasing whack for #X (sock=Y)
+RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #2: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
-RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I2 (sent v2I2, expected v2R2); none in -1s; nodpd; retranscnt=0,outorder=0,last=0,next=2,recv=-1; msgid=0; idle; import:admin initiate
-RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
+| duplicate parent SA looking for state matching for peerA--peerB #1
+now keying to peerC
+RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #2: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 | find_phase1_state: no SA found for conn 'peerA--peerC'
 | creating state object #3 at Z
 | orient peerA--peerC checking against if: eth0 (AF_INET6:fe80::8054:3eff:fe9a:d3f4:500)
@@ -1869,8 +2010,133 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 | ikev2 parent inR2: calculating g^{xy} in order to decrypt I2
 | decrypting as INITIATOR, using RESPONDER keys
 ./peerA-I5 IKEv2 mode peer ID is ID_DER_ASN1_DN: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
-./peerA-I5 Responder used id C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org, we expected id C=CA, ST=ON, O=Xelerance, CN=*
-| processor 'initiator-auth-process' returned STF_FAIL (8)
-| #4 complete v2 state transition with STF_FAIL
-./peerA-I5 STATE_CHILD_C0_KEYING: (null)
-| state transition function for STATE_CHILD_C0_KEYING failed: <no reason given>
+|    match_id a=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
+|             b=C=CA, ST=ON, O=Xelerance, CN=*
+|    results  matched
+./peerA-I5 v2_CERT received on initiator, attempting to validate
+./peerA-I5 no crl from issuer "C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA" found (strict=no)
+| reached self-signed root ca
+./peerA-I5 0: validated X509 certificate: 'C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org', added to trusted database
+| ikev2 verify required CA is 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+|
+| List of X.509 End Certificates:
+|
+| NOW, count: 2
+|        subject: 'C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org'
+|        issuer:  'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+|        serial:   04
+|        pubkey:   2048 RSA Key AwEAAeOoT
+|        validity: not before Sep 03 04:15:59 UTC 2019 ok
+|                  not after  Dec 11 04:15:59 UTC 2021 ok
+|        subjkey:  c2:64:69:e8:dc:88:e3:23:58:47:07:86:4b:5e:d4:b3:ea:bc:a7:10
+|        authkey:  86:cb:59:12:06:07:df:3f:00:36:b9:64:c6:c5:14:1f:3a:ed:cd:aa
+| checking alg=1 == 1, keyid=bob@openswan.org same_id=0
+| checking alg=1 == 1, keyid=carol@openswan.org same_id=0
+| checking alg=1 == 1, keyid=dave@openswan.org same_id=0
+| checking alg=1 == 1, keyid=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org same_id=1
+| key issuer CA is 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA'
+|  checking narrowing - responding to R2
+| checking TSi(1)/TSr(1) selectors, looking for exact match
+|   ikev2_evaluate_connection_fit evaluating our I=peerA--peerC:::/0:0/0 R=::/0:0/0  to their:
+|     tsi[0]=::/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto=0 portrange 0-65535
+|     tsr[0]=::/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto=0 portrange 0-65535
+| ei->port 0  tsi[tsi_ni].startport 0  tsi[tsi_ni].endport 65535
+|       has ts_range1=128 maskbits1=0 ts_range2=128 maskbits2=0 fitbits=32896 <> -1
+|  prefix fitness found a better match c peerA--peerC
+|     evaluate_connection_port_fit tsi_n[1], best=-1
+|    tsi[0] 0-65535: exact port match with 0.  fitness 65536
+|       evaluating_connection_port_fit tsi_n[0], range_i=65536 best=-1
+|    tsr[0] 0-65535: exact port match with 0.  fitness 65536
+|       evaluating_connection_port_fit tsi_n[0] tsr_n[0], range=65536/65536 best=-1
+|     best ports fit so far: tsi[0] fitrange_i 65536, tsr[0] fitrange_r 65536, matchiness 131072
+|     port_fitness 131072
+|   port fitness found better match c peerA--peerC, tsi[0],tsr[0]
+| protocol 0 and tsi[0].ipprotoid 0: exact match
+| protocol 0 and tsr[0].ipprotoid 0: exact match
+|     best protocol fit so far: tsi[0] fitrange_i 255, tsr[0] fitrange_r 255, matchiness 510
+|     protocol_fitness 510
+|    protocol fitness found better match c peerA--peerC, tsi[0],tsr[0]
+| found an acceptable TSi/TSr Traffic Selector
+| printing contents struct traffic_selector
+|   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
+|   ipprotoid: 0
+|   startport: 0
+|   endport: 65535
+|   ip low: ::
+|   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+| printing contents struct traffic_selector
+|   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
+|   ipprotoid: 0
+|   startport: 0
+|   endport: 65535
+|   ip low: ::
+|   ip high: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+| state #4: install_ipsec_sa() for inbound and outbound
+| route owner of "peerA--peerC" unrouted: "peerA--peerB" erouted; eroute owner: "peerA--peerB" erouted
+| could_route called for peerA--peerC (kind=CK_TEMPLATE)
+writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:1c1c
+0000: b4 01 00 00  10 00 05 00  00 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
+0050: ec 68 7c ff  fe 0c 1c 1c  12 34 56 78  32 00 00 00
+0060: fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
+0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+00e0: 05 40 00 00  0a 00 01 20  20 00 00 00  00 00 00 00
+00f0: 6c 00 14 00  73 68 61 32  35 36 00 00  00 00 00 00
+0130: 00 00 00 00  00 01 00 00  80 00 00 00  ef 51 14 eb
+0140: 32 97 d2 7b  8c e3 8d 5a  86 d6 4b 13  b3 e6 01 a1
+0150: 4a df fb f3  73 c5 19 73  53 f5 d0 99  58 00 02 00
+0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
+01a0: 80 00 00 00  9a dc 4e 58  9f e4 de f9  fd ed 4a 87
+01b0: 0e fc fa 5f
+writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
+0000: b4 01 00 00  1a 00 05 00  00 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
+0050: 80 54 3e ff  fe 9a d3 f4  34 56 78 12  32 00 00 00
+0060: fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 1c 1c
+0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+00e0: 05 40 00 00  0a 00 01 20  20 00 00 00  00 00 00 00
+00f0: 6c 00 14 00  73 68 61 32  35 36 00 00  00 00 00 00
+0130: 00 00 00 00  00 01 00 00  80 00 00 00  f6 cf 54 70
+0140: f8 ca 13 c3  2f c9 e8 52  c1 6c df ad  e6 8a 1d 37
+0150: 79 26 92 db  62 43 1f 25  98 71 58 93  58 00 02 00
+0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
+01a0: 80 00 00 00  16 0a 64 ad  fc fe b1 56  90 19 a2 15
+01b0: 65 74 65 41
+writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
+0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0060: ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+00a0: 00 00 00 00  00 00 00 00  00 85 00 00  00 00 00 00
+00b0: 00 00 00 00  00 00 00 00  44 00 05 00  fe 80 00 00
+00c0: 00 00 00 00  80 54 3e ff  fe 9a d3 f4  00 00 00 00
+00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
+00e0: ec 68 7c ff  fe 0c 1c 1c  05 40 00 00  01 00 00 00
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
+0100: 13 0d 00 00  ff ff ff ff
+./peerA-I5 add inbound eroute ::/0:0 --0-> ::/0:0 => tun:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
+| processor 'initiator-auth-process' returned STF_OK (3)
+| #4 complete v2 state transition with STF_OK
+./peerA-I5 transition from state STATE_CHILD_C0_KEYING to state STATE_CHILD_C1_KEYED
+| v2_state_transition: st is #4; pst is #0; transition_st is #0
+./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
+./peerA-I5 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
+./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00000d13}
+| releasing whack for #X (sock=Y)
+| releasing whack for #X (sock=Y)
+RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #2: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
+RC=0 #4: "peerA--peerC":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #4: "peerA--peerC":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
+RC=0 #3: "peerA--peerC":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #3: "peerA--peerC":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
+| duplicate parent SA looking for state matching for peerA--peerC #3
+| same_parent peerA--peerB: #1 [est:true] vs #3
+| failed to match ID1: A{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
+| failed to match ID2: A{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
+| failed0
