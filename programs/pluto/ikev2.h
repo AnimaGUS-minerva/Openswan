@@ -363,6 +363,7 @@ extern bool spdb_v2_match_child(struct db_sa *sadb,
                                 unsigned integ_transform,
                                 unsigned esn_transform);
 
+extern void ikev2_find_matching_parent(struct state *st);
 extern void ikev2_copy_child_peer(struct state *st);
 extern void ikev2_copy_child_local(struct state *st);
 
