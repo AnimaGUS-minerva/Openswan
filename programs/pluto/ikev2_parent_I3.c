@@ -85,8 +85,13 @@ stf_status ikev2parent_inR2(struct msg_digest *md)
     }
 
     /* the st_peer_id could have had wildcards, so take what was actually sent */
+    free_id_content(&pst->ikev2.st_peer_id);
     pst->ikev2.st_peer_id = responderid;
+    unshare_id_content(&pst->ikev2.st_peer_id);
     strcpy(pst->ikev2.st_peer_buf, responderbuf);
+
+    /* free up responderid, done with it */
+    free_id_content(&responderid);
 
     {
         struct hmac_ctx id_ctx;

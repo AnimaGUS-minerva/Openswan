@@ -945,7 +945,9 @@ ikev2_copy_child_peer(struct state *st)
         }
 
         if(pst) {
+            free_id_content(&pst->ikev2.st_peer_id);
             pst->ikev2.st_peer_id = st->ikev2.st_peer_id;
+            unshare_id_content(&pst->ikev2.st_peer_id);
             strcpy(pst->ikev2.st_peer_buf, st->ikev2.st_peer_buf);
         }
     }
@@ -962,7 +964,9 @@ ikev2_copy_child_local(struct state *st)
         }
 
         if(pst) {
+            free_id_content(&pst->ikev2.st_local_id);
             pst->ikev2.st_local_id = st->ikev2.st_local_id;
+            unshare_id_content(&pst->ikev2.st_local_id);
             strcpy(pst->ikev2.st_local_buf, st->ikev2.st_local_buf);
         }
     }
@@ -1220,6 +1224,21 @@ struct find_matching {
 static bool check_same_parents(struct state *this
                                , struct state *that)
 {
+    if(DBGP(DBG_CONTROLMORE)) {
+        char thisbuf[IDTOA_BUF];
+        char thatbuf[IDTOA_BUF];
+
+        idtoa(&this->ikev2.st_peer_id, thisbuf, sizeof(thisbuf));
+        idtoa(&that->ikev2.st_peer_id, thatbuf, sizeof(thatbuf));
+        DBG_log("peer_id:  this(#%lu): %s that(#%lu): %s"
+                , this->st_serialno, thisbuf, that->st_serialno, thatbuf);
+
+        idtoa(&this->ikev2.st_local_id, thisbuf, sizeof(thisbuf));
+        idtoa(&that->ikev2.st_local_id, thatbuf, sizeof(thatbuf));
+        DBG_log("local_id: this(#%lu): %s that(#%lu): %s"
+                , this->st_serialno, thisbuf, that->st_serialno, thatbuf);
+    }
+
     /* it matches if things are the same in the same order */
     if(same_exact_id(&this->ikev2.st_peer_id,
                      &that->ikev2.st_peer_id)
