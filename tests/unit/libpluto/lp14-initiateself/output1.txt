@@ -366,6 +366,7 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [93.184.216.34:
 ./initiateselfI1 leak: alg_info_ike, item size: X
 ./initiateselfI1 leak: db_context, item size: X
 ./initiateselfI1 leak: v2 policy database, item size: X
+./initiateselfI1 leak: 2 * keep id name, item size: X
 ./initiateselfI1 leak: struct state in new_state(), item size: X
 ./initiateselfI1 leak: keep id name, item size: X
 ./initiateselfI1 leak: pubkey entry, item size: X

@@ -864,6 +864,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [192.168.1.1:500] to 132.
 ./cryptoI2 leak: st_skey_d in duplicate_state, item size: X
 ./cryptoI2 leak: st_skeyseed in duplicate_state, item size: X
 ./cryptoI2 leak: st_enc_key in duplicate_state, item size: X
+./cryptoI2 leak: 2 * keep id name, item size: X
 ./cryptoI2 leak: struct state in new_state(), item size: X
 ./cryptoI2 leak: calculated skey_prshared secret, item size: X
 ./cryptoI2 leak: calculated skey_pishared secret, item size: X
@@ -889,6 +890,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [192.168.1.1:500] to 132.
 ./cryptoI2 leak: alg_info_ike, item size: X
 ./cryptoI2 leak: db_context, item size: X
 ./cryptoI2 leak: v2 policy database, item size: X
+./cryptoI2 leak: 2 * keep id name, item size: X
 ./cryptoI2 leak: struct state in new_state(), item size: X
 ./cryptoI2 leak: 10 * group description, item size: X
 ./cryptoI2 leak: keep id name, item size: X

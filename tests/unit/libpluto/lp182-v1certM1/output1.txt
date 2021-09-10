@@ -116,6 +116,7 @@ RC=105 STATE_MAIN_I1: initiate
 ./v1certM1 leak: db_context->conj, item size: X
 ./v1certM1 leak: db_context, item size: X
 ./v1certM1 leak: v2 policy database, item size: X
+./v1certM1 leak: 2 * keep id name, item size: X
 ./v1certM1 leak: struct state in new_state(), item size: X
 ./v1certM1 leak: rfc3110 format of public key [created], item size: X
 ./v1certM1 leak: issuer dn, item size: X

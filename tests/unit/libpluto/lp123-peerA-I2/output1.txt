@@ -925,6 +925,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-I2 leak: st_skey_d in duplicate_state, item size: X
 ./peerA-I2 leak: st_skeyseed in duplicate_state, item size: X
 ./peerA-I2 leak: st_enc_key in duplicate_state, item size: X
+./peerA-I2 leak: 2 * keep id name, item size: X
 ./peerA-I2 leak: struct state in new_state(), item size: X
 ./peerA-I2 leak: calculated skey_prshared secret, item size: X
 ./peerA-I2 leak: calculated skey_pishared secret, item size: X
@@ -950,6 +951,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f
 ./peerA-I2 leak: alg_info_ike, item size: X
 ./peerA-I2 leak: db_context, item size: X
 ./peerA-I2 leak: v2 policy database, item size: X
+./peerA-I2 leak: 2 * keep id name, item size: X
 ./peerA-I2 leak: struct state in new_state(), item size: X
 ./peerA-I2 leak: generalName, item size: X
 ./peerA-I2 leak: x509cert, item size: X

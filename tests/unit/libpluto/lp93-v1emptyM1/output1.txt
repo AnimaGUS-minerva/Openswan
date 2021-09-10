@@ -90,6 +90,7 @@ RC=0 "homeV1empty":   ESP algorithms loaded: 3des(3)_192-hmac_md5_96(1)_128
 ./v1emptyM1 leak: db_context->conj, item size: X
 ./v1emptyM1 leak: db_context, item size: X
 ./v1emptyM1 leak: v2 policy database, item size: X
+./v1emptyM1 leak: 2 * keep id name, item size: X
 ./v1emptyM1 leak: struct state in new_state(), item size: X
 ./v1emptyM1 leak: rfc3110 format of public key [created], item size: X
 ./v1emptyM1 leak: issuer dn, item size: X

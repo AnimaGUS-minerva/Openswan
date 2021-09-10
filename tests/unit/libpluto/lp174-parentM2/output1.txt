@@ -673,6 +673,7 @@ sending 380 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 13
 ./parentM2 leak: alg_info_ike, item size: X
 ./parentM2 leak: db_context, item size: X
 ./parentM2 leak: v2 policy database, item size: X
+./parentM2 leak: keep id name, item size: X
 ./parentM2 leak: struct state in new_state(), item size: X
 ./parentM2 leak: pubkey entry, item size: X
 ./parentM2 leak: rfc3110 format of public key, item size: X

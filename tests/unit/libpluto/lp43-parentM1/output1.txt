@@ -125,6 +125,7 @@ RC=105 STATE_MAIN_I1: initiate
 ./parentM1 leak: alg_info_ike, item size: X
 ./parentM1 leak: db_context, item size: X
 ./parentM1 leak: v2 policy database, item size: X
+./parentM1 leak: keep id name, item size: X
 ./parentM1 leak: struct state in new_state(), item size: X
 ./parentM1 leak: pubkey entry, item size: X
 ./parentM1 leak: rfc3110 format of public key, item size: X

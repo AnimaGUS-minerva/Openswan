@@ -541,6 +541,7 @@ sending 80 bytes for ikev2_delete_out through eth0:4500 [93.184.216.34:55045] to
 ./nattI2 leak: st_skey_d in duplicate_state, item size: X
 ./nattI2 leak: st_skeyseed in duplicate_state, item size: X
 ./nattI2 leak: st_enc_key in duplicate_state, item size: X
+./nattI2 leak: 2 * keep id name, item size: X
 ./nattI2 leak: struct state in new_state(), item size: X
 ./nattI2 leak: calculated skey_prshared secret, item size: X
 ./nattI2 leak: calculated skey_pishared secret, item size: X
@@ -566,6 +567,7 @@ sending 80 bytes for ikev2_delete_out through eth0:4500 [93.184.216.34:55045] to
 ./nattI2 leak: alg_info_ike, item size: X
 ./nattI2 leak: db_context, item size: X
 ./nattI2 leak: v2 policy database, item size: X
+./nattI2 leak: 2 * keep id name, item size: X
 ./nattI2 leak: struct state in new_state(), item size: X
 ./nattI2 leak: keep id name, item size: X
 ./nattI2 leak: pubkey entry, item size: X

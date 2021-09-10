@@ -131,6 +131,7 @@ RC=105 STATE_MAIN_I1: initiate
 ./v1rwnatM1 leak: db_context->conj, item size: X
 ./v1rwnatM1 leak: db_context, item size: X
 ./v1rwnatM1 leak: v2 policy database, item size: X
+./v1rwnatM1 leak: 2 * keep id name, item size: X
 ./v1rwnatM1 leak: struct state in new_state(), item size: X
 ./v1rwnatM1 leak: keep id name, item size: X
 ./v1rwnatM1 leak: pubkey entry, item size: X

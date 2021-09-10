@@ -134,6 +134,7 @@ RC=105 STATE_MAIN_I1: initiate
 ./ikev1derived leak: db_context->conj, item size: X
 ./ikev1derived leak: db_context, item size: X
 ./ikev1derived leak: v2 policy database, item size: X
+./ikev1derived leak: keep id name, item size: X
 ./ikev1derived leak: struct state in new_state(), item size: X
 ./ikev1derived leak: pubkey entry, item size: X
 ./ikev1derived leak: rfc3110 format of public key, item size: X

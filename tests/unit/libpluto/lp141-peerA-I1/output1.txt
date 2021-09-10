@@ -355,6 +355,7 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [fe80::8054:3ef
 ./peerA-I1 leak: alg_info_ike, item size: X
 ./peerA-I1 leak: db_context, item size: X
 ./peerA-I1 leak: v2 policy database, item size: X
+./peerA-I1 leak: 2 * keep id name, item size: X
 ./peerA-I1 leak: struct state in new_state(), item size: X
 ./peerA-I1 leak: rfc3110 format of public key [created], item size: X
 ./peerA-I1 leak: issuer dn, item size: X

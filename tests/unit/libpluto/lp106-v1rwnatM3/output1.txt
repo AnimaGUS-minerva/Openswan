@@ -576,6 +576,7 @@ sending 324 bytes for STATE_MAIN_I2 through eth0:4500 [93.184.216.34:55045] to 1
 ./v1rwnatM3 leak: db_context->conj, item size: X
 ./v1rwnatM3 leak: db_context, item size: X
 ./v1rwnatM3 leak: v2 policy database, item size: X
+./v1rwnatM3 leak: 2 * keep id name, item size: X
 ./v1rwnatM3 leak: struct state in new_state(), item size: X
 ./v1rwnatM3 leak: keep id name, item size: X
 ./v1rwnatM3 leak: pubkey entry, item size: X

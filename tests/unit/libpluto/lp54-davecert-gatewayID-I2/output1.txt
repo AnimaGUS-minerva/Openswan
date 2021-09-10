@@ -876,6 +876,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [93.184.216.35:500] to 13
 ./davecertI2-id leak: st_skey_d in duplicate_state, item size: X
 ./davecertI2-id leak: st_skeyseed in duplicate_state, item size: X
 ./davecertI2-id leak: st_enc_key in duplicate_state, item size: X
+./davecertI2-id leak: 2 * keep id name, item size: X
 ./davecertI2-id leak: struct state in new_state(), item size: X
 ./davecertI2-id leak: calculated skey_prshared secret, item size: X
 ./davecertI2-id leak: calculated skey_pishared secret, item size: X
@@ -901,6 +902,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [93.184.216.35:500] to 13
 ./davecertI2-id leak: alg_info_ike, item size: X
 ./davecertI2-id leak: db_context, item size: X
 ./davecertI2-id leak: v2 policy database, item size: X
+./davecertI2-id leak: 2 * keep id name, item size: X
 ./davecertI2-id leak: struct state in new_state(), item size: X
 ./davecertI2-id leak: rfc3110 format of public key [created], item size: X
 ./davecertI2-id leak: issuer dn, item size: X
