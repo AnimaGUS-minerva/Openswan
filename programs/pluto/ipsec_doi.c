@@ -497,6 +497,11 @@ has_preloaded_public_key(struct state *st)
  * Note: we may change connections as a result.
  * We must be called before SIG or HASH are decoded since we
  * may change the peer's RSA key or ID.
+ *
+ *
+ * returned peer may point to parts of the pb_stream, and so can not
+ * be used outside the current state, or freed.
+ * Call unshare_id_contents() if it is needed.
  */
 
 bool
