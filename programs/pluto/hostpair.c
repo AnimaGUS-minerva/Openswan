@@ -174,6 +174,7 @@ find_host_pair(bool exact
         char b1[ADDRTOT_BUF];
         char b2[ADDRTOT_BUF];
         char himtypebuf[KEYWORD_NAME_BUFLEN];
+
         DBG_log("find_host_pair: looking for me=%s:%d %s him=%s:%d %s\n"
                 , myaddr ? (addrtot(myaddr, 0, b1, sizeof(b1)), b1) : "<none>"
                 , myport

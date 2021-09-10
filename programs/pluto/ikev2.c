@@ -945,9 +945,7 @@ ikev2_copy_child_peer(struct state *st)
         }
 
         if(pst) {
-            free_id_content(&pst->ikev2.st_peer_id);
-            pst->ikev2.st_peer_id = st->ikev2.st_peer_id;
-            unshare_id_content(&pst->ikev2.st_peer_id);
+            copy_id_content(&pst->ikev2.st_peer_id, &st->ikev2.st_peer_id);
             strcpy(pst->ikev2.st_peer_buf, st->ikev2.st_peer_buf);
         }
     }
@@ -964,9 +962,7 @@ ikev2_copy_child_local(struct state *st)
         }
 
         if(pst) {
-            free_id_content(&pst->ikev2.st_local_id);
-            pst->ikev2.st_local_id = st->ikev2.st_local_id;
-            unshare_id_content(&pst->ikev2.st_local_id);
+            copy_id_content(&pst->ikev2.st_local_id, &pst->ikev2.st_local_id);
             strcpy(pst->ikev2.st_local_buf, st->ikev2.st_local_buf);
         }
     }

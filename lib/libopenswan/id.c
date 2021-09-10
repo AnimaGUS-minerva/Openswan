@@ -415,6 +415,13 @@ free_id_content(struct id *id)
     }
 }
 
+void copy_id_content(struct id *dst, struct id *src)
+{
+    free_id_content(dst);
+    *dst = *src;
+    unshare_id_content(dst);
+}
+
 /* is this a "match anything" id */
 bool
 any_id(const struct id *a)

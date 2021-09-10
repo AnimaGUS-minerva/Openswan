@@ -63,6 +63,7 @@ extern void remove_metachar(const unsigned char *src, char *dst, size_t dstlen);
 struct end;	/* forward declaration of tag (defined in connections.h) */
 extern void unshare_id_content(struct id *id);
 extern void free_id_content(struct id *id);
+extern void copy_id_content(struct id *dst, struct id *src);
 extern bool any_id(const struct id *a);
 extern bool same_id(const struct id *a, const struct id *b);
 extern bool same_exact_id(const struct id *a, const struct id *b);
