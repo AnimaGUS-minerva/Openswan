@@ -3407,6 +3407,8 @@ RC=0 #1: "rw-carol":500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA establ
 RC=0 #1: "rw-carol":500 IKEv2.0 me=@moon.testing.openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 | duplicate parent SA looking for state matching for rw-any #3
 | same_parent rw-carol: #1 [est:true] vs #3
+| peer_id:  this(#3): C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org that(#1): C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
+| local_id: this(#3): @moon.testing.openswan.org that(#1): @moon.testing.openswan.org
 | failed to match ID1: A{@moon.testing.openswan.org} vs B{@moon.testing.openswan.org}
 | failed to match ID2: A{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org}
 | failed0

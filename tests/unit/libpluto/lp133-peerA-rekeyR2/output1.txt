@@ -2724,6 +2724,8 @@ RC=0 #3: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2
 RC=0 #3: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 | duplicate parent SA looking for state matching for peerA--peerB #3
 | same_parent peerA--peerB: #1 [est:true] vs #3
+| peer_id:  this(#3): C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org that(#1): C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
+| local_id: this(#3): C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org that(#1): C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 | failed to match ID1: A{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
 | failed to match ID2: A{C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
 | failed0
