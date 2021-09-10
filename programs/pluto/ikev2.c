@@ -997,6 +997,7 @@ ikev2_extract_peer_id(struct msg_digest *md, enum phase1_role init
 	return FALSE;
     }
 
+    unshare_id_content(peer_id);
     idtoa(peer_id, peer_buf, peer_buf_len);
     openswan_log("IKEv2 mode peer ID is %s: '%s'"
                  , enum_show(&ident_names, id->isai_type), peer_buf);
