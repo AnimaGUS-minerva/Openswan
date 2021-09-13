@@ -576,7 +576,7 @@ extern void delete_cryptographic_continuation(struct state *st);
 extern void delete_states_dead_interfaces(void);
 
 /* compare nonces as per RFC7296, section 2.8.1 */
-extern bool compare_nonce_set(struct state *that, struct state *this);
+extern bool compare_nonce_set(const struct state *that, const struct state *this);
 
 /*
  * use this guy to change state, this gives us a handle on all state changes

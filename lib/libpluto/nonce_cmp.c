@@ -9,7 +9,7 @@
  * return >0 if thisnonce lower,
  * return =0 if identical
  */
-static int  compare_nonce(chunk_t thatnonce, chunk_t thisnonce)
+static int  compare_nonce(const chunk_t thatnonce, const chunk_t thisnonce)
 {
     unsigned int nonce_len = thatnonce.len;
     if(nonce_len > thisnonce.len) nonce_len = thatnonce.len;
@@ -35,8 +35,8 @@ static int  compare_nonce(chunk_t thatnonce, chunk_t thisnonce)
 
 /* figure out which one has the lowest nonces */
 /* compare this with that, return true if *that* wins */
-bool compare_nonce_set(struct state *that
-                       , struct state *this)
+bool compare_nonce_set(const struct state *that
+                       , const struct state *this)
 {
 
     int inonce_cmp = compare_nonce(that->st_ni, this->st_ni);
