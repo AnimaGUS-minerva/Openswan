@@ -219,7 +219,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::8054:3eff:fe9a:d
 |   2b 00 00 19  04 86 cb 59  12 06 07 df  3f 00 36 b9
 |   64 c6 c5 14  1f 3a ed cd  aa 00 00 00  10 4f 45 70
 |   6c 75 74 6f  75 6e 69 74  30
-1: output to OUTPUT/peerA-R2S.pcap
+1: output to OUTPUT/peerA-R3S.pcap
 1: input from peerB-R1a.pcap
 |   =========== input from pcap file peerB-R1a.pcap ========
 | *received 457 bytes from fe80::ec68:7cff:fe0c:9aa4:500 on eth0 (port=500)
@@ -405,7 +405,7 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 |   30 fb 92 a1  a4 e0 05 ec  fa 8c 43 97  86 be 67 34
 |   ba 25 fb 76  f7 36 b4 3e  9a 2d f5 62  9c 14 b4 bf
 |   5e 83 48 a5  26 f6 96 b8  db 16 59 ed  21 2d d9 06
-2: output to OUTPUT/02_peerA-R2S.pcap
+2: output to OUTPUT/02_peerA-R3S.pcap
 2: input from peerB-I2b.pcap
 |   =========== input from pcap file peerB-I2b.pcap ========
 | *received 1616 bytes from fe80::ec68:7cff:fe0c:9aa4:500 on eth0 (port=500)

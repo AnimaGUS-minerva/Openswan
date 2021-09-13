@@ -5,5 +5,9 @@ The client peerA will use it's certificate to authenticate.
 The response from lp128-R2 should have this initiator attempt to eroute both
 policies to ::/0, and may show the vtinum challenge.
 
+There is a bug in that this rekey is seen as a duplicate, and one state is
+removed.  This check should be avoided because the rekey is recognized as
+a rekey, but the pluto does not at this time send the right rekey NOTIFICATION.
+
 
 

@@ -2723,9 +2723,9 @@ RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON,
 RC=0 #3: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
 RC=0 #3: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 | duplicate parent SA looking for state matching for peerA--peerB #3
-| same_parent peerA--peerB: #1 [est:true] vs #3
+| same_identities peerA--peerB: #1 [established] vs #3
 | peer_id:  this(#3): C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org that(#1): C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 | local_id: this(#3): C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org that(#1): C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 | failed to match ID1: A{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
 | failed to match ID2: A{C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
-| failed0
+| states had different identities
