@@ -1306,7 +1306,13 @@ static void same_parent_sa_identities(struct state *this
                          , this->st_serialno, fm->recent_st->st_serialno
                          , state_to_delete->st_serialno);
             DBG_cond_dump_chunk(DBG_CONTROL, "deleting state with nonce:", nonce_to_delete);
-            delete_state(state_to_delete);
+
+            if(state_to_delete->st_ikev2_orig_initiator) {
+                delete_state(state_to_delete);
+            } else {
+                openswan_log("peer initiated, and will take care of deleting #%lu"
+                             , state_to_delete->st_serialno);
+            }
         } else {
             DBG_log("states had different identities");
         }
@@ -1505,8 +1511,13 @@ static void success_v2_state_transition(struct msg_digest **mdp)
 	}
     }
 
-    /* Schedule for whatever timeout is specified */
+    if(st->st_state != EVENT_SA_DELETE)
     {
+        /* Schedule for whatever timeout is specified
+         * do this only if we didn't wind up deleting the event already
+         * that can happen for a new SA, if it turns out to be a duplicate
+         *
+         */
 	time_t delay;
 	enum event_type kind = svm->timeout_event;
 	struct connection *c = st->st_connection;
