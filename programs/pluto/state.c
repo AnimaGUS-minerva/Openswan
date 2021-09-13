@@ -1536,12 +1536,13 @@ void fmt_state(struct state *st, const time_t n
 	}
         if(st->st_ikev2) {
             if(IS_PARENT_SA(st)) {
-                snprintf(msgidbuf, sizeof(msgidbuf), "; retranscnt=%ld,outorder=%ld,last=%ld,next=%ld,recv=%ld; msgid=%ld"
+                snprintf(msgidbuf, sizeof(msgidbuf), "; retranscnt=%ld,outorder=%ld,last=%ld,next=%ld,recv=%ld,%s; msgid=%ld"
                          , (long)st->st_msg_retransmitted
                          , (long)st->st_msg_badmsgid_recv
                          , msgid_invalid(st->st_msgid_lastack)
                          , msgid_invalid(st->st_msgid_nextuse)
                          , msgid_invalid(st->st_msgid_lastrecv)
+                         , st->st_ikev2_orig_initiator ? "initiator" : "responder"
                          , msgid_invalid(st->st_msgid));
             } else {
                 snprintf(msgidbuf, sizeof(msgidbuf), "; msgid=%ld"
