@@ -2023,6 +2023,8 @@ RC=0 #3: "peerA--peerC":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswa
 | same parents matches A-->B
 | state #1 matches #3
 ./peerA-I5 state #1 duplicates #3, deleting #1
+| deleting state with nonce:
+|   20 98 9d 37  a8 14 a6 4d  8f f0 7c 08  d3 20 e9 e3
 ./peerA-I5 deleting state #1 (STATE_PARENT_I3)
 | considering request to delete IKE parent state
 | sending IKE SA delete request
