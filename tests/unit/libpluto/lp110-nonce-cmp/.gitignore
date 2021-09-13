@@ -1,0 +1,6 @@
+OUTPUT
+core.*
+.gdbinit
+noncecmp_test
+core
+*.o

@@ -1,0 +1,4 @@
+# -*- makefile -*-
+UNITTESTARGS=
+
+TESTNAME=noncecmp_test

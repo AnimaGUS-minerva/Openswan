@@ -1,0 +1,3 @@
+This test case deals with the compare_nonce_set() function which is used to
+determine which of two identical SAs should be kept.
+

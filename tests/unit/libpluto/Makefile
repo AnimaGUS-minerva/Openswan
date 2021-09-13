@@ -38,6 +38,7 @@ UNITTESTS_0+=lp66-db2ops
 UNITTESTS_0+=lp67-ike2ops
 # GONE UNITTESTS_0+=lp68-badproposal
 UNITTESTS_0+=lp70-invalid-init-msg
+UNITTESTS_0+=lp110-nonce-cmp
 
 UNITTESTS_I1+=lp02-parentI1
 UNITTESTS_R1+=lp08-parentR1

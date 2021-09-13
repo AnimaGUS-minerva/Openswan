@@ -1,0 +1,3 @@
+./noncecmp_test leak: s2, item size: X
+./noncecmp_test leak: s1, item size: X
+./noncecmp_test leak detective found Z leaks, total size X
