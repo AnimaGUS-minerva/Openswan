@@ -80,10 +80,8 @@ struct trans_attrs {
     enum ikev2_trans_type_esn esn;  /* if Extended Sequence Numbers are enabled */
 
     oakley_auth_t auth;		/* Authentication method (RSA,PSK) */
-#ifdef XAUTH
     u_int16_t xauth;            /* did we negotiate Extended Authentication? */
-#endif
-    u_int16_t                       groupnum;
+    u_int16_t groupnum;
 
     time_t life_seconds;	/* When this SA expires (seconds) */
     u_int32_t life_kilobytes;	/* When this SA is exhausted (kilobytes) */
