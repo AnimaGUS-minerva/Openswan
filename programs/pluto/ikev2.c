@@ -1218,7 +1218,7 @@ struct find_matching {
     struct state *recent_st;
 };
 
-static bool check_same_parents(struct state *this
+static bool check_same_identity(struct state *this
                                , struct state *that)
 {
     if(DBGP(DBG_CONTROLMORE)) {
@@ -1269,6 +1269,61 @@ static bool check_same_parents(struct state *this
     return FALSE;
 }
 
+/* return <0 if thatnonce lower,
+ * return >0 if thisnonce lower,
+ * return =0 if identical
+ */
+static int  compare_nonce(chunk_t thatnonce, chunk_t thisnonce)
+{
+    unsigned int nonce_len = thatnonce.len;
+    if(nonce_len > thisnonce.len) nonce_len = thatnonce.len;
+
+    unsigned int equal = memcmp(thatnonce.ptr, thisnonce.ptr, nonce_len);
+    if(equal != 0) {
+        return equal;  /* that or this wins */
+    }
+
+    /* if same, but "this" is longer, then that is lower */
+    if(thisnonce.len > thatnonce.len) {
+        return -1;
+    }
+
+    /* if same, but "that" is longer, then that wins, return FALSE */
+    if(thisnonce.len < thatnonce.len) {
+        return 1;
+    }
+
+    /* must be exactly the same */
+    return 0;
+}
+
+/* figure out which one has the lowest nonces */
+/* compare this with that, return true if *that* wins */
+static bool compare_nonce_set(struct state *that
+                              , struct state *this)
+{
+
+    int inonce_cmp = compare_nonce(that->st_ni, this->st_ni);
+    if(inonce_cmp < 0) {
+        return TRUE;
+    }
+    if(inonce_cmp > 0) {
+        return FALSE;
+    }
+
+    int rnonce_cmp = compare_nonce(that->st_nr, this->st_nr);
+    if(rnonce_cmp < 0) {
+        return TRUE;
+    }
+    if(rnonce_cmp > 0) {
+        return FALSE;
+    }
+
+    /* all the same?  preposterous! */
+    return FALSE;
+}
+
+
 static void same_parent_sa_identities(struct state *this
                                       , void *data)
 {
@@ -1278,22 +1333,39 @@ static void same_parent_sa_identities(struct state *this
     if(this == fm->recent_st) return;
     if(!IS_PARENT_SA(this)) return;
 
-    DBG_log("same_parent %s: #%lu [est:%s] vs #%lu"
-            , this->st_connection->name
-            , this->st_serialno
-            , IS_PARENT_SA_ESTABLISHED(this->st_state) ? "true" : "false"
-            , fm->recent_st->st_serialno);
+    DBG(DBG_CONTROLMORE
+        , DBG_log("same_identities %s: #%lu [%s] vs #%lu"
+                  , this->st_connection->name
+                  , this->st_serialno
+                  , IS_PARENT_SA_ESTABLISHED(this->st_state) ? "established" : "inprogress"
+                  , fm->recent_st->st_serialno));
 
     if(IS_PARENT_SA(this) && IS_PARENT_SA(fm->recent_st)
        && IS_PARENT_SA_ESTABLISHED(this->st_state)) {
 
-        if(check_same_parents(fm->recent_st, this)) {
-            DBG_log("matched1");
+        if(check_same_identity(fm->recent_st, this)) {
+            DBG(DBG_CONTROL, DBG_log("state #%lu matches #%lu"
+                                     , this->st_serialno, fm->recent_st->st_serialno));
+
+            bool thiswins = compare_nonce_set(fm->recent_st, this);
+            if(thiswins) {
+                openswan_log("state #%lu duplicates #%lu, deleting #%lu"
+                             , this->st_serialno, fm->recent_st->st_serialno
+                             , fm->recent_st->st_serialno);
+                /* keep the other SA, delete self */
+                delete_state(fm->recent_st);
+            } else {
+                openswan_log("state #%lu duplicates #%lu, deleting #%lu"
+                             , this->st_serialno, fm->recent_st->st_serialno
+                             , this->st_serialno);
+                /* get rid of other SA */
+                delete_state(this);
+            }
         } else {
-            DBG_log("failed0");
+            DBG_log("states had different identities");
         }
     } else {
-        DBG_log("failed1");
+        DBG_log("states not mature enough to compare");
     }
 }
 
