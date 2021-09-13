@@ -233,3 +233,6 @@ testlist:
 
 testcount:
 	@echo ${UNITTESTS} | wc -w
+
+rununittests:
+	./run-unit-tests.sh

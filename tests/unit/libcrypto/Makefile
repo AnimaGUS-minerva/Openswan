@@ -30,3 +30,6 @@ programs clean check pcapupdate:
 
 testlist:
 	@echo ${UNITTESTS}
+
+rununittests:
+	./run-unit-tests.sh
