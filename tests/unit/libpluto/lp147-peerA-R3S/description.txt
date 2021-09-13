@@ -1,0 +1,20 @@
+This test case is an IKEv2 initiator -- the client peerA will use it's
+certificate to authenticate.
+
+This is the third step for simultaneous init.
+lp141, peerA creates the init.
+lp143, peerA processes peerB's I1 (replies with R1).
+lp145, peerA processes PeerB's R1 from it's I1, and also receives peerB's R2 reply.
+
+
+
+
+
+
+
+
+
+
+
+
+

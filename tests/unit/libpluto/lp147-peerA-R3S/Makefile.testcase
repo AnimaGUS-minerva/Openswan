@@ -1,0 +1,23 @@
+# -*- makefile -*-
+CONNNAME=peerA--peerB
+ENDNAME=acppeers
+UNITTEST1ARGS=-r ${WHACKFILE} ${CONNNAME} OUTPUT/${TESTNAME}.pcap
+UNITTEST1ARGS+=peerB-I1b.pcap peerB-R1a.pcap peerB-I2b.pcap peerB-R2a.pcap peerB-R2d.pcap
+
+TESTNAME=peerA-R3S
+#MORE_PCAP_FILES=02_peerA-R2S
+
+EXTRAOBJS+=${OBJDIRTOP}/programs/pluto/x509keys.o
+
+# peerB-I1b  is B initiating to us  (we'll respond with an R1 in lp142)
+# peerB-R1a  is B responding to our I1 from lp143
+# peerB-I2b  is B initiating an I2  in response to our R1.
+# peerB-R1a  is B responding to our I2 from lp145
+# peerB-R1d  is B figuring that there is a duplicate, and sending delete
+pcapupdate::
+	cp ../lp142-peerB-I1/OUTPUT/peerB-I1.pcap	peerB-I1b.pcap
+	cp ../lp144-peerB-R1S/OUTPUT/peerB-R1S.pcap	peerB-R1a.pcap
+	cp ../lp144-peerB-R1S/OUTPUT/02_peerB-R1S.pcap	peerB-I2b.pcap
+	cp ../lp146-peerB-R2S/OUTPUT/peerB-R2S.pcap	peerB-R2a.pcap
+	cp ../lp146-peerB-R2S/OUTPUT/02_peerB-R2S.pcap	peerB-R2d.pcap
+

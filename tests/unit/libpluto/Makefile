@@ -200,6 +200,7 @@ UNITTESTS_I2+=lp143-peerA-R1S
 UNITTESTS_R2+=lp144-peerB-R1S
 UNITTESTS_I3+=lp145-peerA-R2S
 UNITTESTS_R3+=lp146-peerB-R2S
+UNITTESTS_I4+=lp147-peerA-R3S
 
 # first runs tests that have no interdependancies
 UNITTESTS=${UNITTESTS_0}
