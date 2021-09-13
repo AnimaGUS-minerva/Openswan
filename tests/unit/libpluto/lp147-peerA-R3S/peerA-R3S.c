@@ -60,7 +60,7 @@ static void init_loaded(void) {
     list_authcerts("CA", AUTH_CA, 1);
 }
 
-#define PCAP_INPUT_COUNT 3
+#define PCAP_INPUT_COUNT 5
 #define PCAP_CAPTURE_COUNT 1
 
 #include "seam_parentR2v2.c"
@@ -68,6 +68,8 @@ static void init_loaded(void) {
 /* if there are multiple packets per pcap, then can not use PCAP_INPUT_COUNT */
 recv_pcap recv_inputs[PCAP_INPUT_COUNT]={
     recv_pcap_packet_with_ke,
+    recv_pcap_packet2_with_ke,
+    recv_pcap_packet2_with_ke2,
     recv_pcap_packet2_with_ke,
     recv_pcap_packet2_with_ke2,
 };
