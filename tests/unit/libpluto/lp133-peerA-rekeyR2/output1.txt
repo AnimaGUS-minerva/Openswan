@@ -1009,7 +1009,7 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 | releasing whack for #X (sock=Y)
 RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #2: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
-RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 | duplicate parent SA looking for state matching for peerA--peerB #1
 2: input from peerB-rI1.pcap
@@ -1025,7 +1025,7 @@ RC=0 "peerA--peerB":   debug: crypt+emitting+control+controlmore+private
 RC=0 "peerA--peerB":   IKE algorithm newest: aes_cbc_128-aes_xcbc_96-MODP2048
 RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #2: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
-RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 | packet 3 -- rekey starting
 | *received 652 bytes from fe80::ec68:7cff:fe0c:9aa4:500 on eth0 (port=500)
@@ -2716,11 +2716,11 @@ sending 1552 bytes for STATE_PARENT_R1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 | releasing whack for #X (sock=Y)
 RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #2: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
-RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org
 RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=0; idle; import:respond to friend
 RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
-RC=0 #3: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
+RC=0 #3: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1,responder; msgid=0; idle; import:respond to friend
 RC=0 #3: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 | duplicate parent SA looking for state matching for peerA--peerB #3
 | same_identities peerA--peerB: #1 [established] vs #3

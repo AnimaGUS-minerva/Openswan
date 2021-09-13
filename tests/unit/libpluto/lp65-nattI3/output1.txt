@@ -542,11 +542,11 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | releasing whack for #X (sock=Y)
 RC=0 #2: "parker1--jj2":4500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #2: "parker1--jj2":4500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
-RC=0 #1: "parker1--jj2":4500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "parker1--jj2":4500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "parker1--jj2":4500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
 | duplicate parent SA looking for state matching for parker1--jj2 #1
 now look at the resulting SAs produced.
 RC=0 #2: "parker1--jj2":4500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #2: "parker1--jj2":4500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
-RC=0 #1: "parker1--jj2":4500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "parker1--jj2":4500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "parker1--jj2":4500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
