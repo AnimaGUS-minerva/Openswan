@@ -1293,23 +1293,20 @@ static void same_parent_sa_identities(struct state *this
                                      , this->st_serialno, fm->recent_st->st_serialno));
 
             bool thiswins = compare_nonce_set(fm->recent_st, this);
-            so_serial_t to_delete = -1;
-            chunk_t     nonce_to_delete;
+            struct state *state_to_delete;
             if(thiswins) {
-                to_delete = fm->recent_st->st_serialno;
                 /* keep the other SA, delete self */
-                delete_state(fm->recent_st);
-                nonce_to_delete = fm->recent_st->st_ni;
+                state_to_delete = fm->recent_st;
             } else {
-                to_delete = this->st_serialno;
                 /* get rid of other SA */
-                delete_state(this);
-                nonce_to_delete = this->st_ni;
+                state_to_delete = this;
             }
+            chunk_t     nonce_to_delete = state_to_delete->st_ni;
             openswan_log("state #%lu duplicates #%lu, deleting #%lu"
                          , this->st_serialno, fm->recent_st->st_serialno
-                         , to_delete);
+                         , state_to_delete->st_serialno);
             DBG_cond_dump_chunk(DBG_CONTROL, "deleting state with nonce:", nonce_to_delete);
+            delete_state(state_to_delete);
         } else {
             DBG_log("states had different identities");
         }
