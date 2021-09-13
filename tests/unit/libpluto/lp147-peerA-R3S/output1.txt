@@ -684,11 +684,11 @@ sending 1552 bytes for STATE_PARENT_R1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 | releasing whack for #X (sock=Y)
 RC=0 #3: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C0_KEYING (CHILD SA keying); none in -1s; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #3: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
-RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I2 (sent v2I2, expected v2R2); none in -1s; nodpd; retranscnt=0,outorder=0,last=0,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I2 (sent v2I2, expected v2R2); none in -1s; nodpd; retranscnt=0,outorder=0,last=0,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
 RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=0; idle; import:respond to friend
 RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
-RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
+RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1,responder; msgid=0; idle; import:respond to friend
 RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 | duplicate parent SA looking for state matching for peerA--peerB #2
 | failed to match ID1: A{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
@@ -850,11 +850,11 @@ RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON,
 | releasing whack for #X (sock=Y)
 RC=0 #3: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #3: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
-RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=0; idle; import:respond to friend
 RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
-RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1; msgid=0; idle; import:respond to friend
+RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1,responder; msgid=0; idle; import:respond to friend
 RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 | duplicate parent SA looking for state matching for peerA--peerB #1
 | same parents matches A-->B
@@ -862,15 +862,7 @@ RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON,
 ./peerA-R3S state #2 duplicates #1, deleting #2
 | deleting state with nonce:
 |   20 98 9d 37  a8 14 a6 4d  8f f0 7c 08  d3 20 e9 e3
-./peerA-R3S deleting state #2 (STATE_PARENT_R2)
-| considering request to delete IKE parent state
-| sending IKE SA delete request
-sending 80 bytes for ikev2_delete_out through eth0:500 [fe80::8054:3eff:fe9a:d3f4:500] to fe80::ec68:7cff:fe0c:9aa4:500 (using #2)
-|   97 18 19 1a  1b 1c 1d 1e  97 03 67 ba  2d 8b a4 1d
-|   2e 20 25 00  00 00 00 00  00 00 00 50  2a 00 00 34
-|   8d 0e 0f 10  11 12 13 14  15 16 17 18  19 1a 1b 1c
-|   a3 74 65 00  42 64 41 b8  10 11 b6 41  de c7 62 db
-|   56 6c 92 c1  a2 5d a5 3c  d7 2a 30 d9  ea 6a 8b c2
+./peerA-R3S peer initiated, and will take care of deleting #2
 should have found a continuation, but none was found
 4: output to OUTPUT/02_peerA-R3S.pcap
 4: input from peerB-R2d.pcap

@@ -785,7 +785,7 @@ sending 416 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 | releasing whack for #X (sock=Y)
 RC=0 #2: "mytunnel":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #2: "mytunnel":500 IKEv2.0 me=192.168.1.1 him=132.213.238.7
-RC=0 #1: "mytunnel":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+RC=0 #1: "mytunnel":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "mytunnel":500 IKEv2.0 me=192.168.1.1 him=132.213.238.7
 | duplicate parent SA looking for state matching for mytunnel #1
 | recv_pcap_packet2() call 1: continuation
