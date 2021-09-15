@@ -1,12 +1,11 @@
+#define GLOBAL_TWEAK 0x1f
 #define PROCESS_DEBUGGING DBG_CONTROL
 #define CRYPTO_DEBUGGING  DBG_CONTROL
 #define WANT_THIS_DBG     DBG_CONTROL
 
-/* repeats existing test case */
 #include "../lp13-parentI3/parentI3_head.c"
-#include "seam_gi_sha1.c"
 #include "seam_gi_sha256_group14.c"
-#include "seam_ikev2_sendI1.c"
+#include "seam_ikev2_sendI1n.c"
 #include "oswconf.h"
 #include "seam_x509_list.c"
 #include "seam_host_peerB.c"
