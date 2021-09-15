@@ -4,6 +4,11 @@ certificate to authenticate.
 This is the start (I1) of a simultaneous init by peerA and peerB.
 It is identical to the lp12* sequence.
 
+The Nonce in each direction is tweaked to be unique by the so_serial_t, using
+seam_ikev2_sendI1n.c.
+
+
+
 
 
 
