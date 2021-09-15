@@ -54,7 +54,9 @@ void recv_pcap_packet2_with_ke0(u_char *user
 
     /* find st involved */
     st = state_with_serialno(stateno);
-    st->st_connection->extra_debugging = CRYPTO_DEBUGGING;
+    if(st) {  /* might be deleted already */
+      st->st_connection->extra_debugging = CRYPTO_DEBUGGING;
+    }
     clonetowirechunk(&kn->thespace, kn->space, &kn->secret, SS(secret.ptr),SS(secret.len));
 
     run_one_continuation(crypto_req);
