@@ -1,9 +1,10 @@
 /* repeats existing test case */
+#define GLOBAL_TWEAK 0xe0
+
 #include "../lp02-parentI1/parentI1_head.c"
-#include "seam_gi_sha1.c"
-#include "seam_gi_sha1_group14.c"
+#include "seam_gi_sha256_group14.c"
 #include "seam_finish.c"
-#include "seam_ikev2_sendI1.c"
+#include "seam_ikev2_sendI1n.c"  /* overrides include of sendI1.c */
 #include "seam_demux.c"
 #include "../seam_host_peerA.c"
 #include "seam_pending.c"
@@ -33,6 +34,7 @@ static void init_fake_secrets(void)
 			       , SAMPLEDIR "davecert.secrets"
 			       , &pass, NULL);
 }
+
 #include "../lp02-parentI1/parentI1_main.c"
 
 
