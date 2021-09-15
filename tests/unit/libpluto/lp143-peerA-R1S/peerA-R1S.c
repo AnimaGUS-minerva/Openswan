@@ -1,8 +1,8 @@
-/* repeats existing test case */
+#define GLOBAL_TWEAK 0xe0
+
 #include "../lp13-parentI3/parentI3_head.c"
-#include "seam_gi_sha1.c"
 #include "seam_gi_sha256_group14.c"
-#include "seam_ikev2_sendI1.c"
+#include "seam_ikev2_sendI1n.c"
 #include "oswconf.h"
 #include "seam_x509_list.c"
 #include "seam_host_peerA.c"
