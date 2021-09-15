@@ -1,9 +1,9 @@
-/* repeats existing test case */
+#define GLOBAL_TWEAK 0x1f
+
 #include "../lp02-parentI1/parentI1_head.c"
-#include "seam_gi_sha1.c"
-#include "seam_gi_sha1_group14.c"
+#include "seam_gi_sha256_group14.c"
 #include "seam_finish.c"
-#include "seam_ikev2_sendI1.c"
+#include "seam_ikev2_sendI1n.c"  /* overrides include of sendI1.c */
 #include "seam_demux.c"
 #include "../seam_host_peerB.c"
 #include "seam_pending.c"
