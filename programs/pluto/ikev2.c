@@ -1256,13 +1256,15 @@ static bool check_same_identity(struct state *this
         return TRUE;
     }
 
-    DBG_log("failed to match ID1: A{%s} vs B{%s}"
-            , this->ikev2.st_local_buf
-            , that->ikev2.st_local_buf);
+    DBG(DBG_CONTROLMORE
+        ,DBG_log("failed to match ID1: A{%s} vs B{%s}"
+                 , this->ikev2.st_local_buf
+                 , that->ikev2.st_local_buf));
 
-    DBG_log("failed to match ID2: A{%s} vs B{%s}"
-            , this->ikev2.st_peer_buf
-            , that->ikev2.st_peer_buf);
+    DBG(DBG_CONTROLMORE
+        ,DBG_log("failed to match ID2: A{%s} vs B{%s}"
+                 , this->ikev2.st_peer_buf
+                 , that->ikev2.st_peer_buf));
 
 
     /* otherwise, it does not match */
