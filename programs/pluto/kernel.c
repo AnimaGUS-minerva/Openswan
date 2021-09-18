@@ -577,6 +577,10 @@ do_command(struct connection *c, const struct spd_route *sr
 {
     const char *verb_suffix = kernel_command_verb_suffix(st, sr);
 
+    if(sr->this.updown != NULL && strcasecmp(sr->this.updown, "none")==0) {
+        return TRUE;
+    }
+
     DBG(DBG_CONTROL, DBG_log("command executing %s%s"
 			     , verb, verb_suffix));
 
