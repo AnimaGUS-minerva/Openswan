@@ -691,8 +691,6 @@ RC=0 #4: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON,
 RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; nodpd; retranscnt=0,outorder=0,last=-1,next=0,recv=1,responder; msgid=0; idle; import:respond to friend
 RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
 | duplicate parent SA looking for state matching for peerA--peerB #2
-| failed to match ID1: A{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org}
-| failed to match ID2: A{C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org} vs B{C=CA, ST=ON, O=Xelerance, CN=*}
 | states had different identities
 3: output to OUTPUT/peerA-R3S.pcap
 3: input from peerB-R2a.pcap
@@ -862,7 +860,7 @@ RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON,
 ./peerA-R3S state #2 duplicates #1, deleting #2
 | deleting state with nonce:
 |   3f 98 9d 37  a8 14 a6 4d  8f f0 7c 08  d3 20 e9 e3
-./peerA-R3S peer initiated, and will take care of deleting #2
+./peerA-R3S initiated by peer, so it will take care of deleting #2
 should have found a continuation, but none was found
 4: output to OUTPUT/02_peerA-R3S.pcap
 4: input from peerB-R2d.pcap
