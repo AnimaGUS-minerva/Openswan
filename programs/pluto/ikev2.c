@@ -1312,7 +1312,7 @@ static void same_parent_sa_identities(struct state *this
             if(state_to_delete->st_ikev2_orig_initiator) {
                 delete_state(state_to_delete);
             } else {
-                openswan_log("peer initiated, and will take care of deleting #%lu"
+                openswan_log("initiated by peer, so it will take care of deleting #%lu"
                              , state_to_delete->st_serialno);
             }
         } else {
