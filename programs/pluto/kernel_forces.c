@@ -1858,7 +1858,7 @@ netlink_shunt_eroute(struct connection *c
 {
     ipsec_spi_t spi;
 
-    DBG(DBG_CONTROL, DBG_log("request to %s a %s policy with netkey kernel --- experimental"
+    DBG(DBG_CONTROL, DBG_log("request to %s a %s policy"
 		, opname
 		, enum_name(&routing_story, rt_kind)));
 

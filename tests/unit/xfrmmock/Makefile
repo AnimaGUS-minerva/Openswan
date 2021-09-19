@@ -33,6 +33,7 @@ UNITTESTS+=xf13-parentI3
 
 UNITTESTS+=xf113-vtiI3
 UNITTESTS+=xf129-peerA-I5
+UNITTESTS+=xf147-peerA-duplicate-state
 
 programs pcapupdate clean check:
 	@for unittest in ${UNITTESTS}; do ${MAKE} -C $$unittest $@; done
