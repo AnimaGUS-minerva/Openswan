@@ -2497,7 +2497,7 @@ route_and_eroute(struct connection *c USED_BY_KLIPS
 #ifdef IPSEC_CONNECTION_LIMIT
 	if (num_ipsec_eroute == IPSEC_CONNECTION_LIMIT) {
 	    loglog(RC_LOG_SERIOUS
-	    	, "Maximum number of IPSec connections reached (%d)"
+	    	, "Maximum number of IPsec connections reached (%d)"
 		, IPSEC_CONNECTION_LIMIT);
 	    return FALSE;
 	}
