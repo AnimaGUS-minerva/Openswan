@@ -1,0 +1,4 @@
+peerA-duplicate-state
+*.o
+OUTPUT
+.gdb1init
