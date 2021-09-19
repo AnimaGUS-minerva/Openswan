@@ -1016,7 +1016,41 @@ sending 80 bytes for process_informational_ikev2 through eth0:500 [fe80::8054:3e
 | ICOOKIE:  97 18 19 1a  1b 1c 1d 1e
 | RCOOKIE:  97 03 67 ba  2d 8b a4 1d
 | state hash entry 2
-| Unknown kernel stack in delete_ipsec_sa
+| command executing down-client-v6
+| executing down
+| request to replace with shunt a prospective erouted policy with netkey kernel --- experimental
+writing netlink policy for eroute_connection replace with shunt
+0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0060: ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+00a0: 00 00 00 00  00 00 00 00  00 85 00 00  00 00 00 00
+00b0: 01 00 00 00  00 00 00 00  44 00 05 00  00 00 00 00
+00d0: 32 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff
+writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
+0000: 5c 00 00 00  14 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  00 00 00 00  01 00 00 00
+0050: 0c 00 15 00  d7 11 00 00  ff ff ff ff
+./peerA-duplicate-state eroute_connection delete eroute ::/0:0 --0-> ::/0:0 => tun:0@fe80::ec68:7cff:fe0c:9aa4 succeeded
+writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:9aa4
+0000: 28 00 00 00  11 00 05 00  00 00 00 00  00 00 00 00
+0010: fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 9a a4
+0020: 12 34 56 78  0a 00 32 00
+writing netlink policy for unk255:10000@fe80::8054:3eff:fe9a:d3f4
+0000: a0 00 00 00  14 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0050: 44 00 05 00  00 00 00 00  00 00 00 00  00 00 00 00
+0060: 00 00 00 00  00 00 00 00  32 00 00 00  0a 00 00 00
+0080: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0090: ff ff ff ff  0c 00 15 00  d7 11 00 00  ff ff ff ff
+./peerA-duplicate-state delete (half) inbound eroute ::/0:0 --0-> ::/0:0 => unk255:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
+writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
+0000: 28 00 00 00  11 00 05 00  00 00 00 00  00 00 00 00
+0010: fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
+0020: 34 56 78 12  0a 00 32 00
 ./peerA-duplicate-state deleting state #2 (STATE_IKESA_DEL)
 | considering request to delete IKE parent state
 | now deleting the IKE (or parent) state
@@ -1027,6 +1061,14 @@ sending 80 bytes for process_informational_ikev2 through eth0:500 [fe80::8054:3e
 ./peerA-duplicate-state deleting connection "peerA--peerB" [whackfd=4294967295] instance with peer fe80::ec68:7cff:fe0c:9aa4 {isakmp=#0/ipsec=#0}
 | pass 0: considering CHILD SAs to delete
 | pass 1: considering PARENT SAs to delete
+| request to delete a unrouted policy with netkey kernel --- experimental
+writing netlink policy for eroute_connection delete
+0000: 50 00 00 00  14 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  00 00 00 00  01 00 00 00
+writing netlink policy for eroute_connection delete inbound
+0000: 50 00 00 00  14 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 | route owner of "peerA--peerB" unrouted: NULL
 | command executing unroute-client-v6
 | executing unroute
