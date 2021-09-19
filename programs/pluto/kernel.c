@@ -1540,10 +1540,6 @@ static err_t setup_esp_sa(struct connection *c
     said_next->encapsulation = encapsulation;
     said_next->reqid = c->spd.reqid + 1;
 
-#ifdef HAVE_LABELED_IPSEC
-    said_next->sec_ctx = st->sec_ctx;
-#endif
-
 #ifdef NAT_TRAVERSAL
     said_next->natt_sport = natt_sport;
     said_next->natt_dport = natt_dport;
@@ -2744,17 +2740,8 @@ install_ipsec_sa(struct state *parent_st
                              , st->st_serialno
                              , inbound_also?
                              "inbound and outbound" : "outbound only"));
-#ifdef HAVE_LABELED_IPSEC
-    if(st->st_connection->loopback && st->st_state == STATE_QUICK_R1) {
-	return TRUE;
-    }
-#endif
 
     sr = &c->spd;
-    /* skip the first SPD_ROUTE... how do we get multiple? */
-    if (st->st_connection->remotepeertype == CISCO) {
-        sr = sr->next;
-    }
     desired_sr = *sr;
 
     build_desired_sr(st, &desired_sr);
@@ -2775,9 +2762,6 @@ install_ipsec_sa(struct state *parent_st
 
     /* setup outgoing SA if we haven't already */
     if(!st->st_outbound_done
-#ifdef HAVE_LABELED_IPSEC
-	&& !st->st_connection->loopback
-#endif
        ) {
 	if(!setup_half_ipsec_sa(parent_st, st, sr, FALSE)) {
             loglog(RC_LOG_SERIOUS, "state #%lu: failed to setup outgoing SA", st->st_serialno);
@@ -2841,19 +2825,6 @@ install_ipsec_sa(struct state *parent_st
         }
     }
 
-
-   if (st->st_connection->remotepeertype == CISCO) {
-
-	sr = st->st_connection->spd.next;
-	st->st_connection->spd.eroute_owner = sr->eroute_owner;
-	st->st_connection->spd.routing = sr->routing;
-
-	if(!st->st_connection->newest_ipsec_sa) {
-		if(!do_command(st->st_connection, &st->st_connection->spd, "updateresolvconf", st)) {
-		DBG(DBG_CONTROL, DBG_log("Updating resolv.conf failed, you may need to update it manually"));
-		}
-	}
-   }
 
     return TRUE;
 }
