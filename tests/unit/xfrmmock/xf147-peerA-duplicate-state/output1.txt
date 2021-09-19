@@ -17,6 +17,18 @@
 ./peerA-duplicate-state loading secrets from "../../libpluto/samples/davecert.secrets"
 ./peerA-duplicate-state   loaded private key file '../../libpluto/samples/davecert/private/daveKey.pem' (CERT bytes)
 ./peerA-duplicate-state loaded private key for keyid: PPK_RSA:AwEAAeOoT/75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535
+| kernel_alg_add called with satype=3, exttype=15, alg_id=12
+| kernel_alg_add(): discarding already setup satype=3, exttype=15, alg_id=12
+| kernel_alg_add called with satype=3, exttype=15, alg_id=3
+| kernel_alg_add(): discarding already setup satype=3, exttype=15, alg_id=3
+| kernel_alg_add called with satype=3, exttype=14, alg_id=3
+| kernel_alg_add(): discarding already setup satype=3, exttype=14, alg_id=3
+| kernel_alg_add called with satype=3, exttype=14, alg_id=2
+| kernel_alg_add(): discarding already setup satype=3, exttype=14, alg_id=2
+| kernel_alg_add called with satype=3, exttype=14, alg_id=5
+| kernel_alg_add(): discarding already setup satype=3, exttype=14, alg_id=5
+| kernel_alg_add called with satype=3, exttype=14, alg_id=7
+| kernel_alg_add(): discarding already setup satype=3, exttype=14, alg_id=7
 | processing whack message of size: A
 | Added new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 ./peerA-duplicate-state   loading certificate from daveCert.pem
@@ -297,6 +309,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::8054:3eff:fe9a:d
 | going to send a certreq
 | have CA 'C=CA, ST=ON, L=Ottawa, O=Xelerance, CN=Openswan Unit Testing Root CA', send CERTREQ with CA's Key ID
 |  payload after AUTH will be ISAKMP_NEXT_v2SA
+| kernel_alg_esp_enc_keylen():alg_id=12, keylen=16
 | #3 complete v2 state transition with STF_OK
 ./peerA-duplicate-state transition from state STATE_PARENT_I1 to state STATE_PARENT_I2
 | v2_state_transition: st is #3; pst is #1; transition_st is #1
@@ -575,9 +588,15 @@ sending 1616 bytes for STATE_PARENT_I1 through eth0:500 [fe80::8054:3eff:fe9a:d3
 | RCOOKIE:  97 03 67 ba  2d 8b a4 1d
 | state hash entry 2
 | inserting state object #4 bucket: 2
+| kernel_alg_esp_enc_keylen():alg_id=12, keylen=16
 | state #4: install_ipsec_sa() for inbound and outbound
 | route owner of "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4 unrouted: NULL; eroute owner: NULL
 | could_route called for peerA--peerB (kind=CK_INSTANCE)
+| state #4(peerA--peerB): setup outbound esp-ipsec between fe80::8054:3eff:fe9a:d3f4<->fe80::ec68:7cff:fe0c:9aa4 for ::/0...::/0
+| ipcomp maybe
+| esp outbound maybe
+| looking for outbound alg with transid: 12 keylen: 128 auth: 12 for spi=78563412 [fe80::8054:3eff:fe9a:d3f4->fe80::ec68:7cff:fe0c:9aa4]
+| creating SA spi=12345678@fe800000 proto=50 family=10
 writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:9aa4
 0000: b4 01 00 00  10 00 05 00  00 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
@@ -593,6 +612,13 @@ writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:9aa4
 0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
 01a0: 80 00 00 00  2b 03 ec fa  81 42 b2 b5  f1 d1 c5 e7
 01b0: 21 a8 95 4b
+| state #4: set up outgoing SA, ref=0/4294901761
+| state #4: now setting up incoming SA
+| state #4(peerA--peerB): setup inbound esp-ipsec between fe80::ec68:7cff:fe0c:9aa4<->fe80::8054:3eff:fe9a:d3f4 for ::/0...::/0
+| ipcomp maybe
+| esp inbound maybe
+| looking for inbound alg with transid: 12 keylen: 128 auth: 12 for spi=12785634 [fe80::ec68:7cff:fe0c:9aa4->fe80::8054:3eff:fe9a:d3f4]
+| updating SA spi=34567812@fe800000 proto=50 family=10
 writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
 0000: b4 01 00 00  1a 00 05 00  00 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
@@ -608,6 +634,8 @@ writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
 0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
 01a0: 80 00 00 00  ea a7 1c b7  26 3c 56 ec  10 df ff 3a
 01b0: 01 8e 31 c5
+| creating SPD to fe80::ec68:7cff:fe0c:9aa4->spi=00010000@fe80::8054:3eff:fe9a:d3f4 proto=4 vti mark=000011d7
+| passing xfrm mark/mask=000011d7/ffffffff
 writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
@@ -622,8 +650,12 @@ writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
 0100: d7 11 00 00  ff ff ff ff
 ./peerA-duplicate-state add inbound eroute ::/0:0 --0-> ::/0:0 => tun:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
+| state #4: set up incoming SA, ref=0/4294901761
 | sr for #4: unrouted (eroute_owner: #0)
 | route owner of "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4 unrouted: NULL; eroute owner: NULL
+| eroute_connection: between fe80::8054:3eff:fe9a:d3f4<->fe80::ec68:7cff:fe0c:9aa4
+| creating SPD to fe80::8054:3eff:fe9a:d3f4->spi=00000000@fe80::ec68:7cff:fe0c:9aa4 proto=4 vti mark=000011d7
+| passing xfrm mark/mask=000011d7/ffffffff
 writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
@@ -909,9 +941,16 @@ RC=0 #2: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4:500 IKEv2.0 me=C=CA, ST=ON,
 | protocol 0 and tsr[0].ipprotoid 0: exact match
 |     best protocol fit so far: tsi[0] fitrange_i 255, tsr[0] fitrange_r 255, matchiness 510
 |     protocol_fitness 510
+| kernel_alg_esp_enc_keylen():alg_id=12, keylen=16
 | state #3: install_ipsec_sa() for inbound and outbound
 | route owner of "peerA--peerB" unrouted: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4 erouted; eroute owner: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4 erouted
 | could_route called for peerA--peerB (kind=CK_TEMPLATE)
+| overlapping permitted with "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4 #4
+| state #3(peerA--peerB): setup outbound esp-ipsec between fe80::8054:3eff:fe9a:d3f4<->fe80::ec68:7cff:fe0c:9aa4 for ::/0...::/0
+| ipcomp maybe
+| esp outbound maybe
+| looking for outbound alg with transid: 12 keylen: 128 auth: 12 for spi=12785634 [fe80::8054:3eff:fe9a:d3f4->fe80::ec68:7cff:fe0c:9aa4]
+| creating SA spi=34567812@fe800000 proto=50 family=10
 writing netlink for esp:34567812@fe80::ec68:7cff:fe0c:9aa4
 0000: b4 01 00 00  10 00 05 00  00 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
@@ -927,6 +966,13 @@ writing netlink for esp:34567812@fe80::ec68:7cff:fe0c:9aa4
 0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
 01a0: 80 00 00 00  0b 35 3c 6b  19 32 6b bf  a5 9d 83 a4
 01b0: f7 df 82 9d
+| state #3: set up outgoing SA, ref=0/4294901761
+| state #3: now setting up incoming SA
+| state #3(peerA--peerB): setup inbound esp-ipsec between fe80::ec68:7cff:fe0c:9aa4<->fe80::8054:3eff:fe9a:d3f4 for ::/0...::/0
+| ipcomp maybe
+| esp inbound maybe
+| looking for inbound alg with transid: 12 keylen: 128 auth: 12 for spi=78563412 [fe80::ec68:7cff:fe0c:9aa4->fe80::8054:3eff:fe9a:d3f4]
+| updating SA spi=12345678@fe800000 proto=50 family=10
 writing netlink for esp:12345678@fe80::8054:3eff:fe9a:d3f4
 0000: b4 01 00 00  1a 00 05 00  00 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  fe 80 00 00  00 00 00 00
@@ -942,6 +988,8 @@ writing netlink for esp:12345678@fe80::8054:3eff:fe9a:d3f4
 0160: 61 65 73 00  35 36 00 00  00 00 00 00  00 00 00 00
 01a0: 80 00 00 00  ab 3b ef f4  8c 03 c0 cb  e0 c4 6d 1d
 01b0: be 36 15 b0
+| creating SPD to fe80::ec68:7cff:fe0c:9aa4->spi=00010000@fe80::8054:3eff:fe9a:d3f4 proto=4 vti mark=000011d7
+| passing xfrm mark/mask=000011d7/ffffffff
 writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
@@ -956,6 +1004,30 @@ writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
 0100: d7 11 00 00  ff ff ff ff
 ./peerA-duplicate-state add inbound eroute ::/0:0 --0-> ::/0:0 => tun:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
+| state #3: set up incoming SA, ref=0/4294901761
+| sr for #3: unrouted (eroute_owner: #0)
+| route owner of "peerA--peerB" unrouted: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4 erouted; eroute owner: "peerA--peerB"[1] fe80::ec68:7cff:fe0c:9aa4 erouted
+| eroute_connection: between fe80::8054:3eff:fe9a:d3f4<->fe80::ec68:7cff:fe0c:9aa4
+| creating SPD to fe80::8054:3eff:fe9a:d3f4->spi=00000000@fe80::ec68:7cff:fe0c:9aa4 proto=4 vti mark=000011d7
+| passing xfrm mark/mask=000011d7/ffffffff
+writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
+0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0060: ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+00a0: 00 00 00 00  00 00 00 00  00 85 00 00  00 00 00 00
+00b0: 01 00 00 00  00 00 00 00  44 00 05 00  fe 80 00 00
+00c0: 00 00 00 00  ec 68 7c ff  fe 0c 9a a4  00 00 00 00
+00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
+00e0: 80 54 3e ff  fe 9a d3 f4  01 40 00 00  01 00 00 00
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
+0100: d7 11 00 00  ff ff ff ff
+./peerA-duplicate-state eroute_connection replace eroute ::/0:0 --0-> ::/0:0 => tun:0@fe80::ec68:7cff:fe0c:9aa4 succeeded
+| command executing up-client-v6
+| executing up
+| route_and_eroute: firewall_notified: true
+| route_and_eroute: instance "peerA--peerB", setting eroute_owner to #3 (was #0) (newest_ipsec_sa=#3)
 | #3 complete v2 state transition with STF_OK
 ./peerA-duplicate-state transition from state STATE_CHILD_C0_KEYING to state STATE_CHILD_C1_KEYED
 | v2_state_transition: st is #3; pst is #0; transition_st is #0
@@ -964,7 +1036,7 @@ writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 ./peerA-duplicate-state STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=000011d7}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
-RC=0 #3: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #3: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #3: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
 RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
@@ -1018,7 +1090,8 @@ sending 80 bytes for process_informational_ikev2 through eth0:500 [fe80::8054:3e
 | state hash entry 2
 | command executing down-client-v6
 | executing down
-| request to replace with shunt a prospective erouted policy with netkey kernel --- experimental
+| request to replace with shunt a prospective erouted policy
+| creating SPD to fe80::8054:3eff:fe9a:d3f4->spi=00000104@<invalid> proto=61 vti mark=00000000
 writing netlink policy for eroute_connection replace with shunt
 0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
@@ -1029,16 +1102,22 @@ writing netlink policy for eroute_connection replace with shunt
 00b0: 01 00 00 00  00 00 00 00  44 00 05 00  00 00 00 00
 00d0: 32 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff
+| eroute_connection: between fe80::8054:3eff:fe9a:d3f4<->fe80::ec68:7cff:fe0c:9aa4
+| deleting SPD to fe80::8054:3eff:fe9a:d3f4->spi=00000000@fe80::ec68:7cff:fe0c:9aa4 proto=4 vti mark=000011d7
+| passing xfrm mark/mask=000011d7/ffffffff
 writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 0000: 5c 00 00 00  14 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  00 00 00 00  01 00 00 00
 0050: 0c 00 15 00  d7 11 00 00  ff ff ff ff
 ./peerA-duplicate-state eroute_connection delete eroute ::/0:0 --0-> ::/0:0 => tun:0@fe80::ec68:7cff:fe0c:9aa4 succeeded
+| delete esp:12345678@fe80::ec68:7cff:fe0c:9aa4
 writing netlink for esp:12345678@fe80::ec68:7cff:fe0c:9aa4
 0000: 28 00 00 00  11 00 05 00  00 00 00 00  00 00 00 00
 0010: fe 80 00 00  00 00 00 00  ec 68 7c ff  fe 0c 9a a4
 0020: 12 34 56 78  0a 00 32 00
+| deleting SPD to fe80::ec68:7cff:fe0c:9aa4->spi=00010000@fe80::8054:3eff:fe9a:d3f4 proto=255 vti mark=000011d7
+| passing xfrm mark/mask=000011d7/ffffffff
 writing netlink policy for unk255:10000@fe80::8054:3eff:fe9a:d3f4
 0000: a0 00 00 00  14 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
@@ -1047,6 +1126,7 @@ writing netlink policy for unk255:10000@fe80::8054:3eff:fe9a:d3f4
 0080: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0090: ff ff ff ff  0c 00 15 00  d7 11 00 00  ff ff ff ff
 ./peerA-duplicate-state delete (half) inbound eroute ::/0:0 --0-> ::/0:0 => unk255:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
+| delete esp:34567812@fe80::8054:3eff:fe9a:d3f4
 writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
 0000: 28 00 00 00  11 00 05 00  00 00 00 00  00 00 00 00
 0010: fe 80 00 00  00 00 00 00  80 54 3e ff  fe 9a d3 f4
@@ -1061,16 +1141,16 @@ writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
 ./peerA-duplicate-state deleting connection "peerA--peerB" [whackfd=4294967295] instance with peer fe80::ec68:7cff:fe0c:9aa4 {isakmp=#0/ipsec=#0}
 | pass 0: considering CHILD SAs to delete
 | pass 1: considering PARENT SAs to delete
-| request to delete a unrouted policy with netkey kernel --- experimental
+| request to delete a unrouted policy
+| deleting SPD to fe80::8054:3eff:fe9a:d3f4->spi=00000000@<invalid> proto=61 vti mark=00000000
 writing netlink policy for eroute_connection delete
 0000: 50 00 00 00  14 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  00 00 00 00  01 00 00 00
+| deleting SPD to fe80::8054:3eff:fe9a:d3f4->spi=00000000@<invalid> proto=61 vti mark=00000000
 writing netlink policy for eroute_connection delete inbound
 0000: 50 00 00 00  14 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
-| route owner of "peerA--peerB" unrouted: NULL
-| command executing unroute-client-v6
-| executing unroute
+| route owner of "peerA--peerB" unrouted: "peerA--peerB" erouted
 | #0 complete v2 state transition with STF_IGNORE
 should have found a continuation, but none was found

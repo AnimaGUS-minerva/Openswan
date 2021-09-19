@@ -634,13 +634,6 @@ could_route(struct connection *c, struct spd_route *dsr)
 	return route_unnecessary;
     }
 
-    /*
-     * if this is SA is VTI based route, then no policy is necessary.
-     */
-    if(esr != NULL && esr->this.vtinum != 0) {
-	return route_unnecessary;
-    }
-
     /* if this is a Road Warrior template, we cannot route.
      * Opportunistic template is OK.
      */
