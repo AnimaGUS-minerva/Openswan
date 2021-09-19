@@ -2863,102 +2863,58 @@ install_ipsec_sa(struct state *parent_st
  * we cannot do anything better by recognizing failure
  */
 void
-delete_ipsec_sa(struct state *st USED_BY_KLIPS, bool inbound_only USED_BY_KLIPS)
+delete_ipsec_sa(struct state *st, bool inbound_only)
 {
-    const struct osw_conf_options *oco = osw_init_options();
     struct connection *c = st->st_connection;
-    switch (oco->kern_interface) {
-    case USE_MASTKLIPS:
-    case USE_KLIPS:
-    case USE_NETKEY:
-	if (!inbound_only)
-	{
-	    /* If the state is the eroute owner, we must adjust
-	     * the routing for the connection.
-	     */
-	    struct spd_route *sr;
 
-	    passert(st->st_connection);
+    if (!inbound_only) {
+        /* If the state is the eroute owner, we must adjust
+         * the routing for the connection.
+         */
+        struct spd_route *sr;
 
-	    for (sr = &c->spd; sr; sr = sr->next)
+        passert(st->st_connection);
+
+        for (sr = &c->spd; sr; sr = sr->next)
 	    {
 		if (sr->eroute_owner == st->st_serialno
 		    && sr->routing == RT_ROUTED_TUNNEL)
-		{
-		    sr->eroute_owner = SOS_NOBODY;
+                    {
+                        sr->eroute_owner = SOS_NOBODY;
 
-		    /* Routing should become RT_ROUTED_FAILURE,
-		     * but if POLICY_FAIL_NONE, then we just go
-		     * right back to RT_ROUTED_PROSPECTIVE as if no
-		     * failure happened.
-		     */
-		    sr->routing = (c->policy & POLICY_FAIL_MASK) == POLICY_FAIL_NONE
-			? RT_ROUTED_PROSPECTIVE : RT_ROUTED_FAILURE;
+                        /* Routing should become RT_ROUTED_FAILURE,
+                         * but if POLICY_FAIL_NONE, then we just go
+                         * right back to RT_ROUTED_PROSPECTIVE as if no
+                         * failure happened.
+                         */
+                        sr->routing = (c->policy & POLICY_FAIL_MASK) == POLICY_FAIL_NONE
+                            ? RT_ROUTED_PROSPECTIVE : RT_ROUTED_FAILURE;
 
-		    if (sr == &c->spd && c->remotepeertype == CISCO) {
-			continue;
-		    }
+                        (void) do_command(c, sr, "down", st);
+                        if ((c->policy & POLICY_DONT_REKEY)
+                            && c->kind == CK_INSTANCE)
+                            {
+                                /* in this special case, even if the connection
+                                 * is still alive (due to an ISAKMP SA),
+                                 * we get rid of routing.
+                                 * Even though there is still an eroute, the c->routing
+                                 * setting will convince unroute_connection to delete it.
+                                 * unroute_connection would be upset if c->routing == RT_ROUTED_TUNNEL
+                                 */
+                                unroute_connection(c);
+                            }
+                        else
+                            {
+                                (void) shunt_eroute(c, sr, sr->routing, ERO_REPLACE, "replace with shunt");
+                            }
 
-		    (void) do_command(c, sr, "down", st);
-		    if ((c->policy & POLICY_DONT_REKEY)
-			&& c->kind == CK_INSTANCE)
-		    {
-			/* in this special case, even if the connection
-			 * is still alive (due to an ISAKMP SA),
-			 * we get rid of routing.
-			 * Even though there is still an eroute, the c->routing
-			 * setting will convince unroute_connection to delete it.
-			 * unroute_connection would be upset if c->routing == RT_ROUTED_TUNNEL
-			 */
-			unroute_connection(c);
-		    }
-		    else
-		    {
-			(void) shunt_eroute(c, sr, sr->routing, ERO_REPLACE, "replace with shunt");
-		    }
-
-#ifdef KLIPS_MAST
-		    /* in mast mode we must also delete the iptables rule */
-		    if (oco->kern_interface == USE_MASTKLIPS)
-			    (void) sag_eroute(st, sr, ERO_DELETE, "delete");
-#endif
-		}
+                        (void) sag_eroute(st, sr, ERO_DELETE, "delete");
+                    }
 	    }
-#ifdef HAVE_LABELED_IPSEC
-	    if(!st->st_connection->loopback) {
-#endif
-                (void) teardown_half_ipsec_sa(st, &c->spd.that, FALSE);
-#ifdef HAVE_LABELED_IPSEC
-	    }
-#endif
-	}
-#ifdef HAVE_LABELED_IPSEC
-	if(!st->st_connection->loopback || st->st_state == STATE_QUICK_I2) {
-#endif
-            (void) teardown_half_ipsec_sa(st, &c->spd.that, TRUE);
-#ifdef HAVE_LABELED_IPSEC
-        }
-#endif
+        (void) teardown_half_ipsec_sa(st, &c->spd.that, FALSE);
+    }
 
-	if (st->st_connection->remotepeertype == CISCO && st->st_serialno == st->st_connection->newest_ipsec_sa) {
-		if(!do_command(st->st_connection, &st->st_connection->spd, "restoreresolvconf", st)) {
-		DBG(DBG_CONTROL, DBG_log("Restoring resolv.conf failed, you may need to do it manually"));
-		}
-	}
-
-	break;
-#if defined(WIN32) && defined(WIN32_NATIVE)
-    case USE_WIN32_NATIVE:
-	DBG(DBG_CONTROL, DBG_log("No support (required?) to delete_ipsec_sa with Win2k"));
-	break;
-#endif
-    case NO_KERNEL:
-	DBG(DBG_CONTROL, DBG_log("No support required to delete_ipsec_sa with NoKernel support"));
-	break;
-    default:
-	DBG(DBG_CONTROL, DBG_log("Unknown kernel stack in delete_ipsec_sa"));
-	break;
- } /* switch kern_interface */
+    (void) teardown_half_ipsec_sa(st, &c->spd.that, TRUE);
 }
 
 bool was_eroute_idle(struct state *st, time_t since_when)
