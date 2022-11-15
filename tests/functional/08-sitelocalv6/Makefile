@@ -34,8 +34,8 @@ check: ${OUTPUTS}
 	@(make --no-print-directory step1; sleep 1; make --no-print-directory step2 step4; sleep 1; make --no-print-directory step3)| tee ${OUTPUTS}/pluto.${TESTNAME}.raw | sed -r -f ${TESTUTILS}/openswanver.sed -f ${TESTUTILS}/removehelpers.sed -f ${TESTUTILS}/randomhelper.sed | diff - pluto.${TESTNAME}.out;
 
 update:
-	cp ${OUTPUTS}/moon.conf.raw     moon.conf.out
 	cp ${OUTPUTS}/moonrecord.out    moonrecord.txt
+	cp ${OUTPUTS}/moon.conf.raw     moon.conf.out
 	sed -r -f ${TESTUTILS}/openswanver.sed -f ${TESTUTILS}/removehelpers.sed -f ${TESTUTILS}/randomhelper.sed ${OUTPUTS}/pluto.${TESTNAME}.raw >pluto.${TESTNAME}.out
 
 start step1:

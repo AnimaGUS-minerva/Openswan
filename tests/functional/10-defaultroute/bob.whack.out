@@ -35,7 +35,7 @@ a2                                      # map(2)
             82                          # array(2)
                10                       # unsigned(16)
                42                       # bytes(2)
-                  0a01                  # "\n\x01"
+                  0a01                  # "\n\u0001"
          14                             # unsigned(20)
          19 01f4                        # unsigned(500)
       18 7f                             # unsigned(127)

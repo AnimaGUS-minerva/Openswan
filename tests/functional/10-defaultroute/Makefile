@@ -39,8 +39,8 @@ check: ${OUTPUTS}
 
 update:
 	cp ${OUTPUTS}/bob.conf.raw     bob.conf.out
-	${FILTERS} ${OUTPUTS}/pluto.${TESTNAME}.raw >pluto.${TESTNAME}.out
 	cp ${OUTPUTS}/bob.whack.out bob.whack.out
+	${FILTERS} ${OUTPUTS}/pluto.${TESTNAME}.raw >pluto.${TESTNAME}.out
 step1:
 	@${PLUTOBIN} --nhelpers 1 ${CTLBASE} ${SOCKETS} --ipsecdir ${CONFBASE} --secretsfile ${CONFBASE}.secrets 2>&1
 
