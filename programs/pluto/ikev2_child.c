@@ -956,13 +956,14 @@ stf_status ikev2_child_sa_respond(struct msg_digest *md
 	 * the state structure as the tsi/tsr, perhaps after instantiating it.
 	 *
 	 */
-
+#if 0
         if (b->kind == CK_TEMPLATE || b->kind == CK_GROUP) {
             /* instantiate it, filling in peer's ID */
             b = rw_instantiate(b, &pst->st_remoteaddr,
                                NULL,
                                &pst->ikev2.st_peer_id);
         }
+#endif
 
         if (b != c)
 	{
