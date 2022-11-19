@@ -29,6 +29,7 @@ do
 
     openssl rand -hex $sn > $cadir/serial # hex 8 is minimum, 19 is maximum
 
+    echo Signing to create $intdir/certs/$clientemail.cert.$format
     openssl ca -config $cfgdir/openssl-root.cnf -days 830 \
             -extensions usr_cert -notext -md sha256 $passin \
             -in   $intdir/csr/$clientemail.csr.$format -batch\
