@@ -74,6 +74,7 @@ void recv_pcap_packet_with_rekey(u_char *user
         clonetowirechunk(&kn->thespace, kn->space, &kn->gi,  SS(gr.ptr), SS(gr.len));
 
         run_one_continuation(crypto_req);
+        run_one_continuation(crypto_req);
     }
 }
 
