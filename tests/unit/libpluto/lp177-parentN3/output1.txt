@@ -362,7 +362,7 @@ sending 380 bytes for STATE_MAIN_R1 through eth0:500 [132.213.238.7:500] to 93.1
 | main inI2_outR2: calculated DH finished
 2: output to OUTPUT/parentN3.pcap
 |   =========== input from pcap file parentM3.pcap ========
-| *received 332 bytes from 93.184.216.34:55044 on eth0 (port=500)
+| *received 332 bytes from 93.184.216.34:55045 on eth0 (port=4500)
 |   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
 |   05 10 02 01  00 00 00 00  00 00 01 4c  a7 8f 70 19
 |   92 e2 f9 56  9a 8b 57 a6  63 2d 10 a8  7e 45 6f d7
@@ -400,7 +400,7 @@ sending 380 bytes for STATE_MAIN_R1 through eth0:500 [132.213.238.7:500] to 93.1
 | state hash entry 28
 | v1 peer and cookies match on #1, provided msgid 00000000 vs 00000000
 | v1 state object #1 found, in STATE_MAIN_R2
-| received encrypted packet from 93.184.216.34:55044
+| received encrypted packet from 93.184.216.34:55045
 | decrypting 304 bytes using algorithm OAKLEY_AES_CBC
 | decrypted:
 |   09 00 00 23  02 00 00 00  62 65 72 72  69 2e 74 65
@@ -540,8 +540,10 @@ sending 380 bytes for STATE_MAIN_R1 through eth0:500 [132.213.238.7:500] to 93.1
 |   35 b9 05 60  5a 7f 55 78  89 c1 28 a2  7e b6 42 b6
 | complete state transition with STF_OK
 ./parentN3 transition from state STATE_MAIN_R2 to state STATE_MAIN_R3
-| sending reply packet to 93.184.216.34:55044 (from port 500)
-sending 332 bytes for STATE_MAIN_R2 through eth0:500 [132.213.238.7:500] to 93.184.216.34:55044 (using #1)
+| state #1 NAT-T: new mapping 93.184.216.34:55045
+./parentN3 new NAT mapping for #1, was 93.184.216.34:55044, now 93.184.216.34:55045
+| sending reply packet to 93.184.216.34:55045 (from port 4500)
+sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93.184.216.34:55045 (using #1)
 |   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
 |   05 10 02 01  00 00 00 00  00 00 01 4c  c2 77 44 3c
 |   3f f8 8a 9f  9e de 40 89  d4 9e c5 5c  1b d6 cf e9

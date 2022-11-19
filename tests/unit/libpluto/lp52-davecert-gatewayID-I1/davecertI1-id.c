@@ -28,6 +28,7 @@ static void init_fake_secrets(void)
 
     rnd_offset = 13;
 
+    // to update this needs separate self-signed generate.
     osw_load_preshared_secrets(&pluto_secrets
 			       , TRUE
 			       , "../samples/davecert.secrets"
