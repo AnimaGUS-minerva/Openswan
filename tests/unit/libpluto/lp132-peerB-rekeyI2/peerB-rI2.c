@@ -28,7 +28,7 @@ void recv_pcap_packet_rekeyA(u_char *user
 
     rekey_to_peerA();
 
-#if 0
+#if 1
     /* close pcap file from before */
     finish_pcap();
 
