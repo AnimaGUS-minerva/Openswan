@@ -1,0 +1,22 @@
+This test case is an IKEv2 initiator.
+It tests crypto operations along the entire path, and it shows the
+XFRM Tunnel Interface (if_id) value sent into the kernel.
+The XFRM if_id value is a special context for policy evaluation
+that determine which policy is applied.
+
+Bugs in Kernels up to 6.1 (at least), mean that exceptions are still needed
+for IPv6-LL / ICMP ND messages.
+
+This test specifically captures the netlink commands which are sent
+and validates that the IPsec (CHILD, phase2) derived keys and algorithms are
+sane.
+It differs from XF13-parentI3, in that the XFRM ID value is forced in.
+
+
+
+
+
+
+
+
+

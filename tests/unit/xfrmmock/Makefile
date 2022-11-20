@@ -31,7 +31,7 @@ UNITTESTS+=xf13-parentI3
 # disabled due to #7554
 #UNITTESTS+=xf109-v1rwnatQR1
 
-UNITTESTS+=xf113-vtiI3
+UNITTESTS+=xf113-xfrmidI3
 UNITTESTS+=xf129-peerA-I5
 UNITTESTS+=xf147-peerA-duplicate-state
 
