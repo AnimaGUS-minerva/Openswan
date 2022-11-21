@@ -190,6 +190,7 @@ enum keyword_numeric_conn_field {
     KNCF_ESPREPLAYWINDOW,
     KNCF_SENDCERT,
     KNCF_VTINUM,
+    KNCF_IFID,
     KNCF_MAX
 };
 

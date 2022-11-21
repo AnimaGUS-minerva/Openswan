@@ -271,6 +271,7 @@ struct state
     ipsec_spi_t        st_tunnel_in_spi;          /* KLUDGE */
     ipsec_spi_t        st_tunnel_out_spi;         /* KLUDGE */
 
+    uint32_t           st_xfrm_ifid;          /* a policy integer for XFRM if_id */
     uint32_t           st_vti_mark;          /* an integer: fwmark */
     uint32_t           st_vti_markmask;      /* almost always 0xfffffff */
 
