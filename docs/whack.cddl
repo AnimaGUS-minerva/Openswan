@@ -1,3 +1,10 @@
+;
+; this is a CDDL file that defines the API from other programs into
+; pluto for loading policy.
+; This file is converted by the "cddlc" program into include/whack_values.h
+; This is a manual process, do: cddlc --to=enum whack.cddl >whack_values.h
+;
+
 whack-message = {
   WHACK_STATUS     => StatusOptions,
   WHACK_SHUTDOWN   => { },
@@ -93,6 +100,7 @@ ConnectionEnd = {
   WHACK_OPT_END_HOST_NEXTHOP=> IPaddress,
   WHACK_OPT_END_HOST_SRCIP=> IPaddress,
   WHACK_OPT_END_CLIENT=> IPsubnet,
+  WHACK_OPT_IFID      => uint,
 }
 
 OptionsCommand = {
