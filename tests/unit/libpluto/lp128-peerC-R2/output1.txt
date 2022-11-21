@@ -1632,7 +1632,7 @@ sending 457 bytes for STATE_IKEv2_START through eth0:500 [fe80::ec68:7cff:fe0c:1
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
 ./peerC-R2 STATE_PARENT_R2: received v2I2, PARENT SA established {auth=IKEv2 oursig=fakesig1 theirsig=fc1 cipher=aes_128 integ=sha256_128 prf=prf-hmac-sha2-256 group=modp2048} (msgid: 00000001/00000001)
 ./peerC-R2 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerC-R2 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=000022e4}
+./peerC-R2 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none IF_id=000022e4}
 | sending reply packet to fe80::8054:3eff:fe9a:d3f4:500 (from port 500)
 sending 1536 bytes for STATE_PARENT_R1 through eth0:500 [fe80::ec68:7cff:fe0c:1c1c:500] to fe80::8054:3eff:fe9a:d3f4:500 (using #2)
 |   8e 0f 10 11  12 13 14 15  78 5b 90 fe  dd d1 18 2d

@@ -1053,7 +1053,7 @@ writing netlink for esp:12345678@fe80::8054:3eff:fe9a:d3f4
 01a0: 80 00 00 00  36 99 5c dd  82 37 91 bd  af 84 94 1e
 01b0: fd 34 cd 52
 writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
-0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0000: 04 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -1063,14 +1063,14 @@ writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 00c0: 00 00 00 00  80 54 3e ff  fe 9a d3 f4  00 00 00 00
 00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
 00e0: ec 68 7c ff  fe 0c 9a a4  01 40 00 00  01 00 00 00
-00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
-0100: d7 11 00 00  ff ff ff ff
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  08 00 1f 00
+0100: d7 11 00 00
 ./peerA-I5 add inbound eroute ::/0:0 --0-> ::/0:0 => tun:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
 | sr for #2: unrouted (eroute_owner: #0)
 | route owner of "peerA--peerB" unrouted: NULL; eroute owner: NULL
 | route_and_eroute with c: peerA--peerB (next: none) ero:null esr:{(nil)} ro:null rosr:{(nil)} and state: 2
 writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
-0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0000: 04 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -1080,8 +1080,8 @@ writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 00c0: 00 00 00 00  ec 68 7c ff  fe 0c 9a a4  00 00 00 00
 00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
 00e0: 80 54 3e ff  fe 9a d3 f4  01 40 00 00  01 00 00 00
-00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
-0100: d7 11 00 00  ff ff ff ff
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  08 00 1f 00
+0100: d7 11 00 00
 ./peerA-I5 eroute_connection add eroute ::/0:0 --0-> ::/0:0 => tun:0@fe80::ec68:7cff:fe0c:9aa4 succeeded
 | command executing up-client-v6
 | executing up
@@ -1097,7 +1097,7 @@ writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 | v2_state_transition: st is #2; pst is #0; transition_st is #0
 ./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
 ./peerA-I5 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=000011d7}
+./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none IF_id=000011d7}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=1; idle; import:admin initiate
@@ -2107,7 +2107,7 @@ writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
 01a0: 80 00 00 00  16 0a 64 ad  fc fe b1 56  90 19 a2 15
 01b0: 65 74 65 41
 writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
-0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0000: 04 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -2117,8 +2117,8 @@ writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 00c0: 00 00 00 00  80 54 3e ff  fe 9a d3 f4  00 00 00 00
 00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
 00e0: ec 68 7c ff  fe 0c 1c 1c  05 40 00 00  01 00 00 00
-00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
-0100: 13 0d 00 00  ff ff ff ff
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  08 00 1f 00
+0100: 13 0d 00 00
 ./peerA-I5 add inbound eroute ::/0:0 --0-> ::/0:0 => tun:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
 | processor 'initiator-auth-process' returned STF_OK (3)
 | #4 complete v2 state transition with STF_OK
@@ -2126,7 +2126,7 @@ writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 | v2_state_transition: st is #4; pst is #0; transition_st is #0
 ./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
 ./peerA-I5 negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00000d13}
+./peerA-I5 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none IF_id=00000d13}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=1; idle; import:admin initiate

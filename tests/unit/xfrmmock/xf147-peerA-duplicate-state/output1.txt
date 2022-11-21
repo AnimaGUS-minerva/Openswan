@@ -607,7 +607,7 @@ writing netlink for esp:34567812@fe80::8054:3eff:fe9a:d3f4
 01a0: 80 00 00 00  ea a7 1c b7  26 3c 56 ec  10 df ff 3a
 01b0: 01 8e 31 c5
 writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
-0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0000: 04 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -617,13 +617,13 @@ writing netlink policy for tun:10000@fe80::8054:3eff:fe9a:d3f4
 00c0: 00 00 00 00  80 54 3e ff  fe 9a d3 f4  00 00 00 00
 00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
 00e0: ec 68 7c ff  fe 0c 9a a4  01 40 00 00  01 00 00 00
-00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
-0100: d7 11 00 00  ff ff ff ff
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  08 00 1f 00
+0100: d7 11 00 00
 ./peerA-duplicate-state add inbound eroute ::/0:0 --0-> ::/0:0 => tun:10000@fe80::8054:3eff:fe9a:d3f4 succeeded
 | sr for #4: unrouted (eroute_owner: #0)
 | route owner of "peerA--peerB" unrouted: NULL; eroute owner: NULL
 writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
-0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0000: 04 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -633,8 +633,8 @@ writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 00c0: 00 00 00 00  ec 68 7c ff  fe 0c 9a a4  00 00 00 00
 00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
 00e0: 80 54 3e ff  fe 9a d3 f4  01 40 00 00  01 00 00 00
-00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
-0100: d7 11 00 00  ff ff ff ff
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  08 00 1f 00
+0100: d7 11 00 00
 ./peerA-duplicate-state eroute_connection add eroute ::/0:0 --0-> ::/0:0 => tun:0@fe80::ec68:7cff:fe0c:9aa4 succeeded
 | command executing up-client-v6
 | executing up
@@ -649,7 +649,7 @@ writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 | v2_state_transition: st is #4; pst is #2; transition_st is #2
 ./peerA-duplicate-state STATE_PARENT_R2: received v2I2, PARENT SA established {auth=IKEv2 oursig=fakesig2 theirsig=fc1 cipher=aes_128 integ=sha256_128 prf=prf-hmac-sha2-256 group=modp2048} (msgid: 00000001/00000001)
 ./peerA-duplicate-state negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerA-duplicate-state STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=000011d7}
+./peerA-duplicate-state STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none IF_id=000011d7}
 | sending reply packet to fe80::ec68:7cff:fe0c:9aa4:500 (from port 500)
 sending 1552 bytes for STATE_PARENT_R1 through eth0:500 [fe80::8054:3eff:fe9a:d3f4:500] to fe80::ec68:7cff:fe0c:9aa4:500 (using #4)
 |   97 18 19 1a  1b 1c 1d 1e  97 03 67 ba  2d 8b a4 1d
@@ -943,7 +943,7 @@ writing netlink for esp:12345678@fe80::8054:3eff:fe9a:d3f4
 | sr for #3: erouted (eroute_owner: #4)
 | route owner of "peerA--peerB" erouted: self; eroute owner: self
 writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
-0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0000: 04 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 00 00  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -953,8 +953,8 @@ writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 00c0: 00 00 00 00  ec 68 7c ff  fe 0c 9a a4  00 00 00 00
 00d0: 32 00 00 00  0a 00 00 00  fe 80 00 00  00 00 00 00
 00e0: 80 54 3e ff  fe 9a d3 f4  01 40 00 00  01 00 00 00
-00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
-0100: d7 11 00 00  ff ff ff ff
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  08 00 1f 00
+0100: d7 11 00 00
 ./peerA-duplicate-state eroute_connection replace eroute ::/0:0 --0-> ::/0:0 => tun:0@fe80::ec68:7cff:fe0c:9aa4 succeeded
 | route_and_eroute: firewall_notified: true
 | route_and_eroute: instance "peerA--peerB", setting eroute_owner to #3 (was #4) (newest_ipsec_sa=#3)
@@ -963,7 +963,7 @@ writing netlink policy for tun:0@fe80::ec68:7cff:fe0c:9aa4
 | v2_state_transition: st is #3; pst is #0; transition_st is #0
 ./peerA-duplicate-state STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
 ./peerA-duplicate-state negotiated tunnel [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [::,ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./peerA-duplicate-state STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=000011d7}
+./peerA-duplicate-state STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none IF_id=000011d7}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 RC=0 #4: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; nodpd; msgid=0; idle; import:respond to friend

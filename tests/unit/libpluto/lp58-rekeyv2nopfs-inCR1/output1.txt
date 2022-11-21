@@ -526,7 +526,7 @@ sending 480 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 | v2_state_transition: st is #2; pst is #0; transition_st is #0
 ./rekeyv2nopfs-inCR1 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
 ./rekeyv2nopfs-inCR1 negotiated tunnel [fd68:c9f9:4157:2:0:1::,fd68:c9f9:4157:2:0:1:ffff:ffff proto:0 port:0-65535] -> [fd68:c9f9:4157::,fd68:c9f9:4157:0:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./rekeyv2nopfs-inCR1 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00000801}
+./rekeyv2nopfs-inCR1 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 RC=0 #2: "parker1--jj2--nopfs":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
@@ -829,7 +829,7 @@ sending 272 bytes for ikev2child_outC1_tail through eth0:500 [192.168.1.1:500] t
 | v2_state_transition: st is #3; pst is #0; transition_st is #3
 ./rekeyv2nopfs-inCR1 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000002/4294967295)
 ./rekeyv2nopfs-inCR1 negotiated tunnel [fd68:c9f9:4157:2:0:1::,fd68:c9f9:4157:2:0:1:ffff:ffff proto:0 port:0-65535] -> [fd68:c9f9:4157::,fd68:c9f9:4157:0:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./rekeyv2nopfs-inCR1 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00000801}
+./rekeyv2nopfs-inCR1 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x34567812 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
 RC=0 #3: "parker1--jj2--nopfs":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=2; crypto/dns-lookup; import:admin initiate

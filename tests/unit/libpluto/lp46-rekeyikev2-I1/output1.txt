@@ -18,38 +18,38 @@
 | processing whack message of size: A
 ./rekeyikev2-I1 loaded key: 2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
 ./rekeyikev2-I1 loaded key: 66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
-| Added new connection parker1--jj2 with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+| Added new connection parker1--xfrmid with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 ./rekeyikev2-I1 use keyid: 1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 / 2:<>
 | counting wild cards for @jamesjohnson.emmjay.credil.org is 0
 ./rekeyikev2-I1 use keyid: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 / 2:<>
 | counting wild cards for @parker01.emmjay.credil.org is 0
-| orient parker1--jj2 checking against if: eth0 (AF_INET:192.168.1.1:500)
+| orient parker1--xfrmid checking against if: eth0 (AF_INET:192.168.1.1:500)
 |     orient matched on IP
-| orient parker1--jj2 checking against if: eth0 (AF_INET:192.168.1.1:4500)
-| orient parker1--jj2 checking against if: eth0 (AF_INET6:2606:2800:220:1:248:1893:25c8:1946:500)
-|   orient parker1--jj2 finished with: 1 [192.168.1.1]
+| orient parker1--xfrmid checking against if: eth0 (AF_INET:192.168.1.1:4500)
+| orient parker1--xfrmid checking against if: eth0 (AF_INET6:2606:2800:220:1:248:1893:25c8:1946:500)
+|   orient parker1--xfrmid finished with: 1 [192.168.1.1]
 | find_host_pair: looking for me=192.168.1.1:500 %address him=132.213.238.7:500 exact-match
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: 192.168.1.1:500 %address 132.213.238.7:500 -> hp:none
 | find_ID_host_pair: looking for me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org (exact)
 |   concluded with <none>
-./rekeyikev2-I1 adding connection: "parker1--jj2"
+./rekeyikev2-I1 adding connection: "parker1--xfrmid"
 | fd68:c9f9:4157:2:0:1::/96===192.168.1.1[@parker01.emmjay.credil.org]...132.213.238.7[@jamesjohnson.emmjay.credil.org]===fd68:c9f9:4157::/64
 | ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0; policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-|   orient parker1--jj2 finished with: 1 [192.168.1.1]
-RC=0 "parker1--jj2": fd68:c9f9:4157:2:0:1::/96===192.168.1.1[@parker01.emmjay.credil.org]...132.213.238.7[@jamesjohnson.emmjay.credil.org]===fd68:c9f9:4157::/64; unrouted; eroute owner: #0
-RC=0 "parker1--jj2":     myip=unset; hisip=unset;
-RC=0 "parker1--jj2":   keys: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 2:none...
-RC=0 "parker1--jj2":        ....1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 2:none
-RC=0 "parker1--jj2":   ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0; firstmsgid: 0
-RC=0 "parker1--jj2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 64,96; interface: eth0; kind=CK_PERMANENT
-| find_phase1_state: no SA found for conn 'parker1--jj2'
+|   orient parker1--xfrmid finished with: 1 [192.168.1.1]
+RC=0 "parker1--xfrmid": fd68:c9f9:4157:2:0:1::/96===192.168.1.1[@parker01.emmjay.credil.org]...132.213.238.7[@jamesjohnson.emmjay.credil.org]===fd68:c9f9:4157::/64; unrouted; eroute owner: #0
+RC=0 "parker1--xfrmid":     myip=unset; hisip=unset;
+RC=0 "parker1--xfrmid":   keys: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 2:none...
+RC=0 "parker1--xfrmid":        ....1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 2:none
+RC=0 "parker1--xfrmid":   ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0; firstmsgid: 0
+RC=0 "parker1--xfrmid":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 64,96; interface: eth0; kind=CK_PERMANENT
+| find_phase1_state: no SA found for conn 'parker1--xfrmid'
 | creating state object #1 at Z
-| orient parker1--jj2 checking against if: eth0 (AF_INET:192.168.1.1:500)
+| orient parker1--xfrmid checking against if: eth0 (AF_INET:192.168.1.1:500)
 |     orient matched on IP
-| orient parker1--jj2 checking against if: eth0 (AF_INET:192.168.1.1:4500)
-| orient parker1--jj2 checking against if: eth0 (AF_INET6:2606:2800:220:1:248:1893:25c8:1946:500)
-|   orient parker1--jj2 finished with: 1 [192.168.1.1]
+| orient parker1--xfrmid checking against if: eth0 (AF_INET:192.168.1.1:4500)
+| orient parker1--xfrmid checking against if: eth0 (AF_INET6:2606:2800:220:1:248:1893:25c8:1946:500)
+|   orient parker1--xfrmid finished with: 1 [192.168.1.1]
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
@@ -147,7 +147,7 @@ sending 652 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | v2 peer and cookies match on #1
-| v2 state object #1 (parker1--jj2) found, in STATE_PARENT_I1
+| v2 state object #1 (parker1--xfrmid) found, in STATE_PARENT_I1
 | removing state object #1
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
@@ -487,12 +487,12 @@ sending 480 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 | key issuer CA is '%any'
 |  checking narrowing - responding to R2
 | checking TSi(1)/TSr(1) selectors, looking for exact match
-|   ikev2_evaluate_connection_fit evaluating our I=parker1--jj2:fd68:c9f9:4157:2:0:1::/96:0/0 R=fd68:c9f9:4157::/64:0/0  to their:
+|   ikev2_evaluate_connection_fit evaluating our I=parker1--xfrmid:fd68:c9f9:4157:2:0:1::/96:0/0 R=fd68:c9f9:4157::/64:0/0  to their:
 |     tsi[0]=fd68:c9f9:4157:2:0:1::/fd68:c9f9:4157:2:0:1:ffff:ffff proto=0 portrange 0-65535
 |     tsr[0]=fd68:c9f9:4157::/fd68:c9f9:4157:0:ffff:ffff:ffff:ffff proto=0 portrange 0-65535
 | ei->port 0  tsi[tsi_ni].startport 0  tsi[tsi_ni].endport 65535
 |       has ts_range1=32 maskbits1=96 ts_range2=64 maskbits2=64 fitbits=32896 <> -1
-|  prefix fitness found a better match c parker1--jj2
+|  prefix fitness found a better match c parker1--xfrmid
 |     evaluate_connection_port_fit tsi_n[1], best=-1
 |    tsi[0] 0-65535: exact port match with 0.  fitness 65536
 |       evaluating_connection_port_fit tsi_n[0], range_i=65536 best=-1
@@ -500,12 +500,12 @@ sending 480 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 |       evaluating_connection_port_fit tsi_n[0] tsr_n[0], range=65536/65536 best=-1
 |     best ports fit so far: tsi[0] fitrange_i 65536, tsr[0] fitrange_r 65536, matchiness 131072
 |     port_fitness 131072
-|   port fitness found better match c parker1--jj2, tsi[0],tsr[0]
+|   port fitness found better match c parker1--xfrmid, tsi[0],tsr[0]
 | protocol 0 and tsi[0].ipprotoid 0: exact match
 | protocol 0 and tsr[0].ipprotoid 0: exact match
 |     best protocol fit so far: tsi[0] fitrange_i 255, tsr[0] fitrange_r 255, matchiness 510
 |     protocol_fitness 510
-|    protocol fitness found better match c parker1--jj2, tsi[0],tsr[0]
+|    protocol fitness found better match c parker1--xfrmid, tsi[0],tsr[0]
 | found an acceptable TSi/TSr Traffic Selector
 | printing contents struct traffic_selector
 |   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
@@ -527,20 +527,20 @@ sending 480 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 | v2_state_transition: st is #2; pst is #0; transition_st is #0
 ./rekeyikev2-I1 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
 ./rekeyikev2-I1 negotiated tunnel [fd68:c9f9:4157:2:0:1::,fd68:c9f9:4157:2:0:1:ffff:ffff proto:0 port:0-65535] -> [fd68:c9f9:4157::,fd68:c9f9:4157:0:ffff:ffff:ffff:ffff proto:0 port:0-65535]
-./rekeyikev2-I1 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00000801}
+./rekeyikev2-I1 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none IF_id=00000801}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
-RC=0 #2: "parker1--jj2":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
-RC=0 #2: "parker1--jj2":500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
-RC=0 #1: "parker1--jj2":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
-RC=0 #1: "parker1--jj2":500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
-| duplicate parent SA looking for state matching for parker1--jj2 #1
+RC=0 #2: "parker1--xfrmid":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #2: "parker1--xfrmid":500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
+RC=0 #1: "parker1--xfrmid":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
+RC=0 #1: "parker1--xfrmid":500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
+| duplicate parent SA looking for state matching for parker1--xfrmid #1
 now pretend that the keylife timer is up, and rekey the connection
-RC=0 #2: "parker1--jj2":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
-RC=0 #2: "parker1--jj2":500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
-RC=0 #1: "parker1--jj2":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
-RC=0 #1: "parker1--jj2":500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
-| find_phase1_state: found SA #1 for conn 'parker1--jj2' in state STATE_PARENT_I3
+RC=0 #2: "parker1--xfrmid":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
+RC=0 #2: "parker1--xfrmid":500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
+RC=0 #1: "parker1--xfrmid":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
+RC=0 #1: "parker1--xfrmid":500 IKEv2.0 me=@parker01.emmjay.credil.org him=@jamesjohnson.emmjay.credil.org
+| find_phase1_state: found SA #1 for conn 'parker1--xfrmid' in state STATE_PARENT_I3
 | Using existing parent SA #1 for rekey
 | duplicating state object #1
 | creating state object #3 at Z

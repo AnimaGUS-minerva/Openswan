@@ -969,7 +969,7 @@ writing netlink for esp.12345678@132.213.238.7
 01a0: 80 00 00 00  8a 19 a9 d4  0d 41 52 27  5e 5f c5 7c
 01b0: 38 9d 1a 41
 writing netlink policy for tun.10000@132.213.238.7
-0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0010: fd 68 c9 f9  41 57 00 00  00 00 00 00  00 00 00 00
 0020: fd 68 c9 f9  41 57 00 02  00 00 00 01  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 40 60  00 00 00 00
@@ -980,14 +980,13 @@ writing netlink policy for tun.10000@132.213.238.7
 00b0: 00 00 00 00  00 00 00 00  44 00 05 00  84 d5 ee 07
 00d0: 32 00 00 00  02 00 00 00  c0 a8 01 01  00 00 00 00
 00e0: 00 00 00 00  00 00 00 00  01 40 00 00  01 00 00 00
-00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
-0100: 00 04 00 00  ff ff ff ff
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff
 ./xf12-parentR2 add inbound eroute fd68:c9f9:4157:2:0:1::/96:0 --0-> fd68:c9f9:4157::/64:0 => tun.10000@132.213.238.7 succeeded
 | sr for #2: unrouted (eroute_owner: #0)
 | route owner of "parker1--jj2" unrouted: NULL; eroute owner: NULL
 | route_and_eroute with c: parker1--jj2 (next: none) ero:null esr:{(nil)} ro:null rosr:{(nil)} and state: 2
 writing netlink policy for tun.0@192.168.1.1
-0000: 08 01 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0010: fd 68 c9 f9  41 57 00 02  00 00 00 01  00 00 00 00
 0020: fd 68 c9 f9  41 57 00 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  0a 00 60 40  00 00 00 00
@@ -998,8 +997,7 @@ writing netlink policy for tun.0@192.168.1.1
 00b0: 01 00 00 00  00 00 00 00  44 00 05 00  c0 a8 01 01
 00d0: 32 00 00 00  02 00 00 00  84 d5 ee 07  00 00 00 00
 00e0: 00 00 00 00  00 00 00 00  01 40 00 00  01 00 00 00
-00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff  0c 00 15 00
-0100: 00 04 00 00  ff ff ff ff
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff
 ./xf12-parentR2 eroute_connection add eroute fd68:c9f9:4157::/64:0 --0-> fd68:c9f9:4157:2:0:1::/96:0 => tun.0@192.168.1.1 succeeded
 | command executing up-client
 | executing up
@@ -1114,7 +1112,7 @@ writing netlink policy for tun.0@192.168.1.1
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
 ./xf12-parentR2 STATE_PARENT_R2: received v2I2, PARENT SA established {auth=IKEv2 oursig=AQOg5H7A4 theirsig=AQN7wUerV cipher=aes_128 integ=sha256_128 prf=prf-hmac-sha2-256 group=modp2048} (msgid: 00000001/00000001)
 ./xf12-parentR2 negotiated tunnel [fd68:c9f9:4157::,fd68:c9f9:4157:0:ffff:ffff:ffff:ffff proto:0 port:0-65535] -> [fd68:c9f9:4157:2:0:1::,fd68:c9f9:4157:2:0:1:ffff:ffff proto:0 port:0-65535]
-./xf12-parentR2 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none VTImark=00000400}
+./xf12-parentR2 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc_128-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | sending reply packet to 192.168.1.1:500 (from port 500)
 sending 528 bytes for STATE_PARENT_R1 through eth0:500 [93.184.216.34:55044] to 192.168.1.1:500 (using #2)
 |   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
