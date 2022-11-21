@@ -1,0 +1,225 @@
+#conn ikev2:parker--jj loaded
+#conn parker1--jj2 loaded
+#conn parker1--jj2--wrong loaded
+#conn any1--jj2 loaded
+#conn maryjane1--jj2 loaded
+#conn parker1--jj0 loaded
+#conn parker1--jj2--nopfs loaded
+#conn parker1--jj2--dpd loaded
+
+version 2.0
+
+config setup
+
+
+# begin conn ikev2:parker--jj
+conn ikev2:parker--jj
+	left=132.213.238.7
+	leftid="@jamesjohnson.emmjay.credil.org"
+	leftsubnet=fd68:c9f9:4157::/64
+	leftrsakey=0sAQOpgzWyaBsBEOT2n1tRiQATrSn+GR9vsfXvMn+4V7xN2TjqjaFnNkTNPmvv7ICTw0T+rR2J57D91ZPjQnAlTy+URCSdfRI9Q3Eqwpqi2uD6WAus1iU7cEQeC2cTX8by2xvjrHXRu9Q1GY5OAzCzeT1HnNd+vfZv0ipy5wk5zqmfxc5BBxEf4bVsSYRE3xMyaszxXTQSQnEUHygpnbDxLaVQul5nXeSHcBYt2lDRzBSOZuHd5GbyV2K7OFkoxtp6qyQypTAR04Oyf6970qj6WfxoFUTfJm4nbJ4d4SzO03KJDx7Q+Qvs5u6+G5tvqc9lFMHMPBGLJvxCOJE+WpSp6riW9HZIdnLgiIU1G9lHLPZv8xB9
+	right=%defaultroute
+	rightid="@parker01.emmjay.credil.org"
+	rightnexthop=%defaultroute
+	rightsubnet=fd68:c9f9:4157:2:0:1::/96
+	rightrsakey=0sAQNuCprJ/ikFt6nHrpWWOc0616DHG1JuvTwKffrqQCDNJb1PtXd6CGzJ12l8m56JBuV9FoGobEBVHtAFEnmnA9j/C9+am6SH+2ZY6pKqZARlldLcOXYyu0WHex4M89xNTFGew1SzHCQQMEWXVO7Q2gSv3yDzvGMdtaoZDOEcWVyByF0ZGPSqSrbeQ4J2+aYgeVqmmuXPGTCv+YfccQ3B6SYAoqkTimHzFvA5KqAEAxLK4wKnifFDKV0Wwx3oHLHS8vuf/R04zPkiJSPmrSluRI6xDJQ0/Dc8wWi5fIhT/WoQCfimbh/QVvS0Jcz1W3JehK9cyHLO/BWx0vcBWUC1kbgOyKATK14wsHNdqMlQ2kQdmWp/
+	auto=route
+	type=tunnel
+	compress=no
+	pfs=yes
+	rekey=yes
+	overlapip=no
+	ikev1=yes
+	authby=rsasig
+	phase2=esp
+	ikev2=propose
+	endaddrfamily=ipv4
+	tunneladdrfamily=ipv6
+# end conn ikev2:parker--jj
+
+# begin conn parker1--jj2
+conn parker1--jj2
+	left=132.213.238.7
+	leftid="@jamesjohnson.emmjay.credil.org"
+	leftsubnet=fd68:c9f9:4157::/64
+	leftrsakey=0sAQOg5H7A4DPoQfz6KrLn/y/hWPHbgbafGYZlCaT605bm0kTNEJ4pzlAfW66jf4S6zYOc7XaD1PxDoXZE4iHFy9sE5uJr6H4pWGcop6Q8KKhLOq4Vh4GnFWi3NY7yOjrnW7otBWbdMNZb/s4+R6tRMw5DxaAGYM7CDFwkfeiBaX9+wOGmGt/rI3rflxBERAYmqflfylsFKt1YFWFPC3mKatEb2dZgJNyodFfcCc9VTHyTRJhGIEVCF9NS6DZkYYp/KgvIFfgLKg+lz0cllFvO25kGVhk0/W2BbkuF9dnuYu18a0dMPswmhY6AWHj6J2SSXPTMKSxd4PZcyshXN4iC50uVuzHrgxiXosmHrZ9OYXMIfyq7
+	leftvtinum=1024
+	right=192.168.1.1
+	rightid="@parker01.emmjay.credil.org"
+	rightsubnet=fd68:c9f9:4157:2:0:1::/96
+	rightrsakey=0sAQN7wUerVXA6fSOOecdx8aWiAcy3FeRUVvTaETgC5+Fbt/6KeHf0buRCxf5Nvo2Zq0CzSucgXbX0CXzqJd+eFa8STub5YeF5sTQQtefcSejHUCaAbYacAufqKNVMTgS95jp3frpzyY2Bl70P2uFoLpq0AqzLaZscwjK1bOyFfCi4U5eW3sxNKYAvz8b41i7TfOvqL+vKIrzyXSJheIeir4HQzYwwJPWR4Ft+nB9HNiWVIGZseXJRTBi9EReN/dyr1jKV6HbRRAQJPjOZcwff0M1/ZCm+WNbBcy8zU40s9dldibi0RlM6NgbEN7FIpsilqaPKGNH0i3zad6X6Lc+tG3VF
+	rightvtinum=2049
+	auto=route
+	type=tunnel
+	compress=no
+	pfs=yes
+	rekey=yes
+	overlapip=no
+	ikev1=yes
+	authby=rsasig
+	phase2=esp
+	ikev2=propose
+	endaddrfamily=ipv4
+	tunneladdrfamily=ipv6
+# end conn parker1--jj2
+
+# begin conn parker1--jj2--wrong
+conn parker1--jj2--wrong
+	#also = parker1--jj2
+	left=132.213.238.7
+	leftid="@jamesjohnson.emmjay.credil.org"
+	leftsubnet=fd68:c9f9:4157::/64
+	leftrsakey=0sAQOg5H7A4DPoQfz6KrLn/y/hWPHbgbafGYZlCaT605bm0kTNEJ4pzlAfW66jf4S6zYOc7XaD1PxDoXZE4iHFy9sE5uJr6H4pWGcop6Q8KKhLOq4Vh4GnFWi3NY7yOjrnW7otBWbdMNZb/s4+R6tRMw5DxaAGYM7CDFwkfeiBaX9+wOGmGt/rI3rflxBERAYmqflfylsFKt1YFWFPC3mKatEb2dZgJNyodFfcCc9VTHyTRJhGIEVCF9NS6DZkYYp/KgvIFfgLKg+lz0cllFvO25kGVhk0/W2BbkuF9dnuYu18a0dMPswmhY6AWHj6J2SSXPTMKSxd4PZcyshXN4iC50uVuzHrgxiXosmHrZ9OYXMIfyq7
+	leftvtinum=1024
+	right=192.168.1.1
+	rightid="@parker01.emmjay.credil.org"
+	rightsubnet=fd68:c9f9:4157:2:0:1::/96
+	rightrsakey=0sAQN7wUerVXA6fSOOecdx8aWiAcy3FeRUVvTaETgC5+Fbt/6KeHf0buRCxf5Nvo2Zq0CzSucgXbX0CXzqJd+eFa8STub5YeF5sTQQtefcSejHUCaAbYacAufqKNVMTgS95jp3frpzyY2Bl70P2uFoLpq0AqzLaZscwjK1bOyFfCi4U5eW3sxNKYAvz8b41i7TfOvqL+vKIrzyXSJheIeir4HQzYwwJPWR4Ft+nB9HNiWVIGZseXJRTBi9EReN/dyr1jKV6HbRRAQJPjOZcwff0M1/ZCm+WNbBcy8zU40s9dldibi0RlM6NgbEN7FIpsilqaPKGNH0i3zad6X6Lc+tG3VF
+	rightvtinum=2049
+	ike=3des-sha1-modp1536
+	auto=route
+	type=tunnel
+	compress=no
+	pfs=yes
+	rekey=yes
+	overlapip=no
+	ikev1=yes
+	authby=rsasig
+	phase2=esp
+	ikev2=propose
+	endaddrfamily=ipv4
+	tunneladdrfamily=ipv6
+# end conn parker1--jj2--wrong
+
+# begin conn any1--jj2
+conn any1--jj2
+	left=132.213.238.7
+	leftid="@jamesjohnson.emmjay.credil.org"
+	leftsubnet=fd68:c9f9:4157::/64
+	leftrsakey=0sAQOpgzWyaBsBEOT2n1tRiQATrSn+GR9vsfXvMn+4V7xN2TjqjaFnNkTNPmvv7ICTw0T+rR2J57D91ZPjQnAlTy+URCSdfRI9Q3Eqwpqi2uD6WAus1iU7cEQeC2cTX8by2xvjrHXRu9Q1GY5OAzCzeT1HnNd+vfZv0ipy5wk5zqmfxc5BBxEf4bVsSYRE3xMyaszxXTQSQnEUHygpnbDxLaVQul5nXeSHcBYt2lDRzBSOZuHd5GbyV2K7OFkoxtp6qyQypTAR04Oyf6970qj6WfxoFUTfJm4nbJ4d4SzO03KJDx7Q+Qvs5u6+G5tvqc9lFMHMPBGLJvxCOJE+WpSp6riW9HZIdnLgiIU1G9lHLPZv8xB9
+	right=%any
+	rightid="@parker01.emmjay.credil.org"
+	rightsubnet=fd68:c9f9:4157:2:0:1::/96
+	rightrsakey=0sAQNuCprJ/ikFt6nHrpWWOc0616DHG1JuvTwKffrqQCDNJb1PtXd6CGzJ12l8m56JBuV9FoGobEBVHtAFEnmnA9j/C9+am6SH+2ZY6pKqZARlldLcOXYyu0WHex4M89xNTFGew1SzHCQQMEWXVO7Q2gSv3yDzvGMdtaoZDOEcWVyByF0ZGPSqSrbeQ4J2+aYgeVqmmuXPGTCv+YfccQ3B6SYAoqkTimHzFvA5KqAEAxLK4wKnifFDKV0Wwx3oHLHS8vuf/R04zPkiJSPmrSluRI6xDJQ0/Dc8wWi5fIhT/WoQCfimbh/QVvS0Jcz1W3JehK9cyHLO/BWx0vcBWUC1kbgOyKATK14wsHNdqMlQ2kQdmWp/
+	auto=route
+	type=tunnel
+	compress=no
+	pfs=yes
+	rekey=yes
+	overlapip=no
+	ikev1=yes
+	authby=rsasig
+	phase2=esp
+	ikev2=propose
+	endaddrfamily=ipv4
+	tunneladdrfamily=ipv6
+# end conn any1--jj2
+
+# begin conn maryjane1--jj2
+conn maryjane1--jj2
+	left=132.213.238.7
+	leftid="@jamesjohnson.emmjay.credil.org"
+	leftsubnet=fd68:c9f9:4157::/64
+	leftrsakey=0sAQOpgzWyaBsBEOT2n1tRiQATrSn+GR9vsfXvMn+4V7xN2TjqjaFnNkTNPmvv7ICTw0T+rR2J57D91ZPjQnAlTy+URCSdfRI9Q3Eqwpqi2uD6WAus1iU7cEQeC2cTX8by2xvjrHXRu9Q1GY5OAzCzeT1HnNd+vfZv0ipy5wk5zqmfxc5BBxEf4bVsSYRE3xMyaszxXTQSQnEUHygpnbDxLaVQul5nXeSHcBYt2lDRzBSOZuHd5GbyV2K7OFkoxtp6qyQypTAR04Oyf6970qj6WfxoFUTfJm4nbJ4d4SzO03KJDx7Q+Qvs5u6+G5tvqc9lFMHMPBGLJvxCOJE+WpSp6riW9HZIdnLgiIU1G9lHLPZv8xB9
+	right=%any
+	rightid="@maryjane01.emmjay.credil.org"
+	rightsubnet=fd68:c9f9:4157:3:0:1::/96
+	rightrsakey=0sAQOulUM+hzHyZiQV04iq6zKIovW8yxcV1HPnYHgmdzxG6qupTXV+KZVyGcgU1JBBVVsrfF6QPKDrCAtiJ/Ybpx73774dwH8qNIraWB9jazouL6KBYR55mMRVXLVGWJYTf4TIuGOfMJw/34xY3UTNkata13Av8hJ9ZjluPUCfqmQLD2ADoV8Q0LAL5fET7Xhq2RD/HqFZw8ZJuBp69vIsfjSdTUwGMt8crC9q5zQDOEelSQ6FLcEXkzw2Q8JG7mmHjVtPe/1iMPhXrjaqmE3bHqD/w0f08WQ+qxpYt0jtmn3Zma0hfYI+YoolGPOocdk+xj5gjQPYunbPVq2rDHy7N5/V
+	auto=route
+	type=tunnel
+	compress=no
+	pfs=yes
+	rekey=yes
+	overlapip=no
+	ikev1=yes
+	authby=rsasig
+	phase2=esp
+	ikev2=propose
+	endaddrfamily=ipv4
+	tunneladdrfamily=ipv6
+# end conn maryjane1--jj2
+
+# begin conn parker1--jj0
+conn parker1--jj0
+	left=132.213.238.7
+	leftid="@jamesjohnson.emmjay.credil.org"
+	leftsubnet=fd68:c9f9:4157::/64
+	leftrsakey=0sAQOpgzWyaBsBEOT2n1tRiQATrSn+GR9vsfXvMn+4V7xN2TjqjaFnNkTNPmvv7ICTw0T+rR2J57D91ZPjQnAlTy+URCSdfRI9Q3Eqwpqi2uD6WAus1iU7cEQeC2cTX8by2xvjrHXRu9Q1GY5OAzCzeT1HnNd+vfZv0ipy5wk5zqmfxc5BBxEf4bVsSYRE3xMyaszxXTQSQnEUHygpnbDxLaVQul5nXeSHcBYt2lDRzBSOZuHd5GbyV2K7OFkoxtp6qyQypTAR04Oyf6970qj6WfxoFUTfJm4nbJ4d4SzO03KJDx7Q+Qvs5u6+G5tvqc9lFMHMPBGLJvxCOJE+WpSp6riW9HZIdnLgiIU1G9lHLPZv8xB9
+	#right= not set
+	rightid="@parker01.emmjay.credil.org"
+	rightsubnet=fd68:c9f9:4157:2:0:1::/96
+	rightrsakey=0sAQNuCprJ/ikFt6nHrpWWOc0616DHG1JuvTwKffrqQCDNJb1PtXd6CGzJ12l8m56JBuV9FoGobEBVHtAFEnmnA9j/C9+am6SH+2ZY6pKqZARlldLcOXYyu0WHex4M89xNTFGew1SzHCQQMEWXVO7Q2gSv3yDzvGMdtaoZDOEcWVyByF0ZGPSqSrbeQ4J2+aYgeVqmmuXPGTCv+YfccQ3B6SYAoqkTimHzFvA5KqAEAxLK4wKnifFDKV0Wwx3oHLHS8vuf/R04zPkiJSPmrSluRI6xDJQ0/Dc8wWi5fIhT/WoQCfimbh/QVvS0Jcz1W3JehK9cyHLO/BWx0vcBWUC1kbgOyKATK14wsHNdqMlQ2kQdmWp/
+	auto=ignore
+	type=tunnel
+	compress=no
+	pfs=yes
+	rekey=yes
+	overlapip=no
+	ikev1=yes
+	authby=rsasig
+	phase2=esp
+	ikev2=propose
+	endaddrfamily=ipv4
+	tunneladdrfamily=ipv6
+# end conn parker1--jj0
+
+# begin conn parker1--jj2--nopfs
+conn parker1--jj2--nopfs
+	#also = parker1--jj2
+	left=132.213.238.7
+	leftid="@jamesjohnson.emmjay.credil.org"
+	leftsubnet=fd68:c9f9:4157::/64
+	leftrsakey=0sAQOg5H7A4DPoQfz6KrLn/y/hWPHbgbafGYZlCaT605bm0kTNEJ4pzlAfW66jf4S6zYOc7XaD1PxDoXZE4iHFy9sE5uJr6H4pWGcop6Q8KKhLOq4Vh4GnFWi3NY7yOjrnW7otBWbdMNZb/s4+R6tRMw5DxaAGYM7CDFwkfeiBaX9+wOGmGt/rI3rflxBERAYmqflfylsFKt1YFWFPC3mKatEb2dZgJNyodFfcCc9VTHyTRJhGIEVCF9NS6DZkYYp/KgvIFfgLKg+lz0cllFvO25kGVhk0/W2BbkuF9dnuYu18a0dMPswmhY6AWHj6J2SSXPTMKSxd4PZcyshXN4iC50uVuzHrgxiXosmHrZ9OYXMIfyq7
+	leftvtinum=1024
+	right=192.168.1.1
+	rightid="@parker01.emmjay.credil.org"
+	rightsubnet=fd68:c9f9:4157:2:0:1::/96
+	rightrsakey=0sAQN7wUerVXA6fSOOecdx8aWiAcy3FeRUVvTaETgC5+Fbt/6KeHf0buRCxf5Nvo2Zq0CzSucgXbX0CXzqJd+eFa8STub5YeF5sTQQtefcSejHUCaAbYacAufqKNVMTgS95jp3frpzyY2Bl70P2uFoLpq0AqzLaZscwjK1bOyFfCi4U5eW3sxNKYAvz8b41i7TfOvqL+vKIrzyXSJheIeir4HQzYwwJPWR4Ft+nB9HNiWVIGZseXJRTBi9EReN/dyr1jKV6HbRRAQJPjOZcwff0M1/ZCm+WNbBcy8zU40s9dldibi0RlM6NgbEN7FIpsilqaPKGNH0i3zad6X6Lc+tG3VF
+	rightvtinum=2049
+	pfs=no
+	auto=route
+	type=tunnel
+	compress=no
+	pfs=no
+	rekey=yes
+	overlapip=no
+	ikev1=yes
+	authby=rsasig
+	phase2=esp
+	ikev2=propose
+	endaddrfamily=ipv4
+	tunneladdrfamily=ipv6
+# end conn parker1--jj2--nopfs
+
+# begin conn parker1--jj2--dpd
+conn parker1--jj2--dpd
+	#also = parker1--jj2
+	left=132.213.238.7
+	leftid="@jamesjohnson.emmjay.credil.org"
+	leftsubnet=fd68:c9f9:4157::/64
+	leftrsakey=0sAQOg5H7A4DPoQfz6KrLn/y/hWPHbgbafGYZlCaT605bm0kTNEJ4pzlAfW66jf4S6zYOc7XaD1PxDoXZE4iHFy9sE5uJr6H4pWGcop6Q8KKhLOq4Vh4GnFWi3NY7yOjrnW7otBWbdMNZb/s4+R6tRMw5DxaAGYM7CDFwkfeiBaX9+wOGmGt/rI3rflxBERAYmqflfylsFKt1YFWFPC3mKatEb2dZgJNyodFfcCc9VTHyTRJhGIEVCF9NS6DZkYYp/KgvIFfgLKg+lz0cllFvO25kGVhk0/W2BbkuF9dnuYu18a0dMPswmhY6AWHj6J2SSXPTMKSxd4PZcyshXN4iC50uVuzHrgxiXosmHrZ9OYXMIfyq7
+	leftvtinum=1024
+	right=192.168.1.1
+	rightid="@parker01.emmjay.credil.org"
+	rightsubnet=fd68:c9f9:4157:2:0:1::/96
+	rightrsakey=0sAQN7wUerVXA6fSOOecdx8aWiAcy3FeRUVvTaETgC5+Fbt/6KeHf0buRCxf5Nvo2Zq0CzSucgXbX0CXzqJd+eFa8STub5YeF5sTQQtefcSejHUCaAbYacAufqKNVMTgS95jp3frpzyY2Bl70P2uFoLpq0AqzLaZscwjK1bOyFfCi4U5eW3sxNKYAvz8b41i7TfOvqL+vKIrzyXSJheIeir4HQzYwwJPWR4Ft+nB9HNiWVIGZseXJRTBi9EReN/dyr1jKV6HbRRAQJPjOZcwff0M1/ZCm+WNbBcy8zU40s9dldibi0RlM6NgbEN7FIpsilqaPKGNH0i3zad6X6Lc+tG3VF
+	rightvtinum=2049
+	pfs=no
+	dpddelay=20
+	dpdtimeout=60
+	dpdaction=clear
+	auto=route
+	type=tunnel
+	compress=no
+	pfs=no
+	rekey=yes
+	overlapip=no
+	ikev1=yes
+	authby=rsasig
+	phase2=esp
+	ikev2=propose
+	endaddrfamily=ipv4
+	tunneladdrfamily=ipv6
+# end conn parker1--jj2--dpd
+
+# end of config

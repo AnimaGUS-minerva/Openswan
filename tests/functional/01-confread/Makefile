@@ -28,6 +28,7 @@ check: OUTPUT
 	../readwritetest ${READWRITE} dooku h2h.conf ../../unit/libpluto/samples/h2h.conf
 	../readwritetest ${READWRITE} dooku certpercent.conf berri-strongswan.conf
 	../readwritetest ${READWRITE} dooku n2n-transport.conf n2n-transport.conf
+	../readwritetest ${READWRITE} dooku parker ../../unit/libpluto/samples/parker.conf
 	: ../readwritetest ${READWRITE} dooku brokenspace.conf brokenspace.conf
 	../readwritetest ${READWRITE} ipv6-inconsistent ipv6-inconsistent.conf ipv6-inconsistent.conf
 	[ ! -f core ]
@@ -43,6 +44,7 @@ update:
 	cp OUTPUT/h2h.conf.out           h2h.conf.out
 	cp OUTPUT/certpercent.conf.out   certpercent.conf.out
 	cp OUTPUT/n2n-transport.conf.out n2n-transport.conf.out
+	cp OUTPUT/parker.out             parker.out
 
 # Local Variables:
 # compile-command: "(cd ../../../programs/readwriteconf && make clean && make programs) && make check"
