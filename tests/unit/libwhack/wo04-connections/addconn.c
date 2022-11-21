@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     wm1.left.xauth_name   = "hello";
     wm1.left.modecfg_server = TRUE;
     wm1.left.modecfg_client = FALSE;
-    wm1.left.vtinum         = 1234;
+    wm1.left.ifid           = 2114;
     wm1.left.sendcert       = 0;
     wm1.left.certtype       = 1;
     wm1.left.host_addr_name = "example.com";
@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
     wm1.dpd_timeout=60;
 
     wm1.right = wm1.left;
+    wm1.right.ifid = 2991;
     char *ip4ex4r = "192.0.1.4";
     ttoaddr_num(ip4ex4r, strlen(ip4ex4r), AF_INET, &wm1.right.host_addr);
 

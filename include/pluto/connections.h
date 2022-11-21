@@ -201,6 +201,9 @@ struct end {
     /* if a Virtual Interface value should be configured */
     unsigned int vtinum;
 
+    /* if an XFRM if_id value should be configured */
+    unsigned int ifid;
+
 /*#ifdef XAUTH*/
     bool xauth_server;
     bool xauth_client;

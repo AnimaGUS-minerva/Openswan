@@ -349,6 +349,7 @@ void whack_cbor_process_initiate(QCBORDecodeContext *qdc
       whack_cbor_string2c(qdc, &item, &wm->name);
       break;
     case WHACK_OPT_VTINUM:
+    case WHACK_OPT_IFID:
       /* not sure what to do here. Might have been bad idea */
       break;
     case WHACK_OPT_INITTYPE:
@@ -499,9 +500,10 @@ void whack_cbor_process_end(QCBORDecodeContext *qdc
       case WHACK_OPT_CERTTYPE:
         end->certtype= item.val.int64;
         break;
-      case WHACK_OPT_VTINUM:
-        end->vtinum= item.val.int64;
+      case WHACK_OPT_IFID:
+        end->ifid    = item.val.int64;
         break;
+      case WHACK_OPT_VTINUM:
       default:
         whack_cbor_consume_item(qdc, &item);
         break;

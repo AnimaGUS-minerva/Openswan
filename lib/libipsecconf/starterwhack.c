@@ -422,8 +422,8 @@ static int set_whack_end(struct starter_config *cfg
 	w->virt   = NULL;
 	w->protocol = l->protocol;
 	w->port = l->port;
-        if (l->options_set[KNCF_VTINUM]) {
-          w->vtinum = l->options[KNCF_VTINUM];
+        if (l->options_set[KNCF_IFID]) {
+          w->ifid = l->options[KNCF_IFID];
         }
 
 	if(l->options_set[KNCF_XAUTHSERVER]) {

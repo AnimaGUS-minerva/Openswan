@@ -93,6 +93,7 @@ enum connectionend_keys {
   WHACK_OPT_END_HOST_NEXTHOP = 12,
   WHACK_OPT_END_HOST_SRCIP = 13,
   WHACK_OPT_END_CLIENT = 14,
+  WHACK_OPT_IFID = 147,
 };
 enum optionscommand_keys {
   WHACK_OPT_COREDIR = 151,

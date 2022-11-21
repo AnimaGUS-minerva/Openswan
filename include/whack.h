@@ -86,7 +86,7 @@ struct whack_end {
     char *xauth_name;
     bool modecfg_server;        /* for MODECFG */
     bool modecfg_client;
-    unsigned int vtinum;
+    unsigned int ifid;          /* XFRM if_id replaces vtinum */
     enum certpolicy      sendcert;
     enum ipsec_cert_type certtype;
 

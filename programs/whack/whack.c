@@ -465,8 +465,9 @@ enum option_enums {
     END_SRCIP,
     END_UPDOWN,
     END_VTINUM,
+    END_IFID,
 
-#define END_LAST  END_VTINUM	/* last end description*/
+#define END_LAST  END_IFID	/* last end description*/
 
 /* Connection Description options -- segregated */
 
@@ -682,6 +683,7 @@ static const struct option long_opts[] = {
     { "srcip",  required_argument, NULL, END_SRCIP + OO },
     { "updown", required_argument, NULL, END_UPDOWN + OO },
     { "vtinum", required_argument, NULL, END_VTINUM + OO + NUMERIC_ARG },
+    { "ifid",   required_argument, NULL, END_IFID + OO + NUMERIC_ARG },
 
 
     /* options for a connection description */
@@ -1494,8 +1496,11 @@ main(int argc, char **argv)
 	    msg.right.updown = optarg;
 	    continue;
 
-	case END_VTINUM:	/* --vtinum <num> */
-	    msg.right.vtinum = opt_whole;
+	case END_VTINUM:	/* --vtinum <num> --- dead*/
+	    continue;
+
+	case END_IFID:	        /* --ifid <num> */
+	    msg.right.ifid = opt_whole;
 	    continue;
 
 	case CD_TO:		/* --to */
