@@ -554,8 +554,7 @@ netlink_raw_eroute(const ip_address *this_host
 		   , enum pluto_sadb_operations sadb_op
 		   , const char *text_said
 		   , char *policy_label UNUSED
-                   , uint32_t vti_mark
-                   , uint32_t vti_markmask
+                   , uint32_t if_id
 		   )
 {
     struct {
@@ -581,9 +580,9 @@ netlink_raw_eroute(const ip_address *this_host
         addrtot(this_host, 0, sa_this, sizeof(sa_this));
         addrtot(that_host, 0, sa_that, sizeof(sa_that));
 
-        DBG_log("%s SPD to %s->spi=%08x@%s proto=%u vti mark=%08x"
+        DBG_log("%s SPD to %s->spi=%08x@%s proto=%u if_id=%08x"
                 , (sadb_op == ERO_DELETE || sadb_op == ERO_DEL_INBOUND) ? "deleting" : "creating"
-                , sa_this, htonl(spi), sa_that, proto, vti_mark);
+                , sa_this, htonl(spi), sa_that, proto, if_id);
     }
 
     policy = IPSEC_POLICY_IPSEC;
@@ -780,21 +779,20 @@ netlink_raw_eroute(const ip_address *this_host
 	req.n.nlmsg_len += attr->rta_len;
     }
 
-    if(vti_mark != 0) {
+    if(if_id != 0) {
         struct rtattr *attr = (struct rtattr *)
             ((char *)&req + req.n.nlmsg_len);
-        struct xfrm_mark *mark;
+        __u32 *idval;
 
-        attr->rta_type = XFRMA_MARK;
+        attr->rta_type = XFRMA_IF_ID;
 
         DBG(DBG_NETKEY
-            , DBG_log("passing xfrm mark/mask=%08x/%08x"
-                    , vti_mark, vti_markmask));
+            , DBG_log("passing xfrm id_if=%08x"
+                    , if_id));
         attr->rta_len =
-            RTA_LENGTH(sizeof(struct xfrm_mark));
-        mark = RTA_DATA(attr);
-        mark->v = vti_mark;
-        mark->m = vti_markmask;
+            RTA_LENGTH(sizeof(__u32));
+        idval = RTA_DATA(attr);
+        *idval= if_id;
         req.n.nlmsg_len += attr->rta_len;
     }
 
@@ -1956,7 +1954,7 @@ netlink_shunt_eroute(struct connection *c
 			      , ET_INT
 			      , null_proto_info, 0, op, buf2
 			      , c->policy_label
-                               , 0, 0
+                               , 0
                                ) )
       { return FALSE; }
 
@@ -1984,7 +1982,7 @@ netlink_shunt_eroute(struct connection *c
 			      , ET_INT
 			      , null_proto_info, 0, op, buf2
                               , c->policy_label
-                                , 0, 0
+                                , 0
 			      );
     }
 }

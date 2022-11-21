@@ -911,6 +911,16 @@ void fmt_ipsec_sa_established(struct state *st, char *sadetails, int sad_len)
         ini = " ";
         fin = "}";
     }
+    if(st->st_xfrm_ifid != 0) {
+        b = b + strlen(b);
+
+        snprintf(b, sad_len-(b-sadetails)-1
+                 , "%sIF_id=%08x"
+                 , ini
+                 , st->st_xfrm_ifid);
+        ini = " ";
+        fin = "}";
+    }
 
     ini = " ";
     fin = "}";

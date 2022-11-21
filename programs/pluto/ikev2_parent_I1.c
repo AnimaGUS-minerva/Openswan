@@ -166,6 +166,7 @@ ikev2parent_outI1_withstate(struct state *st
     st->st_ike_min        = IKEv2_MINOR_VERSION;
     st->st_policy         = policy & ~POLICY_IPSEC_MASK;
     st->st_ikev2_orig_initiator = TRUE;
+    st->st_xfrm_ifid      = c->spd.this.ifid;
     st->st_vti_mark       = c->spd.this.vtinum;
     st->st_vti_markmask   = 0xffffffff;
 

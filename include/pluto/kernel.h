@@ -152,8 +152,7 @@ struct kernel_ops {
 		       enum pluto_sadb_operations op,
 		       const char *text_said
                        , char *policy_label
-                       , uint32_t vti_mark
-                       , uint32_t vti_markmask
+                       , uint32_t if_id
 		       );
     bool (*shunt_eroute)(struct connection *c
 			 , const struct spd_route *sr

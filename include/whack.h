@@ -52,8 +52,8 @@
 
 
 /* struct whack_end is a lot like connection.h's struct end
- * It differs because it is going to be shipped down a socket
- * and because whack is a separate program from pluto.
+ * It differs because it was at one point shipped down a socket.
+ * it is now serialized into CBOR, so it can change as one wishes
  */
 struct whack_end {
     char *id;		/* id string (if any) -- decoded by pluto */

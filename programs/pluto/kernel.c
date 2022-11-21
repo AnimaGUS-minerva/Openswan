@@ -635,9 +635,9 @@ could_route(struct connection *c, struct spd_route *dsr)
     }
 
     /*
-     * if this is SA is VTI based route, then no policy is necessary.
+     * if this is SA is an XFRM if_id based route, then no policy is necessary.
      */
-    if(esr != NULL && esr->this.vtinum != 0) {
+    if(esr != NULL && esr->this.ifid !=0) {
 	return route_unnecessary;
     }
 
@@ -983,8 +983,7 @@ raw_eroute(const ip_address *this_host
            , enum pluto_sadb_operations op
            , const char *opname USED_BY_DEBUG
 	   , char *policy_label
-           , uint32_t vti_mark
-           , uint32_t vti_markmask
+           , uint32_t if_id
 	   )
 {
     char text_said[SATOT_BUF];
@@ -1006,7 +1005,7 @@ raw_eroute(const ip_address *this_host
                                   , esatype, proto_info
                                   , use_lifetime, op, text_said
 				  , policy_label
-                                    , vti_mark, vti_markmask);
+                                    , if_id);
 
     if(result == FALSE || DBGP(DBG_CONTROL|DBG_KLIPS)) {
         loglog(RC_COMMENT, "%s eroute %s:%d --%d-> %s:%d => %s %s"
@@ -1131,7 +1130,7 @@ replace_bare_shunt(const ip_address *src, const ip_address *dst
                                        , transport_proto
                                        , ET_INT, null_proto_info
                                        , SHUNT_PATIENCE, ERO_REPLACE, why
-				       , NULL_POLICY, 0, 0))
+				       , NULL_POLICY, 0))
                             {
                                 struct bare_shunt *bs = alloc_thing(struct bare_shunt, "bare shunt");
 
@@ -1160,7 +1159,7 @@ replace_bare_shunt(const ip_address *src, const ip_address *dst
                        , transport_proto
                        , ET_INT, null_proto_info
                        , SHUNT_PATIENCE, ERO_ADD, why
-		       , NULL_POLICY, 0,0))
+		       , NULL_POLICY, 0))
             {
                 struct bare_shunt **bs_pp = bare_shunt_ptr(&this_client, &that_client
                                                            , transport_proto);
@@ -1183,7 +1182,7 @@ replace_bare_shunt(const ip_address *src, const ip_address *dst
                        , htonl(shunt_spi), SA_INT
                        , 0 /* transport_proto */
                        , ET_INT, null_proto_info
-                       , SHUNT_PATIENCE, op, why, NULL_POLICY, 0,0))
+                       , SHUNT_PATIENCE, op, why, NULL_POLICY, 0))
             {
                 struct bare_shunt **bs_pp = bare_shunt_ptr(&this_client
                                                            , &that_client, 0);
@@ -1247,7 +1246,7 @@ delete_bare_shunt_ptr(struct bare_shunt **bs_pp, const char *why)
                    null_host, &that_client
                    , spi, proto, transport_proto
                    , ET_INT, null_proto_info
-                   , SHUNT_PATIENCE, ERO_DELETE, why, NULL_POLICY, 0,0)) {
+                   , SHUNT_PATIENCE, ERO_DELETE, why, NULL_POLICY, 0)) {
         /* delete bare eroute */
         free_bare_shunt(bs_pp);
         return TRUE;
@@ -1302,7 +1301,7 @@ bool eroute_connection(struct state *st
                       , esatype
                       , proto_info, 0, op, buf2
 		      , policy_label
-                      , st->st_vti_mark, st->st_vti_markmask
+                      , st->st_xfrm_ifid
 		      );
 }
 
@@ -2083,7 +2082,7 @@ setup_half_ipsec_sa(struct state *parent_st
                               , ERO_ADD_INBOUND        /* op */
 			      , "add inbound"        /* opname */
 			      , st->st_connection->policy_label
-                              , st->st_vti_mark, st->st_vti_markmask
+                              , st->st_xfrm_ifid
 			      );
         }
     }
@@ -2180,7 +2179,7 @@ teardown_half_ipsec_sa(struct state *st, struct end *that, bool inbound)
                           , null_proto_info, 0
                           , ERO_DEL_INBOUND, "delete (half) inbound"
 			  , c->policy_label
-                          , st->st_vti_mark, st->st_vti_markmask
+                          , st->st_xfrm_ifid
 			  );
     }
 
@@ -2683,7 +2682,7 @@ route_and_eroute(struct connection *c USED_BY_KLIPS
                     , SHUNT_PATIENCE
                     , ERO_REPLACE, "restore"
 		    , NULL_POLICY /* bare shunt are not associated with any connection so no security label*/
-                                  , 0, 0
+                                  , 0
 		    );
             }
             else if (ero != NULL)

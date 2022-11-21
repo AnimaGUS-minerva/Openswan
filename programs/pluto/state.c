@@ -1013,6 +1013,7 @@ duplicate_state(struct state *st)
     nst->st_ikev2_orig_initiator = st->st_ikev2_orig_initiator;
     nst->st_ike_maj    = st->st_ike_maj;
     nst->st_ike_min    = st->st_ike_min;
+    nst->st_xfrm_ifid    = st->st_xfrm_ifid;
     nst->st_vti_mark     = st->st_vti_mark;
     nst->st_vti_markmask = st->st_vti_markmask;
 
