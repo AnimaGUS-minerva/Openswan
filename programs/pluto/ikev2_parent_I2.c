@@ -131,7 +131,7 @@ stf_status ikev2parent_inR1outI2(struct msg_digest *md)
 
     if(md->chain[ISAKMP_NEXT_v2SA] == NULL) {
         openswan_log("No responder SA proposal found");
-        return PAYLOAD_MALFORMED;
+        return STF_FAIL + PAYLOAD_MALFORMED;
     }
 
     /* process CERTREQ payload */

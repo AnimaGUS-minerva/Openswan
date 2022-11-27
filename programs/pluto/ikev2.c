@@ -893,12 +893,12 @@ process_v2_packet(struct msg_digest **mdp)
 		/* our notification will encrypt messages */
 		send_v2_notification_enc(md,
 					 ike_xchg_type,
-					 INVALID_MESSAGE_ID,
+					 v2N_INVALID_MESSAGE_ID,
 					 NULL);
 	    } else {
 		/* our notification will be in the clear */
                 SEND_V2_NOTIFICATION_XCHG_DATA(md, st, ike_xchg_type,
-                                               INVALID_MESSAGE_ID, NULL);
+                                               v2N_INVALID_MESSAGE_ID, NULL);
 
 	    }
 	}

@@ -1012,7 +1012,7 @@ stf_status ikev2_child_sa_respond(struct msg_digest *md
     /* start of SA out */
     {
         struct isakmp_sa r_sa = sa_pd->payload.sa;
-        notification_t rn;
+        v2_notification_t rn;
         pb_stream r_sa_pbs;
 
         /* set the np for this structure */
@@ -1027,7 +1027,7 @@ stf_status ikev2_child_sa_respond(struct msg_digest *md
                                        &r_sa_pbs, st1, FALSE);
 
         /* we do not delete_state st1 yet, because initiator could retransmit */
-        if (rn != NOTHING_WRONG) {
+        if (rn != v2N_NOTHING_WRONG) {
             close_output_pbs(&r_sa_pbs);
             //delete_event(st1);
             event_schedule(EVENT_SO_DISCARD, EVENT_HALF_OPEN_TIMEOUT, st1);

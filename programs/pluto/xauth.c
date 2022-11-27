@@ -1245,7 +1245,7 @@ xauth_inR0(struct msg_digest *md)
 	    {
 	    case XAUTH_TYPE:
 		if(val != 0)
-		    return NO_PROPOSAL_CHOSEN;
+		    return STF_FAIL;
 		break;
 
 	    case XAUTH_USER_NAME:

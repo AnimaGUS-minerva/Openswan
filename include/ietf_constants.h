@@ -1099,7 +1099,7 @@ typedef enum {
     /* Reserved                  = 8, */
     v2N_INVALID_MESSAGE_ID           = 9, /* same as ikev1 */
     /* Reserved                  =10, */
-    V2_INVALID_SPI                  =11,  /* same as ikev1 */
+    v2N_INVALID_SPI                  =11,  /* same as ikev1 */
     /* Reserved                  =12, */
     /* Reserved                  =13, */
     v2N_NO_PROPOSAL_CHOSEN           =14, /* failed to choose CHILD SA (same number as ikev1) */

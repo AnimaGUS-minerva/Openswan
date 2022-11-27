@@ -196,7 +196,7 @@ stf_status ikev2parent_inI1outR1(struct msg_digest *md)
             addrtot(&md->sender, 0, fromname, ADDRTOT_BUF);
             openswan_log("rejecting I1 from %s:%u, invalid DH group=%u"
                          ,fromname, md->sender_port, ke->isak_group);
-            return v2N_INVALID_KE_PAYLOAD;
+            return STF_FAIL + v2N_INVALID_KE_PAYLOAD;
         }
     }
 

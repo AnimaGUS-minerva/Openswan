@@ -493,12 +493,12 @@ ikev2_process_transforms(struct ikev2_prop *prop
 
 	if (!in_struct(&trans, &ikev2_trans_desc
 		       , prop_pbs, &trans_pbs))
-	    return BAD_PROPOSAL_SYNTAX;
+	    return STF_FAIL + v2N_INVALID_SYNTAX;
 
 	while (pbs_left(&trans_pbs) != 0) {
 		if (!in_struct(&attr, &ikev2_trans_attr_desc, &trans_pbs
 			, &attr_pbs))
-		return BAD_PROPOSAL_SYNTAX;
+                    return STF_FAIL + v2N_INVALID_SYNTAX;
 		switch (attr.isatr_type) {
 			case IKEv2_KEY_LENGTH | ISAKMP_ATTR_AF_TV:
 				keylen = attr.isatr_lv;
@@ -606,7 +606,7 @@ ikev2_emit_winning_sa(
 
     if(!parentSA) {
 	if(!out_raw(&st->st_esp.our_spi, 4, &r_proposal_pbs, "our spi"))
-	    return STF_INTERNAL_ERROR;
+	    return v2N_NO_PROPOSAL_CHOSEN;
     }
 
     /* Transform - cipher */
@@ -669,10 +669,7 @@ ikev2_emit_winning_sa(
      * We never used it.  From proposal_pbs.start,
      * length pbs_room(&proposal_pbs)
      */
-
-
-
-    return NOTHING_WRONG;
+    return v2N_NOTHING_WRONG;
 }
 
 v2_notification_t
@@ -715,11 +712,11 @@ ikev2_parse_parent_sa_body(
 	 */
 
 	if(!in_struct(&proposal, &ikev2_prop_desc, sa_pbs, &proposal_pbs))
-	    return PAYLOAD_MALFORMED;
+	    return v2N_INVALID_SYNTAX;
 
 	if(proposal.isap_protoid != PROTO_ISAKMP) {
 	    loglog(RC_LOG_SERIOUS, "unexpected PARENT_SA, expected child");
-	    return PAYLOAD_MALFORMED;
+	    return v2N_INVALID_SYNTAX;
 	}
 
 	if (proposal.isap_spisize == 0)
@@ -731,13 +728,13 @@ ikev2_parse_parent_sa_body(
 	    u_char junk_spi[MAX_ISAKMP_SPI_SIZE];
 	    if(!in_raw(junk_spi, proposal.isap_spisize, &proposal_pbs,
 		       "PARENT SA SPI"))
-		return PAYLOAD_MALFORMED;
+		return v2N_INVALID_SYNTAX;
 	}
 	else
 	{
 	    loglog(RC_LOG_SERIOUS, "invalid SPI size (%u) in PARENT_SA Proposal"
 		   , (unsigned)proposal.isap_spisize);
-	    return INVALID_SPI;
+	    return v2N_INVALID_SPI;
 	}
 
 	if(proposal.isap_propnum == lastpropnum) {
@@ -765,7 +762,7 @@ ikev2_parse_parent_sa_body(
 
 	{ stf_status ret = ikev2_process_transforms(&proposal
 						    , &proposal_pbs, itl);
-	    if(ret != STF_OK) return ret;
+	    if(ret != STF_OK) return v2N_INVALID_SYNTAX;
 	}
 
 	np = proposal.isap_np;
@@ -785,7 +782,7 @@ ikev2_parse_parent_sa_body(
      * out: gotmatch == FALSE, means nothing selected.
      */
     if(!gotmatch) {
-	return NO_PROPOSAL_CHOSEN;
+	return v2N_NO_PROPOSAL_CHOSEN;
     }
 
 
@@ -817,7 +814,7 @@ ikev2_parse_parent_sa_body(
 				     , /*parentSA*/TRUE
 				     , winning_prop);
     }
-    return NOTHING_WRONG;
+    return v2N_NOTHING_WRONG;
 }
 
 bool
@@ -1027,12 +1024,12 @@ ikev2_parse_child_sa_body(
         itl = &itl0;
 
 	if(!in_struct(&proposal, &ikev2_prop_desc, sa_pbs, &proposal_pbs))
-	    return PAYLOAD_MALFORMED;
+	    return v2N_INVALID_SYNTAX;
 
 	switch(proposal.isap_protoid) {
 	case PROTO_ISAKMP:
 	    loglog(RC_LOG_SERIOUS, "unexpected PARENT_SA, expected child");
-	    return PAYLOAD_MALFORMED;
+	    return v2N_INVALID_SYNTAX;
 	    break;
 
 	case PROTO_IPSEC_ESP:
@@ -1041,7 +1038,7 @@ ikev2_parse_child_sa_body(
 		unsigned int spival;
 		if(!in_raw(&spival, proposal.isap_spisize
 			   , &proposal_pbs, "CHILD SA SPI"))
-		    return PAYLOAD_MALFORMED;
+		    return v2N_INVALID_SYNTAX;
 
 		DBG(DBG_PARSING
 		    , DBG_log("SPI received: %08x", ntohl(spival)));
@@ -1051,14 +1048,14 @@ ikev2_parse_child_sa_body(
 	    {
 		loglog(RC_LOG_SERIOUS, "invalid SPI size (%u) in CHILD_SA Proposal"
 		       , (unsigned)proposal.isap_spisize);
-		return INVALID_SPI;
+		return v2N_INVALID_SPI;
 	    }
 	    break;
 
 	default:
 	    loglog(RC_LOG_SERIOUS, "unexpected Protocol ID (%s) found in PARENT_SA Proposal"
 		   , enum_show(&protocol_names, proposal.isap_protoid));
-	    return INVALID_PROTOCOL_ID;
+	    return v2N_INVALID_SYNTAX;
 	}
 
 	if(proposal.isap_propnum == lastpropnum) {
@@ -1086,7 +1083,7 @@ ikev2_parse_child_sa_body(
 
 	{ stf_status ret = ikev2_process_transforms(&proposal
 						    , &proposal_pbs, itl);
-	    if(ret != STF_OK) return ret;
+	    if(ret != STF_OK) return v2N_INVALID_SYNTAX;
 	}
 
 	np = proposal.isap_np;
@@ -1111,7 +1108,7 @@ ikev2_parse_child_sa_body(
      * out: gotmatch == FALSE, means nothing selected.
      */
     if(!gotmatch) {
-	return NO_PROPOSAL_CHOSEN;
+	return v2N_NO_PROPOSAL_CHOSEN;
     }
 
     /* there might be some work to do here if there was a conjunction,
@@ -1154,7 +1151,7 @@ ikev2_parse_child_sa_body(
 				     , winning_prop);
     }
 
-    return NOTHING_WRONG;
+    return v2N_NOTHING_WRONG;
 }
 
 

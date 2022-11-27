@@ -618,7 +618,7 @@ static inline bool isakmp_xchg_type_is_valid(enum isakmp_xchg_types xchg)
 void
 send_v2_notification(struct state *p1st
 		       , enum isakmp_xchg_types xchg_type
-		       , notification_t ntf_type
+		       , v2_notification_t ntf_type
 		       , u_char *icookie
 		       , u_char *rcookie
 		       , chunk_t *notify_data)
@@ -692,7 +692,7 @@ DBG_log("%s:%u", __FUNCTION__, __LINE__);
 int
 send_v2_notification_enc(struct msg_digest *md
 		       , enum isakmp_xchg_types xchg_type
-		       , notification_t ntf_type
+		       , v2_notification_t ntf_type
 		       , chunk_t *notify_data)
 
 {
