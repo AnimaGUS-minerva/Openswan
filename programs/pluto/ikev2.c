@@ -1513,7 +1513,7 @@ static void success_v2_state_transition(struct msg_digest **mdp)
 	}
     }
 
-    if(st->st_state != EVENT_SA_DELETE)
+    if(st->st_state != STATE_DELETING)
     {
         /* Schedule for whatever timeout is specified
          * do this only if we didn't wind up deleting the event already
