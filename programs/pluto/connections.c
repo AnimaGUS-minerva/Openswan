@@ -3276,7 +3276,7 @@ void
 show_one_connection(struct connection *c, logfunc logger)
 {
     const char *ifn;
-    char instance[1 + 10 + 1];
+    char instance[1 + 24 + 1 + 1];
     char prio[POLICY_PRIO_BUF];
 
     ifn = oriented(*c)? c->interface->ip_dev->id_rname : "";

@@ -779,11 +779,12 @@ quick_outI1(int whack_sock
     }
 
     {
-	char replacestr[32];
+	char replacestr[64];
 
 	replacestr[0]='\0';
 	if(replacing != SOS_NOBODY)
-	    snprintf(replacestr, 32, " to replace #%lu", replacing);
+	    snprintf(replacestr, sizeof(replacestr)
+                     , " to replace #%lu", replacing);
 
 	openswan_log("initiating Quick Mode %s%s {using isakmp#%lu msgid:%08x proposal=%s pfsgroup=%s}"
 		     , prettypolicy(policy)

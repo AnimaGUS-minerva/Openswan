@@ -121,7 +121,7 @@ static int _iface_up (int sock,  struct st_ipsec_if *iface, char *phys,
 
 	/* tncfg --attach */
 	strncpy(req.ifr_name, iface->name, IFNAMSIZ-1);
-	strncpy(shc->cf_name, phys, sizeof(shc->cf_name));
+	strncpy(shc->cf_name, phys, sizeof(shc->cf_name)-1);
 	ioctl(sock, IPSEC_SET_DEV, &req);
 
 	/* set ipsec addr = phys addr */
