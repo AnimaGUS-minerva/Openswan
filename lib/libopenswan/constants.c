@@ -1639,7 +1639,7 @@ bitnamesofb(const char *const table[], lset_t val
 	    if (n == NULL || *n == '\0')
 	    {
 		/* no name for this bit, so use hex */
-		static char flagbuf[sizeof("0x80000000")];
+		static char flagbuf[sizeof("0x8000000000000000")];
 
 		snprintf(flagbuf, sizeof(flagbuf), "0x%llx", bit);
 		n = flagbuf;
