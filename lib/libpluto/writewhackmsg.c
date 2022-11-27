@@ -87,11 +87,7 @@ bool writewhackrecord(unsigned char *buf, int buflen)
  */
 bool openwhackrecordfile(char *file)
 {
-    char when[256];
     char FQDN[HOST_NAME_MAX + 1];
-    u_int32_t magic;
-    struct tm tm1, *tm;
-    time_t n;
 
     strcpy(FQDN, "unknown host");
     gethostname(FQDN, sizeof(FQDN));
