@@ -348,10 +348,6 @@ void whack_cbor_process_initiate(QCBORDecodeContext *qdc
     case WHACK_OPT_NAME:
       whack_cbor_string2c(qdc, &item, &wm->name);
       break;
-    case WHACK_OPT_VTINUM:
-    case WHACK_OPT_IFID:
-      /* not sure what to do here. Might have been bad idea */
-      break;
     case WHACK_OPT_INITTYPE:
       wm->whack_initiate = item.val.int64;
       /* Could INITIATE_NOW, INITIATE_IF_DOWN, INITIATE_DPD */
