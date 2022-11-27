@@ -187,7 +187,7 @@ bool extrapolate_v1_from_v2(struct db_sa *sadb, lset_t policy, enum phase1_role 
     int i, pass;
     int transform_values[IKEv2_TRANS_TYPE_COUNT];
     int old_transform_values[IKEv2_TRANS_TYPE_COUNT];
-    struct db_trans_flat *dtf;
+    struct db_trans_flat *dtf = NULL;
     struct db_trans_flat *cur_dtf = NULL;
 
     /* if already did it, then just return */
