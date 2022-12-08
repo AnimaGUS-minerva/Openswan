@@ -1,7 +1,7 @@
 /* netlink interface to the kernel's (XFRM/NETKEY) IPsec mechanism
  *
  * Copyright (C) 2003-2008 Herbert Xu
- * Copyright (C) 2006-2017 Michael Richardson <mcr@xelerance.com>
+ * Copyright (C) 2006-2022 Michael Richardson <mcr@xelerance.com>,<mcr@sandelman.ca>
  * Copyright (C) 2006 Ken Bantoft <ken@xelerance.com>
  * Copyright (C) 2007 Bart Trojanowski <bart@jukie.net>
  * Copyright (C) 2007 Ilia Sotnikov
