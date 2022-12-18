@@ -634,7 +634,7 @@ send_v2_notification(struct state *p1st
      * do we need to support more Protocol ID? more than PROTO_ISAKMP
      */
 
-    openswan_log("sending notification %s/%s to %s:%u"
+    openswan_log("sending notification %s/%s to [%s]:%u"
                  , enum_name(&exchange_names, xchg_type)
                  , enum_name(&ikev2_notify_names, ntf_type)
                  , p1st ? ip_str(&p1st->st_remoteaddr) : "-"

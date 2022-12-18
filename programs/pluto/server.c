@@ -1174,7 +1174,7 @@ send_packet(struct state *st, const char *where, bool verbose)
     }
 
     DBG(DBG_CONTROL|DBG_RAW
-	, DBG_log("sending %lu bytes for %s through %s:%d to %s:%u (using #%lu)"
+	, DBG_log("sending %lu bytes for %s if %s sport:%d to [%s]:%u (using #%lu)"
 		  , (unsigned long) st->st_tpacket.len
 		  , where
 		  , st->st_interface->ip_dev->id_rname

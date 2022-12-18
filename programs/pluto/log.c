@@ -165,7 +165,7 @@ fmt_log(char *buf, size_t buf_len, const char *fmt, va_list ap)
 	char ab[ADDRTOT_BUF];
 
 	(void) addrtot(cur_from, 0, ab, sizeof(ab));
-	snprintf(buf, buf_len, "packet from %s:%u: "
+	snprintf(buf, buf_len, "packet from [%s]:%u: "
 	    , ab, (unsigned)cur_from_port);
     }
 
