@@ -160,12 +160,16 @@ initiate_a_connection(struct connection *c
             find_phase1_state(c
                               , ISAKMP_SA_ESTABLISHED_STATES);
 
-        if(is->it == INITIATE_IF_DOWN && old_parent_state != NULL) {
-            whack_log(RC_NOALGO, "parent state #%lu already up, not starting new state"
-                      , old_parent_state->st_serialno);
-            reset_cur_connection();
-            close_any(is->whackfd);
-            return 0;
+        if(is->it == INITIATE_IF_DOWN) {
+            if(old_parent_state != NULL) {
+                whack_log(RC_NOALGO, "parent state #%lu already up, not starting new state"
+                          , old_parent_state->st_serialno);
+                reset_cur_connection();
+                close_any(is->whackfd);
+                return 0;
+            } else {
+                whack_log(RC_NOALGO, "no parent state found, initiating");
+            }
         }
 
 	{
