@@ -1520,6 +1520,7 @@ static err_t setup_esp_sa(struct connection *c
     said_next->esatype = ET_ESP;
     said_next->replay_window = kernel_ops->replay_window;
     said_next->esp_info  = ei;
+    said_next->if_id     = st->st_xfrm_ifid;
 
     /* this is a bug in the 2.6.28/29 kernel, we should remove this code */
     if( (said_next->esp_info.auth == IKEv2_AUTH_HMAC_SHA2_256_128)
@@ -1538,6 +1539,7 @@ static err_t setup_esp_sa(struct connection *c
     said_next->enckey = esp_dst_keymat;
     said_next->encapsulation = encapsulation;
     said_next->reqid = c->spd.reqid + 1;
+    said_next->if_id     = st->st_xfrm_ifid;
 
 #ifdef NAT_TRAVERSAL
     said_next->natt_sport = natt_sport;

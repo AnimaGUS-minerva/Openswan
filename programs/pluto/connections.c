@@ -528,7 +528,8 @@ load_end_certificate(const char *filename, struct end *dst)
 	return;
     }
 
-    openswan_log("  loading certificate from %s\n", filename);
+    DBG(DBG_CONTROL
+        , DBG_log("  loading certificate from %s\n", filename));
     dst->cert_filename = clone_str(filename, "certificate filename");
 
 	{
@@ -989,10 +990,9 @@ add_connection(const struct whack_message *wm)
 
 	c->policy = wm->policy;
 
-	DBG(DBG_CONTROL,
-	    DBG_log("Added new connection %s with policy %s"
-		    , c->name
-		    , prettypolicy(c->policy)));
+	openswan_log("Adding new connection %s with policy %s"
+                     , c->name
+                     , prettypolicy(c->policy));
 
 	/* check for configuration issues */
 
@@ -1275,13 +1275,13 @@ add_connection(const struct whack_message *wm)
 	connect_to_IPhost_pair(c);
         connect_to_IDhost_pair(c);
 
-	/* log all about this connection */
-	openswan_log("adding connection: \"%s\"", c->name);
+	/* debug log all about this connection */
 	DBG(DBG_CONTROL,
 	    char topo[CONN_BUF_LEN];
 
 	    (void) format_connection(topo, sizeof(topo), c, &c->spd);
 
+            DBG_log("added connection: \"%s\"", c->name);
 	    DBG_log("%s", topo);
 	);
 

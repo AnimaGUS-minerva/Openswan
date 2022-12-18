@@ -997,6 +997,19 @@ netlink_add_sa(struct kernel_sa *sa, bool replace)
 
 	attr = (struct rtattr *)((char *)&req + req.n.nlmsg_len);
 
+        /* add the XFRM IF_ID if non-zero */
+        if (sa->if_id != 0) {
+            __u32 *idval;
+
+            attr->rta_type = XFRMA_IF_ID;
+            attr->rta_len =
+                RTA_LENGTH(sizeof(__u32));
+            idval = RTA_DATA(attr);
+            *idval= sa->if_id;
+            req.n.nlmsg_len += attr->rta_len;
+            attr = (struct rtattr *)((char *)attr + attr->rta_len);
+        }
+
 	if (sa->esp_info.authkeylen) {
             const char *name = sa->esp_info.auth_info->kernel_alg_info->kernel_alg_name;
             //unsigned int authalg = sa->esp_info.auth_info->kernel_alg_info->kernel_alg_id;

@@ -84,6 +84,7 @@ struct kernel_sa {
 	enum eroute_type esatype;
 	unsigned replay_window;
 	unsigned reqid;
+    unsigned if_id;                /* XFRM if_id value */
 
     struct esp_info esp_info;      /* details about algorithm chosen */
     unsigned char *authkey;        /* actual key */
