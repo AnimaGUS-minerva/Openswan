@@ -46,8 +46,9 @@ OUTPUT/R2-dump.txt:	${WHACKFILE} ${TESTNAME}
 	@echo "file ${TESTNAME}"          >.gdb1init
 	@echo "set args "${UNITTEST1ARGS} >>.gdb1init
 	ulimit -c unlimited && ./${TESTNAME} ${UNITTEST1ARGS} >OUTPUT/${TESTNAME}_1.txt 2>&1
-	tcpdump -nn -t -v -r ${UNITTEST1PCAP} | tee OUTPUT/R2-dump.txt | sed -f ${TESTUTILS}/sanity.sed | diff - R2-dump.txt
+	@if [ -f OUTPUT/${TESTNAME}.pcap ]; then tcpdump -nn -t -v -r ${UNITTEST1PCAP} > OUTPUT/R2-dump.txt; fi
 	@${FILTERS} OUTPUT/${TESTNAME}_1.txt | diff - output1.txt
+	@cat OUTPUT/R2-dump.txt | sed -f ${TESTUTILS}/sanity.sed | diff - R2-dump.txt
 
 ifneq (${UNITTEST2PCAP},)
 check:: OUTPUT/R2-any.txt
@@ -57,8 +58,9 @@ OUTPUT/R2-any.txt:	${WHACKFILE} ${TESTNAME}
 	@echo "file ${TESTNAME}"          >.gdb2init
 	@echo "set args "${UNITTEST2ARGS} >>.gdb2init
 	ulimit -c unlimited && ./${TESTNAME} ${UNITTEST2ARGS} >OUTPUT/${TESTNAME}_2.txt 2>&1
-	tcpdump -nn -t -v -r ${UNITTEST2PCAP} | tee OUTPUT/R2-any.txt | sed -f ${TESTUTILS}/sanity.sed | diff - R2-any.txt
+	@tcpdump -nn -t -v -r ${UNITTEST2PCAP} > OUTPUT/R2-any.txt
 	@${FILTERS} OUTPUT/${TESTNAME}_2.txt | diff - output2.txt
+	@cat OUTPUT/R2-any.txt | sed -f ${TESTUTILS}/sanity.sed | diff - R2-any.txt
 endif
 
 ${WHACKFILE}: ${SAMPLEDIR}/${ENDNAME}.conf OUTPUT

@@ -57,8 +57,9 @@ OUTPUT/R2-dump.txt:	${WHACKFILE} ${TESTNAME}
 	@echo "file ${TESTNAME}"          >.gdb1init
 	@echo "set args "${UNITTEST1ARGS} >>.gdb1init
 	ulimit -c unlimited && ./${TESTNAME} ${UNITTEST1ARGS} >OUTPUT/${TESTNAME}_1.txt 2>&1
+	@if [ -f OUTPUT/${TESTNAME}.pcap ]; then tcpdump -nn -t -v -r OUTPUT/${TESTNAME}.pcap > OUTPUT/R2-dump.txt; fi
 	@${FILTERS} OUTPUT/${TESTNAME}_1.txt | diff - output1.txt
-	tcpdump -nn -t -v -r OUTPUT/${TESTNAME}.pcap | tee OUTPUT/R2-dump.txt | sed -f ${TESTUTILS}/sanity.sed | diff - R2-dump.txt
+	@cat OUTPUT/R2-dump.txt | sed -f ${TESTUTILS}/sanity.sed | diff - R2-dump.txt
 
 ${WHACKFILE}:
 	@mkdir -p OUTPUT
