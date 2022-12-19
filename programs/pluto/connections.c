@@ -142,6 +142,9 @@ release_connection(struct connection *c, bool relations)
  *   same host_addr.
  *   They are the same if they are KH_IPHOSTNAME, and have the same
  *   same *name*.
+ *
+ *   If either are not KH_IPADDR, then return true!
+ *
  *   If one is KH_IPHOSTNAME, and the other is not, then the host_addr
  *   are compared.
  *
@@ -152,8 +155,11 @@ bool compare_end_addr_names(const struct end *a, const struct end *b)
        && b->host_type == KH_IPHOSTNAME) {
         return strcasecmp(a->host_addr_name, b->host_addr_name)==0;
     }
+    if(a->host_type == KH_IPADDR && b->host_type == KH_IPADDR) {
+        return sameaddr(&a->host_addr, &b->host_addr);
+    }
 
-    return sameaddr(&a->host_addr, &b->host_addr);
+    return TRUE;
 }
 
 /*
