@@ -146,7 +146,7 @@ release_connection(struct connection *c, bool relations)
  *   are compared.
  *
  */
-bool compare_end_addr_names(struct end *a, struct end *b)
+bool compare_end_addr_names(const struct end *a, const struct end *b)
 {
     if(a->host_type == KH_IPHOSTNAME
        && b->host_type == KH_IPHOSTNAME) {

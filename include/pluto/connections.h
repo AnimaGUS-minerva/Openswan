@@ -347,7 +347,7 @@ extern struct iface_port *pick_matching_interfacebyfamily(struct iface_port *ifl
 
 extern bool same_peer_ids(const struct connection *c
     , const struct connection *d, const struct id *his_id);
-extern bool compare_end_addr_names(struct end *a, struct end *b);
+extern bool compare_end_addr_names(const struct end *a, const struct end *b);
 
 /* Format the topology of a connection end, leaving out defaults.
  * Largest left end looks like: client === host : port [ host_id ] --- hop
