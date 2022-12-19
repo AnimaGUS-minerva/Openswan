@@ -1411,11 +1411,17 @@ find_phase1_state(const struct connection *c, lset_t ok_states)
 
     for (i = 0; i < STATE_TABLE_SIZE; i++) {
 	for (st = statetable[i]; st != NULL; st = st->st_hashchain_next) {
+            DBG(DBG_CONTROLMORE
+                , DBG_log("%s: checking state=%lu best=%lu peer_ids=%d"
+                          , __func__, st->st_serialno, best ? best->st_serialno : 0
+                          , same_peer_ids(c, st->st_connection, NULL)));
 	    if (LHAS(ok_states, st->st_state)
 		&& c->IPhost_pair == st->st_connection->IPhost_pair
 		&& same_peer_ids(c, st->st_connection, NULL)
 		&& IS_PARENT_SA(st)
-		&& samesubnet(&c->spd.this.client, &st->st_connection->spd.this.client)
+                && compare_end_addr_names(&c->spd.this, &st->st_connection->spd.this)
+                && compare_end_addr_names(&c->spd.that, &st->st_connection->spd.that)
+                && samesubnet(&c->spd.this.client, &st->st_connection->spd.this.client)
 		&& samesubnet(&c->spd.that.client, &st->st_connection->spd.that.client)
 		&& (best == NULL
 		    || best->st_serialno < st->st_serialno))
