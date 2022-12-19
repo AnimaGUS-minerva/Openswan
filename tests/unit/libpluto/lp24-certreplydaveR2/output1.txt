@@ -21,8 +21,8 @@
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection rw-any with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./certreplydaveR2   loading certificate from moonCert.pem
+./certreplydaveR2 Adding new connection rw-any with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   loading certificate from moonCert.pem
 ./certreplydaveR2   loaded host cert file '../samples/gatewaycert/certs/moonCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for @moon.testing.openswan.org is 0
@@ -38,15 +38,15 @@
 | connect_to_host_pair: 132.213.238.7:500 %any 0.0.0.0:500 -> hp:none
 | find_ID_host_pair: looking for me=@moon.testing.openswan.org him=<any> (exact)
 |   concluded with <none>
-./certreplydaveR2 adding connection: "rw-any"
+| added connection: "rw-any"
 | 10.2.0.0/16===132.213.238.7[@moon.testing.openswan.org]...%any
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-| Added new connection rw-carol with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./certreplydaveR2   loading certificate from moonCert.pem
+./certreplydaveR2 Adding new connection rw-carol with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   loading certificate from moonCert.pem
 ./certreplydaveR2   loaded host cert file '../samples/gatewaycert/certs/moonCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for @moon.testing.openswan.org is 0
-./certreplydaveR2   loading certificate from carolCert.pem
+|   loading certificate from carolCert.pem
 ./certreplydaveR2   loaded host cert file '../samples/gatewaycert/certs/carolCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for @carol.testing.openswan.org is 0
@@ -61,11 +61,11 @@
 | find_ID_host_pair: looking for me=@moon.testing.openswan.org him=@carol.testing.openswan.org (exact)
 |                   comparing to me=@moon.testing.openswan.org him=(none) (rw-any)
 |   concluded with <none>
-./certreplydaveR2 adding connection: "rw-carol"
+| added connection: "rw-carol"
 | 10.2.0.0/16===132.213.238.7[@moon.testing.openswan.org]...93.184.216.34[@carol.testing.openswan.org]
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-| Added new connection rw-dave with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./certreplydaveR2   loading certificate from moonCert.pem
+./certreplydaveR2 Adding new connection rw-dave with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   loading certificate from moonCert.pem
 ./certreplydaveR2   loaded host cert file '../samples/gatewaycert/certs/moonCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for @moon.testing.openswan.org is 0
@@ -83,7 +83,7 @@
 |                   comparing to me=@moon.testing.openswan.org him=@carol.testing.openswan.org (rw-carol)
 |                   comparing to me=@moon.testing.openswan.org him=(none) (rw-any)
 |   concluded with <none>
-./certreplydaveR2 adding connection: "rw-dave"
+| added connection: "rw-dave"
 | 10.2.0.0/16===132.213.238.7[@moon.testing.openswan.org]...192.168.0.200[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient rw-any finished with: 1 [132.213.238.7]

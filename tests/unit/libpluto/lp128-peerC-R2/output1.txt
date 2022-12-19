@@ -18,9 +18,9 @@
 ./peerC-R2 registered kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 ./peerC-R2 registered kernel integ algorithm hmac_sha2_512_256 [14, 256<=key<=256]
 | processing whack message of size: A
-| Added new connection peerC--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+./peerC-R2 Adding new connection peerC--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
-./peerC-R2   loading certificate from bobCert.pem
+|   loading certificate from bobCert.pem
 ./peerC-R2   loaded host cert file '../../libpluto/samples/bob/certs/bobCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org is 0
@@ -33,7 +33,7 @@
 | connect_to_host_pair: fe80::ec68:7cff:fe0c:1c1c:500 %address fe80::8054:3eff:fe9a:d3f4:500 -> hp:none
 | find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org him=<any> (exact)
 |   concluded with <none>
-./peerC-R2 adding connection: "peerC--peerA"
+| added connection: "peerC--peerA"
 | ::/0===fe80::ec68:7cff:fe0c:1c1c[C=CA, ST=ON, O=Xelerance, CN=bob@openswan.org]...fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerC--peerA finished with: 1 [fe80::ec68:7cff:fe0c:1c1c]

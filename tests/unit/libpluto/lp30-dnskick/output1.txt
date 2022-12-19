@@ -4,7 +4,7 @@
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection cpe with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+./kickdns Adding new connection cpe with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 | counting wild cards for @cpe.example.com is 0
 | counting wild cards for @example.com is 0
 | orient cpe checking against if: eth0 (AF_INET:192.168.1.1:500)
@@ -23,7 +23,7 @@
 | connect_to_host_pair: 0.0.0.0:500 %dns 93.184.216.34:500 -> hp:none
 | find_ID_host_pair: looking for me=@cpe.example.com him=@example.com (exact)
 |   concluded with <none>
-./kickdns adding connection: "cpe"
+| added connection: "cpe"
 | %any[@cpe.example.com]...93.184.216.34<example.com>[@example.com]===10.2.0.0/16
 | ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient cpe finished with: 1 [192.168.1.1]

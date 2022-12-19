@@ -20,9 +20,9 @@ ike_alg_register_hash(): Activating OAKLEY_MD5: Ok (ret=0)
 ike_alg_register_prf(): Activating prf-hmac-md5: Ok (ret=0)
 starting up X cryptographic helpers
 Using 'no_kernel' interface code on
+Adding new connection venus-icmp with policy PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK+DROP+NEVER_NEGOTIATE
 their side id: is wildcard
-adding connection: "venus-icmp"
+Adding new connection local-net with policy PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK+PASS+NEVER_NEGOTIATE
 their side id: is wildcard
-adding connection: "local-net"
 "local-net": deleting connection
 "venus-icmp": deleting connection

@@ -18,8 +18,8 @@
 ./peerA-I1 registered kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 ./peerA-I1 registered kernel integ algorithm hmac_sha2_512_256 [14, 256<=key<=256]
 | processing whack message of size: A
-| Added new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./peerA-I1   loading certificate from daveCert.pem
+./peerA-I1 Adding new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   loading certificate from daveCert.pem
 ./peerA-I1   loaded host cert file '../samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org is 0
@@ -33,7 +33,7 @@
 | connect_to_host_pair: fe80::8054:3eff:fe9a:d3f4:500 %address fe80::ec68:7cff:fe0c:9aa4:500 -> hp:none
 | find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=<any> (exact)
 |   concluded with <none>
-./peerA-I1 adding connection: "peerA--peerB"
+| added connection: "peerA--peerB"
 | ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]

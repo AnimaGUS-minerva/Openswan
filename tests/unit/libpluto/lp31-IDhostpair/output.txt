@@ -6,7 +6,7 @@
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection mytunnel with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
+./IDhostpair Adding new connection mytunnel with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 ./IDhostpair use keyid: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 / 2:<>
 | counting wild cards for @openswan.testing.xelerance.com is 0
 ./IDhostpair use keyid: 1:6A25 871D 6F8C 9865 6C82 C13E F57C 99B4 C61A D173 / 2:<>
@@ -21,7 +21,7 @@
 | connect_to_host_pair: 192.168.1.1:500 %any 0.0.0.0:500 -> hp:none
 | find_ID_host_pair: looking for me=@openswan.testing.xelerance.com him=@dnsh2h2 (exact)
 |   concluded with <none>
-./IDhostpair adding connection: "mytunnel"
+| added connection: "mytunnel"
 | 192.168.1.1[@openswan.testing.xelerance.com]---192.139.46.65...%any[@dnsh2h2]
 | ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0; policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 ./IDhostpair loaded key: 66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
@@ -30,7 +30,7 @@
 | find_host_pair: comparing to me=192.168.1.1:500 %any him=0.0.0.0:500
 | find_host_pair: concluded with mytunnel
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:mytunnel
-| Added new connection mytunnel2 with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
+./IDhostpair Adding new connection mytunnel2 with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 ./IDhostpair use keyid: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 / 2:<>
 | counting wild cards for @openswan.testing.xelerance.com is 0
 ./IDhostpair use keyid: 1:A9AA 8D65 3DB6 D939 2943 917B F17C 2031 68AD BCB3 / 2:<>
@@ -47,7 +47,7 @@
 | find_ID_host_pair: looking for me=@openswan.testing.xelerance.com him=@oswclient2 (exact)
 |                   comparing to me=@openswan.testing.xelerance.com him=@dnsh2h2 (mytunnel)
 |   concluded with <none>
-./IDhostpair adding connection: "mytunnel2"
+| added connection: "mytunnel2"
 | 192.168.1.1[@openswan.testing.xelerance.com]---192.139.46.65...%any[@oswclient2]
 | ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0; policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 RC=2 IP hostpairs:

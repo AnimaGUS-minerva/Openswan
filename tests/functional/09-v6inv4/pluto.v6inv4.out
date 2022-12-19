@@ -22,9 +22,8 @@ ike_alg_register_prf(): Activating prf-hmac-md5: Ok (ret=0)
 starting up X cryptographic helpers
 Using 'no_kernel' interface code on
   loaded CA cert file 'rootCA.pem' (CERT bytes)
-  loading certificate from moonCert.pem 
+Adding new connection net-net with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
   loaded host cert file '../../unit/libpluto/samples/moon/certs/moonCert.pem' (CERT bytes)
-adding connection: "net-net"
 loading secrets from "../../unit/libpluto/samples/moon.secrets"
   loaded private key file '../../unit/libpluto/samples/moon/private/moonKey.pem' (CERT bytes)
 loaded private key for keyid: PPK_RSA:AwEAAeOoT/75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535

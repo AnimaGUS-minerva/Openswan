@@ -21,15 +21,15 @@
 ./v1emptyM1    port floating activation criteria nat_t=1/port_float=1
 ./v1emptyM1    NAT-Traversal support  [enabled]
 | processing whack message of size: A
-| Added new connection homeV1empty with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
+./v1emptyM1 Adding new connection homeV1empty with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 | from whack: got --esp=3des-md5;modp1536
 | esp string values: 3des(3)_192-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
 | ike (phase1) algorithm values: aes_cbc(12)_256-hmac_sha2_384_192(13)-prfsha2_384(6)-MODP4096(16); flags=-strict
-./v1emptyM1   loading certificate from carolCert.pem
+|   loading certificate from carolCert.pem
 ./v1emptyM1   loaded host cert file '../samples/carol/certs/carolCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org is 0
-./v1emptyM1   loading certificate from moonCert.pem
+|   loading certificate from moonCert.pem
 ./v1emptyM1   loaded host cert file '../samples/carol/certs/moonCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for @moon.strongswan.org is 0
@@ -43,7 +43,7 @@
 | connect_to_host_pair: 192.168.0.100:500 %address 192.168.0.1:500 -> hp:none
 | find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org him=@moon.strongswan.org (exact)
 |   concluded with <none>
-./v1emptyM1 adding connection: "homeV1empty"
+| added connection: "homeV1empty"
 | 192.168.0.100[C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org]...192.168.0.1[@moon.strongswan.org]===10.1.0.0/16
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 |   orient homeV1empty finished with: 1 [0.0.0.0]

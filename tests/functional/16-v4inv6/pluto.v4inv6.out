@@ -25,11 +25,9 @@ Could not change to directory 'moon/cacerts': No such file or directory
 Could not change to directory 'moon/aacerts': No such file or directory
 Could not change to directory 'moon/ocspcerts': No such file or directory
 Could not change to directory 'moon/crls': 2 No such file or directory
-  loading certificate from moonCert.pem 
+Adding new connection net-net with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
   loaded host cert file 'moon/certs/moonCert.pem' (1468 bytes)
-  loading certificate from daveCert.pem 
   loaded host cert file 'moon/certs/daveCert.pem' (1468 bytes)
-adding connection: "net-net"
 loading secrets from "moon.secrets"
 002 loading secrets from "moon.secrets"
 000 using kernel interface: noklips

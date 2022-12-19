@@ -9,8 +9,8 @@
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection nat-t with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
-./loadbob   loading certificate from bobCert.pem
+./loadbob Adding new connection nat-t with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
+|   loading certificate from bobCert.pem
 ./loadbob   loaded host cert file '../../../functional/10-defaultroute/bob/certs/bobCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for bob@strongswan.org is 0
@@ -29,7 +29,7 @@
 | connect_to_host_pair: 0.0.0.0:500 %defaultroute 0.0.0.0:500 -> hp:none
 | find_ID_host_pair: looking for me=<any> him=bob@strongswan.org (exact)
 |   concluded with <none>
-./loadbob adding connection: "nat-t"
+| added connection: "nat-t"
 | 10.1.0.0/16===%any...%any[bob@strongswan.org]
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 RC=0 "nat-t": 10.1.0.0/16===%any...%any[bob@strongswan.org]; unrouted; eroute owner: #0

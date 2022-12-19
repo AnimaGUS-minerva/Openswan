@@ -16,7 +16,7 @@
 ./sarespond no secrets filename matched "../samples/parker.secrets"
 | processing whack message of size: A
 ./sarespond loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
-| Added new connection mytunnel-byip with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+./sarespond Adding new connection mytunnel-byip with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 | counting wild cards for 192.168.1.1 is 0
 ./sarespond use keyid: 1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C / 2:<>
 | counting wild cards for 132.213.238.7 is 0
@@ -30,7 +30,7 @@
 | connect_to_host_pair: 192.168.1.1:500 %address 132.213.238.7:500 -> hp:none
 | find_ID_host_pair: looking for me=192.168.1.1 him=132.213.238.7 (exact)
 |   concluded with <none>
-./sarespond adding connection: "mytunnel-byip"
+| added connection: "mytunnel-byip"
 | 192.168.1.1...132.213.238.7
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient mytunnel-byip finished with: 1 [192.168.1.1]

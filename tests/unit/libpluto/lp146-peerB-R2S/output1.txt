@@ -18,9 +18,9 @@
 ./peerB-R2S   loaded private key file '../samples/carol/private/carolKey.pem' (CERT bytes)
 ./peerB-R2S loaded private key for keyid: PPK_RSA:AwEAAbfz1/C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB
 | processing whack message of size: A
-| Added new connection peerB--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+./peerB-R2S Adding new connection peerB--peerA with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=* is 1
-./peerB-R2S   loading certificate from carolCert.pem
+|   loading certificate from carolCert.pem
 ./peerB-R2S   loaded host cert file '../samples/carol/certs/carolCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org is 0
@@ -33,7 +33,7 @@
 | connect_to_host_pair: fe80::ec68:7cff:fe0c:9aa4:500 %address fe80::8054:3eff:fe9a:d3f4:500 -> hp:none
 | find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org him=<any> (exact)
 |   concluded with <none>
-./peerB-R2S adding connection: "peerB--peerA"
+| added connection: "peerB--peerA"
 | ::/0===fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org]...fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerB--peerA finished with: 1 [fe80::ec68:7cff:fe0c:9aa4]
