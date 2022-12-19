@@ -18,8 +18,8 @@
 ./peerA-I5   loaded private key file '../samples/davecert/private/daveKey.pem' (CERT bytes)
 ./peerA-I5 loaded private key for keyid: PPK_RSA:AwEAAeOoT/75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535
 | processing whack message of size: A
-| Added new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./peerA-I5   loading certificate from daveCert.pem
+./peerA-I5 Adding new connection peerA--peerB with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   loading certificate from daveCert.pem
 ./peerA-I5   loaded host cert file '../samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org is 0
@@ -33,11 +33,11 @@
 | connect_to_host_pair: fe80::8054:3eff:fe9a:d3f4:500 %address fe80::ec68:7cff:fe0c:9aa4:500 -> hp:none
 | find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=<any> (exact)
 |   concluded with <none>
-./peerA-I5 adding connection: "peerA--peerB"
+| added connection: "peerA--peerB"
 | ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:9aa4[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-| Added new connection peerA--peerC with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./peerA-I5   loading certificate from daveCert.pem
+./peerA-I5 Adding new connection peerA--peerC with policy RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   loading certificate from daveCert.pem
 ./peerA-I5   loaded host cert file '../samples/davecert/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org is 0
@@ -53,7 +53,7 @@
 | find_ID_host_pair: looking for me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=<any> (exact)
 |                   comparing to me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=* (peerA--peerB)
 |   concluded with peerA--peerB
-./peerA-I5 adding connection: "peerA--peerC"
+| added connection: "peerA--peerC"
 | ::/0===fe80::8054:3eff:fe9a:d3f4[C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org]...fe80::ec68:7cff:fe0c:1c1c[C=CA, ST=ON, O=Xelerance, CN=*]===::/0
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient peerA--peerB finished with: 1 [fe80::8054:3eff:fe9a:d3f4]
@@ -1038,6 +1038,8 @@ RC=0 #2: "peerA--peerB":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established);
 RC=0 #2: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=*
 RC=0 #1: "peerA--peerB":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1,initiator; msgid=0; idle; import:admin initiate
 RC=0 #1: "peerA--peerB":500 IKEv2.0 me=C=CA, ST=ON, O=Xelerance, CN=dave@openswan.org him=C=CA, ST=ON, O=Xelerance, CN=carol@openswan.org
+| find_phase1_state: checking state=2 best=0 peer_ids=1
+| find_phase1_state: checking state=1 best=0 peer_ids=1
 | find_phase1_state: no SA found for conn 'peerA--peerC'
 | creating state object #3 at Z
 | orient peerA--peerC checking against if: eth0 (AF_INET6:fe80::8054:3eff:fe9a:d3f4:500)

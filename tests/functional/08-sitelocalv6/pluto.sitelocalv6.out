@@ -20,8 +20,8 @@ ike_alg_register_hash(): Activating OAKLEY_MD5: Ok (ret=0)
 ike_alg_register_prf(): Activating prf-hmac-md5: Ok (ret=0)
 starting up X cryptographic helpers
 Using 'no_kernel' interface code on
-adding connection: "host-host"
-002 adding connection: "host-host"
+Adding new connection host-host with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
+002 Adding new connection host-host with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 opening file: ZZ
 loading named conns: host-host
 000 using kernel interface: noklips

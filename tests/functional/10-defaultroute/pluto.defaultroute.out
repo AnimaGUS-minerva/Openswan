@@ -22,10 +22,9 @@ ike_alg_register_prf(): Activating prf-hmac-md5: Ok (ret=0)
 starting up X cryptographic helpers
 Using 'no_kernel' interface code on
   loaded CA cert file 'strongswanCert.pem' (CERT bytes)
-  loading certificate from bobCert.pem 
+Adding new connection nat-t with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
   loaded host cert file 'bob/certs/bobCert.pem' (CERT bytes)
 my side id: is wildcard
-adding connection: "nat-t"
 loading secrets from "bob.secrets"
   loaded private key file 'bob/private/bobKey.pem' (CERT bytes)
 loaded private key for keyid: PPK_RSA:AwEAAbXtb/A339 C44A 54EA F8CD A71A 5BC3 31B6 80CE 210B CBFE

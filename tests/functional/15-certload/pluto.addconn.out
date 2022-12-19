@@ -21,16 +21,12 @@ ike_alg_register_prf(): Activating prf-hmac-md5: Ok (ret=0)
 starting up X cryptographic helpers
 Using 'no_kernel' interface code on
   loaded CA cert file 'strongswanCert.pem' (1350 bytes)
-  loading certificate from moonCert.pem 
+Adding new connection net-net-works with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
   loaded host cert file '/PATH/tests/functional/15-certload/OUTPUT/certs/moonCert.pem' (1468 bytes)
-  loading certificate from daveCert.pem 
   loaded host cert file '/PATH/tests/functional/15-certload/OUTPUT/certs/daveCert.pem' (1468 bytes)
-adding connection: "net-net-works"
-  loading certificate from moonCert.pem 
+Adding new connection net-net-fails with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
   loaded host cert file '/PATH/tests/functional/15-certload/OUTPUT/certs/moonCert.pem' (1468 bytes)
-  loading certificate from missingCert.pem 
   could not open host cert file '/PATH/tests/functional/15-certload/OUTPUT/certs/missingCert.pem'
-adding connection: "net-net-fails"
 000 using kernel interface: noklips
 000 using secrets file: /etc/ipsec.secrets
 000 link-local addresses are: ignored

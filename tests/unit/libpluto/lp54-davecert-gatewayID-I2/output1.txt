@@ -21,8 +21,8 @@
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection home with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./davecertI2-id   loading certificate from daveCert.pem
+./davecertI2-id Adding new connection home with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
+|   loading certificate from daveCert.pem
 ./davecertI2-id   loaded host cert file '../samples/selfsigned/certs/daveCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for dave@openswan.org is 0
@@ -39,7 +39,7 @@
 | connect_to_host_pair: 0.0.0.0:500 %address 132.213.238.7:500 -> hp:none
 | find_ID_host_pair: looking for me=dave@openswan.org him=@moon.strongswan.org (exact)
 |   concluded with <none>
-./davecertI2-id adding connection: "home"
+| added connection: "home"
 | %any[dave@openswan.org]...132.213.238.7[@moon.strongswan.org]===10.2.0.0/16
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient home finished with: 1 [0.0.0.0]

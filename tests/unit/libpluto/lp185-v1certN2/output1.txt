@@ -21,11 +21,11 @@
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection rw with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
+./v1certN2 Adding new connection rw with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 | from whack: got --esp=3des-md5;modp1536
 | esp string values: 3des(3)_192-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
 | ike (phase1) algorithm values: 3des(3)-hmac_md5_96(1)-prfmd5(1)-MODP2048(14); flags=-strict
-./v1certN2   loading certificate from moonCert.pem
+|   loading certificate from moonCert.pem
 ./v1certN2   loaded host cert file '../../libpluto/samples/moon/certs/moonCert.pem' (CERT bytes)
 | certificate is valid
 | counting wild cards for @moon.strongswan.org is 0
@@ -43,7 +43,7 @@
 | connect_to_host_pair: 192.168.0.1:500 %any 0.0.0.0:500 -> hp:none
 | find_ID_host_pair: looking for me=@moon.strongswan.org him=<any> (exact)
 |   concluded with <none>
-./v1certN2 adding connection: "rw"
+| added connection: "rw"
 | 10.1.0.0/16===192.168.0.1[@moon.strongswan.org]...%any
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 |   orient rw finished with: 1 [0.0.0.0]

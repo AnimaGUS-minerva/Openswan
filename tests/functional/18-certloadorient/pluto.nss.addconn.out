@@ -20,9 +20,7 @@ ike_alg_register_hash(): Activating OAKLEY_MD5: Ok (ret=0)
 ike_alg_register_prf(): Activating prf-hmac-md5: Ok (ret=0)
 starting up X cryptographic helpers
 Using 'no_kernel' interface code on
-  loading certificate from berri1.pem 
-  loading certificate from peel1.pem 
-adding connection: "green"
+Adding new connection green with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 listening for IKE messages
 no public interfaces found
 loading secrets from "ipsec.nss.secrets"

@@ -21,7 +21,7 @@
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection t4901 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
+./parentN2 Adding new connection t4901 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 ./parentN2 use keyid: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 / 2:<>
 | counting wild cards for @berri.testing.xelerance.com is 0
 ./parentN2 use keyid: 1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 / 2:<>
@@ -35,7 +35,7 @@
 | connect_to_host_pair: 132.213.238.7:500 %any 0.0.0.0:500 -> hp:none
 | find_ID_host_pair: looking for me=132.213.238.7 him=@berri.testing.xelerance.com (exact)
 |   concluded with <none>
-./parentN2 adding connection: "t4901"
+| added connection: "t4901"
 | 2620:120:9000:82::/64===132.213.238.7...%any[@berri.testing.xelerance.com]===2620:120:9000:81::/64
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 |   orient t4901 finished with: 1 [132.213.238.7]
