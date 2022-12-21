@@ -30,6 +30,7 @@ addons:
       - libnss3-tools
 
 cache:
+  cargo:
   directories:
   - $HOME/stuff
   - $HOME/.ccache
