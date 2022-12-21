@@ -27,6 +27,9 @@ ifeq ($(USE_BSDKAME),true)
 SUBDIRS+=libbsdpfkey
 endif
 
+CARGO?=cargo
+RUST_SUBDIRS=libxfrmeroute
+
 def:
 	@echo "Please read doc/intro.html or INSTALL before running make"
 	@false
@@ -38,4 +41,15 @@ cleanall distclean mostlyclean realclean install programs checkprograms check cl
 	do \
 		(cd $$d && $(MAKE) srcdir=${srcdir}$$d/ OPENSWANSRCDIR=$(OPENSWANSRCDIR) $@ ) || exit 1;\
 	done;
+	for d in ${RUST_SUBDIRS} ; \
+	@do \
+		mkdir -p ${OBJDIRTOP}/lib/$$d; \
+		echo Building $$d ;\
+		(cd ${srcdir}/$$d && ${CARGO} build --target-dir ${OBJDIRTOP}/lib/$$d ); \
+	done;
 
+
+includes: ${OPENSWANSRCDIR}/include/openswan/xfrmroute.h
+
+${OPENSWANSRCDIR}/include/openswan/xfrmroute.h: libxfrmeroute/Cargo.toml
+	(cd libxfrmeroute && cbindgen ) > ${OPENSWANSRCDIR}/include/openswan/xfrmroute.h

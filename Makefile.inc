@@ -577,6 +577,9 @@ LIBSHA2=${OBJDIRTOP}/lib/libcrypto/libsha2/libsha2.a
 CRYPTOLIBS= ${LIBOSWCRYPTO}
 CRYPTOLIBS+=${LIBAES} ${LIBSHA1} ${LIBMD5} ${LIBDESLITE} ${LIBSHA2}
 
+# XXX probably should not hard code debug
+LIBXFRMROUTE=${OBJDIRTOP}/lib/libxfrmeroute/debug/liblibxfrmeroute.so
+
 IKE_CRYPTO_DEFINES=-DUSE_AES -DUSE_3DES -DUSE_SHA2 -DUSE_SHA1 -DUSE_MD5
 
 ifeq ($(USE_EXTRACRYPTO),true)

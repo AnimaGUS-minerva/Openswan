@@ -43,6 +43,7 @@
 
 #include <openswan/pfkeyv2.h>
 #include <openswan/pfkey.h>
+#include <openswan/xfrmroute.h>
 
 #include "sysdep.h"
 #include "setproctitle.h"
@@ -240,6 +241,8 @@ main(int argc, char **argv)
 
     progname = argv[0];
     alloc_chunk(option_encoded, 4096, "encoded_options");
+
+    printf("sum of 4 + 5 = %d\n", xfrm_route_add(4, 5));
 
 #ifdef HAVE_LIBCAP_NG
 	/* Drop capabilities */
