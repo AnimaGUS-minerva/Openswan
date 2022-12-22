@@ -17,17 +17,15 @@
 #include "openswan.h"
 #include "constants.h"
 
-static int samenbits(const ip_address *a, const ip_address *b, int n);
+static bool samenbits(const ip_address *a, const ip_address *b, int n);
 
 /*
  - addrcmp - compare two addresses
  * Caution, the order of the tests is subtle:  doing type test before
  * size test can yield cases where a<b, b<c, but a>c.
  */
-int				/* like memcmp */
-addrcmp(a, b)
-const ip_address *a;
-const ip_address *b;
+int
+addrcmp(const ip_address *a, const ip_address *b)
 {
 	int at = addrtypeof(a);
 	int bt = addrtypeof(b);
@@ -59,10 +57,7 @@ const ip_address *b;
 /*
  - sameaddr - are two addresses the same?
  */
-bool
-sameaddr(a, b)
-const ip_address *a;
-const ip_address *b;
+bool sameaddr(const ip_address *a, const ip_address *b)
 {
 	return (addrcmp(a, b) == 0) ? 1 : 0;
 }
@@ -71,9 +66,7 @@ const ip_address *b;
  - samesubnet - are two subnets the same?
  */
 bool
-samesubnet(a, b)
-const ip_subnet *a;
-const ip_subnet *b;
+samesubnet(const ip_subnet *a, const ip_subnet *b)
 {
 	if (!sameaddr(&a->addr, &b->addr))	/* also does type check */
 		return 0;
@@ -86,8 +79,7 @@ const ip_subnet *b;
  - subnetishost - is a subnet in fact a single host?
  */
 bool
-subnetishost(a)
-const ip_subnet *a;
+subnetishost(const ip_subnet *a)
 {
 	return (a->maskbits == addrlenof(&a->addr)*8) ? 1 : 0;
 }
@@ -96,9 +88,7 @@ const ip_subnet *a;
  - samesaid - are two SA IDs the same?
  */
 bool
-samesaid(a, b)
-const ip_said *a;
-const ip_said *b;
+samesaid(const ip_said *a, const ip_said *b)
 {
 	if (a->spi != b->spi)	/* test first, most likely to be different */
 		return 0;
@@ -113,9 +103,7 @@ const ip_said *b;
  - sameaddrtype - do two addresses have the same type?
  */
 bool
-sameaddrtype(a, b)
-const ip_address *a;
-const ip_address *b;
+sameaddrtype(const ip_address *a, const ip_address *b)
 {
 	return (addrtypeof(a) == addrtypeof(b)) ? 1 : 0;
 }
@@ -124,9 +112,7 @@ const ip_address *b;
  - samesubnettype - do two subnets have the same type?
  */
 bool
-samesubnettype(a, b)
-const ip_subnet *a;
-const ip_subnet *b;
+samesubnettype(const ip_subnet *a, const ip_subnet *b)
 {
 	return (subnettypeof(a) == subnettypeof(b)) ? 1 : 0;
 }
@@ -135,9 +121,7 @@ const ip_subnet *b;
  - addrinsubnet - is this address in this subnet?
  */
 bool
-addrinsubnet(a, s)
-const ip_address *a;
-const ip_subnet *s;
+addrinsubnet(const ip_address *a, const ip_subnet *s)
 {
 	if (addrtypeof(a) != subnettypeof(s))
 		return 0;
@@ -150,9 +134,7 @@ const ip_subnet *s;
  - subnetinsubnet - is one subnet within another?
  */
 bool
-subnetinsubnet(a, b)
-const ip_subnet *a;
-const ip_subnet *b;
+subnetinsubnet(const ip_subnet *a, const ip_subnet *b)
 {
 	if (subnettypeof(a) != subnettypeof(b))
 		return 0;
@@ -167,10 +149,7 @@ const ip_subnet *b;
  - samenbits - do two addresses have the same first n bits?
  */
 static bool
-samenbits(a, b, nbits)
-const ip_address *a;
-const ip_address *b;
-int nbits;
+samenbits(const ip_address *a, const ip_address *b, int nbits)
 {
 	unsigned char *ap;
 	unsigned char *bp;
