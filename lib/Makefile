@@ -41,8 +41,8 @@ cleanall distclean mostlyclean realclean install programs checkprograms check cl
 	do \
 		(cd $$d && $(MAKE) srcdir=${srcdir}$$d/ OPENSWANSRCDIR=$(OPENSWANSRCDIR) $@ ) || exit 1;\
 	done;
-	for d in ${RUST_SUBDIRS} ; \
-	@do \
+	@for d in ${RUST_SUBDIRS} ; \
+	do \
 		mkdir -p ${OBJDIRTOP}/lib/$$d; \
 		echo Building $$d ;\
 		(cd ${srcdir}/$$d && ${CARGO} build --target-dir ${OBJDIRTOP}/lib/$$d ); \
@@ -51,5 +51,5 @@ cleanall distclean mostlyclean realclean install programs checkprograms check cl
 
 includes: ${OPENSWANSRCDIR}/include/openswan/xfrmroute.h
 
-${OPENSWANSRCDIR}/include/openswan/xfrmroute.h: libxfrmeroute/Cargo.toml
-	(cd libxfrmeroute && cbindgen ) > ${OPENSWANSRCDIR}/include/openswan/xfrmroute.h
+${OPENSWANSRCDIR}/include/openswan/xfrmroute.h: libxfrmeroute/Cargo.toml $(wildcard libxfrmeroute/src/*.rs)
+	(cd libxfrmeroute && cbindgen --lang C -o ${OPENSWANSRCDIR}/include/openswan/xfrmroute.h )

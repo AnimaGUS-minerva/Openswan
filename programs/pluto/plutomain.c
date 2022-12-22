@@ -242,8 +242,6 @@ main(int argc, char **argv)
     progname = argv[0];
     alloc_chunk(option_encoded, 4096, "encoded_options");
 
-    printf("sum of 4 + 5 = %d\n", xfrm_route_add(4, 5));
-
 #ifdef HAVE_LIBCAP_NG
 	/* Drop capabilities */
 	capng_clear(CAPNG_SELECT_BOTH);
@@ -274,6 +272,8 @@ main(int argc, char **argv)
     }
 
     reset_debugging();
+
+    struct XfrmErouteHandle *xeh = xfrm_eroute_initialize();
 
     oco = osw_init_options();
 
