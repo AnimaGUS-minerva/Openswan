@@ -17,7 +17,7 @@
  */
 #define	_OPENSWAN_H	/* seen it, no need to see it again */
 
-/* you'd think this should be builtin to compiler... */
+#include <stdbool.h>
 #ifndef TRUE
 #define TRUE 1
 #endif
@@ -319,7 +319,7 @@ size_t splitkeytoid(const unsigned char *e, size_t elen, const unsigned char *m,
 					size_t mlen, char *dst, size_t dstlen);
 #define	KEYID_BUF	10	/* up to 9 text digits plus NUL */
 err_t ttoprotoport(char *src, size_t src_len, u_int8_t *proto, u_int16_t *port,
-                                                       int *has_port_wildcard);
+                   bool *has_port_wildcard);
 
 /* used to process ckaid in hex */
 #define CKAID_BUFSIZE 20
@@ -351,19 +351,19 @@ void networkof(const ip_subnet *src, ip_address *dst);
 void maskof(const ip_subnet *src, ip_address *dst);
 
 /* tests */
-int sameaddr(const ip_address *a, const ip_address *b);
-int addrcmp(const ip_address *a, const ip_address *b);
-int samesubnet(const ip_subnet *a, const ip_subnet *b);
-int addrinsubnet(const ip_address *a, const ip_subnet *s);
-int subnetinsubnet(const ip_subnet *a, const ip_subnet *b);
-int subnetishost(const ip_subnet *s);
-int samesaid(const ip_said *a, const ip_said *b);
-int sameaddrtype(const ip_address *a, const ip_address *b);
-int samesubnettype(const ip_subnet *a, const ip_subnet *b);
-int isvalidsubnet(const ip_subnet *a);
-int isanyaddr(const ip_address *src);
-int isunspecaddr(const ip_address *src);
-int isloopbackaddr(const ip_address *src);
+bool sameaddr(const ip_address *a, const ip_address *b);
+int  addrcmp(const ip_address *a, const ip_address *b);
+bool samesubnet(const ip_subnet *a, const ip_subnet *b);
+bool addrinsubnet(const ip_address *a, const ip_subnet *s);
+bool subnetinsubnet(const ip_subnet *a, const ip_subnet *b);
+bool subnetishost(const ip_subnet *s);
+bool samesaid(const ip_said *a, const ip_said *b);
+bool sameaddrtype(const ip_address *a, const ip_address *b);
+bool samesubnettype(const ip_subnet *a, const ip_subnet *b);
+bool isvalidsubnet(const ip_subnet *a);
+bool isanyaddr(const ip_address *src);
+bool isunspecaddr(const ip_address *src);
+bool isloopbackaddr(const ip_address *src);
 
 /* low-level grot */
 int portof(const ip_address *src);

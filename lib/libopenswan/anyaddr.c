@@ -85,9 +85,8 @@ ip_address *dst;
 /*
  - isanyaddr - test for the any-address value
  */
-int
-isanyaddr(src)
-const ip_address *src;
+bool
+isanyaddr(const ip_address *src)
 {
 	uint32_t v4any = htonl(INADDR_ANY);
 	int cmp;
@@ -102,10 +101,10 @@ const ip_address *src;
 
 	case 0:
 		/* a zeroed structure is considered any address */
-		return 1;
+		return true;
 
 	default:
-		return 0;
+		return false;
 		break;
 	}
 
@@ -115,9 +114,8 @@ const ip_address *src;
 /*
  - isunspecaddr - test for the unspecified-address value
  */
-int
-isunspecaddr(src)
-const ip_address *src;
+bool
+isunspecaddr(const ip_address *src)
 {
 	return isanyaddr(src);
 }
@@ -125,9 +123,8 @@ const ip_address *src;
 /*
  - isloopbackaddr - test for the loopback-address value
  */
-int
-isloopbackaddr(src)
-const ip_address *src;
+bool
+isloopbackaddr(const ip_address *src)
 {
 	uint32_t v4loop = htonl(INADDR_LOOPBACK);
 	int cmp;
