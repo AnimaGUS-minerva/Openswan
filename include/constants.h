@@ -48,10 +48,7 @@
  * <openswan.h> defines err_t for this return type.
  */
 
-#ifndef OPENSWAN_COCOA_APP
-typedef int bool;
-#endif
-
+#include <stdbool.h>
 #define FALSE	0
 #define TRUE	1
 
