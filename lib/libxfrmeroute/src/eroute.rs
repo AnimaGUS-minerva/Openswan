@@ -17,18 +17,25 @@
 
 //use std::net::Ipv6Addr;
 //use std::sync::Arc;
-use rtnetlink::{Handle};
+
+// probably not rtnetlink, but needs to be xfrmnetlink!
+use std::io::Error;
+use rtnetlink::sys::SocketAddr;
+use rtnetlink::{packet::{NetlinkMessage, RtnlMessage}, Handle, proto::Connection, new_connection};
+use futures::channel::mpsc::UnboundedReceiver;
 
 //#[derive(Debug)]
 //pub struct XfrmErouteManager
 //    pub handle:    Some(Handle)
 //}
 
-#[derive(Debug)]
 pub struct XfrmErouteHandle {
-    handle:    Option<Handle>,
-    //manager: Arc<XfrmErouteManager>,
+    connection: Connection<RtnlMessage>,
+    handle:     Handle,
+    messages:   UnboundedReceiver<(NetlinkMessage<RtnlMessage>, SocketAddr)>,
 }
+
+pub type IPsec_SPI = u32;
 
 #[no_mangle]
 pub extern "C" fn xfrm_eroute_initialize() -> *mut XfrmErouteHandle {
@@ -37,9 +44,12 @@ pub extern "C" fn xfrm_eroute_initialize() -> *mut XfrmErouteHandle {
 
 impl XfrmErouteHandle {
     fn new() -> XfrmErouteHandle {
+        let (connection, handle, messages) = new_connection().map_err(|e| format!("{}", e)).unwrap();
+
         XfrmErouteHandle {
-            handle: None
-            //manager: Arc::new(XfrmErouteManager::new()),
+            handle: handle,
+            connection: connection,
+            messages: messages
         }
     }
 }
@@ -50,6 +60,31 @@ pub extern "C" fn xfrm_eroute_free(ptr: *mut XfrmErouteHandle) {
         return;
     };
     unsafe { drop(Box::from_raw(ptr)); } // the underlying contents then get freed
+}
+
+#[no_mangle]
+pub extern "C" fn xfrm_raw_eroute(ptr: *mut XfrmErouteHandle
+                                  , const ip_address *this_host
+		                  , const ip_subnet *this_client
+		                  , const ip_address *that_host
+		                  , const ip_subnet *that_client
+		                  spi:   IPsec_SPI,
+		                  proto: u16,
+		                  transport_proto: u16,
+		                  , enum eroute_type esatype
+		                  , const struct pfkey_proto_info *proto_info
+		                  , time_t use_lifetime UNUSED
+		                  , enum pluto_sadb_operations sadb_op
+		                  text_said: String,
+                                  , uint32_t if_id) -> Result<(), Error> {
+
+    if ptr.is_null() {
+        return Err(io::Error::new(
+            io::ErrorKind::InvalidData, "bad xfrm pointer".to_string()));
+    };
+    let xfrmhandle = unsafe { Box::from_raw(ptr) };
+
+    Ok(())
 }
 
 //#[no_mangle]

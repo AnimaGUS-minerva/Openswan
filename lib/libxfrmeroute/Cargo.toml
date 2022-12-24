@@ -9,4 +9,5 @@ edition = "2021"
 crate-type      = ["staticlib"]
 
 [dependencies]
-rtnetlink     = { features = [ "tokio_socket" ], version = "0.11.*" }
+rtnetlink  = { features = [ "tokio_socket" ], version = "0.11.*" }
+futures    = "*"
