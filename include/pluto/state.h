@@ -487,6 +487,8 @@ static inline u_int compute_icookie_rcookie_hash(const u_char *icookie,
     return i;
 }
 
+extern void foreach_state(bool (*statecontinue)(struct state *st, void *arg)
+                          , void *arg);
 extern void foreach_states_by_connection_func(struct connection *c
                                               , bool (*comparefunc)(struct state *st, struct connection *c, void *arg, int pass)
                                               , void (*successfunc)(struct state *st, struct connection *c, void *arg)
