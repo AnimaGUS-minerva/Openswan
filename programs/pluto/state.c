@@ -475,6 +475,27 @@ void free_state(struct state *st)
     pfree(st);
 }
 
+/* scan the list of states, reconnect to connection */
+static bool
+restore_eclipsed_state(struct state *st, void *arg)
+{
+    struct connection *c = (struct connection *)arg;
+
+    /* only consider child SAs */
+    if(!IS_CHILD_SA_ESTABLISHED(st)) return true;
+
+    if(st->st_connection == c) {
+        if(!route_and_eroute(c, &c->spd, &c->spd, st)) {
+            DBG(DBG_CONTROL
+                , DBG_log("restoring eclipsed state #%lu to %s"
+                          , st->st_serialno, c->name));
+            delete_ipsec_sa(st, FALSE);
+        }
+        return false;  /* no need to continue */
+    }
+    return true;
+}
+
 /* delete a state object */
 void
 delete_state(struct state *st)
@@ -586,6 +607,15 @@ delete_state(struct state *st)
 
     if (c->newest_isakmp_sa == st->st_serialno)
 	c->newest_isakmp_sa = SOS_NOBODY;
+
+    /*
+     * here, we look at any other states in this connection,
+     * and attempt to eroute them again so that they take
+     * over the eroute that was just deleted.
+     */
+    if (c->newest_ipsec_sa == SOS_NOBODY) {
+        foreach_state(restore_eclipsed_state, c);
+    }
 
     /*
      * fake a state change here while we are still associated with a
