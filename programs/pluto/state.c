@@ -625,75 +625,103 @@ states_use_connection(struct connection *c)
 }
 
 /*
+ * foreach_state function walks the state table, until function returns
+ * false.
+ */
+void
+foreach_state(bool (*statecontinue)(struct state *st, void *arg), void *arg)
+{
+    for (int i = 0; i < STATE_TABLE_SIZE; i++) {
+        struct state *st;
+
+        /* For each state in the hash chain... */
+        for (st = statetable[i]; st != NULL; ) {
+            struct state *this = st;
+            st = st->st_hashchain_next;	/* before this is deleted */
+
+            if(!(*statecontinue)(this, arg)) return;
+        }
+    }
+}
+
+/*
  * delete all states that were created for a given connection,
  * additionally delete any states for which func(st, arg)
- * returns true.
+ * returns true.  Needs foreach_state() above, so make a structure
+ * to hold all the functions we need.
  */
+
+struct states_by_connection {
+    struct connection *c;
+    bool (*comparefunc)(struct state *st, struct connection *c, void *arg, int pass);
+    void (*successfunc)(struct state *st, struct connection *c, void *arg);
+    void *arg;
+    int pass;
+};
+
+static bool
+delete_states_by_connection_func(struct state *this, void *arg)
+{
+    struct states_by_connection *sbc = (struct states_by_connection *)arg;
+
+    /* on pass 0, ignore phase1 states */
+    if(sbc->pass == 0 && IS_ISAKMP_SA_ESTABLISHED(this->st_state)) {
+        return true;
+    }
+
+    /* on pass 1, ignore phase2 states */
+    if(sbc->pass == 1 && IS_CHILD_SA(this)) {
+        return true;
+    }
+
+    /* call comparison function */
+    if ((*sbc->comparefunc)(this, sbc->c, sbc->arg, sbc->pass)) {
+            struct state *old_cur_state
+                = cur_state == this? NULL : cur_state;
+#ifdef DEBUG
+            lset_t old_cur_debugging = cur_debugging;
+#endif
+
+            set_cur_state(this);
+            (*sbc->successfunc)(this, sbc->c, sbc->arg);
+
+            cur_state = old_cur_state;
+#ifdef DEBUG
+            set_debugging(old_cur_debugging);
+#endif
+    }
+    return true;
+}
+
 void
 foreach_states_by_connection_func(struct connection *c
 				  , bool (*comparefunc)(struct state *st, struct connection *c, void *arg, int pass)
-				 , void (*successfunc)(struct state *st, struct connection *c, void *arg)
-				 , void *arg)
+                                  , void (*successfunc)(struct state *st, struct connection *c, void *arg)
+                                  , void *arg)
 {
-    int pass;
-    /* this kludge avoids an n^2 algorithm */
+    struct states_by_connection sbc;
+
+    sbc.c = c;
+    sbc.comparefunc = comparefunc;
+    sbc.successfunc = successfunc;
+    sbc.arg         = arg;
 
     /* We take two passes so that we delete any ISAKMP SAs last.
      * This allows Delete Notifications to be sent.
      * ?? We could probably double the performance by caching any
      * ISAKMP SA states found in the first pass, avoiding a second.
      */
-    for (pass = 0; pass != 2; pass++)
+    /* this kludge avoids an n^2 algorithm */
+    for (sbc.pass = 0; sbc.pass != 2; sbc.pass++)
     {
-	int i;
-
-        if(pass == 0) {
+        if(sbc.pass == 0) {
             DBG(DBG_CONTROL, DBG_log("pass 0: considering CHILD SAs to delete"));
         } else {
             DBG(DBG_CONTROL, DBG_log("pass 1: considering PARENT SAs to delete"));
         }
 
 	/* For each hash chain... */
-	for (i = 0; i < STATE_TABLE_SIZE; i++)
-	{
-	    struct state *st;
-
-	    /* For each state in the hash chain... */
-	    for (st = statetable[i]; st != NULL; )
-	    {
-		struct state *this = st;
-
-		st = st->st_hashchain_next;	/* before this is deleted */
-
-		/* on pass 0, ignore phase1 states */
- 		if(pass == 0 && IS_ISAKMP_SA_ESTABLISHED(this->st_state)) {
-		    continue;
-		}
-
-		/* on pass 1, ignore phase2 states */
- 		if(pass == 1 && IS_CHILD_SA(this)) {
-		    continue;
-		}
-
-		/* call comparison function */
-                if ((*comparefunc)(this, c, arg, pass))
-                {
-		    struct state *old_cur_state
-			= cur_state == this? NULL : cur_state;
-#ifdef DEBUG
-		    lset_t old_cur_debugging = cur_debugging;
-#endif
-
-                    set_cur_state(this);
-		    (*successfunc)(this, c, arg);
-
-		    cur_state = old_cur_state;
-#ifdef DEBUG
-		    set_debugging(old_cur_debugging);
-#endif
-		}
-	    }
-	}
+        foreach_state(delete_states_by_connection_func, &sbc);
     }
 }
 
