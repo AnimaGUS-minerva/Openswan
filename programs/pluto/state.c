@@ -572,8 +572,8 @@ delete_state(struct state *st)
     /* effectively, this deletes any ISAKMP SA that this state represents */
     unhash_state(st);
 
-    /* tell kernel to delete any IPSEC SA
-     * ??? we ought to tell peer to delete IPSEC SAs
+    /*
+     * tell kernel to delete any IPSEC SA, delete_ipsec_sa() might install other states.
      */
     if (IS_IPSEC_SA_ESTABLISHED(st->st_state)
 	|| IS_CHILD_SA_ESTABLISHED(st))
