@@ -40,6 +40,8 @@ ifeq (${WHACKFILE},)
 WHACKFILE=${OUTPUTS}/ikev2client.record.${ARCH}
 endif
 
+.PHONY: check
+
 Q=$(if ${V},,@)
 programs ${TESTNAME}: ${TESTNAME}.c $(wildcard ../seam_*.c) ${EXTRAOBJS}
 	@echo " CC ${TESTNAME}"
@@ -51,8 +53,7 @@ ${TESTNAME}.E: ${TESTNAME}.c
 	@echo " CC ${TESTNAME}"
 	${Q}${CC} -o ${TESTNAME}.E -E -c -g -O0 ${TESTNAME}.c ${EXTRAFLAGS}
 
-check: OUTPUT/R2-dump.txt
-OUTPUT/R2-dump.txt:	${WHACKFILE} ${TESTNAME}
+check: ${WHACKFILE} ${TESTNAME}
 	@mkdir -p OUTPUT
 	@echo "file ${TESTNAME}"          >.gdb1init
 	@echo "set args "${UNITTEST1ARGS} >>.gdb1init

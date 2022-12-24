@@ -31,6 +31,8 @@ FILTERS=sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/whack-processing.
 
 all: check
 
+.PHONY: check
+
 include Makefile.testcase
 
 ifeq (${WHACKFILE},)
@@ -50,8 +52,7 @@ programs ${TESTNAME}: ${TESTNAME}.c $(wildcard ../seam_*.c) ${EXTRAOBJS} $(wildc
 bootstrap: ${TESTNAME} ${WHACKFILE}
 	ulimit -c unlimited && ./${TESTNAME} -B ${UNITTEST1ARGS}
 
-check: OUTPUT/${TESTNAME}_1.txt
-OUTPUT/${TESTNAME}_1.txt:	${WHACKFILE} ${TESTNAME} output1.txt
+check: ${WHACKFILE} ${TESTNAME} output1.txt
 	@mkdir -p OUTPUT
 	@echo "file ${TESTNAME}"          >.gdb1init
 	@echo "set args "${UNITTEST1ARGS} >>.gdb1init

@@ -51,6 +51,8 @@ check: check1 check2 check3
 update: update1 update2 update3
 programs: ${TESTNAME}
 
+.PHONY: check1 check2 check3
+
 OUTPUT:
 	@mkdir -p OUTPUT
 

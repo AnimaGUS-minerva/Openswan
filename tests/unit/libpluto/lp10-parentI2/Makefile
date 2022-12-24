@@ -35,6 +35,8 @@ all: programs
 EF_DISABLE_BANNER=1
 export EF_DISABLE_BANNER
 
+.PHONY: check
+
 ifeq (${UNITTEST1ARGS},)
 UNITTEST1ARGS=${UNITTESTARGS}
 endif
@@ -52,8 +54,8 @@ programs ${TESTNAME}: ${TESTNAME}.c $(wildcard ../seam_*.c) ${EXTRAOBJS}
 ${TESTNAME}.E: ${TESTNAME}.c $(wildcard ../seam_*.c) ${EXTRAOBJS}
 	@echo CC ${TESTNAME}.E
 	@${CC} -c -E -g -O0 -o ${TESTNAME}.E ${TESTNAME}.c ${EXTRAFLAGS}
-check: OUTPUT/I2-dump.txt
-OUTPUT/I2-dump.txt:	${WHACKFILE} ${TESTNAME}
+
+check:	${WHACKFILE} ${TESTNAME}
 	@mkdir -p OUTPUT
 	@echo "file ${TESTNAME}"          >.gdb1init
 	@echo "set args "${UNITTEST1ARGS} >>.gdb1init
@@ -62,7 +64,7 @@ OUTPUT/I2-dump.txt:	${WHACKFILE} ${TESTNAME}
 	@${FILTERS} OUTPUT/${TESTNAME}_1.txt | diff - output1.txt
 	@cat OUTPUT/I2-dump.txt | sed -f ${TESTUTILS}/sanity.sed | diff - I2-dump.txt
 
-${WHACKFILE}:
+${WHACKFILE}: ${SAMPLEDIR}${ENDNAME}.conf
 	@mkdir -p OUTPUT
 	${READWRITE} --rootdir=${SAMPLEDIR}${ENDNAME} --config ${SAMPLEDIR}${ENDNAME}.conf --whackout=${WHACKFILE} ${CONNNAME}
 
