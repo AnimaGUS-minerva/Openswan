@@ -487,6 +487,10 @@ static inline u_int compute_icookie_rcookie_hash(const u_char *icookie,
     return i;
 }
 
+extern void prefer_state(struct connection *c, struct state *st);
+
+/* these got duplicated, but aren't quite the same, but can be refactored */
+extern void for_each_state(void (*f)(struct state *, void *data), void *data);
 extern void foreach_state(bool (*statecontinue)(struct state *st, void *arg)
                           , void *arg);
 extern void foreach_states_by_connection_func(struct connection *c
@@ -560,8 +564,6 @@ extern void initialize_new_state(struct state *st
 extern void show_states_status(void);
 extern void dump_one_state(struct state *st);
 
-
-void for_each_state(void (*f)(struct state *, void *data), void *data);
 
 extern void find_my_cpi_gap(cpi_t *latest_cpi, cpi_t *first_busy_cpi);
 extern ipsec_spi_t uniquify_his_cpi(ipsec_spi_t cpi, struct state *st);

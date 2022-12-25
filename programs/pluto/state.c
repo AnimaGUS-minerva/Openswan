@@ -475,6 +475,17 @@ void free_state(struct state *st)
     pfree(st);
 }
 
+void
+prefer_state(struct connection *c, struct state *st)
+{
+    if(!route_and_eroute(c, &c->spd, &c->spd, st)) {
+        DBG(DBG_CONTROL
+            , DBG_log("failed restoring eclipsed state #%lu to %s"
+                      , st->st_serialno, c->name));
+        delete_ipsec_sa(st, FALSE);
+    }
+}
+
 /* scan the list of states, reconnect to connection */
 static bool
 restore_eclipsed_state(struct state *st, void *arg)
@@ -485,12 +496,7 @@ restore_eclipsed_state(struct state *st, void *arg)
     if(!IS_CHILD_SA_ESTABLISHED(st)) return true;
 
     if(st->st_connection == c) {
-        if(!route_and_eroute(c, &c->spd, &c->spd, st)) {
-            DBG(DBG_CONTROL
-                , DBG_log("restoring eclipsed state #%lu to %s"
-                          , st->st_serialno, c->name));
-            delete_ipsec_sa(st, FALSE);
-        }
+        prefer_state(c, st);
         return false;  /* no need to continue */
     }
     return true;
