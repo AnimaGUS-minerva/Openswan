@@ -94,6 +94,7 @@ enum connectionend_keys {
   WHACK_OPT_END_HOST_SRCIP = 13,
   WHACK_OPT_END_CLIENT = 14,
   WHACK_OPT_IFID = 147,
+  WHACK_OPT_END_UPDOWN = 148,
 };
 enum optionscommand_keys {
   WHACK_OPT_COREDIR = 151,
@@ -134,5 +135,4 @@ enum initiateoppo_keys {
   WHACK_OPT_OPPO_MY_CLIENT = 143,
   WHACK_OPT_OPPO_PEER_CLIENT = 144,
 };
-
 #endif /* WHACKVALUES_H */

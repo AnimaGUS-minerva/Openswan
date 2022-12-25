@@ -457,6 +457,9 @@ void whack_cbor_process_end(QCBORDecodeContext *qdc
       case WHACK_OPT_END_CLIENT:
         whack_cbor_decode_ipsubnet(qdc, endtype, &item, &end->client);
         break;
+      case WHACK_OPT_END_UPDOWN:
+        whack_cbor_string2c(qdc, &item, &end->updown);
+        break;
       case WHACK_OPT_HOST_TYPE:
         end->host_type=item.val.int64;
         break;
