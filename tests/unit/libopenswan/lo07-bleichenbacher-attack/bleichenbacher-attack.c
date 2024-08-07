@@ -40,9 +40,9 @@ int attack(uint8_t low_exponent, size_t modulus_bit_len)
     long unsigned int pubExpBytes_len = 1;
 
     /* this would be our message digest */
-    uint8_t helloworldSHA1Bytes[] = {
+    uint8_t helloworldSHA1Bytes[64] = {
         0x2A, 0xAE, 0x6C, 0x35, 0xC9, 0x4F, 0xCF, 0xB4, 0x15, 0xDB,
-        0xE9, 0x5F, 0x40, 0x8B, 0x9C, 0xE9, 0x1E, 0xE8, 0x46, 0xED
+        0xE9, 0x5F, 0x40, 0x8B, 0x9C, 0xE9, 0x1E, 0xE8, 0x46, 0xED,
     };
 
     uint8_t attackBytes[] = {
@@ -83,7 +83,7 @@ int attack(uint8_t low_exponent, size_t modulus_bit_len)
     memset(&st, 0, sizeof(struct state));
 
     pb_stream sig_pbs;
-    sig_pbs.cur = attackBytes;
+    sig_pbs.cur  = attackBytes;
     sig_pbs.roof = attackBytes+sizeof(attackBytes);
     err_t e = NULL;
 
