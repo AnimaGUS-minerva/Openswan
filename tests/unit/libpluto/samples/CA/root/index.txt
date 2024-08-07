@@ -6,7 +6,11 @@ E	211211041559Z		04	unknown	/C=CA/ST=ON/O=Xelerance/CN=dave@openswan.org
 E	211211041559Z		05	unknown	/C=CA/ST=ON/O=Xelerance/CN=carol@openswan.org
 E	211211041559Z		06	unknown	/C=CA/ST=ON/O=Xelerance/CN=moon@openswan.org
 E	211211041559Z		07	unknown	/C=CA/ST=ON/O=Xelerance/CN=bob@openswan.org
-V	250226173456Z		08	unknown	/C=CA/ST=ON/O=Xelerance/CN=dave@openswan.org
-V	250226173456Z		09	unknown	/C=CA/ST=ON/O=Xelerance/CN=carol@openswan.org
-V	250226173456Z		0A	unknown	/C=CA/ST=ON/O=Xelerance/CN=moon@openswan.org
-V	250226173456Z		0B	unknown	/C=CA/ST=ON/O=Xelerance/CN=bob@openswan.org
+E	250226173456Z		08	unknown	/C=CA/ST=ON/O=Xelerance/CN=dave@openswan.org
+E	250226173456Z		09	unknown	/C=CA/ST=ON/O=Xelerance/CN=carol@openswan.org
+E	250226173456Z		0A	unknown	/C=CA/ST=ON/O=Xelerance/CN=moon@openswan.org
+E	250226173456Z		0B	unknown	/C=CA/ST=ON/O=Xelerance/CN=bob@openswan.org
+V	261115010304Z		0C	unknown	/C=CA/ST=ON/O=Xelerance/CN=dave@openswan.org
+V	261115010304Z		0D	unknown	/C=CA/ST=ON/O=Xelerance/CN=carol@openswan.org
+V	261115010304Z		0E	unknown	/C=CA/ST=ON/O=Xelerance/CN=moon@openswan.org
+V	261115010304Z		0F	unknown	/C=CA/ST=ON/O=Xelerance/CN=bob@openswan.org
