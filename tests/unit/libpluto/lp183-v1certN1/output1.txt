@@ -46,10 +46,10 @@
 | L2 - validity:
 | L3 - notBefore:
 | L4 - utcTime:
-|   'Nov 19 17:34:56 UTC 2022'
+|   'Aug 07 01:03:04 UTC 2024'
 | L3 - notAfter:
 | L4 - utcTime:
-|   'Feb 26 17:34:56 UTC 2025'
+|   'Nov 15 01:03:04 UTC 2026'
 | L2 - subject:
 |   'C=CA, ST=ON, O=Xelerance, CN=moon@openswan.org'
 | L2 - subjectPublicKeyInfo:
