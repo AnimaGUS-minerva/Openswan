@@ -181,6 +181,7 @@ UNITTESTS_I2+=lp203-ca-h2hI2
 # test cases for wildcards in DNs, IPv6-LL and IKEv2
 UNITTESTS_I1+=lp121-peerA-I1
 UNITTESTS_R1+=lp122-peerB-R1
+UNITTESTS_R1+=lp137-peerB-IPbased-policy-R1
 UNITTESTS_I2+=lp123-peerA-I2
 UNITTESTS_R2+=lp124-peerB-R2
 UNITTESTS_I3+=lp125-peerA-I3

@@ -1,0 +1,15 @@
+This test case is an IKEv2 responder -- it uses a certificate.
+It has a specific left= IP address that DOES NOT MATCH the incoming packet.
+This is a negative/regression test that checks that IP addresses are relevant to policy.
+
+It is otherwise identical to lp15 and lp122.
+
+
+
+
+
+
+
+
+
+
