@@ -188,7 +188,8 @@ find_host_pair(bool exact
 	    char b1[ADDRTOT_BUF];
 	    char b2[ADDRTOT_BUF];
             char himtypebuf[KEYWORD_NAME_BUFLEN];
-	    DBG_log("find_host_pair: comparing to me=%s:%d %s him=%s:%d\n"
+	    DBG_log("find_host_pair: comparing to pair %s me=%s:%d %s him=%s:%d\n"
+                    , p->connections ? p->connections->name : "none"
                     , (addrtot(&p->me.addr, 0, b1, sizeof(b1)), b1)
                     , p->me.host_port
                     , keyword_name(&kw_host_list, p->him.host_type, himtypebuf)
@@ -226,11 +227,21 @@ find_host_pair(bool exact
                 break;
             }
         } else if(p->him.host_type == KH_ANY && bestpair_prio < 1) {
+            DBG(DBG_CONTROLMORE,
+                DBG_log("find_host_pair: %%any without tighter match, best was %s now %s\n"
+                        , (bestpair && bestpair->connections) ? bestpair->connections->name:"none"
+                        , p->connections ? p->connections->name : "none"));
+
             /* matched against %any, and did not have a tighter match */
             bestpair = p;
             bestpair_prev = prev;
             bestpair_prio = 1;
+
         } else if(histype != KH_ANY && sameaddr(&p->him.addr, hisaddr) && bestpair_prio < 2) {
+            DBG(DBG_CONTROLMORE,
+                DBG_log("find_host_pair: sameaddr fit, best was %s now %s\n"
+                        , (bestpair && bestpair->connections) ? bestpair->connections->name:"none"
+                        , p->connections ? p->connections->name : "none"));
             bestpair = p;
             bestpair_prev = prev;
             bestpair_prio = 2;
