@@ -105,6 +105,9 @@ int main(int argc, char *argv[])
     }
     c1 = con_by_name(conn_name, TRUE);
     assert(c1 != NULL);
+#ifdef INIT_LOADED
+    c1 = INIT_LOADED(c1);
+#endif
 
     assert(orient(c1, 500));
     show_one_connection(c1, whack_log);
