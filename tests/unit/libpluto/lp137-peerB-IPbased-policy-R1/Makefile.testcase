@@ -1,5 +1,6 @@
 # -*- makefile -*-
 CONNNAME=peerB-other--peerA
+EXTRACONNNAMES=peerB--peerA
 ENDNAME=acppeers
 UNITTEST1ARGS=${WHACKFILE} ${CONNNAME} peerA-I1.pcap OUTPUT/${TESTNAME}.pcap
 

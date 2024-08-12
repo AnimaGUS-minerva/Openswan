@@ -23,7 +23,21 @@ static void init_fake_secrets(void)
 			       , TRUE
 			       , "../samples/carol.secrets"
 			       , &pass, NULL);
+
 }
+
+#define INIT_LOADED load_peerAB
+struct connection *load_peerAB(struct connection *c1)
+{
+    struct connection *c2;
+    assert(orient(c1, 500));
+    show_one_connection(c1, whack_log);
+
+    c2 = con_by_name("peerB--peerA", TRUE);
+    assert(c2 != NULL);
+    return c2;
+}
+
 #include "../lp08-parentR1/parentR1_main.c"
 
  /*
