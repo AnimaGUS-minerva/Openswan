@@ -196,7 +196,7 @@ find_host_pair(bool exact
                     , (addrtot(&p->him.addr, 0, b2, sizeof(b2)), b2)
                     , p->him.host_port));
 
-#if 1
+#if 0
         /* enable to get way too verbose debug of this function */
 #define FAIL_TO_MATCH_IF(cond) if(cond) { DBG_log("     failed to match " #cond ); continue; }
 #else

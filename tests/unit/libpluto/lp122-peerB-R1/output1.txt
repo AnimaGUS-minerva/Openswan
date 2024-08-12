@@ -107,7 +107,8 @@ RC=0 "peerB--peerA":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+OVERLAPIP+!IKEv1+IKEv2A
 | now proceed with state specific processing using state #3 responder-V2_init
 | find_host_connection2 called from ikev2parent_inI1outR1, me=fe80::ec68:7cff:fe0c:9aa4:500 him=fe80::8054:3eff:fe9a:d3f4:500 policy=IKEv2ALLOW/-
 | find_host_pair: looking for me=fe80::ec68:7cff:fe0c:9aa4:500 %address him=fe80::8054:3eff:fe9a:d3f4:500 any-match
-| find_host_pair: comparing to me=fe80::ec68:7cff:fe0c:9aa4:500 %address him=fe80::8054:3eff:fe9a:d3f4:500
+| find_host_pair: comparing to pair peerB--peerA me=fe80::ec68:7cff:fe0c:9aa4:500 %address him=fe80::8054:3eff:fe9a:d3f4:500
+| find_host_pair: sameaddr fit, best was none now peerB--peerA
 | find_host_pair: concluded with peerB--peerA
 | found_host_pair_conn (find_host_connection2): fe80::ec68:7cff:fe0c:9aa4:500 %address/fe80::8054:3eff:fe9a:d3f4:500 -> hp:peerB--peerA
 | searching for connection with policy = IKEv2ALLOW/-
